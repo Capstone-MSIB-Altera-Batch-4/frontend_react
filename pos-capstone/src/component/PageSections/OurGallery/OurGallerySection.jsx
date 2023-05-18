@@ -1,5 +1,5 @@
 import React from 'react'
-import './Styles/OurGallery.style.css'
+import './OurGallery.style.css'
 
 const OurGallerySection = () => {
   return (
