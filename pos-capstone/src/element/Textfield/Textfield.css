@@ -32,6 +32,6 @@
     font-size: 30px;
 }
 
-.error::placeholder {
-    color: red;
+.form-control.is-invalid::placeholder {
+    color: #C81E1E;
 }
