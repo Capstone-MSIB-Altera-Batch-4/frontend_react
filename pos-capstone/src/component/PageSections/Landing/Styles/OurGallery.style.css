@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&display=swap');
+
+.our-gallery {
+    display: flex;
+    flex-direction: column;
+    padding: 89px 154px;
+    background: url("/src/assets/pat-image.png"), #B1464A;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    font-family: 'Kaisei Opti', sans-serif;
+    gap: 91px;
+}
+
+.device-images {
+    max-width: 1180px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.section-title {
+    font-size: 64px;
+}
+
+@media only screen and (max-width: 812px) {
+    /* .device-images {
+       margin: auto;
+       width: 235px;
+    } */
+    .our-gallery {
+      padding: 75px 100px;
+    }
+  }
+
+@media only screen and (max-width: 679px) {
+    .our-gallery {
+      padding: 45px 56px;
+    }
+  }

@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&display=swap');
+
+.subscribe-section {
+    font-family: 'Kaisei Opti', sans-serif;
+    background: #AB464A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 80px;
+    padding: 134px;
+}
+
+.section-title {
+    font-size: 75px;
+    line-height: 109px;
+    max-width: 913px;
+    margin-bottom: 70px;
+}
+
+.email-form {
+   border: 1px solid white;
+   border-radius: 40px;
+   max-width: 600px;
+}
+
+.button-submit {
+    background: #380404;
+    border: none;
+    border-radius: 45px;
+    padding: 18px 57px;
+    margin-left: 16px;
+}
