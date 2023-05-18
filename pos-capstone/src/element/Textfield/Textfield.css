@@ -10,9 +10,7 @@
 #textfield input {
     padding: 8px 16px;
     gap: 10px;
-
     background: #F9FAFB;
-    border: 1px solid #D1D5DB;
     border-radius: 8px;
 
 }
@@ -32,4 +30,8 @@
 
 .times-sign {
     font-size: 30px;
+}
+
+.error::placeholder {
+    color: red;
 }

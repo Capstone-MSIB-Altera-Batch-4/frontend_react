@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import TextField from '../../element/Textfield/Textfield';
 import { useState } from 'react';
 import ShowPassword from '../../element/ShowPassword/ShowPassword';
+import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
 
 const LoginForm = () => {
     // const navigate = useNavigate()
@@ -35,6 +36,7 @@ const LoginForm = () => {
                 <TextField
                     htmlFor="username"
                     label="Username"
+                    placeholder="Input Username"
                     type="text"
                     id="username"
                     value={formik.values.username}
@@ -42,15 +44,15 @@ const LoginForm = () => {
                     onBlur={formik.handleBlur}
                     className={
                         formik.errors.username && formik.touched.username
-                            ? 'form-control mt-1 is-invalid'
+                            ? 'form-control mt-1 is-invalid bg-danger bg-opacity-10'
                             : 'form-control mt-1'
                     }
                     onClearInput={() => formik.setFieldValue('username', '', false)}
                 />
                 {formik.errors.username && formik.touched.username && (
-                    <small className='text-danger'>
-                        {formik.errors.username}
-                    </small>
+                    <InputErrorMessage
+                        label={formik.errors.username}
+                    />
                 )}
 
             </div>
@@ -58,6 +60,7 @@ const LoginForm = () => {
                 <TextField
                     htmlFor="password"
                     label="Password"
+                    placeholder="Input Password"
                     type={showPassword ? 'text' : 'password'}
                     id="password"
                     value={formik.values.password}
@@ -65,15 +68,15 @@ const LoginForm = () => {
                     onBlur={formik.handleBlur}
                     className={
                         formik.errors.password && formik.touched.password
-                            ? 'form-control mt-1 is-invalid'
+                            ? 'form-control mt-1 is-invalid bg-danger bg-opacity-10'
                             : 'form-control mt-1'
                     }
                     onClearInput={() => formik.setFieldValue('password', '', false)}
                 />
                 {formik.errors.password && formik.touched.password && (
-                    <small className='text-danger'>
-                        {formik.errors.password}
-                    </small>
+                    <InputErrorMessage
+                        label={formik.errors.password}
+                    />
                 )}
             </div>
             <ShowPassword
