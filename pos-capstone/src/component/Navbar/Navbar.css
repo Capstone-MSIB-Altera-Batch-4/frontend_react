@@ -1,0 +1,39 @@
+.navbar-list {
+    display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 10px 10px;
+gap: 50px;
+
+position: absolute;
+width: 1250px;
+height: 20px;
+left: 0px;
+top: 0px;
+  }
+  
+  .navbar-list li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .navbar-list li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: Kaisei Opti;
+  }
+
+  .navbar-list li a.download-button {
+    background-color: #380404; /* Warna latar belakang */
+    color: #fff; /* Warna teks */
+    padding: 10px 20px; /* Ukuran padding */
+    border-radius: 36px; /* Gaya border radius */
+    text-decoration: none;
+  }
+  
+  .navbar-list li a.download-button:hover {
+    background-color: #380404; /* Warna latar belakang saat dihover */
+  }
+  
+  
