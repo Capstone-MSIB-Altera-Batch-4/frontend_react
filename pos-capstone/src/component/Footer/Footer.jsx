@@ -1,0 +1,72 @@
+import React from "react";
+import logo from '../../assets/image/logo1.png';
+import { Instagram, Tiktok, GeoAlt } from 'react-bootstrap-icons';
+import "./Footer.css"
+
+const Footer = () => {
+    return (
+        <footer className="text-black pt-5 pb-4">
+            <div className="container text-md-left">
+                <div className="row text-md-left">
+                    <div className="col-md-9 col-lg-4 col-xl-5 mx-auto mt-3">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <img
+                                    className=" img img-fluid d-block"
+                                    src={logo}
+                                    alt="Logo"
+                                />
+                            </div>
+                            <div className="col-md-6 mt-3">
+                                 <p style={{marginTop:"10%"}}>
+                                     Jln. Konohagakure No.19, Sebelah kantor hokage, Ruko kos-kosan naruto
+                                </p>
+                                <div className='row'>
+                                    <div className='col-md-2'>
+                                        <button className='btn text-light' 
+                                        style={{backgroundColor:"#AB464A", border:"none", borderRadius:"50%", width:"45px", height:"45px"}}>
+                                            <Instagram/>
+                                        </button>
+                                    </div>
+                                    <div className='col-md-2 mx-4'>
+                                        <button className='btn text-light' 
+                                        style={{backgroundColor:"#AB464A", border:"none", borderRadius:"50%", width:"45px", height:"45px"}}>
+                                            <Tiktok/>
+                                        </button>
+                                    </div>
+                                    <div className='col-md-2'>
+                                        <button className='btn text-light' 
+                                        style={{backgroundColor:"#AB464A", border:"none", borderRadius:"50%", width:"45px", height:"45px"}}>
+                                            <GeoAlt/>
+                                        </button>       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-1 col-lg-2 col-xl-2 mx-auto mt-3" style= {{ textAlign: "left"}}>
+                        <h6 className="fw-bold mb-4">Our Partner</h6>
+                        <p><a href="#!" className="text-dark">Iwagakure</a></p>
+                        <p><a href="#!" className="text-dark">Kirigakure</a></p>
+                        <p><a href="#!" className="text-dark">Amegakure</a></p>
+                        <p><a href="#!" className="text-dark">Tsunagakure</a></p>
+                    </div> 
+                    <div className="col-md-1 col-lg-2 col-xl-2 mt-3" style= {{ textAlign: "left"}}>
+                        <h6 className="fw-bold mb-4">Information</h6>
+                        <p><a href="#!" className="text-dark">About Us</a></p>
+                        <p><a href="#!" className="text-dark">Our Gallery</a></p>
+                        <p><a href="#!" className="text-dark">Menu</a></p>
+                        <p><a href="#!" className="text-dark">Subscription</a></p>
+                    </div>
+                    <div className="col-md-1 col-lg-2 col-xl-2 mt-3" style= {{ textAlign: "left"}}>
+                        <h6 className="fw-bold mb-4">Contact</h6>
+                        <p><a href="#!" className="text-dark">RollMe@sushi.com</a></p>
+                        <p><a href="#!" className="text-dark">(+62) 80123 125420</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
+} 
+
+export default Footer

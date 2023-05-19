@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&family=Rubik:wght@300;400;700&display=swap');
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+.login-Img {
+    background-color: #F24141;
+    padding-left: 0;
+    background-image: url(../../assets/img/imglogin-logo.png);
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-position: 0px 0px;
+}
+
+.loginImg {
+    margin-top: 2.1rem;
+    margin-bottom: 2.1rem;
+    width: 60%;
+    height: 85%;
+}
+
+.login-Form {
+    background-color: rgba(254, 254, 254, 0.95);
+    padding: 3rem;
+    padding-top: 5rem;
+}
+
+.btn-showpass {
+    text-decoration: none;
+    color: #9095A0;
+}
