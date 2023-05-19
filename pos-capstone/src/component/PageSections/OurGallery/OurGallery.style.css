@@ -8,11 +8,11 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     font-family: 'Kaisei Opti', sans-serif;
-    gap: 91px;
+    gap: 65px;
 }
 
 .device-images {
-    max-width: 1180px;
+    max-width: 1078px;
     display: flex;
     align-items: center;
     justify-items: center;
@@ -29,6 +29,15 @@
     } */
     .our-gallery {
       padding: 75px 100px;
+    }
+    .section-title {
+      font-size: 20px;
+      scale: 70%;
+    }
+    .text-title {
+      display: flex;
+      align-items: center;
+      justify-items: center;
     }
   }
 
