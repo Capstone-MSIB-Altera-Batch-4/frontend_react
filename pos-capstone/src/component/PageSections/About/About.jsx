@@ -2,7 +2,7 @@ import React from "react"
 import pc from '/src/assets/image/pc.png'
 import hp from '/src/assets/image/hp.png'
 import laptop from '/src/assets/image/laptop.png'
-import "../About/About.css"
+import "./About.css"
 
 const About = () => {
     return( 
