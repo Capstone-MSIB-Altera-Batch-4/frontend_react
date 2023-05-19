@@ -1,6 +1,5 @@
 import React from "react"
 import "./Login.style.css"
-import Button from "../../element/button/button";
 import LoginForm from "../../component/LoginForm/LoginForm"
 
 const Login = () => {

@@ -5,6 +5,7 @@ import TextField from '../../element/Textfield/Textfield';
 import { useState } from 'react';
 import ShowPassword from '../../element/ShowPassword/ShowPassword';
 import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
+import Button from '../../element/Button/Button'
 
 const LoginForm = () => {
     // const navigate = useNavigate()
@@ -83,9 +84,13 @@ const LoginForm = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 label={showPassword ? 'Hide Password' : 'Show Password'}
             />
-            {/* <button type="submit" className="btn btn-primary">
-                Submit
-            </button> */}
+            <div className='mt-5'>
+                <Button
+                    className="btn text-white w-100"
+                    btnName="Login"
+                />
+            </div>
+
         </form >
     )
 }

@@ -6,7 +6,7 @@ const Button = (props) => {
     return (
         <>
             <button 
-                className="btn text-white"
+                className={props.className}
             >
                 {props.btnName}
             </button>
