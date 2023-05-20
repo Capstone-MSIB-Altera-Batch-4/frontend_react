@@ -9,7 +9,7 @@ import Navbar from '../../component/Navbar/Navbar'
 const Landing = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <About />
       <HeroSection />
       <OurGallerySection />
