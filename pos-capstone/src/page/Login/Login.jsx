@@ -7,16 +7,17 @@ const Login = () => {
     return (
 
         <div className="container-fluid">
-            <div className="row">
+            <div className="login row">
                 <div className="login-Img col-7 py-5 ">
+                    
                     <img
+                        className="loginImg img-fluid"
                         src="../../src/assets/img/imglogin.png"
-                        className="loginImg"
                     />
                 </div>
                 <div className="login-Form col-5">
                     <div>
-                        <h2 className=" fs-2">
+                        <h2 style={{fontSize:48}}>
                             Back to your <br />
                             <strong>powerfull</strong><br />
                             synchronize<br />
@@ -24,7 +25,7 @@ const Login = () => {
                         </h2>
                         <p>Login to maximize the features</p>
                     </div>
-                    <div className="mt-5">
+                    <div className="mt-4">
                         <LoginForm />
                     </div>
 

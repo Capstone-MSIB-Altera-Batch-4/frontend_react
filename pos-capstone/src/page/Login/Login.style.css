@@ -3,29 +3,55 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.login-Img {
+.login {
+    position: relative;
     background-color: #F24141;
+    height: 100vh;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-image: url(../../assets/img/imglogin-logo.png);
+        background-repeat: no-repeat;
+        background-size: 35%;
+        background-position: top start;
+        opacity: 0.2;
+    }
+}
+
+.login-Img {
+    position: relative;
     padding-left: 0;
-    background-image: url(../../assets/img/imglogin-logo.png);
-    background-repeat: no-repeat;
-    background-size: 55%;
-    background-position: 0px 0px;
 }
 
 .loginImg {
     margin-top: 2.1rem;
     margin-bottom: 2.1rem;
-    width: 60%;
-    height: 85%;
+}
+
+.img-fluid {
+    max-width: 60%;
 }
 
 .login-Form {
     background-color: rgba(254, 254, 254, 0.95);
     padding: 3rem;
-    padding-top: 5rem;
+    padding-top: 2rem;
+    height: 100vh;
 }
 
 .btn-showpass {
     text-decoration: none;
     color: #9095A0;
 }
+
+@media all and (min-width: 1024px) and (max-width: 1280px) {}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {}
+
+@media all and (min-width: 480px) and (max-width: 768px) {}
+
+@media all and (max-width: 480px) {}
