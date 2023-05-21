@@ -6,22 +6,23 @@ import "./About.css"
 
 const About = () => {
     return( 
-        <div className="about">
+        <div className="about overflow-hidden">
             <div className="row">
                 <div className="kiri col-md-3">
                     <div className="first pt-5">
                         <img
+                            style={{width: "380px"}}
                             src={pc}
                             alt="About Us"
                         />
                         <img
-                            style={{marginTop:"-30%", marginLeft:"40%"}}
+                            style={{marginTop:"-30%", marginLeft:"30%"}}
                             src={laptop}
                             alt="About Us"
                         />
                     </div>
-                    <div className="second"><p>Our Systems</p></div>
-                    <div className="third">
+                    <div className="second px-5"><p className="py-3">Our Systems</p></div>
+                    <div className="third mt-4">
                         <img
                             src={hp}
                             alt="About Us"
@@ -29,26 +30,26 @@ const About = () => {
                     </div>
                 </div>
                 <div className="kanan col-md-7 pt-5">
-                    <div className="container1">
-                        <h3>About / 阿防塗</h3>
+                    <div className="container1 my-auto mt-5">
+                        <h3 className="fw-bold text-left">About / 阿防塗</h3>
                         <h2>Our mission is to help you run your restaurant smoothly</h2>
                     </div>
-                    <div className="container2 mt-5 pb-5">
-                        <h5>Our app offers a wide range of features:</h5>
-                        <div className="row my-3">
-                            <div className="col-md-6">
-                                <p>Take orders in just a few taps</p>
+                    <div className="container2">
+                        <h5 className="our-app">Our app offers a wide range of features:</h5>
+                        <div className="row my-3 mt-5">
+                            <div className="col-md-5 rounded-3">
+                                <p className="py-5">Take orders in just a few taps</p>
                             </div>
-                            <div className="col-md-6">
-                                <p>Process payments with ease</p>
+                            <div className="col-md-6 rounded-3 ms-4">
+                                <p className="py-5">Process payments with ease</p>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">
-                                <p>Track inventory in real-time</p>
+                            <div className="col-md-5 rounded-3">
+                                <p className="py-5">Track inventory in real-time</p>
                             </div>
-                            <div className="col-md-6">
-                                <p>Advanced reporting features</p>
+                            <div className="col-md-6 rounded-3 ms-4">
+                                <p className="py-5">Advanced reporting features</p>
                             </div>
                         </div>
                     </div>

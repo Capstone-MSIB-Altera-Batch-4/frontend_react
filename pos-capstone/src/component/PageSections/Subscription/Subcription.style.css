@@ -21,8 +21,25 @@
 .email-form {
    border: 1px solid white;
    border-radius: 40px;
-   max-width: 600px;
+   width: 500px;
 }
+
+.email-form:focus {
+    outline: 2px solid white;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: white;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: white;
+  }
 
 .button-submit {
     background: #380404;

@@ -16,6 +16,7 @@ const SubscriptionSection = () => {
           name="email"
           placeholder='Enter Email Address'
           onChange={""}
+          // value={""}
         />
         <button className='button-submit'>
           <img src='/src/assets/checked-icon.svg' />
