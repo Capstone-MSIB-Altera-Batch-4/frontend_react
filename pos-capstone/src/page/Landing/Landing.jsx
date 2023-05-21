@@ -10,8 +10,8 @@ const Landing = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      <About />
       <HeroSection />
+      <About />
       <OurGallerySection />
       <SubscriptionSection />
       <Footer />
