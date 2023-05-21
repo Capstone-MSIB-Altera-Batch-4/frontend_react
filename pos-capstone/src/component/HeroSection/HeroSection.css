@@ -3,41 +3,47 @@
     background-position: center;
     /* height: 200vh; */
     display: flex;
-    align-items: center;
-    justify-content: center;
     font-family: 'Kaisei Opti';
     
   }
 
   .hero-image-container {
-    flex: 1;
-    
+    ,ax-width: 550px;
+    height: 100px;
+    background: #B1464A;
   }
   
   .hero-image {
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
+      align-items: end;
       background-color:  #B1464A;
-      max-width: 80%;
-      height: auto;
-  
+      width: 500px;
+      max-width: 100%;
+      height: 975px;
+      margin-top: 48px;
   }
   
   .hero-content {
-    padding-bottom: 20px;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    margin-top: 100px;
   }
   
   .hero-content h1 {
-    width: 700px;
+    width: 797px;
     height: 200px;
     text-align: left;
     font-family: 'Kaisei Opti';
     font-style: normal;
     font-weight: 500;
     font-size: 64px;
-    line-height: 80px;
+    line-height: 90px;
     color: #000000;
+    margin-bottom: 36px;
   }
   
   .hero-content p {
@@ -62,28 +68,34 @@
     padding: 10px 20px;
     border-radius: 36px;
     border: none;
-    font-size: 16px;
-
+    font-size: 25px;
+    width: fit-content;
   }
   
   .hero-text {
     display: flex;
     background-color:  #FFF0DE;
-    ;
-   
+    width: 100%;
+    padding: 50px;
+    gap: 200px;
+    align-items: center;
   }
   
   .profil {
     display: flex;
+    width: 100%;
+    gap: 25px;
   }
 
   .profil-image {
     width: 62px;
     height: 63px;
+    align-items: center;
   }
 
   .happy-client {
     display: flex;
+    align-items: center;
     gap: 30px;
   }
 
@@ -93,15 +105,23 @@
   
   .hero-text p {
     font-size: 32px;
-    width: 167px;
     height: 92px;
   }
 
+  .pofile-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+  }
   .profil .p1 {
+    width: 300px;
     font-size: 16px;
   }
 
   .profil .p2 {
     font-size: 12px;
-
+    margin-top: -55px;
+    margin-bottom: -100px;
+    font-weight: 700;
   }
