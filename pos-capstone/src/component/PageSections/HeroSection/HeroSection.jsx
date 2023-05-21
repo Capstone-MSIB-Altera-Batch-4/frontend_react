@@ -1,5 +1,5 @@
 import React from "react";
-import "../HeroSection/HeroSection.css"; // Impor file
+import "./HeroSection.css"; // Impor file
 import heroImage from "../../assets/img/HeroImage.png"; // Impor gambar dari folder assets/images
 import profil from "../../assets/img/Profil.png";
 

@@ -3,7 +3,7 @@ import OurGallerySection from '../../component/PageSections/OurGallery/OurGaller
 import SubscriptionSection from '../../component/PageSections/Subscription/SubscriptionSection'
 import About from '../../component/PageSections/About/About'
 import Footer from '../../component/Footer/Footer'
-import HeroSection from '../../component/HeroSection/HeroSection'
+import HeroSection from '../../component/PageSections/HeroSection/HeroSection'
 import Navbar from '../../component/Navbar/Navbar'
 
 const Landing = () => {
