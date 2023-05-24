@@ -5,6 +5,8 @@ import 'bootstrap';
 import Login from './page/Login/Login';
 import { BrowserRouter as Router, Route,  Routes } from 'react-router-dom';
 import Landing from './page/Landing/Landing';
+import Graph from './element/Graph/Graph';
+
 
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<Graph />} />
 
         </Routes>
       </Router>
