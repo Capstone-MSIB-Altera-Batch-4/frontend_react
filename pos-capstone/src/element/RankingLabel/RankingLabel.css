@@ -1,3 +1,6 @@
+p {
+    font-size: 12px;
+}
 .label-style {
     display: flex;
     padding: 2px 9px;
@@ -7,6 +10,7 @@
     text-align: center;
     align-items: center;
     font-family: 'Rubik';
+    width: fit-content;
 }
 
 .gold-style {

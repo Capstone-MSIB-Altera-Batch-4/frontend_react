@@ -8,7 +8,6 @@
 
 .customer-ranking p {
     font-family: 'Rubik';
-    font-size: 14px;
 }
 
 .title {
@@ -17,14 +16,15 @@
     font-size: 16px;
     line-height: 24px;
     color: #646464;
-    margin-bottom: 24px;
-    margin-left: -125px;
+    margin-bottom: 30px;
+    margin-left: -150px;
     text-align: left !important;
 }
 
 .number {
     font-family: 'Rubik';
     margin-right: -28px;
+    font-size: 14px;
 }
 
 .customer-ranking {
@@ -36,16 +36,31 @@
     padding: 20px;
     isolation: isolate;
     width: fit-content;
-    height: 475px;
+    height: 500px;
     border-radius: 16px;
 }
 
 // untuk RankingItem
 .rank-item p {
     font-family: 'Rubik';
+    font-size: 14px;
 }
 
 .person-icon {
     width: 20px;
     height: 24px;
+}
+
+.name {
+    width: 85px;
+    font-size: 14px;
+}
+
+.rank-label {
+    width: 65px;
+    font-size: 14px;
+}
+
+.point {
+    font-size: 14px;
 }

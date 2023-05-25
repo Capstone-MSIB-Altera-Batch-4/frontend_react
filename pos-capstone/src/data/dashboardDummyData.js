@@ -1,6 +1,6 @@
 export const customerData = [
     {
-        name: "Mr. Jihyo",
+        name: "Ms. Jihyo",
         point: 2654,
     },
     {

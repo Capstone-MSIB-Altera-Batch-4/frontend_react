@@ -15,12 +15,14 @@ const RankingItem = ({point, name}) => {
   }
   return (
     <div className='rank-item d-flex gap-4 ms-5 text-left'>
-      <div className='d-flex gap-3 py-auto'>
+      <div className='d-flex gap-2 py-auto'>
         <PersonCircle className='person-icon'/>
-        <p>{name}</p>
+        <p className='name'>{name}</p>
       </div>
-      <RankingLabel variant={getLabel()} />
-      <p>{point}</p>
+      <div className='rank-label'>
+        <RankingLabel variant={getLabel()} />
+      </div>
+      <p className='point'>{point}</p>
     </div>
   )
 }
