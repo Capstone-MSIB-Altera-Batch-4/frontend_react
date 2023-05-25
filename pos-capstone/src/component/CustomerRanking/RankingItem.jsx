@@ -1,8 +1,9 @@
 import React from 'react'
+import { PersonCircle } from 'react-bootstrap-icons'
 import RankingLabel from '../../element/RankingLabel/RankingLabel'
+import './Styles/CustomerRanking.css'
 
 const RankingItem = ({point, name}) => {
-  let number = 0;
   const getLabel = () => {
     if (point <= 1000) {
        return "bronze"
@@ -13,9 +14,9 @@ const RankingItem = ({point, name}) => {
     }
   }
   return (
-    <div className='d-flex gap-4'>
-      <p>{number += 1}.</p>
-      <div className='d-flex gap-2'>
+    <div className='rank-item d-flex gap-4 ms-5 text-left'>
+      <div className='d-flex gap-3 py-auto'>
+        <PersonCircle className='person-icon'/>
         <p>{name}</p>
       </div>
       <RankingLabel variant={getLabel()} />

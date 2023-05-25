@@ -31,9 +31,9 @@ const RankingLabel = ({variant}) => {
   }
   
   return (
-    <div className={`label-style ${getColor()}`}>
+    <p className={`label-style ${getColor()}`}>
       {getTextLabel()}
-    </div>
+    </p>
   )
 }
 

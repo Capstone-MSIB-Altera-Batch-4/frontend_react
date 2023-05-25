@@ -1,0 +1,51 @@
+// untuk RankingList
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 500px;
+    font-family: 'Rubik';
+}
+
+.customer-ranking p {
+    font-family: 'Rubik';
+    font-size: 14px;
+}
+
+.title {
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #646464;
+    margin-bottom: 24px;
+    margin-left: -125px;
+    text-align: left !important;
+}
+
+.number {
+    font-family: 'Rubik';
+    margin-right: -28px;
+}
+
+.customer-ranking {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    isolation: isolate;
+    width: fit-content;
+    height: 475px;
+    border-radius: 16px;
+}
+
+// untuk RankingItem
+.rank-item p {
+    font-family: 'Rubik';
+}
+
+.person-icon {
+    width: 20px;
+    height: 24px;
+}
