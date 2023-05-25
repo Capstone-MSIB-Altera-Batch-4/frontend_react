@@ -25,6 +25,9 @@
     font-family: 'Rubik';
     margin-right: -28px;
     font-size: 14px;
+    width: 14px;
+    display: flex;
+    align-items: center;
 }
 
 .customer-ranking {
@@ -48,7 +51,7 @@
 
 .person-icon {
     width: 20px;
-    height: 24px;
+    height: 22px;
 }
 
 .name {
