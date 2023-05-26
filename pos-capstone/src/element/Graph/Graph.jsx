@@ -22,7 +22,7 @@ function Graph() {
   return (
     <div className='graph'>
       <h1 className='ms-5 mb-5 ps-3'>Sales Statistics</h1>
-      <AreaChart width={755} height={200} data={data}>
+      <AreaChart width={728} height={200} data={data}>
         <defs>
           <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
             <stop offset="55%" stopColor="rgba(244, 97, 97, 0.53)" />
