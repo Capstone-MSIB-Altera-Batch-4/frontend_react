@@ -8,7 +8,7 @@ import Graph from '../../element/Graph/Graph';
 
 const Dashboard = () => {
   return (
-    <div className='dashboad-page row'>
+    <div className='dashboad-page row container-fluid'>
       <Sidebar
         activedashboard="active"
       />

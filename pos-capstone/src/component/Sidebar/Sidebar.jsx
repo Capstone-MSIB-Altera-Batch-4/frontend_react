@@ -5,8 +5,9 @@ import "./Sidebar.style.css"
 const Sidebar = (props) => {
 
     return (
+            
                 <div className="bar col auto col-md-2 min-vh-100">
-                    <div className="ms-3 py-1 ">
+                    <div className="text-center py-1 ">
                         <img
                             className="logo-sidebar p-3"
                             src="../../src/assets/icon/logo-sidebar.png"
@@ -15,7 +16,7 @@ const Sidebar = (props) => {
                     </div>
                     <ul className="nav flex-column">
                         <li className="nav-item py-3">
-                            <a href="" className={`nav-link ${props.activedashboard}`}>
+                            <a href="/Dashboard" className={`nav-link ${props.activedashboard}`}>
                                 <img
                                     className="icon mb-1 ms-1"
                                     src={props.activedashboard ?
