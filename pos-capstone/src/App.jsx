@@ -11,6 +11,7 @@ import Graph from './element/Graph/Graph';
 
 
 
+
 function App() {
 
 
@@ -20,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Landing />} />
-          <Route path="/Dashboard" element={<Dashboard/>}/>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/Product" element={<Products/>}/>
         </Routes>
       </Router>
