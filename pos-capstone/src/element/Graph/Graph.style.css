@@ -1,6 +1,13 @@
 .graph h1 {
     font-family: 'Rubik'; 
     font-weight: 500;
-    font-size: 28;
+    font-size: 28px;
     color: #646464
 }
+
+/* .graph {
+    background: white;
+    border-radius: 16px;
+    margin-left: -10px;
+    width: fit-content;
+} */
