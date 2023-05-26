@@ -5,8 +5,6 @@ import "./Sidebar.style.css"
 const Sidebar = (props) => {
 
     return (
-        <div className="container-fluid">
-            <div className="row">
                 <div className="bar col auto col-md-2 min-vh-100">
                     <div className="ms-3 py-1 ">
                         <img
@@ -16,7 +14,7 @@ const Sidebar = (props) => {
                         />
                     </div>
                     <ul className="nav flex-column">
-                        <li className="nav-item">
+                        <li className="nav-item py-3">
                             <a href="" className={`nav-link ${props.activedashboard}`}>
                                 <img
                                     className="icon mb-1 ms-1"
@@ -106,7 +104,7 @@ const Sidebar = (props) => {
                                 <span className="ms-3">Logout</span>
                             </a>
                         </li>
-                        <p className="branch pt-3">
+                        <p className="branch mt-5">
                             Branch Location:
                             <br/>
                             Jl. Asia Afrika No.19, RT.1/RW.3, Gelora, 
@@ -115,11 +113,6 @@ const Sidebar = (props) => {
                         </p>
                     </ul>
                 </div>
-                <div className="col auto col-md-2 min-vh-100">
-                    <p>Content</p>
-                </div>
-            </div>
-        </div>
     )
 
 
