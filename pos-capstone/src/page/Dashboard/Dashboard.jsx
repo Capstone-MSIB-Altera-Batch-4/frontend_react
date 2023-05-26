@@ -6,6 +6,7 @@ import Table from "../../component/Table/Table";
 import { DummyData } from "../../data/DummyData"
 import Graph from '../../element/Graph/Graph';
 import DashboardCard from '../../component/Cards/DashboardCard/DashboardCard';
+import { CreditCard, Person, Union, Unity } from 'react-bootstrap-icons';
 // import {creditCard} from "../../assets/icon/credit-card.svg"
 
 const Dashboard = () => {
@@ -16,11 +17,15 @@ const Dashboard = () => {
       />
       <div className='col'>
         <div className='row container-fluid mx-auto'>
-          <div className='col'>
+        <div className='py-4 text-header'>
+              <h4>Sup, Admin.. good to see you, Mate!</h4>
+              <p>Here are the whole data of your <span className='fw-bold'>RollMe Sushi Restaurant</span></p>
+            </div>
+          <div className='col container-fluid '>
             <div className='row gap-4 mb-3'>
-              <DashboardCard title="Total Sales" amount="Rp61.500.000" growth={"+7%"} icon="../../src/assets/icon/credit-card.svg" />
-              <DashboardCard title="Visitors" amount="245" growth={"+3%"} icon="/src/assets/icon/credit-card.svg" />
-              <DashboardCard title="New Member" amount="65" growth={"+3"} icon="/src/assets/icon/credit-card.svg" />
+              <DashboardCard title="Total Sales" amount="Rp61.500.000" growth={"+7%"} icon={<CreditCard/>} />
+              <DashboardCard title="Visitors" amount="245" growth={"+3%"} icon={<CreditCard/>} />
+              <DashboardCard title="New Member" amount="65" growth={"+3"} icon={<Person />} />
             </div>
             <div className='graph-element p-4 items-center'>
               <Graph />
@@ -31,7 +36,7 @@ const Dashboard = () => {
           </div>
           <div className='row'>
             <div className='col'>
-              <h5 style={{ fontFamily: "rubik" }}>Top Selling Product</h5>
+              <h5 style={{ fontFamily: "rubik", marginTop: "3%" }}>Top Selling Product</h5>
               <Table data={DummyData} headerColor="#F46161" headerFontColor="#F3F3F3" />
             </div>
           </div>

@@ -5,7 +5,7 @@ const DashboardCard = ({title, amount, growth, icon}) => {
   return (
     <div className='card-wrap bg-white px-3 py-2'>
       <div className='icon-style'>
-        <img src={icon} alt="icons" />
+        {icon}
       </div>
       <div className='text-info text-start'>
         <p className='text-title'>{title}</p>
