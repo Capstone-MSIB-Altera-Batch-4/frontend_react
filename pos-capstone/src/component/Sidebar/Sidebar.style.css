@@ -1,0 +1,37 @@
+.bar {
+    background-color: #FFF0DE;
+    ;
+}
+
+.p {
+    font-size: 10px;
+}
+
+.branch {
+    color: #B1464A;
+    font-size: 12px;
+}
+
+.nav-link {
+    color: black;
+    background-color: #FFF0DE;
+    border-radius: 10px;
+    padding: 0.1rem;
+    font-size: 14px;
+}
+
+.active {
+    color: rgb(255, 255, 255);
+    background-color: #B1464A;
+    border-radius: 10px;
+    padding: 0.3rem;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: #E5C1C3;
+    border-radius: 10px;
+    padding: 0.3rem;
+    font-size: 14px;
+}
