@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&family=Rubik:wght@300;400;700&display=swap');
-body {
-    font-family: 'Rubik', sans-serif;
-}
-
 .login {
+    font-family: 'Rubik', sans-serif;
     position: relative;
     background-color: #F24141;
     height: 100vh;

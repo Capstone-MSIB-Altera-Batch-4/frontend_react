@@ -10,7 +10,7 @@ import { CreditCard, Person, Union, Unity } from 'react-bootstrap-icons';
 
 const Dashboard = () => {
   return (
-    <div className='dashboad-page row container-fluid'>
+    <div className='dashboard-page row container-fluid'>
       <Sidebar
         activedashboard="active"
       />
@@ -20,7 +20,7 @@ const Dashboard = () => {
               <h4>Sup, Admin.. good to see you, Mate!</h4>
               <p>Here are the whole data of your <span className='fw-bold'>RollMe Sushi Restaurant</span></p>
             </div>
-          <div className='col-md-8 container-fluid mx-2'>
+          <div className='col-md-8 container-fluid mx-1'>
             <div className='row gap-3 mb-3'>
               <DashboardCard title="Total Sales" amount="Rp61.500.000" growth={"+7%"} icon={<CreditCard/>} />
               <DashboardCard title="Visitors" amount="245" growth={"+3%"} icon={<CreditCard/>} />
