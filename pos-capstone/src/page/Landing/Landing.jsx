@@ -8,7 +8,7 @@ import Navbar from '../../component/Navbar/Navbar'
 
 const Landing = () => {
   return (
-    <div>
+    <div className='landing'>
       <Navbar />
       <HeroSection />
       <About />
