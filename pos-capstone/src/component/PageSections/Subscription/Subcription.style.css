@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&display=swap');
-
 .subscribe-section {
-    font-family: 'Kaisei Opti', sans-serif;
+    font-family: 'Kaisei Opti';
     background: #AB464A;
     display: flex;
     flex-direction: column;

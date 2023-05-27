@@ -6,7 +6,7 @@ const Sidebar = (props) => {
 
     return (
             
-                <div className="bar col auto col-md-2 min-vh-100">
+                <div className="sidebar bar col auto col-md-2 min-vh-100">
                     <div className="text-center py-1 ">
                         <img
                             className="logo-sidebar p-3"

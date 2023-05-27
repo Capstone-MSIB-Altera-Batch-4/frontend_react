@@ -1,5 +1,8 @@
-.text-info {
+.dashboard-card {
     font-family: "Rubik";
+}
+
+.text-info {
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -7,7 +10,6 @@
 
 .text-title {
     color: #646464;
-    font-family: "Rubik";
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 2px;
@@ -23,7 +25,6 @@
 }
 
 .amount-growth {
-    font-family: "Rubik";
     font-size: 12px;
     line-height: 20px;
     margin-top: -10px;

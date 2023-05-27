@@ -7,7 +7,6 @@ import { DummyData } from "../../data/DummyData"
 import Graph from '../../element/Graph/Graph';
 import DashboardCard from '../../component/Cards/DashboardCard/DashboardCard';
 import { CreditCard, Person, Union, Unity } from 'react-bootstrap-icons';
-// import {creditCard} from "../../assets/icon/credit-card.svg"
 
 const Dashboard = () => {
   return (

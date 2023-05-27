@@ -5,7 +5,7 @@ import "./Footer.css"
 
 const Footer = () => {
     return (
-        <footer className="text-black pt-5 pb-4">
+        <footer className="landing-footer text-black pt-5 pb-4">
             <div className="text-md-left d-flex justify-items-start my-4">
                 <div className="footer-content row text-md-left">
                     <div className="col-md-9 col-lg-5 col-xl-5 mx-auto mt-3 ms-5">

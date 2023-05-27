@@ -1,11 +1,12 @@
 .navbar-list {
+  font-family: 'Kaisei Opti', sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: end;
   align-items: center;
   padding: 10px 100px;
   gap: 50px;
-
+  
   position: fixed;
   width: 100%;
   height: 74px;
