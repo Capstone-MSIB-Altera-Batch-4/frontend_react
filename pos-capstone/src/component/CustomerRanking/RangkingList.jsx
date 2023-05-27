@@ -9,19 +9,19 @@ const CustomerRanking = () => {
   return (
     <div className='customer-ranking'>
       <h4 className='title text-left'>Customer Ranking</h4>
-    <div className='ranking-list'>
-     {sortedData?.slice(0, 10).map((customer) => {
-        return (
-          <div className='d-flex pb-1'>
-            <p className='max-w-fit number'>{number += 1}.</p>
-            <RankingItem
-              point={customer.point}
-              name={customer.name} 
-            />
-          </div>
-        )
-     })}
-    </div>
+      <div className='ranking-list'>
+        {sortedData?.slice(0, 10).map((customer) => {
+          return (
+            <div className='d-flex pb-1'>
+              <p className='max-w-fit number'>{number += 1}.</p>
+              <RankingItem
+                point={customer.point}
+                name={customer.name}
+              />
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

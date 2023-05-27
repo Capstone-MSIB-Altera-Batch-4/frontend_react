@@ -1,4 +1,4 @@
-// untuk RankingList
+RankingList
 .ranking-list {
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@
     border-radius: 16px;
 }
 
-// untuk RankingItem
+RankingItem
 .rank-item p {
     font-family: 'Rubik';
     font-size: 14px;

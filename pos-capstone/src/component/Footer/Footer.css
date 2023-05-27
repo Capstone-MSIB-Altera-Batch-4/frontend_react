@@ -1,3 +1,9 @@
+footer{
+    background-color: #FFF0DE;
+    font-family: 'Kaisei Opti', sans-serif;
+    height: 15%;
+}
+
 a {
     text-decoration: none;
 }
@@ -6,7 +12,4 @@ h6 {
     color: #AB464A;
 }
 
-footer{
-    background-color: #FFF0DE;
-    height: 15%;
-}
+

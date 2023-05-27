@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&display=swap');
-
 .our-gallery {
+  font-family: 'Kaisei Opti', sans-serif;
     display: flex;
     flex-direction: column;
     padding: 89px 154px;
     background: url("/src/assets/pat-image.png"), #B1464A;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    font-family: 'Kaisei Opti', sans-serif;
     gap: 65px;
 }
 

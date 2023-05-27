@@ -1,4 +1,4 @@
-body {
+.dashboard-page {
     font-family: 'Rubik';
     background: #F7F7F7;
 }
@@ -9,6 +9,7 @@ body {
     margin-left: -10px;
     width: fit-content;
 }
+
 
 .text-header h4{
     font-family: 'Rubik';

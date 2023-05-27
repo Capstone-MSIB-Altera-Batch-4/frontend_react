@@ -3,7 +3,7 @@ import './DashboardCard.css'
 
 const DashboardCard = ({title, amount, growth, icon}) => {
   return (
-    <div className='card-wrap bg-white px-3 py-2'>
+    <div className='dahsboard-card card-wrap bg-white px-3 py-2'>
       <div className='icon-style'>
         {icon}
       </div>

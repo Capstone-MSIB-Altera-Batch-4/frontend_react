@@ -1,10 +1,9 @@
 .hero-section {
+    font-family: 'Kaisei Opti', sans-serif;
     background-size: cover;
     background-position: center;
     /* height: 200vh; */
-    display: flex;
-    font-family: 'Kaisei Opti';
-    
+    display: flex;    
   }
 
   .hero-image-container {
