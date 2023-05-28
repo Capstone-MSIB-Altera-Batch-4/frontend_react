@@ -10,8 +10,8 @@ import { CreditCard, Person } from 'react-bootstrap-icons';
 
 const Dashboard = () => {
   return (
-    <div className='dashboard-page'>
-      <div className='col'>
+
+      <div className='col dashboard-page'>
         <div className='row container-fluid mx-auto'>
         <div className='py-4 text-header'>
               <h4>Sup, Admin.. good to see you, Mate!</h4>
@@ -38,7 +38,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div>
 
   )
 

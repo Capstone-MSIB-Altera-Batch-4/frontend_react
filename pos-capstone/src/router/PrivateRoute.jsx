@@ -4,12 +4,10 @@ import Sidebar from "../component/Sidebar/Sidebar"
 const PrivateRoute = () => {
     return (
         <>
-            <div className="container-fluid row">
-            <Sidebar />
-                <div className='col'>
-                    <div className='row container-fluid mx-auto'>
-                        <Outlet />
-                    </div>
+            <div className="container-fluid ">
+                <div className="row">
+                    <Sidebar />
+                    <Outlet />
                 </div>
             </div>
         </>
