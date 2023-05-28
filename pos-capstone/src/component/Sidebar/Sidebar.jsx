@@ -23,8 +23,8 @@ const Sidebar = () => {
                 </li>
                 <p className="pt-4">MANAGEMENT</p>
                 {barItems.map((item, idx) =>
-                    <li>
-                        <NavLink to={item.path} key={idx} className="nav-link" activeclassName="active" >
+                    <li key={idx}>
+                        <NavLink to={item.path} className="nav-link" activeclassName="active" >
                             <div className="icon">{item.icon}</div>
                             <div className="barname">{item.name}</div>
                         </NavLink>

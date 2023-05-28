@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './Dashboard.style.css'
 import CustomerRanking from '../../component/CustomerRanking/RangkingList'
 import Sidebar from "../../component/Sidebar/Sidebar";
@@ -6,14 +6,11 @@ import Table from "../../component/Table/Table";
 import { DummyData } from "../../data/DummyData"
 import Graph from '../../element/Graph/Graph';
 import DashboardCard from '../../component/Cards/DashboardCard/DashboardCard';
-import { CreditCard, Person, Union, Unity } from 'react-bootstrap-icons';
+import { CreditCard, Person } from 'react-bootstrap-icons';
 
 const Dashboard = () => {
   return (
-    <div className='dashboard-page row container-fluid'>
-      <Sidebar
-        activedashboard="active"
-      />
+    <div className='dashboard-page'>
       <div className='col'>
         <div className='row container-fluid mx-auto'>
         <div className='py-4 text-header'>
