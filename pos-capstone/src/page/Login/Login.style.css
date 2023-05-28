@@ -2,7 +2,7 @@
     font-family: 'Rubik', sans-serif;
     position: relative;
     background-color: #F24141;
-    height: 100vh;
+    min-height: 100vh;
     &::before {
         content: '';
         position: absolute;
@@ -36,7 +36,6 @@
     background-color: rgba(254, 254, 254, 0.95);
     padding: 3rem;
     padding-top: 2rem;
-    height: 100vh;
 }
 
 .btn-showpass {
