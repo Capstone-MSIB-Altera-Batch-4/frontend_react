@@ -2,13 +2,16 @@ footer{
     background-color: #FFF0DE;
     font-family: 'Kaisei Opti', sans-serif;
     height: 15%;
+    font-size: 16px;
 }
 
-a {
+a{
     text-decoration: none;
+    font-size: 16px;
 }
 
 h6 {
+    font-size: 25px;
     color: #AB464A;
 }
 

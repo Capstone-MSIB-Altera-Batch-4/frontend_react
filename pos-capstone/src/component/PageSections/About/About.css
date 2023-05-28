@@ -5,50 +5,44 @@
 }
 .about .first {
     background-color: #FFF0DE;
-    /* height: 55%; */
-    width: 475px;
+    height: 50%;
+    width: 90.3%;
     padding-bottom: 100px;
 }
 .about .second{
     background-color: black;
     position: absolute;
-    left: 14.8%;
-    height: 10%;
+    left: 6.9em;
+    height: 8%;
+    width: 13.2%;
     border-radius: 35px 0px 0px 35px;
-    margin-top: -28px;
+    margin-top: -1%;
 }
 .about .second p {
     color: white;
     text-align: center;
-    /* margin-top: 10%; */
-    font-size: 25px;
-    font-weight: 700;
+    margin: 10% 0% 0% 13%;
+    font-size: 16px;
+    font-weight: 600;
     display: flex;
     align-items: center;
 }
 .about .third {
     background-color: #FFF0DE;
-    margin-top: 15%;
-    height: 55%;
-    width: 475px;
+    width: 90.3%;
 }
 .about .first img {
     width: 70%;
-    margin-top: 24px;
+    margin-top: 30%;
     margin-left: 3%;
 }
 .about .third img {
-    width: 40%;
-    margin: 15% 0% 0% 30%;
-    margin-bottom: 50px;
-}
-.kanan {
-    margin-left: 13%;
+    width: 51%;
+    margin: 35% 0% 40% 25%;
 }
 h2{
     font-size: 64px;
-    margin-top: 20px;
-    max-width: 806px;
+    margin-top: 5%;
     font-weight: 700;
     line-height: 93px;
 }
@@ -66,12 +60,11 @@ h3 {
 .container2 p {
     font-size: larger;
     text-align:center;
-    padding: 5% 0% 5% 0%;
-    width: 374px;
+    /* width: 374px; */
     background-color: rgba(231, 231, 231, 0.25);
     border-radius: 36px;
 }
 
 .our-app {
-    margin-top: 120px;
+    margin-top: 10%;
 }
