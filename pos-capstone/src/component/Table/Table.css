@@ -5,3 +5,8 @@ td {
 th {
     font-family: Rubik;
 }
+
+.header-style {
+    font-size: 18px;
+    font-weight: 500;
+}

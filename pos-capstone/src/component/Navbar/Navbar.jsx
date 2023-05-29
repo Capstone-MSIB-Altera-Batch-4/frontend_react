@@ -45,7 +45,7 @@ const Navbar = () => {
               <li className="nav-item mx-5">
                 <a href="#ourgallery">Our Gallery</a>
               </li>
-              <li className="download nav-item mx-5 px-4 py-1">
+              <li className="download nav-item mx-5 px-4 py-2">
                 <a href="#download">Download App</a>
               </li>
             </ul>

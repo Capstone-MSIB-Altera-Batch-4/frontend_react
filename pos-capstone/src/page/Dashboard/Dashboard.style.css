@@ -1,12 +1,11 @@
 .dashboard-page {
     font-family: 'Rubik';
-    background: #F7F7F7;
+    background: #F8F8F8;
 }
 
 .graph-element {
     background: white;
     border-radius: 16px;
-    margin-left: -10px;
     width: fit-content;
 }
 

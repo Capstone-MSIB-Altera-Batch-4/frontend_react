@@ -37,5 +37,26 @@
 
 .card-wrap {
     border-radius: 16px;
-    max-width: 250px;
+    width: 100%;
 }
+
+@media only screen and (max-width: 1280px) {
+    .text-info h4 {
+        font-weight: 500;
+        font-size: 16px;
+        color: black;
+        font-family: "Rubik"
+    }
+    .text-title {
+        font-size: 12px;
+        margin: 0;
+    }
+    .amount-growth {
+        font-size: 10px;
+        line-height: 16px;
+    }
+    .icon-style {
+        margin-bottom: 20px;
+    }
+}
+

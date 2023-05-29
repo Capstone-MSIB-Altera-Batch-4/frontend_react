@@ -14,7 +14,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="right col-md-9 px-0">
-            <div className="content1">
+            <div className="content1 py-3">
               <h2>Say goodbye to messy order-taking and billing processes.</h2>
               <p>
                 Our user-friendly interface is perfect for both front and back
@@ -24,7 +24,7 @@ const HeroSection = () => {
               <button className="py-2">Download Now</button>
             </div>
             <div className="content2">
-              <div className="row">
+              <div className="row py-3">
                 <div className="col-md-6 mt-2">
                   <div className="row ms-5">
                     <div className="col-md-7">
