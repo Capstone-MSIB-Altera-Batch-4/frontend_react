@@ -6,7 +6,7 @@ import profil from "../../../assets/img/Profil.png";
 const HeroSection = () => {
   return (
     <section className="hero-section">
-      <div className="about overflow-hidden" id="about">
+      <div className="overflow-hidden">
         <div className="row">
           <div className="left col-md-3">
             <div className="gambar">
