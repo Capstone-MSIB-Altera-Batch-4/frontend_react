@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const baseURL = "url";
+
 const useFetch = (url, method = 'GET', body = null) => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
@@ -10,7 +12,7 @@ const useFetch = (url, method = 'GET', body = null) => {
     const fetchData = async () => {
       try {
         const response = await axios.request({
-          url,
+          url: `${baseURL}${url}`,
           method,
           data: body
         });
