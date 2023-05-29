@@ -1,6 +1,7 @@
-p {
+.label-style p {
     font-size: 12px;
 }
+
 .label-style {
     display: flex;
     padding: 2px 9px;

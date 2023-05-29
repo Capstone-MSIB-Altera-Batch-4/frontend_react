@@ -17,7 +17,7 @@ const Login = () => {
                 </div>
                 <div className="login-Form col-5">
                     <div>
-                        <h2 style={{fontSize:48}}>
+                        <h2 className="login-Title pt-4" style={{fontSize:48}}>
                             Back to your <br />
                             <strong>powerfull</strong><br />
                             synchronize<br />
