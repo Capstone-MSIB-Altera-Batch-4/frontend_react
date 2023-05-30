@@ -1,4 +1,4 @@
-.add-product-button {
+#secondarybutton {
     font-family: Rubik;
     display: flex;
     flex-direction: row;
@@ -19,16 +19,5 @@
     text-decoration: none;
   }
   
-  .add-product-button:hover {
-    background: #E34343;
-  }
-  
-  .add-product-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #F46161;
-  }
-  
-  .add-product-button:active {
-    background: #D63838;
-  }
+
   
