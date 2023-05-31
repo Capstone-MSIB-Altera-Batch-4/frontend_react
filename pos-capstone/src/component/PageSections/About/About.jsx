@@ -6,23 +6,23 @@ import "./About.css"
 
 const About = () => {
     return( 
-        <div className="about overflow-hidden">
+        <div className="about overflow-hidden" id="about">
             <div className="row">
                 <div className="kiri col-md-3">
-                    <div className="first pt-5">
+                    <div className="first">
                         <img
                             style={{width: "80%"}}
                             src={pc}
                             alt="About Us"
                         />
                         <img
-                            style={{marginTop:"-30%", marginLeft:"30%"}}
+                            style={{marginTop:"-40%", marginLeft:"30%"}}
                             src={laptop}
                             alt="About Us"
                         />
                     </div>
-                    <div className="second px-4"><p>Our Systems</p></div>
-                    <div className="third my-4">
+                    <div className="second"><p>Our Systems</p></div>
+                    <div className="third py-4">
                         <img
                             src={hp}
                             alt="About Us"
