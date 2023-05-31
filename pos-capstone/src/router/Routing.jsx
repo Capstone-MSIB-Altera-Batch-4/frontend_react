@@ -4,6 +4,7 @@ import Landing from "../page/Landing/Landing"
 import Dashboard from "../page/Dashboard/Dashboard"
 import Products from "../page/Dashboard/Products"
 import PrivateRoute from "./PrivateRoute"
+import Preview from "../page/Preview/Preview"
 
 const Routing = () => {
     return (
@@ -15,6 +16,7 @@ const Routing = () => {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/products" element={<Products />} />
                 </Route>
+                <Route path="/preview" element={<Preview />} />
             </Routes>
         </Router>
     )

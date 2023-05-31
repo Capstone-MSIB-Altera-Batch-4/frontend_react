@@ -1,0 +1,35 @@
+
+.modal-style {
+    border-radius: 30px !important;
+    font-family: Rubik;
+    /* width: fit-content; */
+}
+
+.text-confirm {
+    font-size: 18px;
+}
+
+.button-no-style {
+    border-radius: 10px;
+    border: solid 1px;
+}
+
+.button-yes-style {
+    border-radius: 10px;
+    border: solid 1px;
+    background:  #F46161;
+}
+
+.button-yes-style:hover {
+    background: #dc3545;
+}
+
+.button-no-style:hover {
+    background:  #F46161 !important;
+    color: white !important;
+}
+
+.action-button {
+    align-items: center;
+    justify-content: center;
+}
