@@ -9,18 +9,18 @@ export const DummyData = [
 export const TableEditDelete = () => {
   return [
     { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
-    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 2, id: "A2", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 3, id: "A3", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 4, id: "A4", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 5, id: "A5", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 6, id: "A6", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 7, id: "A7", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 8, id: "A8", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 9, id: "A9", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 10, id: "A10", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 11, id: "A11", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 12, id: "A12", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 13, id: "A13", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
   ];
 };
 
