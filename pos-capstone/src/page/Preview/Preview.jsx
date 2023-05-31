@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
-import ConfirmModal from '../../element/Modal/ConfirmModal/ConfirmModal';
+import React, { useState, useRef } from 'react'
+import ConfirmModal from '../../component/Modal/ConfirmModal/ConfirmModal';
+import Snackbar from '../../element/Snackbar/Snackbar';
+import { DummyData } from '../../data/DummyData';
+import Table from '../../component/Table/Table';
+
+const snackBarType = {
+    success: "success",
+    error: "error"
+};
 
 const Preview = () => {
   const [show, setShow] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  const snackbarRef = useRef(null);
 
-  const ActionSuccess = (action) => {
+  const ActionSuccess = () => {
     setShow(false);
-    return action;
-    setShowToast(true);
+    snackbarRef.current.showSnackbar();
   }
 
   console.log(show)
@@ -39,6 +46,8 @@ const Preview = () => {
       </div> */}
 
       {/* DELETE */}
+      <Table data={DummyData} headerColor="#F46161" headerFontColor="#F3F3F3" />
+      <Table data={DummyData} headerColor="#F46161" headerFontColor="#F3F3F3" />
       <div>
         <ConfirmModal
             show={show}
@@ -46,9 +55,10 @@ const Preview = () => {
             confirmFor={"delete"}
             role={"Product"}
             id={12345}
-            action={() => ActionSuccess("delete")}
+            action={() => ActionSuccess()}
         />
       </div>
+      <Snackbar ref={snackbarRef} action={"delete"} variant={snackBarType.success}/>
     </div>
   )
 }

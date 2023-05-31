@@ -1,0 +1,57 @@
+.snackbar-style {
+  position: fixed;
+  right: -5%;
+  bottom: 4%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: 60px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.success-style {
+    background:  #B9F9CE;
+}
+
+.error-style {
+    background: #FDDFDF;
+}
+
+.text-notif {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#show {
+    visibility: visible;
+    animation: fadeIn 1.5s, fadeOut 0.5s 2.5s;
+  }
+  #hide {
+    visibility: hidden;
+  }
+
+  
+  @keyframes fadeOut {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes toast-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
