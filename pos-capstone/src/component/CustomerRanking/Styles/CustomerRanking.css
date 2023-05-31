@@ -2,8 +2,8 @@ RankingList
 .ranking-list {
     display: flex;
     flex-direction: column;
-    gap: 500px;
     font-family: 'Rubik';
+    width: 60%;
 }
 
 .customer-ranking p {
@@ -16,16 +16,14 @@ RankingList
     font-size: 16px;
     line-height: 24px;
     color: #646464;
-    margin-bottom: 30px;
-    margin-left: -150px;
-    text-align: left !important;
+    margin-bottom: 24px;
 }
 
 .number {
     font-family: 'Rubik';
     margin-right: -28px;
     font-size: 14px;
-    width: 14px;
+    max-width: 10px;
     display: flex;
     align-items: center;
 }
@@ -41,9 +39,25 @@ RankingList
     width: fit-content;
     height: 500px;
     border-radius: 16px;
+    max-height: 98%;
 }
 
 RankingItem
+.rank-item {
+    width: 20vw;
+    /* flex: none; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 48px;
+
+    width: 298px;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
 .rank-item p {
     font-family: 'Rubik';
     font-size: 14px;
@@ -55,15 +69,43 @@ RankingItem
 }
 
 .name {
-    width: 85px;
+    width: 90px;
     font-size: 14px;
 }
 
 .rank-label {
-    width: 65px;
+    width: 70px;
     font-size: 14px;
 }
 
 .point {
     font-size: 14px;
+    text-align: right;
 }
+
+@media only screen and (min-width: 1440px) {
+    .name {
+        min-width: 100px;
+    }
+    .rank-label {
+        width: 85px;
+    }
+    .number {
+        margin-right: -20px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .ranking-list {
+        scale: 90%
+    }
+    .number {
+        margin-left: -12px;
+    }
+    .customer-ranking {
+        max-height: 96%;
+    }
+    .title {
+        margin-bottom: 8px;
+    }
+  }
