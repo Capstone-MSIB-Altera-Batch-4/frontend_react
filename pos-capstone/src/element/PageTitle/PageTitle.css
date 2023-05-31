@@ -1,17 +1,7 @@
-.page-title {
+.page-title h1 {
     font-family: "Rubik";
-}
-
-.text-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-.text-title {
-    color: black;
+    font-weight: 600;
     font-size: 32px;
-    line-height: 20px;
-    margin-bottom: 2px;
-    text-align: left;
+    color: #141414;
 }
+

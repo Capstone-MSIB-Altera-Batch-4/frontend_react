@@ -1,12 +1,10 @@
 import React from "react";
 import "./PageTitle.css"
 
-const PageTitle = ({title}) => {
+const PageTitle = (props) => {
     return (
         <div className="page-title">
-        <div className="text-info-text-start">
-            <h1 className="text-title">{title}</h1>
-        </div>
+            <h1>{props.title}</h1>
         </div>
 
 );

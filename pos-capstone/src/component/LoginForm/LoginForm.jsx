@@ -5,7 +5,7 @@ import TextField from '../../element/Textfield/Textfield';
 import { useState } from 'react';
 import ShowPassword from '../../element/ShowPassword/ShowPassword';
 import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
-import Button from '../../element/Button/Button'
+import Button from '../../element/Button/PrimaryButton/PrimaryButton'
 
 const LoginForm = () => {
     // const navigate = useNavigate()
@@ -87,7 +87,7 @@ const LoginForm = () => {
             <div className='mt-5'>
                 <Button
                     className="btn text-white w-100"
-                    btnName="Login"
+                    label="Login"
                 />
             </div>
 
