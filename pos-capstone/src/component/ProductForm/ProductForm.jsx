@@ -60,6 +60,7 @@ const ProductFrom = () => {
                 <div className="mb-3">
                     <InputImage 
                         label="Image"
+                        className="img-area"
                     />
                 </div>
                 <div className="mb-3">
