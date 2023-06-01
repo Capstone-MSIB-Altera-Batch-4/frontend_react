@@ -3,7 +3,7 @@ import Login from "../page/Login/Login"
 import Landing from "../page/Landing/Landing"
 import Dashboard from "../page/Dashboard/Dashboard"
 import Products from "../page/Products/Products"
-import AddProduct from "../page/addProduct/addProduct"
+import AddProduct from "../page/Products/AddProduct"
 import PrivateRoute from "./PrivateRoute"
 import Preview from "../page/Preview/Preview"
 
