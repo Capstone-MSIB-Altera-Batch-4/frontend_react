@@ -1,0 +1,63 @@
+.sidebar {
+    font-family: 'Rubik';
+}
+
+.icon {
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+}
+
+.barname {
+    padding: 0.1rem;
+}
+
+.bar {
+    background-color: #FFF0DE;
+    ;
+}
+
+.p {
+    font-size: 10px;
+}
+
+.branch {
+    color: #B1464A;
+    font-size: 12px;
+}
+
+.nav-link {
+    display: flex;
+    justify-items: center;
+    color: #646464;
+    background-color: #FFF0DE;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+    font-size: 14px;
+}
+
+.active {
+    display: flex;
+    color: rgb(255, 255, 255);
+    background-color: #B1464A;
+}
+
+.nav-link:hover {
+    color: #646464;
+    background-color: #E5C1C3;
+}
+
+.nav-link:visited {
+    color: #646464;
+}
+
+.active:visited {
+    color: white;
+}
+
+.active:hover {
+    color: #646464;
+}

@@ -1,0 +1,17 @@
+#primarybutton button {
+    font-family: Rubik;
+    background-color: #F46161;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px 8px 16px;
+    gap: 10px;
+    border: none;
+}
+
+#primarybutton button:hover {
+    background-color: #F24141;
+}
+
+#primarybutton button:active {
+    background-color: #EF2222
+}

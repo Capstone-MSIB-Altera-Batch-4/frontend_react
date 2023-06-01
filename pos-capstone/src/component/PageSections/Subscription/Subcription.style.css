@@ -1,0 +1,65 @@
+.subscribe-section {
+    font-family: 'Kaisei Opti';
+    background: #AB464A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 80px;
+    padding: 134px;
+}
+
+.section-title {
+    font-size: 75px;
+    line-height: 109px;
+    max-width: 913px;
+    margin-bottom: 70px;
+}
+
+.email-form {
+   border: 1px solid white;
+   border-radius: 40px;
+   width: 500px;
+}
+
+.email-form:focus {
+    outline: 2px solid white;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: white;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: white;
+  }
+
+.button-submit {
+    background: #380404;
+    border: none;
+    border-radius: 45px;
+    padding: 16px 50px;
+    margin-left: 16px;
+}
+
+@media only screen and (max-width: 812px) {
+    .subscribe-form {
+        scale: 85%;
+        display: flex;
+    }
+  }
+
+  @media only screen and (max-width: 679px) {
+    .subscribe-form {
+        scale: 75%;
+        display: flex;
+    }
+    .subscribe-section {
+       gap: 40px;
+    }
+  }

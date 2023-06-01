@@ -1,0 +1,17 @@
+#secondarybutton button {
+  font-family: Rubik;
+  background-color: white;
+  color: #F46161;
+  border-radius: 8px;
+  padding: 8px 16px 8px 16px;
+  gap: 10px;
+  border: 1px solid #EF2222;
+}
+
+#secondarybutton button:hover {
+  background-color: #F2F2F2;
+}
+
+#secondarybutton button:active {
+  background-color: #D9D8D8;
+}
