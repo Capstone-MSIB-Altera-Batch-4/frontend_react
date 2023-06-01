@@ -2,13 +2,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 
-import Login from './page/Login/Login';
-import { BrowserRouter as Router, Route,  Routes } from 'react-router-dom';
-import Landing from './page/Landing/Landing';
-import Dashboard from './page/Dashboard/Dashboard';
-import Products from './page/Products/Products';
 import Routing from './router/Routing';
-
 
 function App() {
 
