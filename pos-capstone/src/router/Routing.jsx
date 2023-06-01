@@ -5,6 +5,7 @@ import Dashboard from "../page/Dashboard/Dashboard"
 import Products from "../page/Products/Products"
 import AddProduct from "../page/addProduct/addProduct"
 import PrivateRoute from "./PrivateRoute"
+import Preview from "../page/Preview/Preview"
 
 const Routing = () => {
     return (
@@ -17,6 +18,7 @@ const Routing = () => {
                     <Route path="/products" element={<Products/>} />
                     <Route path="/products/addproduct" element={<AddProduct/>} />
                 </Route>
+                <Route path="/preview" element={<Preview />} />
             </Routes>
         </Router>
     )
