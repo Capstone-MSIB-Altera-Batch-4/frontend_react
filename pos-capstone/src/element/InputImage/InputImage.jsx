@@ -6,23 +6,26 @@ import "./InputImage.style.css"
 import { useState } from "react";
 
 
-const InputImage = () => {
+const InputImage = (props) => {
     const [files, setFiles] = useState()
     const onDrop = useCallback(acceptedFiles => {
         console.log(acceptedFiles)
         setFiles(acceptedFiles)
         console.log(files)
     }, [])
-    const { getRootProps, getInputProps, isDragActive,open } = useDropzone({ onDrop, noClick: true})
+    const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop, noClick: true })
     return (
-        <>
+        <div id="inputimage">
+            <label htmlFor={props.htmlFor} className="form-label">
+                {props.label}
+            </label>
             <div className="imgdrop-wrap ">
-                {files ? 
+                {files ?
                     (<div className="filename">
                         <p>{files[0].name}</p>
-                    </div>):
+                    </div>) :
                     (<div className="container-fluid text-center">
-                        <div {...getRootProps({className:"container-fluid"})}>
+                        <div {...getRootProps({ className: "container-fluid" })}>
                             <input {...getInputProps()} />
                             <div className="imgdrop text-center">
                                 <img
@@ -55,7 +58,7 @@ const InputImage = () => {
                         />
                     </div>)}
             </div>
-        </>
+        </div>
     )
 
 }
