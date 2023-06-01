@@ -62,7 +62,7 @@
 }
 
 .dropdown-item.active:hover {
-    background-color: #CFCFCF;
+    background-color: #DBDBDB;
     border-left: 4px solid #68A225;
     color: #000000;
 }
