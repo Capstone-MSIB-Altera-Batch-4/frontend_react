@@ -1,5 +1,5 @@
 import React from 'react';
-import { AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { faker } from '@faker-js/faker';
 import "./Graph.style.css"
 
@@ -21,25 +21,27 @@ const data = [
 function Graph() {
   return (
     <div className='graph'>
-      <h1 className='ms-5 mb-5 ps-3'>Sales Statistics</h1>
-      <AreaChart width={728} height={200} data={data}>
-        <defs>
-          <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="55%" stopColor="rgba(244, 97, 97, 0.53)" />
-            <stop offset="100%" stopColor="rgba(244, 97, 97, 0)" />
-          </linearGradient>
-        </defs>
-        <XAxis dataKey="month"  style={{ fontFamily: 'Rubik', fontSize: 12 }} />
-        <YAxis style={{ fontFamily: 'Rubik', fontSize: 12 }} />
-        <Tooltip />
-        <Area
-          type="monotone"
-          dataKey="value"
+      <h1 className='ms-4 mb-5'>Sales Statistics</h1>
+      <ResponsiveContainer width="100%" height={200}>
+        <AreaChart data={data} margin={{ top: 0, right: 10, left: -24, bottom: 0 }}>
+          <defs>
+            <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="55%" stopColor="rgba(244, 97, 97, 0.53)" />
+              <stop offset="100%" stopColor="rgba(244, 97, 97, 0)" />
+            </linearGradient>
+          </defs>
+          <XAxis dataKey="month"  style={{ fontFamily: 'Rubik', fontSize: 12 }} />
+          <YAxis style={{ fontFamily: 'Rubik', fontSize: 12 }} />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="value"
 
-          fill="url(#colorGradient)"
-          strokeWidth={0}
-        />
-      </AreaChart>
+            fill="url(#colorGradient)"
+            strokeWidth={0}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
 
   );

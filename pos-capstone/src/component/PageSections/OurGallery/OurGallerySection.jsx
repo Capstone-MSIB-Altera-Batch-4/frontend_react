@@ -3,7 +3,7 @@ import './OurGallerySection.style.css'
 
 const OurGallerySection = () => {
   return (
-    <section id='our-gallery-section' className='our-gallery'>
+    <section id='ourgallery' className='our-gallery'>
       <div className='text-title'>
         <div className='d-flex justify-content-between my-3'>
           <h1 className='section-title justify-content-start fw-bold text-white'>Our Gallery</h1>

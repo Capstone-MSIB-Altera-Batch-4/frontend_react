@@ -14,8 +14,9 @@ const RankingItem = ({point, name}) => {
     }
   }
   return (
-    <div className='rank-item d-flex gap-4 ms-5 text-left'>
-      <div className='d-flex gap-2 py-auto'>
+    
+    <div className='rank-item d-flex gap-3 ms-5 text-left w-full'>
+      <div className='cust-name d-flex gap-2 py-auto'>
         <PersonCircle className='person-icon'/>
         <p className='name'>{name}</p>
       </div>

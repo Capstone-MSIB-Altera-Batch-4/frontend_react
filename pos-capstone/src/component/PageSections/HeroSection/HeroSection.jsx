@@ -6,35 +6,52 @@ import profil from "../../../assets/img/Profil.png";
 const HeroSection = () => {
   return (
     <section className="hero-section">
-      <div className="hero-image-container">
-        <img src={heroImage} alt="Hero" className="hero-image" />
-      </div>
-
-      <div className="w-full">
-        <div className="hero-content">
-          <h1 className="fw-bold">Say goodbye to messy order-taking and billing processes.</h1>
-          <p className="mt-5">
-            Our user-friendly interface is perfect for both front and back of
-            house operations. With just a few taps, you can take orders, track
-            inventory, and process payments.
-          </p>
-          <button className="button px-5 py-3">Download Now</button>
-        </div>
-
-        <div className="hero-text">
-          <div className="happy-client">
-            <h1>100+ </h1>
-            <p>Happy Client</p>
+      <div className="overflow-hidden">
+        <div className="row">
+          <div className="left col-md-3">
+            <div className="gambar">
+              <img src={heroImage} alt="About Us" />
+            </div>
           </div>
-
-          <div className="profil">
-            <img src={profil} alt="Profil" className="profil-image my-2" />
-
-            <div className="pofile-text d-flex">
-              <p className="p1">
-                “This POS app really upscaling my business to the next level!”
+          <div className="right col-md-9 px-0">
+            <div className="content1 py-3">
+              <h2>Say goodbye to messy order-taking and billing processes.</h2>
+              <p>
+                Our user-friendly interface is perfect for both front and back
+                of house operations. With just a few taps, you can take orders,
+                track inventory, and process payments.
               </p>
-              <p className="p2">Ryan Floyd, Owner of Sushi Restaurant</p>
+              <button className="py-2">Download Now</button>
+            </div>
+            <div className="content2">
+              <div className="row py-3">
+                <div className="col-md-6 mt-2">
+                  <div className="row ms-5">
+                    <div className="col-md-7">
+                      <h1>100+</h1>
+                    </div>
+                    <div className="col-md-4 mt-4">
+                      <h3 style={{ color: "black" }}>Happy Clients</h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 mt-3">
+                  <div className="row ms-5">
+                    <div className="col-md-2 mt-3">
+                      <img src={profil} alt="profil" />
+                    </div>
+                    <div className="col-md-10">
+                      <p style={{ marginRight: "40%" }}>
+                        “This POS app really upscalling my bussiness in to the
+                        next level!”
+                      </p>
+                      <p style={{ fontWeight: "bold" }}>
+                        Ryan Floyd - Owner of Sushi Restaurant
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
