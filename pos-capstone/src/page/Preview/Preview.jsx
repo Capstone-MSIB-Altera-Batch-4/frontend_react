@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react'
 import ConfirmModal from '../../component/Modal/ConfirmModal/ConfirmModal';
 import Snackbar from '../../element/Snackbar/Snackbar';
-import { DummyData } from '../../data/DummyData';
-import Table from '../../component/Table/Table';
+import InputCategoryForm from '../../component/InputCategoryForm/InputCategoryForm';
+import InputCategoryModal from '../../component/Modal/InputCategoryModal/InputCategoryModal';
 
 const snackBarType = {
     success: "success",
@@ -11,10 +11,12 @@ const snackBarType = {
 
 const Preview = () => {
   const [show, setShow] = useState(false);
+  const [showCategory, setShowCategory] = useState(false);
   const snackbarRef = useRef(null);
 
   const ActionSuccess = () => {
     setShow(false);
+    //setiap action yg perlu snackbar pake ini
     snackbarRef.current.showSnackbar();
   }
 
@@ -22,9 +24,11 @@ const Preview = () => {
   return (
     <div className=''>
       <div>
-        <button onClick={() => setShow(true)}>Click Me</button>
+        <button className="btn btn-primary" onClick={() => setShow(true)}>Click Me</button>
+        <button className="btn btn-primary" onClick={() => setShowCategory(true)}>Input Category</button>
       </div>
 
+      <InputCategoryForm />
       {/* ADD  */}
       {/* <div>
         <ConfirmModal
@@ -46,8 +50,6 @@ const Preview = () => {
       </div> */}
 
       {/* DELETE */}
-      <Table data={DummyData} headerColor="#F46161" headerFontColor="#F3F3F3" />
-      <Table data={DummyData} headerColor="#F46161" headerFontColor="#F3F3F3" />
       <div>
         <ConfirmModal
             show={show}
@@ -58,7 +60,10 @@ const Preview = () => {
             action={() => ActionSuccess()}
         />
       </div>
+
       <Snackbar ref={snackbarRef} action={"delete"} variant={snackBarType.success}/>
+      {/* modal input category */}
+      <InputCategoryModal show={showCategory} handleClose={() => setShowCategory(false)}/>
     </div>
   )
 }
