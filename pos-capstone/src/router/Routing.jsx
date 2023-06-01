@@ -7,6 +7,7 @@ import AddProduct from "../page/addProduct/addProduct"
 import PrivateRoute from "./PrivateRoute"
 import Preview from "../page/Preview/Preview"
 
+
 const Routing = () => {
     return (
         <Router>
