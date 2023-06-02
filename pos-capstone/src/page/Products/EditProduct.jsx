@@ -3,7 +3,7 @@ import ProductForm from "../../component/ProductForm/ProductForm";
 import PageTitle from "../../element/PageTitle/PageTitle";
 import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
 import PrimaryButton from "../../element/Button/PrimaryButton/PrimaryButton";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import ConfirmModal from "../../component/Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../../component/Modal/InputCategoryModal/InputCategoryModal";
 import { productsData } from "../../data/DummyData";
@@ -11,10 +11,9 @@ import { productsData } from "../../data/DummyData";
 
 const EditProduct = () => {
   const { id } = useParams();
-//   console.log("ID", id)
 
-    const productData = productsData[id];
-    // const { image, name, category, stock, price, unit } = productData;
+    const products = productsData[id];
+    console.log(products);
 
 //     const productData = props.value
 

@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowLeft, ArrowRight, Pencil, Trash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
-const TableEditDelete = ({ columns, data, pageSize, headerColor }) => {
+const TableEditDelete = ({ columns, data, pageSize, headerColor, deteleConfirm }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(pageSize);
   const pageCount = Math.ceil(data.length / rowsPerPage);
@@ -28,7 +28,7 @@ const TableEditDelete = ({ columns, data, pageSize, headerColor }) => {
   const handleRowLeave = () => {
     setHoveredRow(null);
   };
-
+   
   return (
     <div className="table-edit-delete overflow-hidden">
       <table className="table table-bordered text-center">
@@ -61,7 +61,7 @@ const TableEditDelete = ({ columns, data, pageSize, headerColor }) => {
                       >
                         <Pencil />
                       </Link>
-                      <Link to={`/delete/${row.id}`} style={{ color: "red" }}>
+                      <Link onClick={deteleConfirm} style={{ color: "red" }}>
                         <Trash />
                       </Link>
                     </>

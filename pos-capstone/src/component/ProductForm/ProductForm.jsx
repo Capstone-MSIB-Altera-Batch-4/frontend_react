@@ -5,7 +5,7 @@ import TextField from "../../element/Textfield/Textfield";
 import InputCategory from "../../element/InputCategory/InputCategory";
 import InputImage from "../../element/InputImage/InputImage"
 import './ProductForm.css'
-import { Pen, Pencil, PencilFill } from "react-bootstrap-icons";
+import { PencilFill } from "react-bootstrap-icons";
 
 const ProductFrom = ({openInputModal, values}) => {
     const formik = useFormik({

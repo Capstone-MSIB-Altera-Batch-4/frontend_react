@@ -3,13 +3,16 @@ import ProductForm from "../../component/ProductForm/ProductForm";
 import PageTitle from "../../element/PageTitle/PageTitle";
 import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
 import PrimaryButton from "../../element/Button/PrimaryButton/PrimaryButton";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import ConfirmModal from "../../component/Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../../component/Modal/InputCategoryModal/InputCategoryModal";
 
 const AddProduct = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
+
+  const navigate = useNavigate();
+
   return (
     <div className="col">
       <div className="row container-fluid col-md-8 col-sm-4 mx-auto">
@@ -41,6 +44,9 @@ const AddProduct = () => {
           show={showConfirmModal}
           handleClose={() => setShowConfirmModal(false)}
           confirmFor={"add"}
+          action={() => navigate("/products", { state: {
+            showSnackbar: true
+          }})}
         />
       </div>
       <div>
