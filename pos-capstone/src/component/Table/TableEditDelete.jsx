@@ -2,16 +2,13 @@ import React from "react";
 import { ArrowLeft, ArrowRight, Pencil, Trash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
-const Table = ({ columns, data, pageSize, headerColor }) => {
+const TableEdit = ({ columns, data, pageSize, headerColor }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(pageSize);
   const pageCount = Math.ceil(data.length / rowsPerPage);
   const startIndex = pageIndex * rowsPerPage;
   const endIndex = (pageIndex + 1) * rowsPerPage;
   const currentPage = data.slice(startIndex, endIndex);
-  const theadStyle = {
-    backgroundColor: headerColor,
-  };
 
   const handleRowsPerPageChange = (event) => {
     const newRowsPerPage = parseInt(event.target.value);
@@ -32,11 +29,12 @@ const Table = ({ columns, data, pageSize, headerColor }) => {
   return (
     <div className="table-edit-delete overflow-hidden">
       <table className="table table-bordered text-center">
-        <thead className="thead-dark" style={theadStyle}>
+        <thead className="thead-dark" >
           <tr>
             {columns.map((column, columnIndex) => (
-              <th key={columnIndex}>{column.Header}</th>
+              <th style={headerColor} key={columnIndex}>{column.Header}</th>
             ))}
+            <th style={headerColor}></th>
           </tr>
         </thead>
         <tbody>
@@ -45,31 +43,41 @@ const Table = ({ columns, data, pageSize, headerColor }) => {
               key={rowIndex}
               onMouseEnter={() => handleRowHover(rowIndex)}
               onMouseLeave={handleRowLeave}
-              style={{
-                backgroundColor:
-                  hoveredRow === rowIndex ? "#E7E7E7" : "inherit",
-              }}
+              style={(rowIndex === hoveredRow )?
+                {backgroundColor:"#E7E7E7"} : 
+                {backgroundColor: "inherit"}
+              }
             >
               {columns.map((column, columnIndex) => (
-                <td key={columnIndex}>
-                  {rowIndex === hoveredRow &&
-                  columnIndex === columns.length - 1 ? (
-                    <>
-                      <Link
-                        to={`/edit/${row.id}`}
-                        style={{ marginRight: "15%", color: "#8B8B8B" }}
-                      >
-                        <Pencil />
-                      </Link>
-                      <Link to={`/delete/${row.id}`} style={{ color: "red" }}>
-                        <Trash />
-                      </Link>
-                    </>
-                  ) : (
+                <td key={columnIndex}
+                style={(rowIndex === hoveredRow )?
+                  {backgroundColor:"#E7E7E7"} : 
+                  {backgroundColor: "inherit"}
+                }
+                >
+                  {
                     row[column.accessor]
-                  )}
+                  }
                 </td>
+
               ))}
+              <td style={(rowIndex === hoveredRow )?
+                  {backgroundColor:"#E7E7E7"} : 
+                  {backgroundColor: "inherit"}} 
+              
+              >
+                < div style={(rowIndex === hoveredRow)?{}:{visibility:"hidden"}}>
+                  <Link
+                    to={`/edit/${row.id}`}
+                    style={{ marginRight: "15%", color: "#8B8B8B" }}
+                  >
+                    <Pencil />
+                  </Link>
+                  <Link to={`/delete/${row.id}`} style={{ color: "red" }}>
+                    <Trash />
+                  </Link>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -86,7 +94,7 @@ const Table = ({ columns, data, pageSize, headerColor }) => {
               min="1"
               max="100"
               value={rowsPerPage}
-              style={{ borderColor: "red", borderRadius: "5px", color: "red"}}
+              style={{ borderColor: "red", borderRadius: "5px", color: "red" }}
               onChange={handleRowsPerPageChange}
             ></input>
             <label>Data</label>
@@ -118,4 +126,4 @@ const Table = ({ columns, data, pageSize, headerColor }) => {
   );
 };
 
-export default Table;
+export default TableEdit;

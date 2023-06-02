@@ -1,9 +1,11 @@
+import TestingTable from "../../component/Table/TestingTable";
+
 const Products = () => {
+  return (
+      <div className="default-products">
+        <TestingTable />
+      </div>
+  );
+};
 
-    return (
-        <></>
-    )
-
-}
-
-export default Products
+export default Products;

@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "./TableEditDelete";
+import TableEdit from "./TableEditDelete";
 import TableEditDelete from "../../data/DummyData";
 
 const TestingTable = () => {
@@ -13,7 +13,7 @@ const TestingTable = () => {
       { Header: "Stock", accessor: "stock" },
       { Header: "Unit", accessor: "unit" },
       { Header: "Price", accessor: "price" },
-      { Header: "", accessor: "" }
+      
     ],
     []
   );
@@ -22,8 +22,8 @@ const TestingTable = () => {
 
   return (
     <div>
-      <Table
-        headerColor="#FDDFDF"
+      <TableEdit
+        headerColor={{backgroundColor:"#FDDFDF"}}
         columns={columns}
         data={data}
         pageSize={10}
