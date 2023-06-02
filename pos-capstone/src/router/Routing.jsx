@@ -6,6 +6,7 @@ import Products from "../page/Products/Products"
 import AddProduct from "../page/Products/AddProduct"
 import PrivateRoute from "./PrivateRoute"
 import Preview from "../page/Preview/Preview"
+import EditProduct from "../page/Products/EditProduct"
 
 
 const Routing = () => {
@@ -18,6 +19,7 @@ const Routing = () => {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/products" element={<Products/>} />
                     <Route path="/products/addproduct" element={<AddProduct/>} />
+                    <Route path="/products/editproduct/:id" element={<EditProduct/>} />
                 </Route>
                 <Route path="/preview" element={<Preview />} />
             </Routes>

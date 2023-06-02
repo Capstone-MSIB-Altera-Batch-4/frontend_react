@@ -10,3 +10,9 @@ th {
     font-size: 18px;
     font-weight: 500;
 }
+
+.pagination {
+    /* position: absolute; */
+    position: relative;
+    bottom: 0;
+}

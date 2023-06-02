@@ -4,8 +4,10 @@ import * as Yup from 'yup';
 import TextField from "../../element/Textfield/Textfield";
 import InputCategory from "../../element/InputCategory/InputCategory";
 import InputImage from "../../element/InputImage/InputImage"
+import './ProductForm.css'
+import { Pen, Pencil, PencilFill } from "react-bootstrap-icons";
 
-const ProductFrom = () => {
+const ProductFrom = ({openInputModal, values}) => {
     const formik = useFormik({
         initialValues: {
             id: "",
@@ -81,8 +83,13 @@ const ProductFrom = () => {
                         }
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 row input-category-field">
+                    <div className="col-md-11">
                     <InputCategory />
+                    </div>
+                    <div className="col-md-1 input-category-icon p-2" onClick={openInputModal}>
+                      <PencilFill color="white" className="pencil-icon" />
+                    </div>
                 </div>
                 <div className="mb-3">
                     <TextField

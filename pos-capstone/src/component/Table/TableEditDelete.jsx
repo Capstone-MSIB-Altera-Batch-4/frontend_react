@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowLeft, ArrowRight, Pencil, Trash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
-const Table = ({ columns, data, pageSize, headerColor }) => {
+const TableEditDelete = ({ columns, data, pageSize, headerColor }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(pageSize);
   const pageCount = Math.ceil(data.length / rowsPerPage);
@@ -56,7 +56,7 @@ const Table = ({ columns, data, pageSize, headerColor }) => {
                   columnIndex === columns.length - 1 ? (
                     <>
                       <Link
-                        to={`/edit/${row.id}`}
+                        to={`editproduct/${row.id}`}
                         style={{ marginRight: "15%", color: "#8B8B8B" }}
                       >
                         <Pencil />
@@ -75,7 +75,7 @@ const Table = ({ columns, data, pageSize, headerColor }) => {
         </tbody>
       </table>
 
-      <div className="row px-0">
+      <div className="row px-0 pagination">
         <div className="col-md-6">
           <div className="d-flex justify-content-start">
             <label htmlFor="rowsPerPageSelect">Show</label>
@@ -118,4 +118,4 @@ const Table = ({ columns, data, pageSize, headerColor }) => {
   );
 };
 
-export default Table;
+export default TableEditDelete;

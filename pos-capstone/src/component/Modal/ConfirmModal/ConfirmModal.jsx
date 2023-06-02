@@ -17,7 +17,7 @@ const ConfirmModal = ({ show, handleClose, role, id, confirmFor, action }) => {
     }
   };
   return (
-    <Modal show={show} onHide={handleClose} centered contentClassName="modal-style" >
+    <Modal show={show} onHide={handleClose} centered contentClassName="modal-style mx-auto" >
       <Modal.Body className="p-5 my-3 mx-4">
         <div className="text-center">
           <h4 className="fw-semibold mb-4">Are You Sure?</h4>
