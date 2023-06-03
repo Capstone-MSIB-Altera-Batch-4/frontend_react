@@ -27,21 +27,21 @@ export const barItems = [
         
     },
     {
-        path: "/",
+        path: "/orders",
         name: "Orders",
         icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M4 6H20V18H4V6ZM2 6C2 4.89543 2.89543 4 4 4H20C21.1046 4 22 4.89543 22 6V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V6ZM6.29289 10.7071C5.90237 10.3166 5.90237 9.68342 6.29289 9.29289C6.68342 8.90237 7.31658 8.90237 7.70711 9.29289L11.9497 13.5355L16.1924 9.29289C16.5829 8.90237 17.2161 8.90237 17.6066 9.29289C17.9971 9.68342 17.9971 10.3166 17.6066 10.7071L12.6569 15.6569C12.2663 16.0474 11.6332 16.0474 11.2426 15.6569L6.29289 10.7071Z" />
         </svg>
         
     },
-    {
-        path: "/",
-        name: "Invoices",
-        icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 4H7V6H17V4ZM5 4V6H4C2.89543 6 2 6.89543 2 8V17C2 18.1046 2.89543 19 4 19H5V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V19H20C21.1046 19 22 18.1046 22 17V8C22 6.89543 21.1046 6 20 6H19V4C19 2.89543 18.1046 2 17 2H7C5.89543 2 5 2.89543 5 4ZM19 17H20V8H19H5H4V17H5V12H19V17ZM7 14H17V20H7V14Z"/>
-        </svg>
+    // {
+    //     path: "/",
+    //     name: "Invoices",
+    //     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    //     <path fill-rule="evenodd" clip-rule="evenodd" d="M17 4H7V6H17V4ZM5 4V6H4C2.89543 6 2 6.89543 2 8V17C2 18.1046 2.89543 19 4 19H5V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V19H20C21.1046 19 22 18.1046 22 17V8C22 6.89543 21.1046 6 20 6H19V4C19 2.89543 18.1046 2 17 2H7C5.89543 2 5 2.89543 5 4ZM19 17H20V8H19H5H4V17H5V12H19V17ZM7 14H17V20H7V14Z"/>
+    //     </svg>
         
-    },
+    // },
     {
         path: "/",
         name: "Cashier",

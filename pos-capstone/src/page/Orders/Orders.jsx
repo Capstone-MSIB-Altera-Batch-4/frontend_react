@@ -1,11 +1,11 @@
 import TableEdit from "../../component/Table/TableEditDelete";
 
-const Products = () => {
+const Orders = () => {
   return (
-      <div className="col default-products p-4">
+      <div className="default-products col p-4">
         <TableEdit />
       </div>
   );
 };
 
-export default Products;
+export default Orders;
