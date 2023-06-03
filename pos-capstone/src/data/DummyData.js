@@ -6,7 +6,7 @@ export const DummyData = [
   { "No": 5, "Product Name": 'Chawanmushi', "Category": "Appetizer", "Price": "Rp 35.000", "Total Order": 84, "Growth": "1%" }
 ];
 
-export const TableEditDelete = () => {
+export const DummyEditDelete = () => {
   return [
     { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
     { no: 2, id: "A2", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
@@ -24,4 +24,20 @@ export const TableEditDelete = () => {
   ];
 };
 
-export default TableEditDelete;
+export const DummyDetails = () => {
+  return [
+    { no: 1, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 2, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 3, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 4, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 5, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 6, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 7, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 8, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 9, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 10, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 11, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 12, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+    { no: 13, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
+  ];
+};
