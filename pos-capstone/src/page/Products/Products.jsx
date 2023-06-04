@@ -1,11 +1,11 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import PageTitle from "../../element/PageTitle/PageTitle"
 import PrimaryButton from "../../element/Button/PrimaryButton/PrimaryButton"
 import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton"
 import { Plus } from "react-bootstrap-icons"
 import filterIcon from '../../assets/icon/Filter.svg'
 import FilterForm from "../../component/FilterForm/FilterForm"
-import TableEditDelete from "../../component/Table/TableEditDelete"
+import TableEdit from "../../component/Table/TableEditDelete"
 import { productHeader } from "../../data/HeaderTableData"
 import { productsData } from "../../data/DummyData"
 import { Link, useLocation } from "react-router-dom"
@@ -13,26 +13,27 @@ import ConfirmModal from "../../component/Modal/ConfirmModal/ConfirmModal"
 import Snackbar from "../../element/Snackbar/Snackbar"
 
 const Products = () => {
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const snackbarRef = useRef(null);
+    const [showSnackbar, setShowSnackbar] = useState(false);
 
-    const ActionSuccess = () => {
-        setShowConfirmModal(false);
-        //setiap action yg perlu snackbar pake ini
-        snackbarRef.current.showSnackbar();
+    console.log("Snacbar", showSnackbar)
+  
+    let { state } = {
+      state: {
+        showSnackbar: false,
+        action: "",
+        variant: "",
+      },
+    };
+    
+    state = useLocation();
+
+    console.log("State", state);
+
+    if (state.state !== null && state.state.showSnackbar === true) {
+      useEffect(() => {
+        setShowSnackbar(true);
+      }, [showSnackbar]);
     }
-
-    // const { state } =  useLocation();
-
-    // // const ProductNotif = () => {
-    //     if (state.showSnackbar === true) {
-    //         snackbarRef.current.showSnackbar();
-    //     }
-    // // }
-
-    // // const { showSnackbar } = state;
-    // console.log("state", state)
-    // // setShowConfirmModal(`${state.showSnackbar}`)
 
     return (
       <div className="product-page container container-fluid row col-md-10 mx-auto">
@@ -66,28 +67,39 @@ const Products = () => {
             <FilterForm data={productsData} />
           </div>
           <div className="mt-4">
-            <TableEditDelete
-              headerColor="#FDDFDF"
+            <TableEdit
               columns={productHeader}
               data={productsData}
-              pageSize={10}
-              deteleConfirm={() => setShowConfirmModal(true)}
+              editPageLink={"editproduct"}
+            //   deleteConfirm={(id) => {
+            //     console.log(id)
+            //     // if (id.length === 1) {
+            //     //     ShowModal(id)
+            //     //     console.log("berhasil muncul")
+            //     // }
+            //     setShowConfirmModal(true);
+                
+            //     // <ConfirmModal
+            //     //     show={showConfirmModal}
+            //     //     handleClose={() => setShowConfirmModal(false)}
+            //     //     confirmFor={"delete"}
+            //     //     role={"Product"}
+            //     //     id={id}
+            //     //     action={() => ActionSuccess()}
+            //     // />
+            //   }}
             />
           </div>
         </div>
 
         {/* MODAL & SNACKBAR */}
         <div>
-        <ConfirmModal
-            show={showConfirmModal}
-            handleClose={() => setShowConfirmModal(false)}
-            confirmFor={"delete"}
-            role={"Product"}
-            id={123}
-            action={() => ActionSuccess()}
-        />
         </div>
-        <Snackbar ref={snackbarRef} action={"delete"} variant={"success"}/>
+        {showSnackbar ? (
+          <Snackbar setSnackbar={showSnackbar} action={state.state.action} variant={state.state.variant}/>
+        ) : (
+          ""
+        )}
       </div>
     );
 }

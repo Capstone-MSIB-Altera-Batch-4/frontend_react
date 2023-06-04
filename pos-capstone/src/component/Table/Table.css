@@ -16,3 +16,7 @@ th {
     position: relative;
     bottom: 0;
 }
+
+.delete-confirm-modal {
+    .modal-backdrop[data-backdrop="static"] {display: none;}
+}
