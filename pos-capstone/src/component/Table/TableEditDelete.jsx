@@ -44,4 +44,3 @@ const TableEdit = () => {
 };
 
 export default TableEdit;
-

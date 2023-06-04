@@ -1,9 +1,9 @@
-import TableEdit from "../../component/Table/TableEditDelete";
+import TabelDetails from "../../component/Table/TableShowDetails";
 
 const Orders = () => {
   return (
-      <div className="default-products col p-4">
-        <TableEdit />
+      <div className="default-orders col p-4">
+        <TabelDetails />
       </div>
   );
 };
