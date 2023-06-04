@@ -1,127 +1,44 @@
-import React from "react";
-import { ArrowLeft, ArrowRight, Pencil, Trash } from "react-bootstrap-icons";
+import React, { useMemo } from "react";
+import TableAction from "./TableAction";
+import { DummyEditDelete } from "../../data/DummyData";
 import { Link } from "react-router-dom";
+import { Pencil, Trash } from "react-bootstrap-icons";
 
-const TableEdit = ({ columns, data, pageSize, headerColor }) => {
-  const [pageIndex, setPageIndex] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(pageSize);
-  const pageCount = Math.ceil(data.length / rowsPerPage);
-  const startIndex = pageIndex * rowsPerPage;
-  const endIndex = (pageIndex + 1) * rowsPerPage;
-  const currentPage = data.slice(startIndex, endIndex);
+const TableEdit = () => {
+  const columns = useMemo(
+    () => [
+      { Header: "No", accessor: "no" },
+      { Header: "Id", accessor: "id" },
+      { Header: "Image", accessor: "image" },
+      { Header: "Name", accessor: "name" },
+      { Header: "Category", accessor: "category" },
+      { Header: "Stock", accessor: "stock" },
+      { Header: "Unit", accessor: "unit" },
+      { Header: "Price", accessor: "price" },
+    ],
+    []
+  );
 
-  const handleRowsPerPageChange = (event) => {
-    const newRowsPerPage = parseInt(event.target.value);
-    setRowsPerPage(newRowsPerPage);
-    setPageIndex(0);
-  };
-
-  const [hoveredRow, setHoveredRow] = React.useState(null);
-
-  const handleRowHover = (index) => {
-    setHoveredRow(index);
-  };
-
-  const handleRowLeave = () => {
-    setHoveredRow(null);
-  };
-
+  const data = DummyEditDelete();
+  
   return (
-    <div className="table-edit-delete overflow-hidden">
-      <table className="table table-bordered text-center">
-        <thead className="thead-dark" >
-          <tr>
-            {columns.map((column, columnIndex) => (
-              <th style={headerColor} key={columnIndex}>{column.Header}</th>
-            ))}
-            <th style={headerColor}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentPage.map((row, rowIndex) => (
-            <tr
-              key={rowIndex}
-              onMouseEnter={() => handleRowHover(rowIndex)}
-              onMouseLeave={handleRowLeave}
-              style={(rowIndex === hoveredRow )?
-                {backgroundColor:"#E7E7E7"} : 
-                {backgroundColor: "inherit"}
-              }
-            >
-              {columns.map((column, columnIndex) => (
-                <td key={columnIndex}
-                style={(rowIndex === hoveredRow )?
-                  {backgroundColor:"#E7E7E7"} : 
-                  {backgroundColor: "inherit"}
-                }
-                >
-                  {
-                    row[column.accessor]
-                  }
-                </td>
-
-              ))}
-              <td style={(rowIndex === hoveredRow )?
-                  {backgroundColor:"#E7E7E7"} : 
-                  {backgroundColor: "inherit"}} 
-              
-              >
-                < div style={(rowIndex === hoveredRow)?{}:{visibility:"hidden"}}>
-                  <Link
-                    to={`/edit/${row.id}`}
-                    style={{ marginRight: "15%", color: "#8B8B8B" }}
-                  >
-                    <Pencil />
-                  </Link>
-                  <Link to={`/delete/${row.id}`} style={{ color: "red" }}>
-                    <Trash />
-                  </Link>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div className="row px-0">
-        <div className="col-md-6">
-          <div className="d-flex justify-content-start">
-            <label htmlFor="rowsPerPageSelect">Show</label>
-            <input
-              className="mx-3"
-              type="number"
-              id="rowsPerPageSelect"
-              min="1"
-              max="100"
-              value={rowsPerPage}
-              style={{ borderColor: "red", borderRadius: "5px", color: "red" }}
-              onChange={handleRowsPerPageChange}
-            ></input>
-            <label>Data</label>
+    <div>
+      <TableAction
+        headerColor={{ backgroundColor: "#FDDFDF" }}
+        columns={columns}
+        data={data}
+        pageSize={10}
+        buttonComponent={() => (
+          <div>
+            <Link style={{ marginRight: "15%", color: "#8B8B8B" }}>
+              <Pencil />
+            </Link>
+            <Link style={{ color: "red" }}>
+              <Trash />
+            </Link>
           </div>
-        </div>
-        <div className="col-md-6">
-          <div className="d-flex justify-content-end">
-            <button
-              onClick={() => setPageIndex((prevIndex) => prevIndex - 1)}
-              disabled={pageIndex === 0}
-              style={{ border: "none" }}
-            >
-              <ArrowLeft />
-            </button>
-            <span className="mx-2" style={{ fontWeight: "bold" }}>
-              {pageIndex + 1}
-            </span>
-            <button
-              onClick={() => setPageIndex((prevIndex) => prevIndex + 1)}
-              disabled={pageIndex === pageCount - 1}
-              style={{ border: "none" }}
-            >
-              <ArrowRight />
-            </button>
-          </div>
-        </div>
-      </div>
+        )}
+      />
     </div>
   );
 };

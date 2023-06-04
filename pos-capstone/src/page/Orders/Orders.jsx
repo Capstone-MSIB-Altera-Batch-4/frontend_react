@@ -1,16 +1,14 @@
+
 import TestingTable from "../../component/Table/TestingTable";
 import TableEditDelete from "../../data/DummyData";
 import InputDate from "../../element/InputDate/InputDate";
+import TabelDetails from "../../component/Table/TableShowDetails";
 
 const Orders = () => {
   return (
-      <div className="default-products col">
-        <TestingTable />
-        <InputDate
-          className="inputdate"
-          placeholder="From"
-          
-        />
+      <div className="default-orders col p-4">
+        <TabelDetails />
+
       </div>
   );
 };
