@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import './Table.css'
 
+
 const TableAction = ({
   columns,
   data,

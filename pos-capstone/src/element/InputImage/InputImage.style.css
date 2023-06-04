@@ -29,3 +29,25 @@
 .droptext {
     color: #787878;
 }
+
+.filename {
+    color: #ABABAB;
+    background-color: #F9FAFB;
+    border: 1px solid #D1D5DB;
+    border-radius: 10px;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+}
+
+.previewimg {
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.btn-change {
+    position: relative;
+    padding-right: 3.5rem;
+    padding-left: 3.5rem;
+}
