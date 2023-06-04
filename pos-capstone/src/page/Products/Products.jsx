@@ -14,6 +14,7 @@ import Snackbar from "../../element/Snackbar/Snackbar"
 
 const Products = () => {
     const [showSnackbar, setShowSnackbar] = useState(false);
+    const [onShow, setOnShow] = useState(false)
 
     console.log("Snacbar", showSnackbar)
   
@@ -24,7 +25,7 @@ const Products = () => {
         variant: "",
       },
     };
-    
+
     state = useLocation();
 
     console.log("State", state);
@@ -61,33 +62,17 @@ const Products = () => {
               databstoggle="collapse"
               databstarget="#filter"
               label={<img src={filterIcon} />}
+              onClick={() => setOnShow(!onShow)}
             />
           </div>
           <div className="collapse" id="filter">
-            <FilterForm data={productsData} />
+            <FilterForm data={productsData} onShow={onShow}/>
           </div>
           <div className="mt-4">
             <TableEdit
               columns={productHeader}
               data={productsData}
               editPageLink={"editproduct"}
-            //   deleteConfirm={(id) => {
-            //     console.log(id)
-            //     // if (id.length === 1) {
-            //     //     ShowModal(id)
-            //     //     console.log("berhasil muncul")
-            //     // }
-            //     setShowConfirmModal(true);
-                
-            //     // <ConfirmModal
-            //     //     show={showConfirmModal}
-            //     //     handleClose={() => setShowConfirmModal(false)}
-            //     //     confirmFor={"delete"}
-            //     //     role={"Product"}
-            //     //     id={id}
-            //     //     action={() => ActionSuccess()}
-            //     // />
-            //   }}
             />
           </div>
         </div>

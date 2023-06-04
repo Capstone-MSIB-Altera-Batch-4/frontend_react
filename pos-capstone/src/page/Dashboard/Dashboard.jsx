@@ -41,7 +41,7 @@ const Dashboard = () => {
           <div className='row'>
             <div className='col'>
               <h5 style={{ fontFamily: "rubik", marginTop: "3%", marginBottom: "2%" }}>Top Selling Product</h5>
-              <Table data={DummyData} headerColor="#FDDFDF" headerFontColor="black" />
+              <Table data={DummyData} />
             </div>
           </div>
         </div>

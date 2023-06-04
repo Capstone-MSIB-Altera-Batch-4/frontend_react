@@ -38,16 +38,6 @@ const ConfirmModal = ({ show, handleClose, role, id, confirmFor, action }) => {
             label="Yes"
             onClick={action}
           />
-          {/* <Button
-            className="border-danger text-danger bg-white fw-semibold px-4 fs-5 py-1 button-no-style"
-            btnName="No"
-            onClick={handleClose}
-          />
-          <Button
-            className="border-danger text-white fw-semibold px-4 fs-5 py-1 button-yes-style"
-            btnName="Yes"
-            onClick={action}
-          /> */}
         </div>
       </Modal.Body>
     </Modal>

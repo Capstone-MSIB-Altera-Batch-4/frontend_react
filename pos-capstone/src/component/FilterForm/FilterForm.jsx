@@ -4,7 +4,7 @@ import SearchBar from '../../element/SearchBar/SearchBar.jsx';
 import InputCategory from '../../element/InputCategory/InputCategory.jsx';
 import './FilterForm.css'
 
-const FilterForm = ({data}) => {
+const FilterForm = ({data, onShow}) => {
     const [inputId, setInputId] = useState("")
 
     const handleChange = (e) => {
@@ -16,7 +16,7 @@ const FilterForm = ({data}) => {
     <div>
       <div className="filter-form row">
         <div className="col-md-4 mt-2">
-          <SearchBar value={data} />
+          <SearchBar value={data} onShow={onShow}/>
         </div>
         <div className="col-md-4 mb-3">
           <TextField

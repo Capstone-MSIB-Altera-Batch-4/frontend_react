@@ -20,3 +20,7 @@ th {
 .delete-confirm-modal {
     .modal-backdrop[data-backdrop="static"] {display: none;}
 }
+
+/* .number-wrapper {
+    
+} */

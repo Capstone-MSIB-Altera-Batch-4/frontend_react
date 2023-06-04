@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
+import './Table.css'
 
 const TableAction = ({
   columns,
@@ -88,20 +89,22 @@ const TableAction = ({
         </tbody>
       </table>
 
-      <div className="row px-0">
+      <div className="row px-0 mt-5">
         <div className="col-md-6">
           <div className="d-flex justify-content-start">
             <label htmlFor="rowsPerPageSelect">Show</label>
-            <input
-              className="mx-3"
-              type="number"
-              id="rowsPerPageSelect"
-              min="1"
-              max="100"
-              value={rowsPerPage}
-              style={{ borderColor: "red", borderRadius: "5px", color: "red" }}
-              onChange={handleRowsPerPageChange}
-            ></input>
+            <span className="number-wrapper">
+              <input
+                className="mx-3"
+                type="number"
+                id="rowsPerPageSelect"
+                min="1"
+                max="100"
+                value={rowsPerPage}
+                style={{ borderColor: "red", borderRadius: "5px", color: "red", width: "100px", outline: "none"}}
+                onChange={handleRowsPerPageChange} 
+              />
+            </span>
             <label>Data</label>
           </div>
         </div>
