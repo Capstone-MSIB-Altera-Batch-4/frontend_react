@@ -14,7 +14,7 @@ const Table = ({ data, headerColor, headerFontColor }) => {
       <thead style={theadStyle}>
         <tr>
           {columns.map((column, index) => (
-            <th className='fw-medium header-style py-3' key={index}>{column}</th>
+            <th style={{backgroundColor: "#FDDFDF"}} className='fw-medium header-style py-3' key={index}>{column}</th>
           ))}
         </tr>
       </thead>

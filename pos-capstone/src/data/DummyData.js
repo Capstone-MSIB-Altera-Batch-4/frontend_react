@@ -24,6 +24,24 @@ export const DummyEditDelete = () => {
   ];
 };
 
+
+export const productsData = [
+    { no: 1, id: "A1", image: "ASHJ.JPG", name: "Maki Sushi", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 2, id: "A2", image: "ASHJ.JPG", name: "Nigiri Sushi", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 3, id: "A3", image: "ASHJ.JPG", name: "Inarizushi", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 4, id: "A4", image: "ASHJ.JPG", name: "Chirashi", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 5, id: "A5", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 6, id: "A6", image: "ASHJ.JPG", name: "Gunkan 2", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 7, id: "A7", image: "ASHJ.JPG", name: "Gunkan 3", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 8, id: "A8", image: "ASHJ.JPG", name: "Nigiri Sushi 1", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 9, id: "A9", image: "ASHJ.JPG", name: "Chirashi 2", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 10, id: "A10", image: "ASHJ.JPG", name: "Intinya Sushi", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 11, id: "A11", image: "ASHJ.JPG", name: "mentai Sushi", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 12, id: "A12", image: "ASHJ.JPG", name: "Gunkan 4", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+    { no: 13, id: "A13", image: "ASHJ.JPG", name: "Gunkan 5", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },
+  ];
+
+
 export const DummyDetails = () => {
   return [
     { no: 1, type: "Dine in", order_id: "11122571", date: "01.01.2023", status: "Completed", payment: "Paid", order_total: "Order Total" },
