@@ -10,7 +10,9 @@ const InputImage = (props) => {
     const [files, setFiles] = useState()
     const onDrop = useCallback(acceptedFiles => {
         console.log(acceptedFiles)
-        setFiles(acceptedFiles)
+        setFiles(acceptedFiles.map(file => Object.assign(file, {
+            preview: URL.createObjectURL(file)
+        })));
         console.log(files)
     }, [])
     const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop, noClick: true })
@@ -19,12 +21,33 @@ const InputImage = (props) => {
             <label htmlFor={props.htmlFor} className="form-label">
                 {props.label}
             </label>
-            <div className="imgdrop-wrap ">
-                {files ?
-                    (<div className="filename">
-                        <p>{files[0].name}</p>
-                    </div>) :
-                    (<div className="container-fluid text-center">
+
+            {files ?
+                (<div className="filepreview">
+                    <img
+                        className="previewimg"
+                        src={files[0].preview}
+                        width={200} height={200}
+                    />
+                    <div className="row me-0">
+                        <div className="col-10">
+                            <p className="filename">{files[0].name}
+
+                            </p>
+                        </div>
+                        <div className="col-2 ps-0 pe-0">
+                                <Button
+                                    className="btn text-white w-100"
+                                    btnName="Change File"
+                                    onClick={open}
+                                />
+                        </div>
+                    </div>
+
+                </div>)
+                :
+                (<div className="imgdrop-wrap ">
+                    <div className="container-fluid text-center">
                         <div {...getRootProps({ className: "container-fluid" })}>
                             <input {...getInputProps()} />
                             <div className="imgdrop text-center">
@@ -56,9 +79,11 @@ const InputImage = (props) => {
                             btnName="Browse File"
                             onClick={open}
                         />
-                    </div>)}
-            </div>
+                    </div>
+                </div>
+                )}
         </div>
+
     )
 
 }

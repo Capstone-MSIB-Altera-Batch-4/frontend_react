@@ -43,7 +43,7 @@ export const barItems = [
         
     // },
     {
-        path: "/",
+        path: "/cashier",
         name: "Cashier",
         icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34314 13.6569 7 12 7C10.3431 7 9 8.34314 9 10C9 11.6569 10.3431 13 12 13Z" />
