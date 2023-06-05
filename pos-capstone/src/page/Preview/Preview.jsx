@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import ConfirmModal from '../../component/Modal/ConfirmModal/ConfirmModal';
 import Snackbar from '../../element/Snackbar/Snackbar';
-import InputCategoryForm from '../../component/InputCategoryForm/InputCategoryForm';
+// import InputCategoryForm from '../../component/Forms/InputCategoryForm/InputCategoryForm';
 import InputCategoryModal from '../../component/Modal/InputCategoryModal/InputCategoryModal';
 
 const snackBarType = {
@@ -63,7 +63,7 @@ const Preview = () => {
 
       <Snackbar ref={snackbarRef} action={"delete"} variant={snackBarType.success}/>
       {/* modal input category */}
-      <InputCategoryModal show={showCategory} handleClose={() => setShowCategory(false)}/>
+      {/* <InputCategoryModal show={showCategory} handleClose={() => setShowCategory(false)}/> */}
     </div>
   )
 }

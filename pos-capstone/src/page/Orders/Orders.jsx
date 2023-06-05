@@ -1,9 +1,14 @@
-import TableEdit from "../../component/Table/TableEditDelete";
+
+// import TestingTable from "../../component/Table/TestingTable";
+// import TableEditDelete from "../../data/DummyData";
+// import InputDate from "../../element/InputDate/InputDate";
+import TabelDetails from "../../component/Table/TableShowDetails";
 
 const Orders = () => {
   return (
-      <div className="default-products col p-4">
-        <TableEdit />
+      <div className="default-orders col p-4">
+        <TabelDetails />
+
       </div>
   );
 };
