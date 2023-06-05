@@ -37,6 +37,7 @@ input::-webkit-datetime-edit-fields-wrapper {
 }
 
 input::-webkit-datetime-edit {
+    color: #6B7280;
     position: relative;
     left: 5%;
 }

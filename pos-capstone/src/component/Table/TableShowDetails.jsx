@@ -1,8 +1,14 @@
 import React, { useMemo } from "react";
 import TableAction from "./TableAction";
+import { Link } from "react-router-dom";
 import { DummyDetails } from "../../data/DummyData";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const TabelDetails = () => {
+const TabelDetails = ({ data }) => {
+
+
+
   const columns = useMemo(
     () => [
       { Header: "No", accessor: "no" },
@@ -16,7 +22,14 @@ const TabelDetails = () => {
     []
   );
 
-  const data = DummyDetails();
+
+
+
+
+
+
+
+
 
   return (
     <div>
@@ -25,7 +38,15 @@ const TabelDetails = () => {
         columns={columns}
         data={data}
         pageSize={10}
-        buttonComponent={() => <button className="btn detail btn-outline-danger">Details</button>}
+        buttonComponent={(data) => (
+          <button
+            className="btn detail btn-outline-danger py-1"
+          ><Link
+            to={`/orders/detailorder/${data.order_id}`}
+            className="text-decoration-none text-danger">
+              Detail
+            </Link>
+          </button>)}
       />
     </div>
   );
