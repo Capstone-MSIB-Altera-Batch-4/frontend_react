@@ -6,6 +6,13 @@ export const productHeader = [
     { Header: "Category", accessor: "category" },
     { Header: "Stock", accessor: "stock" },
     { Header: "Unit", accessor: "unit" },
-    { Header: "Price", accessor: "price" },
-    { Header: "", accessor: "" }
+    { Header: "Price", accessor: "price" }
+]
+
+export const employeeHeader = [
+      { Header: "No", accessor: "no_employee" },
+      { Header: "No Id", accessor: "id" },
+      { Header: "Name", accessor: "name_employee" },
+      { Header: "Position", accessor: "position" },
+      { Header: "Joined", accessor: "joined" }
 ]

@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import TextField from "../../element/Textfield/Textfield";
-import InputCategory from "../../element/InputCategory/InputCategory";
-import InputImage from "../../element/InputImage/InputImage";
-import "./ProductForm.css";
-import { PencilFill } from "react-bootstrap-icons";
+import "./CashierForm.css";
 import InputErrorMessage from "../../element/InputErrorMessage/InputErrorMessage";
 import PrimaryButton from "../../element/Button/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
@@ -13,7 +10,7 @@ import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../Modal/InputCategoryModal/InputCategoryModal";
 import { Link, useNavigate } from "react-router-dom";
 
-const ProductFrom = ({ showModalFor }) => {
+const CashierForm = ({ showModalFor }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
 
@@ -22,24 +19,22 @@ const ProductFrom = ({ showModalFor }) => {
   const formik = useFormik({
     initialValues: {
       id: "",
-      name: "",
-      category: "",
-      stock: "",
-      price: "",
-      unit: "",
+      name_employee: "",
+      position: "",
+      joined: "",
     },
     validationSchema: Yup.object().shape({
       id: Yup.string().required("The id field must be filled in"),
-      name: Yup.string().required("The name field must be filled in"),
-      category: Yup.string().required("The category field must be filled in"),
-      stock: Yup.number().required("The stock field must be filled in"),
-      price: Yup.number().required("The price field must be filled in"),
-      unit: Yup.string().required("The unit field must be filled in"),
+      name_employee: Yup.string().required(
+        "The employee name field must be filled in"
+      ),
+      position: Yup.number().required("The position field must be filled in"),
+      joined: Yup.string().required("The category field must be filled in"),
     }),
     onSubmit: (values, actions) => {
       actions.resetForm();
       console.log(values);
-      alert("data", JSON.stringify(values))
+      alert("data", JSON.stringify(values));
       // navigate('')
     },
   });
@@ -50,7 +45,7 @@ const ProductFrom = ({ showModalFor }) => {
           <div className="mb-3">
             <TextField
               htmlFor="id"
-              label="Id"
+              label="ID Number"
               placeholder="Input id"
               name="id"
               type="text"
@@ -70,13 +65,10 @@ const ProductFrom = ({ showModalFor }) => {
             )}
           </div>
           <div className="mb-3">
-            <InputImage label="Image" className="img-area" />
-          </div>
-          <div className="mb-3">
             <TextField
               htmlFor="name"
-              label="Name"
-              placeholder="Input Product Name"
+              label="Employee Name"
+              placeholder="Input employee name"
               id="name"
               type="text"
               name="name"
@@ -94,86 +86,53 @@ const ProductFrom = ({ showModalFor }) => {
               <InputErrorMessage label={formik.errors.name} />
             )}
           </div>
-          <div className="mb-3 row input-category-field">
-            <div className="col-md-11">
-              <InputCategory />
-            </div>
-            <div
-              className="col-md-1 input-category-icon p-2"
-              onClick={() => setShowCategory(true)}
-            >
-              <PencilFill color="white" className="pencil-icon" />
-            </div>
-          </div>
           <div className="mb-3">
             <TextField
-              htmlFor="stock"
-              label="Stock"
-              placeholder="Input Stock"
-              id="stock"
+              htmlFor="position"
+              label="Position"
+              placeholder="Input position"
+              id="position"
               type="text"
-              name="stock"
-              value={formik.values.stock}
+              name="position"
+              value={formik.values.position}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.stock && formik.touched.stock
+                formik.errors.position && formik.touched.position
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("stock", "", false)}
+              onClearInput={() => formik.setFieldValue("position", "", false)}
             />
-            {formik.errors.stock && formik.touched.stock && (
-              <InputErrorMessage label={formik.errors.stock} />
+            {formik.errors.position && formik.touched.position && (
+              <InputErrorMessage label={formik.errors.position} />
             )}
           </div>
           <div className="mb-3">
             <TextField
-              htmlFor="price"
-              label="Price"
-              placeholder="Input Price"
-              id="price"
+              htmlFor="joined"
+              label="Joined"
+              placeholder="Input joined"
+              id="joined"
               type="text"
-              name="price"
-              value={formik.values.price}
+              name="joined"
+              value={formik.values.joined}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.price && formik.touched.price
+                formik.errors.joined && formik.touched.joined
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("price", "", false)}
+              onClearInput={() => formik.setFieldValue("joined", "", false)}
             />
-            {formik.errors.price && formik.touched.price && (
-              <InputErrorMessage label={formik.errors.price} />
-            )}
-          </div>
-          <div className="mb-3">
-            <TextField
-              htmlFor="unit"
-              label="Unit"
-              placeholder="Input Unit"
-              id="unit"
-              type="text"
-              name="unit"
-              value={formik.values.unit}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.unit && formik.touched.unit
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("unit", "", false)}
-            />
-            {formik.errors.unit && formik.touched.unit && (
-              <InputErrorMessage label={formik.errors.unit} />
+            {formik.errors.joined && formik.touched.joined && (
+              <InputErrorMessage label={formik.errors.joined} />
             )}
           </div>
         </div>
         <div className="d-flex gap-5 justify-content-center my-5">
-          <Link to="/products">
+          <Link to="/cashier">
             <SecondaryButton
               type="button"
               databstoggle="collapse"
@@ -195,17 +154,19 @@ const ProductFrom = ({ showModalFor }) => {
             show={showConfirmModal}
             handleClose={() => setShowConfirmModal(false)}
             confirmFor={showModalFor}
-            role={"Product"}
+            role={"Cashier"}
             action={() => {
-              {formik.handleSubmit}
+              {
+                formik.handleSubmit;
+              }
               //kalo udh pake data asli, nnti navigate sekalian atur di submit
-              navigate("/products", {
+              navigate("/cashier", {
                 state: {
-                showSnackbar: true,
-                action: `${showModalFor}`,
-                variant: "success"
-              },
-            })
+                  showSnackbar: true,
+                  action: `${showModalFor}`,
+                  variant: "success",
+                },
+              });
             }}
           />
         </div>
@@ -220,4 +181,4 @@ const ProductFrom = ({ showModalFor }) => {
   );
 };
 
-export default ProductFrom;
+export default CashierForm;

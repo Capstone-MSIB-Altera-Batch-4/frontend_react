@@ -9,7 +9,6 @@ import TableEdit from "../../component/Table/TableEditDelete"
 import { productHeader } from "../../data/HeaderTableData"
 import { productsData } from "../../data/DummyData"
 import { Link, useLocation } from "react-router-dom"
-import ConfirmModal from "../../component/Modal/ConfirmModal/ConfirmModal"
 import Snackbar from "../../element/Snackbar/Snackbar"
 
 const Products = () => {

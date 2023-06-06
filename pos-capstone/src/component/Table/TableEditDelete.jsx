@@ -56,4 +56,3 @@ const TableEdit = ({ columns, data, editPageLink, deteleConfirm }) => {
 };
 
 export default TableEdit;
-

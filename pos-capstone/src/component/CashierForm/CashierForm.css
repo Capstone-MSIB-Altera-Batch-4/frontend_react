@@ -1,0 +1,19 @@
+.input-category-icon {
+    background: #F46161;
+    width: 42px;
+    height: 42px;
+    margin-top: 30px;
+    border-radius: 100%;
+}
+
+.input-category-icon:hover {
+    background: #EF2222;
+}
+.input-category-field {
+    width: 112%;
+}
+
+.pencil-icon {
+    margin-left: 6px;
+    margin-bottom: 6px;
+}

@@ -8,6 +8,9 @@ import PrivateRoute from "./PrivateRoute"
 import Preview from "../page/Preview/Preview"
 import EditProduct from "../page/Products/EditProduct"
 import Orders from "../page/Orders/Orders"
+import Cashier from "../page/Cashier/Cashier"
+import AddCashier from "../page/Cashier/AddCashier"
+import EditCashier from "../page/Cashier/EditCashier"
 import OrdersDetails from "../page/Orders/OrdersDetails"
 
 
@@ -24,6 +27,9 @@ const Routing = () => {
                     <Route path="/products/editproduct/:id" element={<EditProduct/>} />
                     <Route path="/orders" element={<Orders/>} />
                     <Route path="/orders/detailorder/:orderid" element={<OrdersDetails/>} />
+                    <Route path="/cashier" element={<Cashier/>} />
+                    <Route path="/cashier/addemployee" element={<AddCashier/>} />
+                    <Route path="/cashier/editemployee/:id" element={<EditCashier/>} />               
                 </Route>
                 <Route path="/preview" element={<Preview />} />
             </Routes>
