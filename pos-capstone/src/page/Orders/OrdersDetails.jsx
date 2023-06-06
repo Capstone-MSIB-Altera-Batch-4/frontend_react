@@ -48,7 +48,7 @@ const OrdersDetails = () => {
                     />
                 </div>
                 <div className="row justify-content-between">
-                    <div className="col-lg-4">
+                    <div className="col-lg-3">
 
                         <SecondaryButton
                             className="w-100 btn-secondary backtoorder text-danger px-3"
