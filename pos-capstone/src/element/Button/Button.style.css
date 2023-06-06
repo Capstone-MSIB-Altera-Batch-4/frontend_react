@@ -9,3 +9,8 @@
 .btn:active {
     background-color: #EF2222
 }
+
+.btn-secondary {
+    border: 1px solid #F46161;
+    background-color: transparent;
+}
