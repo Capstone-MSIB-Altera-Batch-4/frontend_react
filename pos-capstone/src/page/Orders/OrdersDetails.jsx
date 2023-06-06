@@ -48,16 +48,16 @@ const OrdersDetails = () => {
                     />
                 </div>
                 <div className="row justify-content-between">
-                    <div className="col-lg-3">
-                        <div className="col-lg-9">
-                            <SecondaryButton
-                                className="w-100 btn-secondary backtoorder text-danger px-3"
-                                onClick={()=> navigate( "/orders" )}
-                                label={<><ChevronLeft />Back To Order List</>}
-                            />
-                        </div>
+                    <div className="col-lg-4">
+
+                        <SecondaryButton
+                            className="w-100 btn-secondary backtoorder text-danger px-3"
+                            onClick={() => navigate("/orders")}
+                            label={<><ChevronLeft />Back To Order List</>}
+                        />
+
                     </div>
-                    <div className="col-lg-2 text-end">
+                    <div className="col-lg-3">
                         <PrimaryButton
                             className="w-100 btn print text-white px-3"
                             onClick={() => window.print()}
