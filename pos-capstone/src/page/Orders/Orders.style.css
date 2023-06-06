@@ -1,0 +1,86 @@
+.filterbyid label {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+}
+
+.orderinfo label {
+    padding-top: 1rem;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+}
+
+.orderinfo input {
+    padding: 7px 16px;
+    gap: 10px;
+    background: #F9FAFB;
+    border-radius: 8px;
+}
+
+.filterbyid input {
+    padding: 7px 16px;
+    gap: 10px;
+    background: #F9FAFB;
+    border-radius: 8px;
+}
+
+.filtertable {
+    display: flex;
+}
+
+.btn-secondary.backtoorder {
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.btn-print {
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.divider {
+    align-items: center;
+    justify-content: center;
+    background-color: #FDDFDF;
+    padding: 0.1rem;
+}
+
+.divider h5 {
+    color: #700808;
+    margin-top: 0.5rem;
+}
+
+.table-item th {
+    background-color: #FDDFDF;
+    color: #700808;
+    padding-left: 1rem;
+}
+
+.tableitem td {
+    padding-left: 1rem;
+}
+
+.totalharga li {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.SubTotal td,
+.ServiceCharge td,
+.GrandTotal td {
+    border-style: none;
+    padding-left: 1rem;
+}
+
+.SubTotal span,
+.ServiceCharge span,
+.GrandTotal span {
+    font-weight: 700;
+    padding-left: 35rem;
+}

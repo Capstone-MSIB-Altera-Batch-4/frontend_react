@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute"
 import Preview from "../page/Preview/Preview"
 import EditProduct from "../page/Products/EditProduct"
 import Orders from "../page/Orders/Orders"
+import OrdersDetails from "../page/Orders/OrdersDetails"
 
 
 const Routing = () => {
@@ -22,6 +23,7 @@ const Routing = () => {
                     <Route path="/products/addproduct" element={<AddProduct/>} />
                     <Route path="/products/editproduct/:id" element={<EditProduct/>} />
                     <Route path="/orders" element={<Orders/>} />
+                    <Route path="/orders/detailorder/:orderid" element={<OrdersDetails/>} />
                 </Route>
                 <Route path="/preview" element={<Preview />} />
             </Routes>
