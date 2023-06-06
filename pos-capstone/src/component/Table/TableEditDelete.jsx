@@ -1,26 +1,20 @@
-import React, { useMemo } from "react";
+import React, {useState} from "react";
 import TableAction from "./TableAction";
-import { DummyEditDelete } from "../../data/DummyData";
 import { Link } from "react-router-dom";
 import { Pencil, Trash } from "react-bootstrap-icons";
+import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
+import Snackbar from "../../element/Snackbar/Snackbar";
+import "./Table.css";
 
-const TableEdit = () => {
-  const columns = useMemo(
-    () => [
-      { Header: "No", accessor: "no" },
-      { Header: "Id", accessor: "id" },
-      { Header: "Image", accessor: "image" },
-      { Header: "Name", accessor: "name" },
-      { Header: "Category", accessor: "category" },
-      { Header: "Stock", accessor: "stock" },
-      { Header: "Unit", accessor: "unit" },
-      { Header: "Price", accessor: "price" },
-    ],
-    []
-  );
+const TableEdit = ({ columns, data, editPageLink, deteleConfirm }) => {
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const data = DummyEditDelete();
-  
+  const ActionSuccess = () => {
+    setShowConfirmModal(false);
+    setShowSnackbar(true)
+  }
+
   return (
     <div>
       <TableAction
@@ -28,19 +22,38 @@ const TableEdit = () => {
         columns={columns}
         data={data}
         pageSize={10}
-        buttonComponent={() => (
+        buttonComponent={(data) => (
           <div>
-            <Link style={{ marginRight: "15%", color: "#8B8B8B" }}>
+            <Link
+              to={`${editPageLink}/${data.id}`}
+              style={{ marginRight: "15%", color: "#8B8B8B" }}
+            >
               <Pencil />
             </Link>
-            <Link style={{ color: "red" }}>
+            <Link onClick={() => setShowConfirmModal(true)} style={{ color: "red" }}>
               <Trash />
             </Link>
+            <div className="delete-confirm-modal">
+              <ConfirmModal
+                show={showConfirmModal}
+                handleClose={() => setShowConfirmModal(false)}
+                confirmFor={"delete"}
+                role={"Product"}
+                id={data.id}
+                action={() => ActionSuccess()}
+              />
+            </div>
           </div>
         )}
       />
+      {showSnackbar ? (
+          <Snackbar setSnackbar={showSnackbar} action={"delete"} variant={"success"}/>
+        ) : (
+          ""
+        )}
     </div>
   );
 };
 
 export default TableEdit;
+

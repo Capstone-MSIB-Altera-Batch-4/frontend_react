@@ -1,4 +1,3 @@
-
 import TabelDetails from "../../component/Table/TableShowDetails";
 import InputDate from "../../element/InputDate/InputDate";
 import { DummyDetails } from "../../data/DummyData";

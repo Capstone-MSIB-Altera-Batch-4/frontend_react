@@ -5,7 +5,7 @@ import './InputCategoryModal.css'
 
 const InputCategoryModal = ({show, handleClose}) => {
   return (
-    <Modal show={show} onHide={handleClose} contentClassName="modal-category fade-out-down" >
+    <Modal show={show} onHide={handleClose} contentClassName="modal-category" >
       <Modal.Body className="p-4">
         <div className="text-center">
           <h4 className="fw-medium mb-2 text-start">Category</h4>
