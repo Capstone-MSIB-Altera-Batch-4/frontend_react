@@ -1,16 +1,20 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeft, Printer } from "react-bootstrap-icons";
 import { DummyDetails } from "../../data/DummyData";
 import "./Orders.style.css"
 import { useEffect } from "react";
 import { useState } from "react";
+import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
+import PrimaryButton from "../../element/Button/PrimaryButton/PrimaryButton"
+import PageTitle from "../../element/PageTitle/PageTitle";
 
 const OrdersDetails = () => {
     const data = DummyDetails();
     const { orderid } = useParams()
 
     const [DataDetails, setDataDetails] = useState()
+    const navigate = useNavigate()
 
 
     const searchbyid = () => {
@@ -38,34 +42,27 @@ const OrdersDetails = () => {
     return (
         <>
             <div className="col mx-3">
-                <div className="orders-title mb-5">
-                    <h1 className="fw-bold">Orders & Invoice</h1>
+                <div className="orders-title mt-2 mb-5">
+                    <PageTitle
+                        title="Orders & Invoice"
+                    />
                 </div>
                 <div className="row justify-content-between">
-                    <div className="col-4">
-                        <button className="btn-secondary backtoorder text-danger px-3">
-                            <ChevronLeft />
-                            <Link
-                                to={`/orders`}
-                                className="text-decoration-none text-danger ps-1"
-                            >
-
-                                Back To Order List
-                            </Link>
-
-                        </button>
+                    <div className="col-lg-3">
+                        <div className="col-lg-9">
+                            <SecondaryButton
+                                className="w-100 btn-secondary backtoorder text-danger px-3"
+                                onClick={()=> navigate( "/orders" )}
+                                label={<><ChevronLeft />Back To Order List</>}
+                            />
+                        </div>
                     </div>
-                    <div className="col-2 text-end">
-                        <button className="btn print text-white px-3">
-                            <Printer />
-                            <Link
-                                className="text-decoration-none text-white ps-2"
-                                onClick={() => window.print()}
-                            >
-
-                                Print Invoices
-                            </Link>
-                        </button>
+                    <div className="col-lg-2 text-end">
+                        <PrimaryButton
+                            className="w-100 btn print text-white px-3"
+                            onClick={() => window.print()}
+                            label={<><Printer /> Print Invoices </>}
+                        />
                     </div>
                 </div>
                 <div className="divider mt-5">
@@ -87,7 +84,7 @@ const OrdersDetails = () => {
                         value={DataDetails ? DataDetails.NoTable : ''}
                     />
                     <div className="row">
-                        <div className="col-2">
+                        <div className="col-lg-4">
                             <label className="form-label">Order Date</label>
                             <input
                                 type="text"
@@ -96,7 +93,7 @@ const OrdersDetails = () => {
                                 value={DataDetails ? DataDetails.date : ''}
                             />
                         </div>
-                        <div className="col-2">
+                        <div className="col-lg-4">
                             <label className="form-label">Order ID</label>
                             <input
                                 type="text"
@@ -107,7 +104,7 @@ const OrdersDetails = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-2">
+                        <div className="col-lg-4">
                             <label className="form-label">Type</label>
                             <input
                                 type="text"
@@ -116,7 +113,7 @@ const OrdersDetails = () => {
                                 value={DataDetails ? DataDetails.type : ''}
                             />
                         </div>
-                        <div className="col-2">
+                        <div className="col-lg-4">
                             <label className="form-label">Payment</label>
                             <input
                                 type="text"
@@ -125,42 +122,47 @@ const OrdersDetails = () => {
                                 value={DataDetails ? DataDetails.payment : ''}
                             />
                         </div>
-
                     </div>
-                    <table class="table table-item mt-4 w-100">
-                        <thead>
-                            <tr className="tableitem">
-                                <th className="col-10" scope="col">Item Descriptions</th>
-                                <th className="col" scope="col">Qty</th>
-                                <th className="col" scope="col">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {DataDetails?.Item.map((item, idx) =>
-                                <tr className="tableitem" key={idx}>
-                                    <td scope="col">{item.itemName}</td>
-                                    <td scope="col">{item.quantity}</td>
-                                    <td scope="col">{item.price}</td>
+                    <div className="table-responsive">
+                        <table class="table table-item mt-4 w-100">
+                            <thead>
+                                <tr className="tableitem">
+                                    <th className="col-10" scope="col">Item Descriptions</th>
+                                    <th className="col" scope="col">Qty</th>
+                                    <th className="col" scope="col">Price</th>
                                 </tr>
-                            )}
-                            <tr className="SubTotal">
-                                <td colSpan={2} className="col"><span>Sub Total :</span></td>
-                                <td className="col ">{totalharga}</td>
-                            </tr>
-                            <tr className="ServiceCharge">
-                                <td colSpan={2} className="col"><span>Service Charge :</span></td>
-                                <td className="col ">{totalitem?.length * 3000}</td>
-                            </tr>
-                            <tr className="GrandTotal">
-                                <td colSpan={2} className="col"><span>GrandTotal :</span></td>
-                                <td className="col ">{totalharga + totalitem?.length * 3000}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div className="tabletotal table-item w-100">
-
-
-
+                            </thead>
+                            <tbody>
+                                {DataDetails?.Item.map((item, idx) =>
+                                    <tr className="tableitem" key={idx}>
+                                        <td scope="col">{item.itemName}</td>
+                                        <td scope="col">{item.quantity}</td>
+                                        <td scope="col">{item.price}</td>
+                                    </tr>
+                                )}
+                                <tr className="SubTotal">
+                                    <div className="row justify-content-end">
+                                        <td className="col-6">Sub Total</td>
+                                    </div>
+                                    <td></td>
+                                    <td className="col ">{totalharga}</td>
+                                </tr>
+                                <tr className="ServiceCharge">
+                                    <div className="row justify-content-end">
+                                        <td className="col-6">Service Charge</td>
+                                    </div>
+                                    <td></td>
+                                    <td className="col ">{totalitem?.length * 3000}</td>
+                                </tr>
+                                <tr className="GrandTotal">
+                                    <div className="row justify-content-end">
+                                        <td className="col-6">GrandTotal</td>
+                                    </div>
+                                    <td ></td>
+                                    <td className="col ">{totalharga + totalitem?.length * 3000}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

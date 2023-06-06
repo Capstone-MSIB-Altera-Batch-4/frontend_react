@@ -76,11 +76,5 @@
 .GrandTotal td {
     border-style: none;
     padding-left: 1rem;
-}
-
-.SubTotal span,
-.ServiceCharge span,
-.GrandTotal span {
     font-weight: 700;
-    padding-left: 35rem;
 }

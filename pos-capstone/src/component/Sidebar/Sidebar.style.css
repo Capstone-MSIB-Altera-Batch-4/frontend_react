@@ -20,6 +20,11 @@
     font-size: 10px;
 }
 
+.navitem li {
+    display: grid;
+    text-decoration: none;
+}
+
 .branch {
     color: #B1464A;
     font-size: 12px;

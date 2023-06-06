@@ -15,8 +15,8 @@
 
 input[type="date"] {
     padding-left: 2rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -38,6 +38,7 @@ input::-webkit-datetime-edit-fields-wrapper {
 
 input::-webkit-datetime-edit {
     color: #6B7280;
-    position: relative;
-    left: 5%;
+    position: absolute;
+    left: 35;
+    display: block;
 }
