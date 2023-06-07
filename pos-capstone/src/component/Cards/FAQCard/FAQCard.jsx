@@ -3,9 +3,9 @@ import './FAQCard.style.css'
 
 const FAQCard = (props) => {
     return (
-        <div className="FAQcard " style={{
-            width: '345px',
-            height: '171px'
+        <div className="FAQcard mb-3" style={{
+            width: '500px',
+            height: '200px'
         }}>
             <div className="mb-2">
                 <h5 className="d-inline mb-3 me-2 ">

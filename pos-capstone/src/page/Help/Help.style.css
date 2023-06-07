@@ -1,0 +1,37 @@
+.faq-section {
+    background-color: #F7F7F7;
+    ;
+}
+
+.faqcard-section {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.faqcard-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.faqcard {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.faqcard:last-child {
+    margin-right: 0;
+}
+
+.faq-h2 {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.faq-h5 {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
