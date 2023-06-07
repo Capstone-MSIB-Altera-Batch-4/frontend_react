@@ -13,13 +13,11 @@ import ConfirmModal from "../../component/Modal/ConfirmModal/ConfirmModal"
 import Snackbar from "../../element/Snackbar/Snackbar"
 
 const Products = () => {
-    // untuk filter
-    const [searchInput, setSearchInput] = useState("");
-    const [inputId, setInputId] = useState("")
-
-    //untuk snackbar & navbar
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [onShow, setOnShow] = useState(false)
+    const [products, setProducts] = useState(productsData)
+    let filterData = localStorage.getItem('product');
+    console.log("Products", filterData);
 
     // console.log("Snacbar", showSnackbar)
 
@@ -62,12 +60,12 @@ const Products = () => {
             />
           </div>
           <div className="collapse" id="filter">
-            <FilterForm data={productsData} onShow={onShow}/>
+            <FilterForm data={productsData} onShow={onShow} filterFor="product" options={['Sushi', 'Ramen', 'React']}/>
           </div>
           <div className="mt-4">
             <TableEdit
               columns={productHeader}
-              data={productsData}
+              data={products}
               editPageLink={"editproduct"}
               deleteConfirmFor={"Product"}
             />
