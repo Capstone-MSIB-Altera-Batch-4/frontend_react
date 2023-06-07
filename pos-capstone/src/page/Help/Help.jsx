@@ -2,12 +2,15 @@ import { Gear, Search, Whatsapp } from "react-bootstrap-icons"
 import FAQCard from "../../component/Cards/FAQCard/FAQCard"
 import { FAQcards } from "../../data/DummyData"
 import "./Help.style.css"
-import TextField from "../../element/Textfield/Textfield"
-import Button from "../../element/Button/Button"
+// import TextField from "../../element/Textfield/Textfield"
+// import Button from "../../element/Button/Button"
+
 
 const Help = () => {
+
     return (
         <>
+
             <div className="faq-section">
                 <h3 className="pt-4 ps-3"><Gear className="me-2" /> Help</h3>
                 <div className="d-flex align-items-center justify-content-center my-5">
@@ -22,7 +25,15 @@ const Help = () => {
                         </div>
                     </div>
                 </div>
-                <div className="faqcard-section ps-3">
+
+                <div className="faqcard-section ps-3 mt-3">
+                    <div className="faqcard-row">
+                        {FAQcards.map((card, index) => (
+                            <div className="faqcard" key={index}>
+                                <FAQCard title={card.title} desc={card.desc} />
+                            </div>
+                        ))}
+                    </div>
                     <div className="faqcard-row">
                         {FAQcards.map((card, index) => (
                             <div className="faqcard" key={index}>
