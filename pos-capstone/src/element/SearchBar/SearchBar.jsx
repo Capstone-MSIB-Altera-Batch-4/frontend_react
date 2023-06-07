@@ -3,20 +3,6 @@ import { Search } from 'react-bootstrap-icons';
 import './SearchBar.css'
 
 const SearchBar = (props) => {
-  const [searchInput, setSearchInput] = useState("");
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-  };
-
-  const productData = props.value
-
-  if (searchInput.length > 0) {
-    productData.filter((data) => {
-        return data.name.match(searchInput);
-    })
-  }
 
   return (
     <div id="searchbar relative">
@@ -30,8 +16,8 @@ const SearchBar = (props) => {
           className={`input-search-style bg-opacity-10 form-control ${props.className} ${props.onShow === false ? "px-3" : "px-5"}`}
           type="text"
           placeholder={"Search"}
-          value={searchInput}
-          onChange={handleChange}
+          value={props.value}
+          onChange={props.handleChange}
           onBlur={props.onBlur}
         />
         <button onClick={props.onClearInput} type="button" className={`clear px-4 ${props.onShow === false ? "icon-overriden" : ""}`}>

@@ -13,28 +13,24 @@ import ConfirmModal from "../../component/Modal/ConfirmModal/ConfirmModal"
 import Snackbar from "../../element/Snackbar/Snackbar"
 
 const Products = () => {
+    // untuk filter
+    const [searchInput, setSearchInput] = useState("");
+    const [inputId, setInputId] = useState("")
+
+    //untuk snackbar & navbar
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [onShow, setOnShow] = useState(false)
 
-    console.log("Snacbar", showSnackbar)
-  
-    let { state } = {
-      state: {
-        showSnackbar: false,
-        action: "",
-        variant: "",
-      },
-    };
+    // console.log("Snacbar", showSnackbar)
 
-    state = useLocation();
+    const state = useLocation();
 
     console.log("State", state);
-
-    if (state.state !== null && state.state.showSnackbar === true) {
-      useEffect(() => {
+    useEffect(() => {
+      if (state.state !== null && state.state.showSnackbar === true) {
         setShowSnackbar(true);
-      }, [showSnackbar]);
-    }
+      }
+    }, [showSnackbar]);
 
     return (
       <div className="product-page container container-fluid row col-md-10 mx-auto">
@@ -73,6 +69,7 @@ const Products = () => {
               columns={productHeader}
               data={productsData}
               editPageLink={"editproduct"}
+              deleteConfirmFor={"Product"}
             />
           </div>
         </div>
@@ -80,7 +77,7 @@ const Products = () => {
         {/* MODAL & SNACKBAR */}
         <div>
         </div>
-        {showSnackbar ? (
+        {showSnackbar && state.state !== null ? (
           <Snackbar setSnackbar={showSnackbar} action={state.state.action} variant={state.state.variant}/>
         ) : (
           ""

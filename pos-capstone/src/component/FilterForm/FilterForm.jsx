@@ -4,19 +4,19 @@ import SearchBar from '../../element/SearchBar/SearchBar.jsx';
 import InputCategory from '../../element/InputCategory/InputCategory.jsx';
 import './FilterForm.css'
 
-const FilterForm = ({data, onShow}) => {
+const FilterForm = ({onShow, handleChange}) => {
     const [inputId, setInputId] = useState("")
 
-    const handleChange = (e) => {
-      e.preventDefault();
-      setInputId(e.target.value);
-    };
+    // const handleChange = (e) => {
+    //   e.preventDefault();
+    //   setInputId(e.target.value);
+    // };
 
   return (
     <div>
       <div className="filter-form row">
         <div className="col-md-4 mt-2">
-          <SearchBar value={data} onShow={onShow}/>
+          <SearchBar onShow={onShow} handleChange={handleChange}/>
         </div>
         <div className="col-md-4 mb-3">
           <TextField
