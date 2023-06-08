@@ -43,7 +43,7 @@ const Help = () => {
                     </div>
                 </div>
             </div>
-            <div className="row">
+            <div className="row mb-3">
                 <div className="col-3 ps-5 pt-5">
                     <h2 className="faq-h2 pb-4">Still Have Question?</h2>
                     <h5 className="faq-h5">Can’t find the answer you’re looking for? Please chat to aour friendly team.</h5>
