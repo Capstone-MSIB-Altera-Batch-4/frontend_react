@@ -29,9 +29,14 @@ const AddCashier = () => {
         </div>
         <div
           className="text-center mb-5"
-          style={{ backgroundColor: "#FDDFDF" }}
+          style={{
+            backgroundColor: "#FDDFDF",
+            fontSize: "28px",
+            fontWeight: 500,
+            fontFamily: "rubik",
+          }}
         >
-          <PageTitle title="Employee Information" />
+          <h3>Employee Information</h3>
         </div>
         <div>
           <CashierForm showModalFor={"add"} />

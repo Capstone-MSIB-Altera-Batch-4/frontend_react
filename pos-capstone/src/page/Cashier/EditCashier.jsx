@@ -35,8 +35,16 @@ const EditCashier = () => {
           </div>
         </div>
       </div>
-      <div className="text-center mb-5" style={{ backgroundColor: "#FDDFDF" }}>
-        <PageTitle title="Employee Information" />
+      <div
+        className="text-center mb-5"
+        style={{
+          backgroundColor: "#FDDFDF",
+          fontSize: "28px",
+          fontWeight: 500,
+          fontFamily: "rubik",
+        }}
+      >
+        <h3>Employee Information</h3>
       </div>
       <div>
         <CashierForm showModalFor={"edit"} />
