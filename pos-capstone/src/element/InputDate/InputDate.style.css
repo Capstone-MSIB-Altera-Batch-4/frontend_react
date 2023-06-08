@@ -1,0 +1,44 @@
+#inputdate label {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+}
+
+#inputdate input {
+    gap: 10px;
+    background: #F9FAFB;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+}
+
+input[type="date"] {
+    padding-left: 2rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    display: block;
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>'); */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%236B7280" d="M4.5 1C4.5 0.447715 4.94772 0 5.5 0C6.05228 0 6.5 0.447715 6.5 1V2H14.5V1C14.5 0.447715 14.9477 0 15.5 0C16.0523 0 16.5 0.447715 16.5 1V2H18.5C19.6046 2 20.5 2.89543 20.5 4V9V18.125C20.5 19.1605 19.6046 20 18.5 20H2.5C1.39543 20 0.5 19.1605 0.5 18.125V9V4C0.5 2.89543 1.39543 2 2.5 2H4.5V1ZM2.5 9V18.125H18.5V9H2.5ZM5.5 4H15.5H18.5V7H2.5V4H5.5ZM5.5 12C6.05228 12 6.5 11.5523 6.5 11C6.5 10.4477 6.05228 10 5.5 10C4.94772 10 4.5 10.4477 4.5 11C4.5 11.5523 4.94772 12 5.5 12ZM10.5 12C11.0523 12 11.5 11.5523 11.5 11C11.5 10.4477 11.0523 10 10.5 10C9.94772 10 9.5 10.4477 9.5 11C9.5 11.5523 9.94772 12 10.5 12ZM16.5 11C16.5 11.5523 16.0523 12 15.5 12C14.9477 12 14.5 11.5523 14.5 11C14.5 10.4477 14.9477 10 15.5 10C16.0523 10 16.5 10.4477 16.5 11ZM5.5 17C6.05228 17 6.5 16.5523 6.5 16C6.5 15.4477 6.05228 15 5.5 15C4.94772 15 4.5 15.4477 4.5 16C4.5 16.5523 4.94772 17 5.5 17ZM11.5 16C11.5 16.5523 11.0523 17 10.5 17C9.94772 17 9.5 16.5523 9.5 16C9.5 15.4477 9.94772 15 10.5 15C11.0523 15 11.5 15.4477 11.5 16ZM15.5 17C16.0523 17 16.5 16.5523 16.5 16C16.5 15.4477 16.0523 15 15.5 15C14.9477 15 14.5 15.4477 14.5 16C14.5 16.5523 14.9477 17 15.5 17Z"/></svg>');
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 10px;
+}
+
+input::-webkit-datetime-edit-fields-wrapper {
+    position: relative;
+    left: 5%;
+}
+
+input::-webkit-datetime-edit {
+    color: #6B7280;
+    position: absolute;
+    left: 35;
+    display: block;
+}

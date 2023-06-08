@@ -3,10 +3,16 @@ import Login from "../page/Login/Login"
 import Landing from "../page/Landing/Landing"
 import Dashboard from "../page/Dashboard/Dashboard"
 import Products from "../page/Products/Products"
-import AddProduct from "../page/addProduct/addProduct"
+import AddProduct from "../page/Products/AddProduct"
 import PrivateRoute from "./PrivateRoute"
 import Preview from "../page/Preview/Preview"
 import Help from "../page/Help/Help"
+import EditProduct from "../page/Products/EditProduct"
+import Orders from "../page/Orders/Orders"
+import Cashier from "../page/Cashier/Cashier"
+import AddCashier from "../page/Cashier/AddCashier"
+import EditCashier from "../page/Cashier/EditCashier"
+import OrdersDetails from "../page/Orders/OrdersDetails"
 
 
 const Routing = () => {
@@ -19,6 +25,12 @@ const Routing = () => {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/products" element={<Products/>} />
                     <Route path="/products/addproduct" element={<AddProduct/>} />
+                    <Route path="/products/editproduct/:id" element={<EditProduct/>} />
+                    <Route path="/orders" element={<Orders/>} />
+                    <Route path="/orders/detailorder/:orderid" element={<OrdersDetails/>} />
+                    <Route path="/cashier" element={<Cashier/>} />
+                    <Route path="/cashier/addemployee" element={<AddCashier/>} />
+                    <Route path="/cashier/editemployee/:id" element={<EditCashier/>} />      
                     <Route path="/help" element={<Help />} />
                 </Route>
                 <Route path="/preview" element={<Preview />} />

@@ -8,3 +8,10 @@
     border-radius: 20px !important;
     animation: fadeIn 1.5s, fadeOut 0.5s 2.5s;
 }
+
+.modal.in .modal-dialog {
+    position: fixed;       
+    bottom: 0;
+    right: 50%;
+    transform: translate(-50%);
+ }

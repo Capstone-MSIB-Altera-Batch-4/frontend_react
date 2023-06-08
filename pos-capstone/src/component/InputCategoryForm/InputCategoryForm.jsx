@@ -22,12 +22,12 @@ const InputCategoryForm = ({handleClose}) => {
         setCategoryList(categories)
     };
 
-    // handleChange = (e, index) => {
-    //     const { name, value } = e.target;
-    //     const categories = [...categoryList];
-    //     categories[index][name] = value;
-    //     setCategoryList(categories);
-    // };
+    const handleChange = (e, index) => {
+        const { name, value } = e.target;
+        const categories = [...categoryList];
+        categories[index][name] = value;
+        setCategoryList(categories);
+    };
 
     const formik = useFormik({
         initialValues: {
@@ -56,10 +56,9 @@ const InputCategoryForm = ({handleClose}) => {
                 type="text"
                 id="category"
                 value={categoryItem.category}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                onChange={(e) => handleChange(e, index)}
                 className={
-                  formik.errors.category && formik.touched.category
+                  formik.errors.category
                     ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                     : "form-control mt-1"
                 }

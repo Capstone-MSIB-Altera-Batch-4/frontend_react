@@ -1,20 +1,27 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { useState, forwardRef, useImperativeHandle, useEffect } from "react";
 import { CheckCircle, ExclamationCircle } from "react-bootstrap-icons";
 import './Snackbar.css'
 
-const Snackbar = forwardRef(({ action, variant }, ref) => {
+const Snackbar = ({ action, variant, setSnackbar }) => {
   const [show, setShow] = useState(false);
 
-  useImperativeHandle(ref, () => ({
-    showSnackbar() {
-      setTimeout(() => {
-        setShow(true);
-      }, 100);
-      setTimeout(() => {
-        setShow(false);
-      }, 3000);
-    },
-  }));
+  console.log(setSnackbar)
+
+    useEffect(() => {
+      if (setSnackbar === true) {
+        const showSnackbar = setTimeout(() => {
+          setShow(setSnackbar);
+        }, 100);
+        const closeSnackbar = setTimeout(() => {
+          setShow(false);
+        }, 3000);
+    
+        return () => {
+          clearTimeout(showSnackbar);
+          clearTimeout(closeSnackbar);
+        }
+      }
+    }, [setSnackbar])
 
   const getActionMessage = () => {
     switch (action) {
@@ -48,6 +55,6 @@ const Snackbar = forwardRef(({ action, variant }, ref) => {
       </p>
     </div>
   );
-});
+};
 
 export default Snackbar;

@@ -6,7 +6,7 @@ import "./Sidebar.style.css"
 const Sidebar = () => {
 
     return (
-        <div className="sidebar bar col auto col-md-2 min-vh-100">
+        <div className="sidebar bar col auto col-lg-2 min-vh-100">
             <div className="text-center mt-3 py-1 ">
                 <img
                     className="logo-sidebar p-3"
@@ -14,7 +14,7 @@ const Sidebar = () => {
                     width={180} height={180}
                 />
             </div>
-            <ul className="nav flex-column">
+            <ul className="navitem w-100 ps-0">
                 <li>
                     <NavLink to={dashboard.path} className="nav-link mt-3" activeclassName="active" >
                         <div className="icon">{dashboard.icon}</div>
