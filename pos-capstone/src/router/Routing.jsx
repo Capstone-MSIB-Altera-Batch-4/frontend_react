@@ -6,6 +6,7 @@ import Products from "../page/Products/Products"
 import AddProduct from "../page/Products/AddProduct"
 import PrivateRoute from "./PrivateRoute"
 import Preview from "../page/Preview/Preview"
+import Help from "../page/Help/Help"
 import EditProduct from "../page/Products/EditProduct"
 import Orders from "../page/Orders/Orders"
 import Cashier from "../page/Cashier/Cashier"
@@ -29,7 +30,8 @@ const Routing = () => {
                     <Route path="/orders/detailorder/:orderid" element={<OrdersDetails/>} />
                     <Route path="/cashier" element={<Cashier/>} />
                     <Route path="/cashier/addemployee" element={<AddCashier/>} />
-                    <Route path="/cashier/editemployee/:id" element={<EditCashier/>} />               
+                    <Route path="/cashier/editemployee/:id" element={<EditCashier/>} />      
+                    <Route path="/help" element={<Help />} />
                 </Route>
                 <Route path="/preview" element={<Preview />} />
             </Routes>

@@ -1,0 +1,21 @@
+.FAQcard {
+    padding: 20px;
+    background: #FFF0DE;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+}
+
+.FAQcard h5 {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+}
+
+@media (max-width: 767px) {
+    .FAQcard {
+        width: 100%;
+        height: auto;
+    }
+}
