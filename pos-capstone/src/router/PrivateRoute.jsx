@@ -7,7 +7,10 @@ const PrivateRoute = () => {
             <div className="container-fluid ">
                 <div className="row">
                     <Sidebar />
-                    <Outlet />
+                    <div className="col-10 p-0">
+                        <Outlet />
+                    </div>
+
                 </div>
             </div>
         </>
@@ -20,13 +23,13 @@ export default PrivateRoute
 
 // let isLoggin
 
-    // // get token dari local storage
-    // const userString = sessionStorage.getItem("user");
-    // const user = JSON.parse(userString);
+// // get token dari local storage
+// const userString = sessionStorage.getItem("user");
+// const user = JSON.parse(userString);
 
-    // // check token dari local storage
-    // user?.usertoken ? isLoggin = true : isLoggin = false;
+// // check token dari local storage
+// user?.usertoken ? isLoggin = true : isLoggin = false;
 
-    // if (!isLoggin) {
-    //     return <Navigate to={'/'} replace />
-    // } else {}
+// if (!isLoggin) {
+//     return <Navigate to={'/'} replace />
+// } else {}

@@ -38,7 +38,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={help.path} className="nav-link" activeclassName="active" >
+                    <NavLink to={logout.path} className="nav-link" activeclassName="active" >
                         <div className="icon">{logout.icon}</div>
                         <div className="barname">{logout.name}</div>
                     </NavLink>
