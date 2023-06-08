@@ -19,6 +19,7 @@ const Dropdown = (props) => {
                     name={props.name}
                     style={props.style}
                     onBlur={props.onBlur}
+                    onChange={props.handleChange}
                 >{props.placeholder}
                     <button className="btn-dropdown">
                         <span className="dropdown-toggle"></span>

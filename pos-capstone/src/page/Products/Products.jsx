@@ -16,19 +16,25 @@ const Products = () => {
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [onShow, setOnShow] = useState(false)
     const [products, setProducts] = useState(productsData)
-    let filterData = localStorage.getItem('product');
-    console.log("Products", filterData);
 
-    // console.log("Snacbar", showSnackbar)
+    let filterData = JSON.parse(localStorage.getItem('product'));
+    // console.log("Products", filterData);
+
 
     const state = useLocation();
 
-    console.log("State", state);
+    // console.log("State", state);
     useEffect(() => {
       if (state.state !== null && state.state.showSnackbar === true) {
         setShowSnackbar(true);
       }
     }, [showSnackbar]);
+
+    // show data 
+    useEffect(() => {
+      setProducts(filterData)
+      // console.log("Products di useEffect", products);
+    }, [filterData])
 
     return (
       <div className="product-page container container-fluid row col-md-10 mx-auto">

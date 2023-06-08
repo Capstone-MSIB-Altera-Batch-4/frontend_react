@@ -11,8 +11,6 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
     const initData = data;
     const [filterData, setFilterData] = useState(data);
     
-    console.log("Products", data);
-    
     const getDropdownPlaceholder = () => {
       switch (filterFor) {
         case "product":
@@ -26,7 +24,7 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
 
     const filterbyId = (arrData) => {
       return arrData.filter((data) => 
-        data.order_id.includes(`${inputId}`)
+        data.id.toLowerCase().includes(`${inputId}`)
       )
     }
 
@@ -37,17 +35,17 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
     }
 
     const filterDropdown = (arrData) => {
-      if (filterFor === "product") {
+      if (filterFor === "product" && selected) {
         return arrData.filter((data) => {
-          data.category == `${categoryData}`
+          return data.category === selected
         })
-      }else if (filterFor === "cashier" || "employee") {
+      }else if (filterFor === "cashier" || "employee" && selected) {
         return arrData.filter((data) => {
-          data.position == `${categoryData}`
+          data.position === selected
         })
       } else {
         return arrData.filter((data) => {
-          data.level == `${categoryData}`
+          data.level === selected
         })
       }
     }
@@ -61,19 +59,26 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
       if(searchInput.length!=0){
       result = filterbyName(result)}
 
-      // if(searchInput.length!=0){
-      //   result = filterbyName(result)}
+      if(selected){
+        result = filterDropdown(result)}
       
       setFilterData(result);
-      localStorage.setItem(`${filterFor}`, filterData);
-      
-    },[inputId, searchInput])
+      // console.log(result)
+
+    },[inputId, searchInput, selected])
+
+    localStorage.setItem(`${filterFor}`, JSON.stringify(filterData));
 
   return (
     <div className=''>
       <div className="filter-form row">
         <div className="col-md-4 mt-2">
-          <SearchBar onShow={onShow} handleChange={(e) => setSearchInput(e.target.value)} />
+          <SearchBar 
+            onShow={onShow} 
+            value={searchInput}
+            handleChange={(e) => setSearchInput(e.target.value)} 
+            onClearInput={() => setSearchInput("")}
+            />
         </div>
         <div className="col-md-4 mb-3">
           <TextField
@@ -86,6 +91,7 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
             value={inputId}
             onChange={(e) => setInputId(e.target.value)}
             className={"w-100 form-control bg-opacity-10"}
+            onClearInput={() => setInputId("")}
           />
         </div>
         <div className="col-md-4">
@@ -95,6 +101,7 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
             name="dropdown"
             className="dropdown"
             placeholder={selected ? selected : `${getDropdownPlaceholder()}`}
+            handleChange={(e) => setSelected(e.target.options)} 
             options={options.map((item, idx) => (
               <li key={idx}>
                 <a
