@@ -16,3 +16,12 @@ export const employeeHeader = [
       { Header: "Position", accessor: "position" },
       { Header: "Joined", accessor: "joined" }
 ]
+
+export const membershipsHeader = [
+    { Header: "No", accessor: "no" },
+    { Header: "ID Customer", accessor: "id" },
+    { Header: "Name", accessor: "name_customer" },
+    { Header: "Level", accessor: "level" },
+    { Header: "Points", accessor: "points" },
+    { Header: "Joined", accessor: "joined" }
+]
