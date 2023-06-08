@@ -1,5 +1,4 @@
 import React from "react";
-import PageTitle from "../../element/PageTitle/PageTitle";
 import { useParams } from "react-router-dom";
 import { productsData } from "../../data/DummyData";
 import { PencilFill } from "react-bootstrap-icons";

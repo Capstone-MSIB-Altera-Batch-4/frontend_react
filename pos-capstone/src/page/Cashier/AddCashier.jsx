@@ -1,7 +1,6 @@
 import React from "react";
 import CashierForm from "../../component/CashierForm/CashierForm";
 import { PencilFill } from "react-bootstrap-icons";
-import PageTitle from "../../element/PageTitle/PageTitle";
 
 const AddCashier = () => {
   return (
