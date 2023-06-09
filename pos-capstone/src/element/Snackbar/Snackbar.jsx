@@ -5,8 +5,6 @@ import './Snackbar.css'
 const Snackbar = ({ action, variant, setSnackbar }) => {
   const [show, setShow] = useState(false);
 
-  console.log(setSnackbar)
-
     useEffect(() => {
       if (setSnackbar === true) {
         const showSnackbar = setTimeout(() => {

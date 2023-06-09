@@ -33,7 +33,6 @@ const Products = () => {
     // show data 
     useEffect(() => {
       setProducts(filterData)
-      // console.log("Products di useEffect", products);
     }, [filterData])
 
     return (
@@ -66,7 +65,12 @@ const Products = () => {
             />
           </div>
           <div className="collapse" id="filter">
-            <FilterForm data={productsData} onShow={onShow} filterFor="product" options={['Sushi', 'Ramen', 'React']}/>
+            <FilterForm
+              data={productsData}
+              onShow={onShow}
+              filterFor="product"
+              options={["Sushi", "Ramen", "React"]}
+            />
           </div>
           <div className="mt-4">
             <TableEdit
@@ -75,14 +79,19 @@ const Products = () => {
               editPageLink={"editproduct"}
               deleteConfirmFor={"Product"}
             />
+            {products ? (
+              "" ): (<td>Product item not found</td>)}
           </div>
         </div>
 
         {/* MODAL & SNACKBAR */}
-        <div>
-        </div>
+        <div></div>
         {showSnackbar && state.state !== null ? (
-          <Snackbar setSnackbar={showSnackbar} action={state.state.action} variant={state.state.variant}/>
+          <Snackbar
+            setSnackbar={showSnackbar}
+            action={state.state.action}
+            variant={state.state.variant}
+          />
         ) : (
           ""
         )}
