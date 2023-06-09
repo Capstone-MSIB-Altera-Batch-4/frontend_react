@@ -49,7 +49,7 @@ const Memberships = () => {
             />
           </div>
           <div className="collapse" id="filter">
-            <FilterForm data={membershipsData} onShow={onShow} options={["Sushi", "Ramen", "React"]}/>
+            <FilterForm data={membershipsData} onShow={onShow} options={["Sushi", "Ramen", "React"]} filterFor="member" dropdownLabel="Level"/>
           </div>
           <div className="mt-4">
             <TableEdit

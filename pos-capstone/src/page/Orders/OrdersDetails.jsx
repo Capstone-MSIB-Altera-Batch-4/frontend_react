@@ -51,15 +51,15 @@ const OrdersDetails = () => {
                     <div className="col-lg-3">
 
                         <SecondaryButton
-                            className="w-100 btn-secondary backtoorder text-danger px-3"
+                            className="btn-secondary backtoorder text-danger px-3"
                             onClick={() => navigate("/orders")}
                             label={<><ChevronLeft className="me-3" /> Back To Order List</>}
                         />
 
                     </div>
-                    <div className="col-lg-3">
+                    <div className="col-lg-3 text-end pe-3">
                         <PrimaryButton
-                            className="w-100 btn print text-white px-3"
+                            className="btn print text-white px-3"
                             onClick={() => window.print()}
                             label={<><Printer className="me-3" /> Print Invoices </>}
                         />

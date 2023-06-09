@@ -4,7 +4,7 @@ import SearchBar from '../../element/SearchBar/SearchBar.jsx';
 import Dropdown from '../../element/Dropdown/Dropdown.jsx';
 import './FilterForm.css'
 
-const FilterForm = ({onShow, data, filterFor, options}) => {
+const FilterForm = ({onShow, data, filterFor, options, dropdownLabel}) => {
     const [inputId, setInputId] = useState("")
     const [searchInput, setSearchInput] = useState("");
     const [selected, setSelected] = useState('')
@@ -81,7 +81,7 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
             />
         </div>
         <div className="col-md-4 mb-3">
-          <TextField
+          {/* <TextField
             htmlFor="id"
             label="Id"
             placeholder={`Search id ${filterFor}`}
@@ -92,11 +92,11 @@ const FilterForm = ({onShow, data, filterFor, options}) => {
             onChange={(e) => setInputId(e.target.value)}
             className={"w-100 form-control bg-opacity-10"}
             onClearInput={() => setInputId("")}
-          />
+          /> */}
         </div>
         <div className="col-md-4">
           <Dropdown
-            label="Category"
+            label={dropdownLabel}
             id="dropdown"
             name="dropdown"
             className="dropdown"

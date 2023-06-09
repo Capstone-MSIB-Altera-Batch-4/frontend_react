@@ -69,6 +69,7 @@ const Products = () => {
               onShow={onShow}
               filterFor="product"
               options={["Sushi", "Ramen", "React"]}
+              dropdownLabel="Category"
             />
           </div>
           <div className="mt-4">

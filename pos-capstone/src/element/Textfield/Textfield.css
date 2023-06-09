@@ -16,7 +16,7 @@
 .clear-button {
     font-family: 'Rubik';
     font-weight: 300;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     right: 20px;
     height: 100%;
