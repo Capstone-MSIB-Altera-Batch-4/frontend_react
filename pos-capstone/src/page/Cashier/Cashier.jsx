@@ -16,25 +16,33 @@ const Cashier = () => {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
 
-  console.log("Snacbar", showSnackbar);
+  const state = useLocation();
 
-  let { state } = {
-    state: {
-      showSnackbar: false,
-      action: "",
-      variant: "",
-    },
-  };
-
-  state = useLocation();
-
-  console.log("State", state);
-
-  if (state.state !== null && state.state.showSnackbar === true) {
-    useEffect(() => {
+  useEffect(() => {
+    if (state.state !== null && state.state.showSnackbar === true) {
       setShowSnackbar(true);
-    }, [showSnackbar]);
-  }
+    }
+  }, [showSnackbar]);
+
+  // console.log("Snacbar", showSnackbar);
+
+  // let { state } = {
+  //   state: {
+  //     showSnackbar: false,
+  //     action: "",
+  //     variant: "",
+  //   },
+  // };
+
+  // state = useLocation();
+
+  // console.log("State", state);
+
+  // if (state.state !== null && state.state.showSnackbar === true) {
+  //   useEffect(() => {
+  //     setShowSnackbar(true);
+  //   }, [showSnackbar]);
+  // }
 
   return (
     <div className="product-page container container-fluid row mx-auto">
@@ -105,13 +113,14 @@ const Cashier = () => {
             columns={employeeHeader}
             data={employeeData}
             editPageLink={"editemployee"}
+            deleteConfirmFor="Employee"
           />
         </div>
       </div>
 
       {/* MODAL & SNACKBAR */}
       <div></div>
-      {showSnackbar ? (
+      {showSnackbar && state.state !== null ? (
         <Snackbar
           setSnackbar={showSnackbar}
           action={state.state.action}

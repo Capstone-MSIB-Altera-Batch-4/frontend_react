@@ -11,7 +11,7 @@ const ConfirmModal = ({ show, handleClose, role, id, confirmFor, action }) => {
       case "add":
         return "New product will be added";
       case "edit":
-        return `${role} data wiil change`;
+        return `${role} data will change`;
       case "delete":
         return `${role} with code ${id} will be deleted`;
       case "logout":

@@ -10,66 +10,77 @@ import { useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
 
 const Memberships = () => {
-    const [showSnackbar, setShowSnackbar] = useState(false);
-    const [onShow, setOnShow] = useState(false)
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [onShow, setOnShow] = useState(false)
 
-    console.log("Snackbar", showSnackbar)
-  
-    let { state } = {
-      state: {
-        showSnackbar: false,
-        action: "",
-        variant: "",
-      },
-    };
+  // console.log("Snackbar", showSnackbar)
 
-    state = useLocation();
+  // let { state } = {
+  //   state: {
+  //     showSnackbar: false,
+  //     action: "",
+  //     variant: "",
+  //   },
+  // };
 
-    console.log("State", state);
+  const state = useLocation();
 
+  useEffect(() => {
     if (state.state !== null && state.state.showSnackbar === true) {
-      useEffect(() => {
-        setShowSnackbar(true);
-      }, [showSnackbar]);
+      setShowSnackbar(true);
     }
+  }, [showSnackbar]);
 
-    return (
-      <div className="memberships-page container container-fluid row mx-auto">
-        <div className="col">
-          <div className="my-5">
-            <PageTitle title="Membership" />
-          </div>
-          <div className="d-flex justify-content-end">
-            <SecondaryButton
-              type="button"
-              databstoggle="collapse"
-              databstarget="#filter"
-              label={<img src={filterIcon} />}
-              onClick={() => setOnShow(!onShow)}
-            />
-          </div>
-          <div className="collapse" id="filter">
-            <FilterForm data={membershipsData} onShow={onShow} options={["Sushi", "Ramen", "React"]} filterFor="member" dropdownLabel="Level"/>
-          </div>
-          <div className="mt-4">
-            <TableEdit
-              columns={membershipsHeader}
-              data={membershipsData}
-              editPageLink={"editmembership"}
-            />
-          </div>
-        </div>
+  // console.log("State", state);
 
-        {/* MODAL & SNACKBAR */}
-        <div>
+  // if (state.state !== null && state.state.showSnackbar === true) {
+  //   useEffect(() => {
+  //     setShowSnackbar(true);
+  //   }, [showSnackbar]);
+  // }
+
+  return (
+    <div className="memberships-page container container-fluid row mx-auto">
+      <div className="col">
+        <div className="my-5">
+          <PageTitle title="Membership" />
         </div>
-        {showSnackbar ? (
-          <Snackbar setSnackbar={showSnackbar} action={state.state.action} variant={state.state.variant}/>
-        ) : (
-          ""
-        )}
+        <div className="d-flex justify-content-end">
+          <SecondaryButton
+            type="button"
+            databstoggle="collapse"
+            databstarget="#filter"
+            label={<img src={filterIcon} />}
+            onClick={() => setOnShow(!onShow)}
+          />
+        </div>
+        <div className="collapse" id="filter">
+          <FilterForm data={membershipsData} onShow={onShow} options={["Sushi", "Ramen", "React"]} filterFor="member" dropdownLabel="Level" />
+        </div>
+        <div className="mt-4">
+          <TableEdit
+            columns={membershipsHeader}
+            data={membershipsData}
+            editPageLink={"editmembership"}
+            deleteConfirmFor="Member"
+            
+          />
+        </div>
       </div>
-    );
+
+      {/* MODAL & SNACKBAR */}
+      <div>
+      </div>
+      {showSnackbar && state.state !== null ? (
+        <Snackbar
+          setSnackbar={showSnackbar}
+          action={state.state.action}
+          variant={state.state.variant} />
+      ) : (
+        ""
+      )}
+    </div>
+  );
 }
 
 export default Memberships;
