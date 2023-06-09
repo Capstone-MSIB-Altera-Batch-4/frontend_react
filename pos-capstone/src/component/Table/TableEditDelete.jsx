@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import TableAction from "./TableAction";
 import { Link } from "react-router-dom";
 import { Pencil, Trash } from "react-bootstrap-icons";
@@ -6,14 +6,32 @@ import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
 
-const TableEdit = ({ columns, data, editPageLink, deteleConfirm }) => {
+const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
+  const [id, setId] = useState("")
 
   const ActionSuccess = () => {
     setShowConfirmModal(false);
-    setShowSnackbar(true)
+    setShowSnackbar(true);
   }
+
+  // if (showSnackbar) {
+  //   setShowSnackbar(false);
+  // }
+
+  console.log("SB", showSnackbar)
+
+  // useEffect(() => {
+  //   if (state.state !== null && state.state.showSnackbar === true) {
+  //     setShowSnackbar(true);
+  //   }
+  // }, [showSnackbar]);
+
+  const confirmDelete = (id) => {
+    setId(id)
+    setShowConfirmModal(true)
+  };
 
   return (
     <div>
@@ -30,27 +48,36 @@ const TableEdit = ({ columns, data, editPageLink, deteleConfirm }) => {
             >
               <Pencil />
             </Link>
-            <Link onClick={() => setShowConfirmModal(true)} style={{ color: "red" }}>
+            <Link
+              onClick={() => confirmDelete(data.id)}
+              style={{ color: "red" }}
+            >
               <Trash />
             </Link>
-            <div className="delete-confirm-modal">
-              <ConfirmModal
-                show={showConfirmModal}
-                handleClose={() => setShowConfirmModal(false)}
-                confirmFor={"delete"}
-                role={"Product"}
-                id={data.id}
-                action={() => ActionSuccess()}
-              />
-            </div>
           </div>
         )}
       />
+      
+      {/* NAVBAR & SNACKBAR */}
+      <div className="delete-confirm-modal">
+        <ConfirmModal
+          show={showConfirmModal}
+          handleClose={() => setShowConfirmModal(false)}
+          confirmFor={"delete"}
+          role={deleteConfirmFor}
+          id={id}
+          action={() => ActionSuccess()}
+        />
+      </div>
       {showSnackbar ? (
-          <Snackbar setSnackbar={showSnackbar} action={"delete"} variant={"success"}/>
-        ) : (
-          ""
-        )}
+        <Snackbar
+          setSnackbar={showSnackbar}
+          action={"delete"}
+          variant={"success"}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

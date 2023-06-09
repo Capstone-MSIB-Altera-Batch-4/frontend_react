@@ -26,7 +26,7 @@ const ProductFrom = ({ showModalFor }) => {
       category: "",
       stock: "",
       price: "",
-      unit: "",
+      unit: ""
     },
     validationSchema: Yup.object().shape({
       id: Yup.string().required("The id field must be filled in"),

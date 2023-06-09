@@ -34,82 +34,84 @@ const TableAction = ({
   };
 
   return (
-    <div className="table-edit-delete overflow-hidden">
-      <table className="table table-borderless text-center">
-        <thead>
-          <tr>
-            {columns.map((column, columnIndex) => (
-              <th style={headerColor} key={columnIndex}>
-                {column.Header}
-              </th>
-            ))}
-            <th style={headerColor}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentPage.map((row, rowIndex) => (
-            <tr
-              key={rowIndex}
-              onMouseEnter={() => handleRowHover(rowIndex)}
-              onMouseLeave={handleRowLeave}
-              style={
-                rowIndex === hoveredRow
-                  ? { backgroundColor: "#E7E7E7" }
-                  : { backgroundColor: "inherit" }
-              }
-            >
+    <div className="table-edit-delete">
+      <div className="scroll-table">
+        <table className="table table-borderless text-center">
+          <thead>
+            <tr>
               {columns.map((column, columnIndex) => (
-                <td
-                  key={columnIndex}
-                  style={
-                    rowIndex === hoveredRow
-                      ? { backgroundColor: "#E7E7E7" }
-                      : { backgroundColor: "inherit" }
-                  }
-                >
-                  {row[column.accessor]}
-                </td>
+                <th style={headerColor} key={columnIndex}>
+                  {column.Header}
+                </th>
               ))}
-              <td
+              <th style={headerColor}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentPage.map((row, rowIndex) => (
+              <tr
+                key={rowIndex}
+                onMouseEnter={() => handleRowHover(rowIndex)}
+                onMouseLeave={handleRowLeave}
                 style={
                   rowIndex === hoveredRow
                     ? { backgroundColor: "#E7E7E7" }
                     : { backgroundColor: "inherit" }
                 }
               >
-                <div
+                {columns.map((column, columnIndex) => (
+                  <td
+                    key={columnIndex}
+                    style={
+                      rowIndex === hoveredRow
+                        ? { backgroundColor: "#E7E7E7" }
+                        : { backgroundColor: "inherit" }
+                    }
+                  >
+                    {row[column.accessor]}
+                  </td>
+                ))}
+                <td
                   style={
-                    rowIndex === hoveredRow ? {} : { visibility: "hidden" }
+                    rowIndex === hoveredRow
+                      ? { backgroundColor: "#E7E7E7" }
+                      : { backgroundColor: "inherit" }
                   }
                 >
-                  {buttonComponent(row)}
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                  <div
+                    style={
+                      rowIndex === hoveredRow ? {} : { visibility: "hidden" }
+                    }
+                  >
+                    {buttonComponent(row)}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <div className="row px-0 mt-5">
-        <div className="col-md-6">
+      <div className="row px-0 mt-5 justify-content-between">
+        <div className="col-md-6 w-25">
           <div className="d-flex justify-content-start">
             <label htmlFor="rowsPerPageSelect">Show</label>
             <span className="number-wrapper">
               <input
-                className="mx-3"
+                className="mx-3 input-pagination"
                 type="number"
                 id="rowsPerPageSelect"
                 min="1"
                 max="100"
                 value={rowsPerPage}
-                style={{ borderColor: "red", borderRadius: "5px", color: "red", width: "100px", outline: "none"}}
+                style={{ borderColor: "red", borderRadius: "5px", color: "red", outline: "none"}}
                 onChange={handleRowsPerPageChange} 
               />
             </span>
             <label>Data</label>
           </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 w-25">
           <div className="d-flex justify-content-end">
             <button
               onClick={() => setPageIndex((prevIndex) => prevIndex - 1)}
