@@ -6,7 +6,7 @@ import "./Sidebar.style.css"
 const Sidebar = () => {
 
     return (
-        <div className="sidebar bar col auto col-lg-2 min-vh-100">
+        <div className="sidebar bar col-lg-2 min-vh-100">
             <div className="text-center mt-3 py-1 ">
                 <img
                     className="logo-sidebar p-3"

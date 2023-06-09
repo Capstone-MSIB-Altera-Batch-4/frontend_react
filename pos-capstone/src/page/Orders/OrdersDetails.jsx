@@ -48,7 +48,7 @@ const OrdersDetails = () => {
                     />
                 </div>
                 <div className="row justify-content-between">
-                    <div className="col-lg-3">
+                    <div className="col-lg-2">
 
                         <SecondaryButton
                             className="w-100 btn-secondary backtoorder text-danger px-3"
@@ -57,7 +57,7 @@ const OrdersDetails = () => {
                         />
 
                     </div>
-                    <div className="col-lg-3">
+                    <div className="col-lg-2">
                         <PrimaryButton
                             className="w-100 btn print text-white px-3"
                             onClick={() => window.print()}

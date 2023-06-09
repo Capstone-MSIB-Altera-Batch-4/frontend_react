@@ -56,7 +56,7 @@ const Orders = () => {
   }, [inputid, inputdate])
 
   return (
-    <div className="orderspage col ps-3">
+    <div className="orderspage overflow-hidden mx-3">
       <div className="orders-title mt-2 mb-5">
         <PageTitle
           title="Orders & Invoice"
@@ -93,12 +93,11 @@ const Orders = () => {
           </div>
         </div>
       </div>
-      <div className="table-responsive default-orders">
+      <div className="overflow-hidden">
         <TabelDetails
           data={Datas}
         />
-
-      </div>
+        </div>
     </div>
   );
 };
