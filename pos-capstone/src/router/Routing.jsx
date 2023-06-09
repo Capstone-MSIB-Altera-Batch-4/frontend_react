@@ -14,6 +14,7 @@ import EditCashier from "../page/Cashier/EditCashier"
 import OrdersDetails from "../page/Orders/OrdersDetails"
 import Memberships from "../page/Memberships/Memberships"
 import EditMembership from "../page/Memberships/EditMembership"
+import Help from "../page/Help/Help"
 
 
 const Routing = () => {
@@ -33,7 +34,8 @@ const Routing = () => {
                     <Route path="/cashier/addemployee" element={<AddCashier/>} />
                     <Route path="/cashier/editemployee/:id" element={<EditCashier/>} />   
                     <Route path="/memberships" element={<Memberships/>} /> 
-                    <Route path="/memberships/editmembership/:id" element={<EditMembership/>} />          
+                    <Route path="/memberships/editmembership/:id" element={<EditMembership/>} />       
+                    <Route path="/help" element={<Help />} />   
                 </Route>
                 <Route path="/preview" element={<Preview />} />
             </Routes>
