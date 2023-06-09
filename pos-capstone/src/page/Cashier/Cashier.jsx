@@ -10,6 +10,7 @@ import { employeeHeader } from "../../data/HeaderTableData";
 import { employeeData } from "../../data/DummyData";
 import { Link, useLocation } from "react-router-dom";
 import Snackbar from "../../element/Snackbar/Snackbar";
+import PageTitle from "../../element/PageTitle/PageTitle";
 
 const Cashier = () => {
   const [showSnackbar, setShowSnackbar] = useState(false);
@@ -36,29 +37,16 @@ const Cashier = () => {
   }
 
   return (
-    <div className="product-page container container-fluid row col-md-10 mx-auto">
+    <div className="product-page container container-fluid row mx-auto">
       <div className="col">
         <div className="d-flex justify-content-start my-5">
           <div className="row mt-2">
-            <div className="col-md-3">
-              <img src={personIcon} />
-            </div>
             <div className="col-md-9">
-              <h3
-                style={{
-                  fontFamily: "rubik",
-                  fontWeight: "600",
-                  fontSize: "24px",
-                  color: "#141414",
-                  marginLeft: "-5%",
-                }}
-              >
-                Employee
-              </h3>
+              <PageTitle title="Cashier" />
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-end my-5">
+        {/* <div className="d-flex justify-content-end my-5">
           <div className="row">
             <div className="col-md-8">
               <input
@@ -67,7 +55,7 @@ const Cashier = () => {
                 type="search"
                 placeholder="Enter employee ID"
                 aria-label="Search"
-                // onChange={handleSearch}
+              // onChange={handleSearch}
               />
             </div>
             <div className="col-md-4">
@@ -82,7 +70,7 @@ const Cashier = () => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="d-flex justify-content-between mx-auto">
           <Link to={"/cashier/addemployee"}>
             <PrimaryButton
@@ -107,7 +95,7 @@ const Cashier = () => {
           />
         </div>
         <div className="collapse" id="filter">
-          <FilterForm data={employeeData} onShow={onShow} />
+          <FilterForm data={employeeData} onShow={onShow} options={["Sushi", "Ramen", "React"]} />
         </div>
         <div className="my-4">
           <TableEdit

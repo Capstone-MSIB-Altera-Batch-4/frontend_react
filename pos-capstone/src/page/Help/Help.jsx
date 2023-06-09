@@ -2,9 +2,8 @@ import { Gear, Search, Whatsapp } from "react-bootstrap-icons"
 import FAQCard from "../../component/Cards/FAQCard/FAQCard"
 import { FAQcards } from "../../data/DummyData"
 import "./Help.style.css"
-// import TextField from "../../element/Textfield/Textfield"
-// import Button from "../../element/Button/Button"
-
+import PageTitle from "../../element/PageTitle/PageTitle"
+import PrimaryButton from "../../element/Button/PrimaryButton/PrimaryButton"
 
 const Help = () => {
 
@@ -12,7 +11,12 @@ const Help = () => {
         <>
 
             <div className="faq-section">
-                <h3 className="pt-4 ps-3"><Gear className="me-2" /> Help</h3>
+                <div className="mt-5 ps-3">
+                    <PageTitle
+                        title={<><Gear className="ms-4 me-3" /> Help</>}
+                    />
+                </div>
+
                 <div className="d-flex align-items-center justify-content-center my-5">
                     <div>
                         <h2 className="text-center mb-3"> Hello, how can we help?</h2>
@@ -21,7 +25,7 @@ const Help = () => {
                                 <Search />
                             </span>
                             <input type="text" className="form-control border-0" placeholder="Search" />
-                            <button className="btn btn-primary" type="button">Search</button>
+                            <PrimaryButton className="btn" label="Search" type="button"></PrimaryButton>
                         </div>
                     </div>
                 </div>
@@ -53,7 +57,7 @@ const Help = () => {
                     <input type="text" className="form-control w-100" placeholder="Subject" />
                     <textarea className="form-control mt-3" placeholder="Description" rows="7"></textarea>
                     <div className="text-end">
-                        <button className="btn text-white mt-4" type="button">Submit</button>
+                        <PrimaryButton className="btn text-white mt-4" type="button" label="Submit" />
                     </div>
 
                 </div>

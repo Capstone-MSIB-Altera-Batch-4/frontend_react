@@ -41,7 +41,7 @@ const CashierForm = ({ showModalFor }) => {
   return (
     <>
       <form onSubmit={() => setShowConfirmModal(true)}>
-        <div className="col w-100 text-start">
+        <div className="col w-100 text-start px-5">
           <div className="mb-3">
             <TextField
               htmlFor="id"

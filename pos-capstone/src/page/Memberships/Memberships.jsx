@@ -34,7 +34,7 @@ const Memberships = () => {
     }
 
     return (
-      <div className="memberships-page container container-fluid row col-md-10 mx-auto">
+      <div className="memberships-page container container-fluid row mx-auto">
         <div className="col">
           <div className="my-5">
             <PageTitle title="Membership" />
@@ -49,7 +49,7 @@ const Memberships = () => {
             />
           </div>
           <div className="collapse" id="filter">
-            <FilterForm data={membershipsData} onShow={onShow}/>
+            <FilterForm data={membershipsData} onShow={onShow} options={["Sushi", "Ramen", "React"]}/>
           </div>
           <div className="mt-4">
             <TableEdit

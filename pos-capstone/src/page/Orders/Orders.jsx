@@ -57,7 +57,7 @@ const Orders = () => {
 
   return (
     <div className="orderspage col ps-3">
-      <div className="orders-title mt-2 mb-5">
+      <div className="orders-title mt-5 mb-5">
         <PageTitle
           title="Orders & Invoice"
         />

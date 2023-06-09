@@ -6,6 +6,23 @@ export const DummyData = [
   { "No": 5, "Product Name": 'Chawanmushi', "Category": "Appetizer", "Price": "Rp 35.000", "Total Order": 84, "Growth": "1%" }
 ];
 
+export const FAQcards = [
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title" : "What is the meaning Point Of Sale?", "desc" : "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+  ];
+
 export const DummyEditDelete = () => {
     return [
         { no: 1, id: "A1", image: "ASHJ.JPG", name: "Gunkan", category: "Sushi", stock: 25, unit: "Plate", price: 25000 },

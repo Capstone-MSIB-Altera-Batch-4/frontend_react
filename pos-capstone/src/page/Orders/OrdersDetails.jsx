@@ -53,7 +53,7 @@ const OrdersDetails = () => {
                         <SecondaryButton
                             className="w-100 btn-secondary backtoorder text-danger px-3"
                             onClick={() => navigate("/orders")}
-                            label={<><ChevronLeft />Back To Order List</>}
+                            label={<><ChevronLeft className="me-3" /> Back To Order List</>}
                         />
 
                     </div>
@@ -61,7 +61,7 @@ const OrdersDetails = () => {
                         <PrimaryButton
                             className="w-100 btn print text-white px-3"
                             onClick={() => window.print()}
-                            label={<><Printer /> Print Invoices </>}
+                            label={<><Printer className="me-3" /> Print Invoices </>}
                         />
                     </div>
                 </div>
