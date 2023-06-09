@@ -6,6 +6,7 @@ import { useState } from 'react';
 import ShowPassword from '../../element/ShowPassword/ShowPassword';
 import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
 import Button from '../../element/Button/Button'
+import PrimaryButton from '../../element/Button/PrimaryButton/PrimaryButton';
 
 const LoginForm = () => {
     // const navigate = useNavigate()
@@ -85,9 +86,10 @@ const LoginForm = () => {
                 label={showPassword ? 'Hide Password' : 'Show Password'}
             />
             <div className='mt-5'>
-                <Button
+                <PrimaryButton
                     className="btn text-white w-100"
-                    btnName="Login"
+                    label="Login"
+                    type="submit"
                 />
             </div>
 
