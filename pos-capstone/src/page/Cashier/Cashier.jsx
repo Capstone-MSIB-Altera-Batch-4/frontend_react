@@ -47,15 +47,9 @@ const Cashier = () => {
   return (
     <div className="product-page container container-fluid row mx-auto">
       <div className="col">
-        <div className="d-flex justify-content-start my-5">
-          <div className="row mt-2">
-            <div className="col-md-3">
-              <img className="pt-1" src={personIcon} style={{width:"50vm"}} />
-            </div>
-            <div className="col-md-9">
-              <PageTitle title="Employee" />
-            </div>
-          </div>
+        <div className="d-flex gap-5 my-5">
+          <img src={personIcon} style={{ width: "2em", marginTop:"-0.5em" }} />
+          <PageTitle title="Employee" />
         </div>
         {/* <div className="d-flex justify-content-end my-5">
           <div className="row">
@@ -106,7 +100,13 @@ const Cashier = () => {
           />
         </div>
         <div className="collapse" id="filter">
-          <FilterForm data={employeeData} onShow={onShow} options={["Sushi", "Ramen", "React"]} filterFor="cashier" dropdownLabel="Category" />
+          <FilterForm
+            data={employeeData}
+            onShow={onShow}
+            options={["Sushi", "Ramen", "React"]}
+            filterFor="cashier"
+            dropdownLabel="Category"
+          />
         </div>
         <div className="my-4">
           <TableEdit
