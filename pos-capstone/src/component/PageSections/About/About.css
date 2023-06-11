@@ -1,71 +1,91 @@
-.about {
-    font-family: 'Kaisei Opti', sans-serif;
-    width: 100%;
-    height: 100%;
+/* -----aboutus------ */
+
+.aboutimg img {
+    max-width: 100%;
 }
-.about .kiri{
-    background-color: white;
-    height: auto;
-    padding-right: 0;
-}
-.about .first {
+
+.about-left {
     background-color: #FFF0DE;
-    width: auto;
-    margin-bottom: 2em;
-    padding: 25% 0% 25% 0%;
 }
-.about .second{
-    background-color: black;
-    position: absolute;
-    left: 11.4%;
-    height: 8%;
-    width: 13.2%;
-    border-radius: 35px 0px 0px 35px;
-    margin-top: -3%;
+
+.aboutbody {
+    margin-top: 7rem;
+    margin-right: 5rem;
+    margin-left: 7rem;
+    margin-bottom: 5rem;
 }
-.about .second p {
-    color: white;
-    text-align: center;
-    margin: 7% 0% 0% 13%;
-    font-size: 16px;
-    font-weight: 600;
+
+.about-right h2 {
+    font-size: 2.5rem;
+    color: #C0A2A3;
 }
-.about .third {
-    background-color: #FFF0DE;
-    width: auto;
-}
-.about .first img {
-    width: 70%;
-    margin: 10%;
-}
-.about .third img {
-    width: 51%;
-    margin: 20% 23% 20% 23%;
-}
-.container1 {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    text-align: left;
-    justify-items: start;
-}
-.container1 h3 {
-    color:  #C0A2A3;
-    font-size: 36px;
-}
-.container1 h2{
-    font-size: 64px;
-    margin-top: 5%;
+
+.about-right h1 {
+    font-size: 4.5rem;
     font-weight: 700;
-    line-height: 93px;
 }
-.container2 p {
-    font-size: larger;
-    text-align:center;
-    /* width: 374px; */
+
+.aboutfooter {
+    margin-left: 7rem;
+    margin-right: 5rem;
+}
+
+.aboutfooter h5 {
+    font-size: 1.5rem;
+}
+
+.aboutfooter p {
     background-color: rgba(231, 231, 231, 0.25);
-    border-radius: 36px;
+    font-size: 1.3rem;
+    border-radius: 1rem;
 }
-.our-app {
-    margin-top: 15%;
+
+@media (max-width:480px) {
+    .aboutbody {
+        margin-top: 3rem;
+        margin-right: 3rem;
+        margin-left: 3rem;
+        margin-bottom: 3rem;
+    }
+    .aboutfooter {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+    .about-right h1 {
+        font-size: 2.5rem;
+    }
+    .about-right h2 {
+        font-size: 1.5rem;
+    }
+    .aboutfooter h5 {
+        font-size: 1rem;
+    }
+    .aboutfooter p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:1024px) {
+    .aboutbody {
+        margin-top: 3rem;
+        margin-right: 5rem;
+        margin-left: 5rem;
+        margin-bottom: 3rem;
+    }
+    .aboutfooter {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+    .about-right h1 {
+        font-size: 3rem;
+    }
+    .about-right h2 {
+        font-size: 2rem;
+    }
+    .aboutfooter h5 {
+        font-size: 1rem;
+    }
+    .aboutfooter p {
+        font-size: 1rem;
+    }
 }

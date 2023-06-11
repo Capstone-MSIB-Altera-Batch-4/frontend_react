@@ -39,14 +39,14 @@ const Navbar = () => {
             id="navbarNavDropdown"
           >
             <ul className="navbar-nav">
-              <li className="nav-item mx-5">
-                <a href="#about">About Us</a>
+              <li className="nav-item me-5">
+                <a className="nav-link bg-transparent " href="#about">About Us</a>
               </li>
-              <li className="nav-item mx-5">
-                <a href="#ourgallery">Our Gallery</a>
+              <li className="nav-item me-5">
+                <a className="nav-link bg-transparent" href="#ourgallery">Our Gallery</a>
               </li>
-              <li className="download nav-item mx-5 px-4 py-2">
-                <a href="#download">Download App</a>
+              <li className="download nav-item me-5 px-4">
+                <a className="nav-link bg-transparent" href="#download">Download App</a>
               </li>
             </ul>
           </div>

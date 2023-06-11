@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom"
 import Sidebar from "../component/Sidebar/Sidebar"
+import "./PrivateRoute.style.css"
 
 const PrivateRoute = () => {
     return (
         <>
             <div className="container-fluid ">
-                <div className="row">
+                <div className=" row min-vh-100">
                     <Sidebar />
-                    <div className="col-lg-10 p-0">
+                    <div className="content col-lg-10 p-0">
                         <Outlet />
                     </div>
 

@@ -1,0 +1,11 @@
+@media (max-width: 1080px) {
+    .content {
+        width: 93%;
+    }
+}
+
+@media (max-width: 992px) {
+    .content {
+        width: 100%;
+    }
+}

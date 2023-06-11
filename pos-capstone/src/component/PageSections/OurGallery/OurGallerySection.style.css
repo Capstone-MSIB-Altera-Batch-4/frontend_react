@@ -1,46 +1,51 @@
 .our-gallery {
-  font-family: 'Kaisei Opti', sans-serif;
+    font-family: 'Kaisei Opti', sans-serif;
     display: flex;
     flex-direction: column;
-    padding: 89px 154px;
+    padding: 4rem 5rem;
     background: url("/src/assets/pat-image.png"), #B1464A;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    gap: 65px;
+    gap: 7rem;
 }
 
 .device-images {
-    max-width: 1078px;
-    display: flex;
-    align-items: center;
-    justify-items: center;
+    max-width: 80%;
+    align-self: center;
 }
 
 .section-title {
-    font-size: 64px;
+    font-size: 4rem;
 }
 
-@media only screen and (max-width: 812px) {
-    /* .device-images {
-       margin: 0px;
-       width: 235px;
-    } */
-    .our-gallery {
-      padding: 75px 100px;
-    }
+@media (max-width:1024px) {
     .section-title {
-      font-size: 20px;
-      scale: 70%;
+        font-size: 3rem;
     }
-    .text-title {
-      display: flex;
-      align-items: center;
-      justify-items: center;
-    }
-  }
+}
 
-@media only screen and (max-width: 679px) {
-    .our-gallery {
-      padding: 45px 56px;
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
     }
-  }
+    .device-images {
+        max-width: 100%;
+    }
+    .our-gallery {
+        gap: 3rem;
+        padding: 4rem 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .device-images {
+        max-width: 100%;
+    }
+    .our-gallery {
+        gap: 1rem;
+        padding: 4rem 3rem;
+    }
+}
