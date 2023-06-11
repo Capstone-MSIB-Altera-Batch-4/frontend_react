@@ -69,7 +69,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
           action={() => ActionSuccess()}
         />
       </div>
-      {showSnackbar && state.state !== null ? (
+      {showSnackbar ? (
         <Snackbar
           setSnackbar={showSnackbar}
           action={"delete"}

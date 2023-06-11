@@ -45,7 +45,7 @@ const ProductFrom = ({ showModalFor }) => {
   });
   return (
     <>
-      <form onSubmit={() => setShowConfirmModal(true)}>
+      <form onSubmit={""}>
         <div className="col w-100 text-start">
           <div className="mb-3">
             <TextField
@@ -95,7 +95,7 @@ const ProductFrom = ({ showModalFor }) => {
             )}
           </div>
           <div className="mb-3 row input-category-field">
-            <div className="col-md-11">
+            <div className="col-md-11 select-category">
               <InputCategory />
             </div>
             <div

@@ -35,7 +35,7 @@ const Products = () => {
     }, [filterData])
 
     return (
-      <div className="product-page container container-fluid row mx-auto">
+      <div className="product-page row mx-auto px-4">
         <div className="col">
           <div className="my-5">
             <PageTitle title="Product" />

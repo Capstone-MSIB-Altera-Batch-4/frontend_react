@@ -40,7 +40,7 @@ const Memberships = () => {
   // }
 
   return (
-    <div className="memberships-page container container-fluid row mx-auto">
+    <div className="memberships-page row mx-auto px-4">
       <div className="col">
         <div className="my-5">
           <PageTitle title="Membership" />
