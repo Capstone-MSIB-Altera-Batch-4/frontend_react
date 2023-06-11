@@ -59,19 +59,19 @@ export const productsData = [
 ];
 
 export const employeeData =  [
-    { no_employee: 1, id: "A1", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020" },
-    { no_employee: 2, id: "A2", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 3, id: "A3", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 4, id: "A4", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 5, id: "A5", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 6, id: "A6", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 7, id: "A7", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 8, id: "A8", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 9, id: "A9", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 10, id: "A10", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 11, id: "A11", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 12, id: "A12", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
-    { no_employee: 13, id: "A13", name_employee: "Alvin", position: "Head Waiters", joined: "Jan, 2020"}
+    { no_employee: 1, id: "A1", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020" },
+    { no_employee: 2, id: "A2", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 3, id: "A3", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 4, id: "A4", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 5, id: "A5", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 6, id: "A6", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 7, id: "A7", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 8, id: "A8", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 9, id: "A9", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 10, id: "A10", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 11, id: "A11", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 12, id: "A12", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"},
+    { no_employee: 13, id: "A13", name: "Alvin", position: "Head Waiters", joined: "Jan, 2020"}
   ];
 
 export const DummyDetails = () => {
@@ -310,17 +310,17 @@ return [
 };
 
 export const membershipsData =  [
-    { no: 1, id: "C1", name_customer: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"  },
-    { no: 2, id: "C2", name_customer: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
-    { no: 3, id: "C3", name_customer: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
-    { no: 4, id: "C4", name_customer: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
-    { no: 5, id: "C5", name_customer: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
-    { no: 6, id: "C6", name_customer: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
-    { no: 7, id: "C7", name_customer: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
-    { no: 8, id: "C8", name_customer: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
-    { no: 9, id: "C9", name_customer: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
-    { no: 10, id: "C10", name_customer: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
-    { no: 11, id: "C11", name_customer: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
-    { no: 12, id: "C12", name_customer: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
-    { no: 13, id: "C13", name_customer: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"}
+    { no: 1, id: "C1", name: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"  },
+    { no: 2, id: "C2", name: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
+    { no: 3, id: "C3", name: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
+    { no: 4, id: "C4", name: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
+    { no: 5, id: "C5", name: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
+    { no: 6, id: "C6", name: "Alvin", level: "Gold", points: "4000", joined: "Jan, 2020"},
+    { no: 7, id: "C7", name: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
+    { no: 8, id: "C8", name: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
+    { no: 9, id: "C9", name: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
+    { no: 10, id: "C10", name: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
+    { no: 11, id: "C11", name: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
+    { no: 12, id: "C12", name: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"},
+    { no: 13, id: "C13", name: "Alvin", level: "Silver", points: "3750", joined: "Jan, 2020"}
   ];

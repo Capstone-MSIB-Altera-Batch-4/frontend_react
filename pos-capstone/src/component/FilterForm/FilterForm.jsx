@@ -5,7 +5,6 @@ import Dropdown from '../../element/Dropdown/Dropdown.jsx';
 import './FilterForm.css'
 
 const FilterForm = ({onShow, data, filterFor, options, dropdownLabel}) => {
-    const [inputId, setInputId] = useState("")
     const [searchInput, setSearchInput] = useState("");
     const [selected, setSelected] = useState('')
     const initData = data;
@@ -22,39 +21,33 @@ const FilterForm = ({onShow, data, filterFor, options, dropdownLabel}) => {
       }
     }
 
-    const filterbyId = (arrData) => {
-      return arrData.filter((data) => 
-        data.id.toLowerCase().includes(`${inputId}`)
-      )
-    }
-
     const filterbyName = (arrData) => {
       return arrData.filter((data) => 
-        data.name.toLowerCase().includes(`${searchInput}`)
+        data.name.toLowerCase().includes(`${searchInput}`.toLowerCase())
       )
     }
 
     const filterDropdown = (arrData) => {
-      if (filterFor === "product" && selected) {
-        return arrData.filter((data) => {
-          return data.category === selected
-        })
-      }else if (filterFor === "cashier" || "employee" && selected) {
-        return arrData.filter((data) => {
-          data.position === selected
-        })
-      } else {
-        return arrData.filter((data) => {
-          data.level === selected
-        })
+      if (selected) {
+        switch(filterFor) {
+          case "product":
+            return arrData.filter((data) => {
+              return data.category === selected;
+            });
+          case "cashier":
+            return arrData.filter((data) => {
+              return data.position === selected;
+            });
+          case "member":
+            return arrData.filter((data) => {
+              return data.level === selected
+            });
+        }
       }
     }
 
     useEffect(() => {
       let result = initData
-  
-      if(inputId.length!=0){
-      result = filterbyId(result)}
   
       if(searchInput.length!=0){
       result = filterbyName(result)}
@@ -65,13 +58,13 @@ const FilterForm = ({onShow, data, filterFor, options, dropdownLabel}) => {
       setFilterData(result);
       // console.log(result)
 
-    },[inputId, searchInput, selected])
+    },[searchInput, selected])
 
     localStorage.setItem(`${filterFor}`, JSON.stringify(filterData));
 
   return (
     <div className=''>
-      <div className="filter-form row">
+      <div className="filter-form row justify-content-between">
         <div className="col-md-4 mt-2">
           <SearchBar 
             onShow={onShow} 
@@ -79,20 +72,6 @@ const FilterForm = ({onShow, data, filterFor, options, dropdownLabel}) => {
             handleChange={(e) => setSearchInput(e.target.value)} 
             onClearInput={() => setSearchInput("")}
             />
-        </div>
-        <div className="col-md-4 mb-3">
-          {/* <TextField
-            htmlFor="id"
-            label="Id"
-            placeholder={`Search id ${filterFor}`}
-            name="id"
-            type="text"
-            id="id"
-            value={inputId}
-            onChange={(e) => setInputId(e.target.value)}
-            className={"w-100 form-control bg-opacity-10"}
-            onClearInput={() => setInputId("")}
-          /> */}
         </div>
         <div className="col-md-4">
           <Dropdown

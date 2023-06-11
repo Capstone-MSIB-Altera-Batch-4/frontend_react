@@ -24,3 +24,20 @@
 .text-header span {
     font-family: 'Rubik';
 }
+
+@media screen and (max-width: 679px) {
+    .dashboard-card-section {
+        gap: 12px;
+    }
+    .cust-rank-section {
+        margin-top: 24px;
+    }
+    .text-header {
+        scale: 90%;
+    }
+    /* .table-section {
+        scale: 90%;
+    } */
+}
+
+

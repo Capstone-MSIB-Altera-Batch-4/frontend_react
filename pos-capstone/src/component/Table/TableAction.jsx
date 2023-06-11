@@ -90,6 +90,9 @@ const TableAction = ({
             ))}
           </tbody>
         </table>
+        {data.length === 0 ? (
+          <p className="text-center py-2 mx-auto" style={{background: "#E7E7E7"}}>Data not found</p>
+        ) : null}
       </div>
 
       <div className="row px-0 mt-5 justify-content-between">
@@ -104,8 +107,13 @@ const TableAction = ({
                 min="1"
                 max="100"
                 value={rowsPerPage}
-                style={{ borderColor: "red", borderRadius: "5px", color: "red", outline: "none"}}
-                onChange={handleRowsPerPageChange} 
+                style={{
+                  borderColor: "red",
+                  borderRadius: "5px",
+                  color: "red",
+                  outline: "none",
+                }}
+                onChange={handleRowsPerPageChange}
               />
             </span>
             <label>Data</label>
@@ -116,7 +124,7 @@ const TableAction = ({
             <button
               onClick={() => setPageIndex((prevIndex) => prevIndex - 1)}
               disabled={pageIndex === 0}
-              style={{ border: "none", background: "none"}}
+              style={{ border: "none", background: "none" }}
             >
               <ArrowLeft />
             </button>
