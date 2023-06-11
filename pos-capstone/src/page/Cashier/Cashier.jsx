@@ -15,6 +15,9 @@ import PageTitle from "../../element/PageTitle/PageTitle";
 const Cashier = () => {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
+  const [employee, setEmployee] = useState(employeeData)
+
+  let filterData = JSON.parse(localStorage.getItem('cashier'));
 
   const state = useLocation();
 
@@ -24,28 +27,12 @@ const Cashier = () => {
     }
   }, [showSnackbar]);
 
-  // console.log("Snacbar", showSnackbar);
-
-  // let { state } = {
-  //   state: {
-  //     showSnackbar: false,
-  //     action: "",
-  //     variant: "",
-  //   },
-  // };
-
-  // state = useLocation();
-
-  // console.log("State", state);
-
-  // if (state.state !== null && state.state.showSnackbar === true) {
-  //   useEffect(() => {
-  //     setShowSnackbar(true);
-  //   }, [showSnackbar]);
-  // }
+  useEffect(() => {
+    setEmployee(filterData);
+  }, [filterData]);
 
   return (
-    <div className="product-page container container-fluid row mx-auto">
+    <div className="product-page row mx-auto px-4">
       <div className="col">
         <div className="d-flex gap-5 my-5">
           <img src={personIcon} style={{ width: "2em", marginTop:"-0.5em" }} />
@@ -103,7 +90,7 @@ const Cashier = () => {
           <FilterForm
             data={employeeData}
             onShow={onShow}
-            options={["Sushi", "Ramen", "React"]}
+            options={["Head Waiters", "Waiters", "Admin"]}
             filterFor="cashier"
             dropdownLabel="Category"
           />
@@ -111,7 +98,7 @@ const Cashier = () => {
         <div className="my-4">
           <TableEdit
             columns={employeeHeader}
-            data={employeeData}
+            data={employee}
             editPageLink={"editemployee"}
             deleteConfirmFor="Employee"
           />

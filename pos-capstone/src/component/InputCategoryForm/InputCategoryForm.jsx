@@ -23,7 +23,7 @@ const InputCategoryForm = ({handleClose}) => {
   return (
     <div>
       <Formik
-        initialValues={{ category: [''] }}
+        initialValues={{ category: ['baju', 'celana'] }}
         onSubmit={(values) => console.log(JSON.stringify(values))}
         validationSchema={validationSchema}
       >
@@ -36,18 +36,20 @@ const InputCategoryForm = ({handleClose}) => {
                     return (
                       <div key={index}>
                         <TextField
-                          placeholder="input Category"
+                          placeholder="input category"
                           type="text"
                           id="category"
-                          name="category"
-                          value={category[index]}
+                          name={`category.${index}`}
+                          value={category}
                           onChange={handleChange}
                           className={
                             errors.category
                               ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                               : "form-control mt-1"
                           }
-                          onClearInput={() => remove(index)}
+                          onClearInput={
+                            () => remove(index)
+                          }
                         />
                       </div>
                     );

@@ -12,7 +12,7 @@ export const productHeader = [
 export const employeeHeader = [
       { Header: "No", accessor: "no_employee" },
       { Header: "No Id", accessor: "id" },
-      { Header: "Name", accessor: "name_employee" },
+      { Header: "Name", accessor: "name" },
       { Header: "Position", accessor: "position" },
       { Header: "Joined", accessor: "joined" }
 ]
@@ -20,7 +20,7 @@ export const employeeHeader = [
 export const membershipsHeader = [
     { Header: "No", accessor: "no" },
     { Header: "ID Customer", accessor: "id" },
-    { Header: "Name", accessor: "name_customer" },
+    { Header: "Name", accessor: "name" },
     { Header: "Level", accessor: "level" },
     { Header: "Points", accessor: "points" },
     { Header: "Joined", accessor: "joined" }

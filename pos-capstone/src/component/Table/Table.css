@@ -23,11 +23,18 @@ th {
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
+        width: 100%;
     }
     .input-pagination {
         width: 75px;
     }
     .show-data {
         width: 100%;
+    }
+    .table-dashboard {
+        right: -200px;
+    }
+    .header-style {
+      font-size: 16px;
     }
   }

@@ -5,7 +5,7 @@ import PageTitle from "../../element/PageTitle/PageTitle";
 const AddProduct = () => {
   return (
     <div className="col">
-      <div className="row container-fluid col-md-8 col-sm-4 mx-auto">
+      <div className="row col-md-8 col-sm-7 container-fluid mx-auto">
         <div className="my-4 pt-5 text-center">
           <PageTitle title="Add Product" />
         </div>

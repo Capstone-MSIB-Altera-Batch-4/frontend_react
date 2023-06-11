@@ -11,17 +11,10 @@ import Snackbar from "../../element/Snackbar/Snackbar"
 
 const Memberships = () => {
   const [showSnackbar, setShowSnackbar] = useState(false);
-  const [onShow, setOnShow] = useState(false)
+  const [onShow, setOnShow] = useState(false);
+  const [members, setMembers] = useState(membershipsData)
 
-  // console.log("Snackbar", showSnackbar)
-
-  // let { state } = {
-  //   state: {
-  //     showSnackbar: false,
-  //     action: "",
-  //     variant: "",
-  //   },
-  // };
+  let filterData = JSON.parse(localStorage.getItem('member'));
 
   const state = useLocation();
 
@@ -31,16 +24,13 @@ const Memberships = () => {
     }
   }, [showSnackbar]);
 
-  // console.log("State", state);
-
-  // if (state.state !== null && state.state.showSnackbar === true) {
-  //   useEffect(() => {
-  //     setShowSnackbar(true);
-  //   }, [showSnackbar]);
-  // }
+  // show data
+  useEffect(() => {
+    setMembers(filterData);
+  }, [filterData]);
 
   return (
-    <div className="memberships-page container container-fluid row mx-auto">
+    <div className="memberships-page row mx-auto px-4">
       <div className="col">
         <div className="my-5">
           <PageTitle title="Membership" />
@@ -55,27 +45,32 @@ const Memberships = () => {
           />
         </div>
         <div className="collapse" id="filter">
-          <FilterForm data={membershipsData} onShow={onShow} options={["Sushi", "Ramen", "React"]} filterFor="member" dropdownLabel="Level" />
+          <FilterForm
+            data={membershipsData}
+            onShow={onShow}
+            options={["Gold", "Silver", "Bronze"]}
+            filterFor="member"
+            dropdownLabel="Level"
+          />
         </div>
         <div className="mt-4">
           <TableEdit
             columns={membershipsHeader}
-            data={membershipsData}
+            data={members}
             editPageLink={"editmembership"}
             deleteConfirmFor="Member"
-            
           />
         </div>
       </div>
 
       {/* MODAL & SNACKBAR */}
-      <div>
-      </div>
+      <div></div>
       {showSnackbar && state.state !== null ? (
         <Snackbar
           setSnackbar={showSnackbar}
           action={state.state.action}
-          variant={state.state.variant} />
+          variant={state.state.variant}
+        />
       ) : (
         ""
       )}

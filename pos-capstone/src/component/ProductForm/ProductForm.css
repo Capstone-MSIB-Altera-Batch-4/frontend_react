@@ -9,11 +9,18 @@
 .input-category-icon:hover {
     background: #EF2222;
 }
-.input-category-field {
-    width: 112%;
-}
 
 .pencil-icon {
     margin-left: 6px;
     margin-bottom: 6px;
+}
+
+@media screen and (max-width: 769px) {
+    .input-category-field {
+        width: 90%;
+    }
+
+    .select-category {
+        width: 85%;
+    }
 }
