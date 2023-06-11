@@ -30,25 +30,6 @@ const Cashier = () => {
   useEffect(() => {
     setEmployee(filterData);
   }, [filterData]);
-  // console.log("Snacbar", showSnackbar);
-
-  // let { state } = {
-  //   state: {
-  //     showSnackbar: false,
-  //     action: "",
-  //     variant: "",
-  //   },
-  // };
-
-  // state = useLocation();
-
-  // console.log("State", state);
-
-  // if (state.state !== null && state.state.showSnackbar === true) {
-  //   useEffect(() => {
-  //     setShowSnackbar(true);
-  //   }, [showSnackbar]);
-  // }
 
   return (
     <div className="product-page row mx-auto px-4">

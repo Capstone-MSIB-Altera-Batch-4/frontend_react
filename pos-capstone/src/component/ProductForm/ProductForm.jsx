@@ -45,7 +45,7 @@ const ProductFrom = ({ showModalFor }) => {
   });
   return (
     <>
-      <form onSubmit={""}>
+      {/* <form onSubmit={""}> */}
         <div className="col w-100 text-start">
           <div className="mb-3">
             <TextField
@@ -215,7 +215,7 @@ const ProductFrom = ({ showModalFor }) => {
             handleClose={() => setShowCategory(false)}
           />
         </div>
-      </form>
+      {/* </form> */}
     </>
   );
 };

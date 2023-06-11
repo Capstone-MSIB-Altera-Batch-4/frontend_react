@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import TableAction from "./TableAction";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Pencil, Trash } from "react-bootstrap-icons";
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
@@ -16,25 +16,22 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
     setShowSnackbar(true);
   }
 
-  // if (showSnackbar) {
-  //   setShowSnackbar(false);
-  // }
+  if (showSnackbar) {
+    setTimeout(() => {
+      setShowSnackbar(false);
+    }, 1000);
+  }
 
   console.log("SB", showSnackbar)
-
-  // useEffect(() => {
-  //   if (state.state !== null && state.state.showSnackbar === true) {
-  //     setShowSnackbar(true);
-  //   }
-  // }, [showSnackbar]);
 
   const confirmDelete = (id) => {
     setId(id)
     setShowConfirmModal(true)
   };
 
+
   return (
-    <div>
+    <div className="mb-5">
       <TableAction
         headerColor={{ backgroundColor: "#FDDFDF" }}
         columns={columns}
