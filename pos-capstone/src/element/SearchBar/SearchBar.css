@@ -23,7 +23,7 @@
 }
 
 .clear {
-    position: absolute;
+    /* position: absolute; */
     background-color: transparent;
     border: none;
     cursor: pointer;
