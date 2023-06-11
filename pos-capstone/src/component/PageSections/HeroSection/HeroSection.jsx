@@ -5,58 +5,46 @@ import profil from "../../../assets/img/Profil.png";
 
 const HeroSection = () => {
   return (
-    <section className="hero-section">
-      <div className="overflow-hidden">
-        <div className="row">
-          <div className="left col-md-3">
-            <div className="gambar">
-              <img src={heroImage} alt="About Us" />
-            </div>
+    <div className="hero row min-vh-75">
+        <div className="hero-left col-lg-3 pe-0">
+          <div className="heroimg text-center">
+            <img src={heroImage} />
           </div>
-          <div className="right col-md-9 px-0">
-            <div className="content1 py-3">
-              <h2>Say goodbye to messy order-taking and billing processes.</h2>
-              <p>
-                Our user-friendly interface is perfect for both front and back
-                of house operations. With just a few taps, you can take orders,
-                track inventory, and process payments.
-              </p>
-              <button className="py-2">Download Now</button>
+        </div>
+        <div className="hero-right col-lg-9 px-0">
+          <div className="herobody">
+            <h1>
+              Say goodbye to messy <br />
+              order-taking and billing <br />
+              processes.</h1>
+            <p>
+              Our user-friendly interface is perfect for both front and back
+              of house operations. With just a few taps, you can take orders, <br />
+              track inventory, and process payments.
+            </p>
+            <button>Download Now</button>
+          </div>
+          <div className="herofooter row justify-content-between mx-0">
+            <div className="happyclient col-lg-6 justify-content-center mb-2">
+              <h1>100+</h1>
+              <p className='ms-3'>Happy <br />Clients</p>
             </div>
-            <div className="content2">
-              <div className="row py-3">
-                <div className="col-md-6 mt-2">
-                  <div className="row ms-5">
-                    <div className="col-md-7">
-                      <h1>100+</h1>
-                    </div>
-                    <div className="col-md-4 mt-4">
-                      <h3 style={{ color: "black" }}>Happy Clients</h3>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6 mt-3">
-                  <div className="row ms-5">
-                    <div className="col-md-2 mt-3">
-                      <img src={profil} alt="profil" />
-                    </div>
-                    <div className="col-md-10">
-                      <p style={{ marginRight: "40%" }}>
-                        “This POS app really upscalling my bussiness in to the
-                        next level!”
-                      </p>
-                      <p style={{ fontWeight: "bold" }}>
-                        Ryan Floyd - Owner of Sushi Restaurant
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            <div className="mt-2 profile col-lg-6 justify-content-center">
+              <img src={profil} alt="profil" width={100} height={100} />
+              <div className="profiletext ms-3">
+                <p className='mb-0'>
+                  “This POS app really upscalling<br />
+                  my bussiness in to the next  <br />
+                  level!”
+                </p>
+                <p className='mb-0'>
+                  Ryan Floyd - Owner of Sushi Restaurant
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
   );
 };
 

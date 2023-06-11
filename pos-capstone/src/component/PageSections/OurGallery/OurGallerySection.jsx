@@ -10,7 +10,7 @@ const OurGallerySection = () => {
           <h1 className='section-title justify-content-end fw-bold text-white'>製品写真</h1>
         </div>
       </div>
-      <img src='/src/assets/device-gallery.svg' alt='device-images' className='device-images mx-5'/>
+      <img src='/src/assets/device-gallery.svg' alt='device-images' className='device-images text-center'/>
     </section>
   )
 }

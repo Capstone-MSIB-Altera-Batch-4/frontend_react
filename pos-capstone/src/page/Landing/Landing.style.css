@@ -1,4 +1,93 @@
 .landing {
-    width: 1440px;
-    height: 1022px;
+    font-family: 'Kaisei Opti', sans-serif;
+}
+
+footer {
+    background-color: #FFF0DE;
+    font-family: 'Kaisei Opti', sans-serif;
+    height: 15%;
+    font-size: 1.5rem;
+}
+
+.footer-link a {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.footer-link h6 {
+    font-size: 2rem;
+    color: #AB464A;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 7rem;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.footerprofile {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.profiletext {
+    margin-left: 2rem;
+}
+
+.address,
+.information,
+.contact {
+    text-align: start;
+}
+
+.icon-sosmed {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (max-width:1024px) {
+    .address,
+    .information,
+    .contact {
+        text-align: center;
+    }
+    .icon-sosmed {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+    .footer-main {
+        width: 100%;
+    }
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+    }
+    .footerprofile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .profiletext {
+        margin-left: 0;
+    }
+    .profileimg {
+        margin-left: 1.5rem;
+    }
 }

@@ -66,3 +66,109 @@
 .active:hover {
     color: #646464;
 }
+
+.button-menu {
+    padding: 0.5rem;
+    background-color: transparent;
+    text-decoration: none;
+    border-style: none;
+    display: none;
+}
+
+.logo-sidebar {
+    width: 180px;
+    height: 180px;
+    padding: 2rem;
+}
+
+.button-menu:hover {
+    background-color: #e9e9e9;
+}
+
+.modal {
+    padding: 0;
+}
+
+.modal-dialog {
+    margin: 0;
+    width: 60%;
+    background-color: #FFF0DE;
+}
+
+.modal-header {
+    align-items: start;
+}
+
+.modal-content {
+    background-color: #FFF0DE;
+}
+
+.modal-footer {
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.menu {
+    display: none;
+}
+
+.logo-menu {
+    display: none;
+}
+
+@media (max-width: 1080px) {
+    .barname {
+        display: none;
+    }
+    .sidebar {
+        width: 7%;
+    }
+    .navitem li {
+        display: block;
+    }
+    .manage {
+        display: none;
+    }
+    .logo-sidebar {
+        width: 60px;
+        height: 60px;
+        padding: 0.5rem;
+        text-align: start;
+    }
+    .branch {
+        display: none;
+    }
+    .modal {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .modal-body .barname {
+        display: flex;
+    }
+    .modal-header .logo-sidebar {
+        width: 80px;
+        height: 80px;
+        padding: 0.5rem;
+    }
+    .sidebar {
+        display: none;
+    }
+    .menu {
+        display: flex;
+    }
+    .button-menu {
+        display: block;
+    }
+    .logo-menu {
+        padding: 0.5rem;
+        width: 50px;
+        height: 50px;
+        align-self: center;
+        display: block;
+    }
+    .branch {
+        display: block;
+    }
+}

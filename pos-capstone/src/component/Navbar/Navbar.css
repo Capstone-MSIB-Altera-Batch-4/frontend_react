@@ -1,20 +1,29 @@
 .navbar-landing nav {
-  font-family: 'Kaisei Opti';
+    font-family: 'Kaisei Opti';
 }
+
 .navbar-white {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
+
 .navbar-transparance {
-  background-color: rgba(254, 254, 254, 0.85);
-  backdrop-filter: blur(5px);
+    background-color: rgba(254, 254, 254, 0.85);
+    backdrop-filter: blur(5px);
 }
-.navbar-landing a{
-  color: black;
+
+.navbar-landing a {
+    color: black;
 }
-.navbar-landing .download{
-  background-color: #380404;
-  border-radius: 36px;
+
+.navbar-landing .download {
+    background-color: #380404;
+    border-radius: 36px;
 }
-.navbar-landing .download a{
-  color: white;
+
+.navbar-landing .download a {
+    color: white;
+}
+
+.nav-link {
+    background-color: transparent;
 }

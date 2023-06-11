@@ -5,21 +5,25 @@
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    gap: 80px;
-    padding: 134px;
+    gap: 5rem;
+    padding: 7rem;
 }
 
-.section-title {
-    font-size: 75px;
-    line-height: 109px;
-    max-width: 913px;
-    margin-bottom: 70px;
+.subscribe-title {
+    font-size: 3rem;
+    line-height: 4rem;
+    max-width: 100%;
+    margin-bottom: 4rem;
+}
+
+.subscribe-section p {
+    font-size: 2rem;
 }
 
 .email-form {
-   border: 1px solid white;
-   border-radius: 40px;
-   width: 500px;
+    border: 1px solid white;
+    border-radius: 40px;
+    width: 500px;
 }
 
 .email-form:focus {
@@ -28,38 +32,65 @@
 
 ::placeholder {
     color: white;
-    opacity: 1; /* Firefox */
-  }
-  
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: white;
-  }
-  
-  ::-ms-input-placeholder { /* Microsoft Edge */
-   color: white;
-  }
+    opacity: 1;
+    /* Firefox */
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white;
+}
+
+ ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+}
 
 .button-submit {
     background: #380404;
     border: none;
     border-radius: 45px;
-    padding: 16px 50px;
-    margin-left: 16px;
+    padding: 0.8rem 3rem;
+    margin-left: 2rem;
 }
 
-@media only screen and (max-width: 812px) {
+@media (max-width: 1024px) {
     .subscribe-form {
         scale: 85%;
         display: flex;
     }
-  }
+}
 
-  @media only screen and (max-width: 679px) {
+@media (max-width: 768px) {
     .subscribe-form {
-        scale: 75%;
+        scale: 65%;
         display: flex;
     }
     .subscribe-section {
-       gap: 40px;
+        padding: 4rem;
+        gap: 1rem;
     }
-  }
+    .subscribe-title {
+        font-size: 2.5rem;
+    }
+    .subscribe-section p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .subscribe-form {
+        scale: 50%;
+        display: flex;
+    }
+    .subscribe-section {
+        padding: 3rem;
+        gap: 2rem;
+    }
+    .subscribe-title {
+        font-size: 2rem;
+    }
+    .subscribe-section p {
+        font-size: 1.2rem;
+    }
+}

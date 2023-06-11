@@ -1,48 +1,121 @@
-.hero-section {
-  width: 100%;
-  height: 100%;
-  font-family: 'Kaisei Opti', sans-serif;
+.hero-left {
+    background-color: #B1464A;
 }
-.hero-section .left{
-  background-color: #B1464A;
-  height: auto;
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.gambar img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 20%;
+
+.heroimg img {
+    max-width: 100%;
 }
-.hero-section p {
-  font-size: 16px;
+
+.heroimg {
+    margin-top: 7rem;
 }
-.content1{
-  margin: 10% 5% 0% 10%;
+
+.herobody {
+    margin-top: 10rem;
+    margin-right: 7rem;
+    margin-left: 10rem;
+    margin-bottom: 3rem;
 }
-.content1 h2{
-  font-size: 64px;
-  /* margin-top: 5%; */
-  font-weight: 700;
-  line-height: 93px;
+
+.herobody h1 {
+    color: black;
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
-.content1 p{
-  margin: 5% 15% 10% 0%;
+
+.herobody p {
+    font-weight: 500;
+    margin-bottom: 2rem;
 }
-.content1 button{
-  margin-bottom: 15%;
-  background-color: #380404;
-  border-radius: 36px;
-  color: white;
-  width: 24%;
-  font-size: 22px;
-  border: none;
+
+.herobody button {
+    color: white;
+    background-color: #380404;
+    font-size: 1.5rem;
+    padding: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-radius: 40px;
 }
-.content2{
-  background-color: #FFF0DE;
-  width: 104%;
+
+.herofooter {
+    background-color: #FFF0DE;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
-.content2 h1 {
-  font-size: 96px;
+
+.happyclient h1 {
+    font-size: 7rem;
+    font-weight: 700;
 }
-.content2 h2 {
-  font-size: 32px;
+
+.happyclient p {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.happyclient {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@media (max-width:1024px) {
+    .herobody {
+        margin-top: 3rem;
+        margin-right: 5rem;
+        margin-left: 5rem;
+        margin-bottom: 3rem;
+    }
+    .heroimg img {
+        max-width: 30%;
+    }
+    .heroimg {
+        margin-top: 6rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width:480px) {
+    .herobody {
+        margin-top: 4rem;
+        margin-right: 3rem;
+        margin-left: 3rem;
+        margin-bottom: 3rem;
+    }
+    .herobody h1 {
+        font-size: 3rem;
+    }
+    .happyclient h1 {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+    .happyclient p {
+        font-size: 2.5rem;
+        font-weight: 400;
+    }
+    .profile {
+        padding-left: 2rem;
+        padding-right: 1rem;
+    }
+    .heroimg img {
+        max-width: 20%;
+    }
+    .heroimg {
+        margin-top: 6rem;
+        margin-bottom: 2rem;
+    }
 }
