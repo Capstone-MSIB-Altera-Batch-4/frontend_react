@@ -19,7 +19,7 @@ const Dashboard = () => {
             </div>
             <div className='row'>
           <div className='col-md-7 col-lg-8'>
-            <div className='row mb-4'>
+            <div className='dashboard-card-section row mb-4'>
               <div className='col-md-4'>
                 <DashboardCard title="Total Sales" amount="Rp61.500.000" growth={"+7%"} icon={<CreditCard/>} className="col-md-2"/>
               </div>
@@ -34,11 +34,11 @@ const Dashboard = () => {
               <Graph />
             </div>
           </div>
-          <div className='col-md-3 col-lg-4'>
+          <div className='cust-rank-section col-md-3 col-lg-4'>
             <CustomerRanking />
           </div>
           </div>
-          <div className='row'>
+          <div className='row table-section'>
             <div className='col'>
               <h5 style={{ fontFamily: "rubik", marginTop: "3%", marginBottom: "2%" }}>Top Selling Product</h5>
               <Table data={DummyData} />
