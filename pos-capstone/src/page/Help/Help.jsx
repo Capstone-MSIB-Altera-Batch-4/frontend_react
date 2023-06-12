@@ -47,13 +47,13 @@ const Help = () => {
                     </div>
                 </div>
             </div>
-            <div className="row mb-3">
+            <div className="row mb-3 me-0">
                 <div className="col-lg-3 col-md-6 col-sm-12 ps-5 pt-5">
                     <h2 className="faq-h2 pb-4">Still Have Question?</h2>
                     <h5 className="faq-h5">Can’t find the answer you’re looking for? Please chat to our friendly team.</h5>
                     <h5 className="pt-4"><Whatsapp /></h5>
                 </div>
-                <div className="col-lg-8 col-md-6 col-sm-12 ps-5 pt-5 pe-5">
+                <div className="col-lg-8 col-md-6 col-sm-12 px-5 pt-5">
                     <input type="text" className="form-control w-100" placeholder="Subject" />
                     <textarea className="form-control mt-3" placeholder="Description" rows="7"></textarea>
                     <div className="text-end">
