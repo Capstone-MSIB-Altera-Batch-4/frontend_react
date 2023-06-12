@@ -1,5 +1,6 @@
 import React from 'react'
 import './OurGallerySection.style.css'
+import deviceImage from '../../../assets/device-gallery.svg'
 
 const OurGallerySection = () => {
   return (
@@ -10,7 +11,7 @@ const OurGallerySection = () => {
           <h1 className='section-title justify-content-end fw-bold text-white'>製品写真</h1>
         </div>
       </div>
-      <img src='/src/assets/device-gallery.svg' alt='device-images' className='device-images text-center'/>
+      <img src={deviceImage} alt='device-images' className='device-images text-center'/>
     </section>
   )
 }

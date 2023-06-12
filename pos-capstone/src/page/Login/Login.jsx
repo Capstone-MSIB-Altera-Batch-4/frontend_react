@@ -1,6 +1,7 @@
 import React from "react"
 import "./Login.style.css"
 import LoginForm from "../../component/LoginForm/LoginForm"
+import imgLogin from "../../assets/img/imglogin.png"
 
 const Login = () => {
 
@@ -12,7 +13,7 @@ const Login = () => {
                     
                     <img
                         className="loginImg img-fluid"
-                        src="../../src/assets/img/imglogin.png"
+                        src={imgLogin}
                     />
                 </div>
                 <div className="login-Form col-lg-5">

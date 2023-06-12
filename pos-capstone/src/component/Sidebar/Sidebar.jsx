@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { dashboard, barItems, help, logout } from "./SidebarItem";
 import "./Sidebar.style.css"
 import { List } from "react-bootstrap-icons";
+import logoSidebar from "../../assets/icon/logo-sidebar.png"
 
 const Sidebar = () => {
 
@@ -12,7 +13,7 @@ const Sidebar = () => {
                 <div className="text-center mt-3 py-1 ">
                     <img
                         className="logo-sidebar"
-                        src="../../src/assets/icon/logo-sidebar.png"
+                        src={logoSidebar}
 
                     />
                 </div>
