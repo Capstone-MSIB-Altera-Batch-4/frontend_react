@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import "./InputImage.style.css"
 import { useState } from "react";
-
+import iconDrop from "../../assets/icon/dropimg-icon.svg"
 
 const InputImage = (props) => {
     const [files, setFiles] = useState()
@@ -53,7 +53,7 @@ const InputImage = (props) => {
                             <div className="imgdrop text-center">
                                 <img
                                     className="dropicon"
-                                    src="../../../src/assets/icon/dropimg-icon.svg"
+                                    src={iconDrop}
                                     height={35} width={35}
                                 >
                                 </img>
