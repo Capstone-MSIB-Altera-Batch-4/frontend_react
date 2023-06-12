@@ -157,6 +157,12 @@
     }
     .menu {
         display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+        background-color: #FFF0DE;
     }
     .button-menu {
         display: block;

@@ -8,10 +8,9 @@ import PrimaryButton from "../../element/Button/PrimaryButton/PrimaryButton"
 const Help = () => {
 
     return (
-        <>
-
+        <div>
             <div className="faq-section">
-                <div className="pt-4 ps-3">
+                <div className="pt-5 ps-3">
                     <PageTitle
                         title={<><Gear className="ms-3 me-3" /> Help</>}
                     />
@@ -62,7 +61,7 @@ const Help = () => {
 
                 </div>
             </div>
-        </>
+        </div>
 
 
 
