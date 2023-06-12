@@ -22,13 +22,10 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
     }, 1000);
   }
 
-  console.log("SB", showSnackbar)
-
   const confirmDelete = (id) => {
     setId(id)
     setShowConfirmModal(true)
   };
-
 
   return (
     <div className="mb-5">

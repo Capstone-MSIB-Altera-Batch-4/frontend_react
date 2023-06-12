@@ -70,7 +70,7 @@ const Sidebar = () => {
                 
                     <img
                         className="logo-menu text-center mt-2"
-                        src="../../src/assets/icon/logo-sidebar.png"
+                        src={logoSidebar}
 
                     />
                 
@@ -82,7 +82,7 @@ const Sidebar = () => {
                         <div className="modal-header">
                             <img
                                 className="logo-sidebar"
-                                src="../../src/assets/icon/logo-sidebar.png"
+                                src={logoSidebar}
 
                             />
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

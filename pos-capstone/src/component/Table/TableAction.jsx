@@ -90,7 +90,7 @@ const TableAction = ({
             ))}
           </tbody>
         </table>
-        {data.length === 0 ? (
+        {data?.length === 0 ? (
           <p className="text-center py-2 mx-auto" style={{background: "#E7E7E7"}}>Data not found</p>
         ) : null}
       </div>
