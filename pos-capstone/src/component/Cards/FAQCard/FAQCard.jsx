@@ -4,7 +4,7 @@ import './FAQCard.style.css'
 const FAQCard = (props) => {
     return (
         <div className="FAQcard mb-3" style={{
-            width: '500px',
+            width: '450px',
             height: '200px'
         }}>
             <div className="mb-2">

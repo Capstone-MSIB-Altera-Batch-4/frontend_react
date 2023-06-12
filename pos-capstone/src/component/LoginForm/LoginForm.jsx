@@ -87,7 +87,7 @@ const LoginForm = () => {
             />
             <div className='mt-5'>
                 <PrimaryButton
-                    className="btn text-white w-100"
+                    className="btn text-white w-100 position-relative"
                     label="Login"
                     type="submit"
                 />

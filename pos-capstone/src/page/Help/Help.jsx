@@ -11,21 +11,21 @@ const Help = () => {
         <>
 
             <div className="faq-section">
-                <div className="mt-5 ps-3">
+                <div className="pt-4 ps-3">
                     <PageTitle
-                        title={<><Gear className="ms-4 me-3" /> Help</>}
+                        title={<><Gear className="ms-3 me-3" /> Help</>}
                     />
                 </div>
 
-                <div className="d-flex align-items-center justify-content-center my-5">
+                <div className="d-flex align-items-center w-100 justify-content-center my-5">
                     <div>
                         <h2 className="text-center mb-3"> Hello, how can we help?</h2>
                         <div className="input-group mb-3">
                             <span className="input-group-text bg-white border-0">
                                 <Search />
                             </span>
-                            <input type="text" className="form-control border-0" placeholder="Search" />
-                            <PrimaryButton className="btn" label="Search" type="button"></PrimaryButton>
+                            <input type="text" className="form-control w-1 border-0 rounded" placeholder="Search" />
+                            <PrimaryButton className="btn ms-1" label={<Search />} type="button"></PrimaryButton>
                         </div>
                     </div>
                 </div>
@@ -48,12 +48,12 @@ const Help = () => {
                 </div>
             </div>
             <div className="row mb-3">
-                <div className="col-3 ps-5 pt-5">
+                <div className="col-lg-3 col-md-6 col-sm-12 ps-5 pt-5">
                     <h2 className="faq-h2 pb-4">Still Have Question?</h2>
-                    <h5 className="faq-h5">Can’t find the answer you’re looking for? Please chat to aour friendly team.</h5>
+                    <h5 className="faq-h5">Can’t find the answer you’re looking for? Please chat to our friendly team.</h5>
                     <h5 className="pt-4"><Whatsapp /></h5>
                 </div>
-                <div className="col-8 ps-5 pt-5">
+                <div className="col-lg-8 col-md-6 col-sm-12 ps-5 pt-5 pe-5">
                     <input type="text" className="form-control w-100" placeholder="Subject" />
                     <textarea className="form-control mt-3" placeholder="Description" rows="7"></textarea>
                     <div className="text-end">
