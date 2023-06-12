@@ -8,7 +8,7 @@ const About = () => {
             <div className="about row min-vh-75">
                 <div className="about-left col-lg-3 pe-0">
                     <div className="aboutimg text-center">
-                        <img src="../../../assets/img/AboutImage.png" alt="About Us" />
+                        <img src="../../../assets/img/aboutImage.png" alt="About Us" />
                     </div>
                 </div>
                 <div className="about-right col-lg-9 px-0">
