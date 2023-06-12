@@ -1,5 +1,7 @@
 import React from 'react'
 import './Subcription.style.css'
+import checkIcon from '../../../assets/checked-icon.svg'
+
 
 const SubscriptionSection = () => {
   return (
@@ -19,7 +21,7 @@ const SubscriptionSection = () => {
         // value={""}
         />
         <button className='button-submit'>
-          <img src='/src/assets/checked-icon.svg' />
+          <img src={checkIcon} />
         </button>
       </form>
     </section>

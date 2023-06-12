@@ -6,7 +6,7 @@ import Table from "../../component/Table/Table";
 import { DummyData } from "../../data/DummyData"
 import Graph from '../../element/Graph/Graph';
 import DashboardCard from '../../component/Cards/DashboardCard/DashboardCard';
-import { CreditCard, Person } from 'react-bootstrap-icons';
+import { CreditCard, People, Person } from 'react-bootstrap-icons';
 
 const Dashboard = () => {
   return (
@@ -24,7 +24,7 @@ const Dashboard = () => {
                 <DashboardCard title="Total Sales" amount="Rp61.500.000" growth={"+7%"} icon={<CreditCard/>} className="col-md-2"/>
               </div>
               <div className='col-md-4'>
-                <DashboardCard title="Visitors" amount="245" growth={"+3%"} icon={<CreditCard/>} className="col-md-2"/>
+                <DashboardCard title="Visitors" amount="245" growth={"+3%"} icon={<People/>} className="col-md-2"/>
               </div>
               <div className='col-md-4'>
                 <DashboardCard title="New Member" amount="65" growth={"+3"} icon={<Person />} className="col-md-2"/>
