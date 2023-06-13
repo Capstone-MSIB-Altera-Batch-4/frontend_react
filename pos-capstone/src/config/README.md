@@ -7,3 +7,6 @@ Config berisi file-file config seperti url api, config firebase, atau mungkin qu
 ``
 const { data, isLoading, error } = useFetch('https://api.example.com/data', 'POST', requestBody);
 ``
+
+### Note useFetch sementara tidak dipakai
+
