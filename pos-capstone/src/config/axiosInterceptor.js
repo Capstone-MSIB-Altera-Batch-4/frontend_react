@@ -5,7 +5,7 @@ const token = 'your-bearer-token';
 axios.interceptors.request.use(
   (config) => {
 
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = {token};
     console.log('Interceptor - Permintaan: ', config);
 
     return config;

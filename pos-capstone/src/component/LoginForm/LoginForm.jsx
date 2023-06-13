@@ -2,14 +2,14 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom"
 import TextField from '../../element/Textfield/Textfield';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ShowPassword from '../../element/ShowPassword/ShowPassword';
 import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
-import Button from '../../element/Button/Button'
 import PrimaryButton from '../../element/Button/PrimaryButton/PrimaryButton';
+import api from '../../config/redux/api/api';
 
 const LoginForm = () => {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -24,16 +24,28 @@ const LoginForm = () => {
             password: Yup.string()
                 .required('The password field must be filled in'),
         }),
-        onSubmit: (values, actions) => {
+        onSubmit: async (values, actions) => {
             actions.resetForm();
             console.log(values)
-            // navigate('')
+
+            api.post('/login', values)
+                .then(response => {
+                    const token = response.data.data.token;
+                    sessionStorage.setItem("token", JSON.stringify(token));
+                    navigate('/dashboard')
+
+                    
+                })
+                .catch(error => {
+                    // Handle the error here
+                    console.error(error);
+                });
 
         },
     })
 
     return (
-        <form>
+        <form onSubmit={formik.handleSubmit}>
             <div className="mb-3">
                 <TextField
                     htmlFor="username"

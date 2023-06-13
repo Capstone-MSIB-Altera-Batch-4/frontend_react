@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://64318b893adb1596516ee16e.mockapi.io' // Ubah dengan URL API yang sesuai
+  baseURL: 'http://128.199.206.32:8000/api/v1/admin'
 });
 
 export default api;
