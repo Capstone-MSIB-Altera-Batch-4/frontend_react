@@ -60,7 +60,8 @@ const FilterForm = ({onShow, data, filterFor, options, dropdownLabel}) => {
 
     },[searchInput, selected])
 
-    localStorage.setItem(`${filterFor}`, JSON.stringify(filterData));
+    
+    // localStorage.setItem(`${filterFor}`, JSON.stringify(filterData));
 
   return (
     <div className=''>

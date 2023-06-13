@@ -1,16 +1,28 @@
-import axios from 'axios';
+// import axios from 'axios';
+import api from "./redux/api/api";
 
-const token = 'your-bearer-token';
-
-axios.interceptors.request.use(
+// request interceptor
+api.interceptors.request.use(
   (config) => {
-
-    config.headers.Authorization = {token};
+    console.log("kepanggil")
+    const token = sessionStorage.getItem("token");
+    config.headers.Authorization = { token };
     console.log('Interceptor - Permintaan: ', config);
-
     return config;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
+
+// // response interceptor
+// api.interceptors.response.use(
+//   (response) => {
+//     // Tangani respons yang berhasil
+//     return response;
+//   },
+//   (error) => {
+//     // Tangani kesalahan pada respons
+//     return Promise.reject(error);
+//   }
+// );

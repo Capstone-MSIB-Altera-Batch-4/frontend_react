@@ -22,6 +22,6 @@ export const membershipsHeader = [
     { Header: "ID Customer", accessor: "id" },
     { Header: "Name", accessor: "name" },
     { Header: "Level", accessor: "level" },
-    { Header: "Points", accessor: "points" },
-    { Header: "Joined", accessor: "joined" }
+    { Header: "Points", accessor: "point" },
+    { Header: "Joined", accessor: "created_at" }
 ]
