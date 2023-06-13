@@ -7,10 +7,13 @@ import ShowPassword from '../../element/ShowPassword/ShowPassword';
 import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
 import PrimaryButton from '../../element/Button/PrimaryButton/PrimaryButton';
 import api from '../../config/redux/api/api';
+import Loader from '../../element/Loader/Loader';
 
 const LoginForm = () => {
     const navigate = useNavigate()
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
 
     const formik = useFormik({
@@ -26,20 +29,20 @@ const LoginForm = () => {
         }),
         onSubmit: async (values, actions) => {
             actions.resetForm();
-            console.log(values)
+            setLoading(true);
+            setError(null);
 
             api.post('/login', values)
                 .then(response => {
                     const token = response.data.data.token;
                     sessionStorage.setItem("token", JSON.stringify(token));
                     navigate('/dashboard')
-
-                    
                 })
                 .catch(error => {
-                    // Handle the error here
-                    console.error(error);
+                    setError(error.response.data.meta.message);
                 });
+
+            setLoading(false);
 
         },
     })
@@ -97,11 +100,17 @@ const LoginForm = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 label={showPassword ? 'Hide Password' : 'Show Password'}
             />
+            {error && (
+                <div className="text-white mt-3 w-100 text-center py-2 px-3 rounded-lg bg-danger">
+                    {error}
+                </div>
+            )}
             <div className='mt-5'>
                 <PrimaryButton
                     className="btn text-white w-100 position-relative"
                     label="Login"
                     type="submit"
+                    disabled={loading}
                 />
             </div>
 
