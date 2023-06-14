@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import TableAction from "./TableAction";
 import { Link, useLocation } from "react-router-dom";
 import { Pencil, Trash } from "react-bootstrap-icons";
@@ -15,11 +15,17 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [id, setId] = useState("")
-  
+
 
   const ActionSuccess = (id) => {
     console.log(id)
-    dispatch(deleteMember(id));
+    if (deleteConfirmFor == "Member") {
+      dispatch(deleteMember(id));
+    } else if(deleteConfirmFor == "Employee") {
+      dispatch(deleteCashier(id));
+    }
+
+
     setShowConfirmModal(false);
     setShowSnackbar(true);
   }
@@ -60,7 +66,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
           </div>
         )}
       />
-      
+
       {/* NAVBAR & SNACKBAR */}
       <div className="delete-confirm-modal">
         <ConfirmModal

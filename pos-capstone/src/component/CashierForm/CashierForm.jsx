@@ -34,7 +34,7 @@ const CashierForm = ({ showModalFor }) => {
     onSubmit: (values, actions) => {
       actions.resetForm();
       console.log(values);
-      alert("data", JSON.stringify(values));
+
       // navigate('')
     },
   });
