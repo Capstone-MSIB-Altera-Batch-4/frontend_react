@@ -35,7 +35,7 @@ const LoginForm = () => {
             api.post('/login', values)
                 .then(response => {
                     const token = response.data.data.token;
-                    sessionStorage.setItem("token", JSON.stringify(token));
+                    sessionStorage.setItem("token", token);
                     navigate('/dashboard')
                 })
                 .catch(error => {

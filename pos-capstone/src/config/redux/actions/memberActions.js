@@ -26,11 +26,12 @@ export const fetchMembers = (page) => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_MEMBERS_REQUEST' });
 
-    api.get(`/membership?page=${page}`, {
-      headers: {
-        'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2NzMwOTE5fQ.H7x-j5nVR4UF8enecUAntsa_--3D1G9wcO0GV7l9IhQ"
-      }
-    })
+    api.get(`/membership?page=${page}`)
+    // {
+    //   headers: {
+    //     'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2NzMwOTE5fQ.H7x-j5nVR4UF8enecUAntsa_--3D1G9wcO0GV7l9IhQ"
+    //   }
+    // })
       .then(response => {
         dispatch({
           type: 'FETCH_MEMBERS_SUCCESS',
@@ -72,11 +73,7 @@ export const deleteMember = (memberId) => {
   return (dispatch) => {
     dispatch({ type: 'DELETE_MEMBER_REQUEST' });
 
-    api.delete(`/membership/${memberId}`, {
-      headers: {
-        'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2NzMwOTE5fQ.H7x-j5nVR4UF8enecUAntsa_--3D1G9wcO0GV7l9IhQ"
-      }
-    })
+    api.delete(`/membership/${memberId}`)
       .then(() => {
         dispatch({
           type: 'DELETE_MEMBER_SUCCESS',
