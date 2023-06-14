@@ -10,7 +10,10 @@ import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../Modal/InputCategoryModal/InputCategoryModal";
 import { Link, useNavigate } from "react-router-dom";
 
-const MembershipForm = ({ showModalFor }) => {
+const MembershipForm = (filterData, showModalFor) => {
+
+  console.log(filterData)
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
 
@@ -18,13 +21,13 @@ const MembershipForm = ({ showModalFor }) => {
 
   const formik = useFormik({
     initialValues: {
-      id: "",
-      name: "",
-      category: "",
-      email: "",
-      phone_number: "",
-      birthday: "",
-      level: ""
+      id: filterData.filterData[0].id,
+      name: filterData.filterData[0].name,
+      category: filterData.filterData[0].category,
+      email: filterData.filterData[0].email,
+      phone_number: filterData.filterData[0].phone,
+      birthday: filterData.filterData[0].birth_day,
+      level: filterData.filterData[0].level
     },
     validationSchema: Yup.object().shape({
       id: Yup.string().required("The id field must be filled in"),
@@ -38,7 +41,7 @@ const MembershipForm = ({ showModalFor }) => {
     onSubmit: (values, actions) => {
       actions.resetForm();
       console.log(values);
-      alert("data", JSON.stringify(values))
+      
       // navigate('')
     },
   });
@@ -162,7 +165,7 @@ const MembershipForm = ({ showModalFor }) => {
               label="Current level"
               placeholder="Input level"
               id="level"
-              type="number"
+              type="text"
               name="level"
               value={formik.values.level}
               onChange={formik.handleChange}

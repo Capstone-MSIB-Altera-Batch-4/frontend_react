@@ -28,7 +28,7 @@ export const fetchMembers = (page) => {
 
     api.get(`/membership?page=${page}`, {
       headers: {
-        'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2Njk3MDE3fQ.Mng-DoS61DoMQ2h1yUA5LB3zYml4eSEV54iq8VuO1nI"
+        'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2NzMwOTE5fQ.H7x-j5nVR4UF8enecUAntsa_--3D1G9wcO0GV7l9IhQ"
       }
     })
       .then(response => {
@@ -72,7 +72,11 @@ export const deleteMember = (memberId) => {
   return (dispatch) => {
     dispatch({ type: 'DELETE_MEMBER_REQUEST' });
 
-    api.delete(`/membership/${memberId}`)
+    api.delete(`/membership/${memberId}`, {
+      headers: {
+        'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2NzMwOTE5fQ.H7x-j5nVR4UF8enecUAntsa_--3D1G9wcO0GV7l9IhQ"
+      }
+    })
       .then(() => {
         dispatch({
           type: 'DELETE_MEMBER_SUCCESS',

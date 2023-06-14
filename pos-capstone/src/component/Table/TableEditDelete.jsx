@@ -5,13 +5,21 @@ import { Pencil, Trash } from "react-bootstrap-icons";
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
+import { useDispatch } from "react-redux";
+import { deleteMember } from "../../config/redux/actions/memberActions";
 
 const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
+
+  const dispatch = useDispatch();
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [id, setId] = useState("")
+  
 
-  const ActionSuccess = () => {
+  const ActionSuccess = (id) => {
+    console.log(id)
+    dispatch(deleteMember(id));
     setShowConfirmModal(false);
     setShowSnackbar(true);
   }
@@ -23,6 +31,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   }
 
   const confirmDelete = (id) => {
+    console.log(id)
     setId(id)
     setShowConfirmModal(true)
   };
@@ -60,7 +69,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
           confirmFor={"delete"}
           role={deleteConfirmFor}
           id={id}
-          action={() => ActionSuccess()}
+          action={() => ActionSuccess(id)}
         />
       </div>
       {showSnackbar ? (

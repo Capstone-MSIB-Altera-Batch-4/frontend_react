@@ -13,15 +13,14 @@ import { fetchMembers } from "../../config/redux/actions/memberActions"
 
 const Memberships = () => {
   const dispatch = useDispatch();
+  const members = useSelector(state => state.members.members.data);
 
   useEffect(() => {
     dispatch(fetchMembers(1));
   }, [dispatch]);
 
-  const members = useSelector(state => state.members.members.data);
 
-  console.log(members)
-
+  const [filterValue, setFilterValue] = useState("");
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
   // const [members, setMembers] = useState(membershipsData)
