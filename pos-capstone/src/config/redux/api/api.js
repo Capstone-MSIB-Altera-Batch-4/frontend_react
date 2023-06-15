@@ -8,9 +8,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const token = sessionStorage.getItem("token");
-    console.log(token)
     config.headers.Authorization = token ;
-    console.log('Interceptor - Permintaan: ', config);
     return config;
   },
   (error) => {
@@ -20,7 +18,6 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => {
-    console.log('Interceptor - Respons: ', response);
     return response;
   },
   (error) => {
@@ -29,10 +26,9 @@ api.interceptors.response.use(
       if (error.response.status === 401) {
 
         console.log('Token expired atau Unauthorized');
-        // alert('Token expired atau Unauthorized');
+        alert('Token expired atau Unauthorized');
         sessionStorage.removeItem("token");
-        // window.location.href = '/login';
-
+        window.location.href = '/login';
 
       }
     } else if (error.request) {

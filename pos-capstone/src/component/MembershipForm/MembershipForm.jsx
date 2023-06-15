@@ -12,7 +12,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const MembershipForm = (filterData, showModalFor) => {
 
-  console.log(filterData)
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
@@ -33,7 +32,7 @@ const MembershipForm = (filterData, showModalFor) => {
       id: Yup.string().required("The id field must be filled in"),
       name: Yup.string().required("The name field must be filled in"),
       category: Yup.string().required("The category field must be filled in"),
-      email: Yup.number().required("The email field must be filled in"),
+      email: Yup.string().required("The email field must be filled in"),
       phone_number: Yup.number().required("The phone number field must be filled in"),
       birthday: Yup.string().required("The birthday day field must be filled in"),
       level: Yup.string().required("The birthday field must be filled in"),
@@ -47,7 +46,7 @@ const MembershipForm = (filterData, showModalFor) => {
   });
   return (
     <>
-      <form onSubmit={() => setShowConfirmModal(true)}>
+      <form onSubmit={formik.handleSubmit}>
         <div className="col w-100 text-start">
           <div className="mb-3">
             <TextField
@@ -206,17 +205,15 @@ const MembershipForm = (filterData, showModalFor) => {
             handleClose={() => setShowConfirmModal(false)}
             confirmFor={showModalFor}
             role={"Membership"}
-            action={() => {
-              {formik.handleSubmit}
+            // action= {formik.handleSubmit}
               //kalo udh pake data asli, nnti navigate sekalian atur di submit
-              navigate("/memberships", {
-                state: {
-                showSnackbar: true,
-                action: `${showModalFor}`,
-                variant: "success"
-              },
-            })
-            }}
+            //   navigate("/memberships", {
+            //     state: {
+            //     showSnackbar: true,
+            //     action: `${showModalFor}`,
+            //     variant: "success"
+            //   },
+            // })
           />
         </div>
         <div>

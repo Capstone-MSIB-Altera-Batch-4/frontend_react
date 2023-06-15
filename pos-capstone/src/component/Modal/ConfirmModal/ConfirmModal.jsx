@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import "./ConfirmModal.css";
-import Button from "../../../element/Button/Button";
 import SecondaryButton from "../../../element/Button/SecondaryButton/SecondaryButton";
 import PrimaryButton from "../../../element/Button/PrimaryButton/PrimaryButton";
 

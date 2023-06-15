@@ -13,7 +13,6 @@ const EditMembership = () => {
   const members = useSelector(state => state.members.members.data);
 
   const filteredMember = members.filter(member => member.id === parseInt(id));
-  console.log(filteredMember);
 
   // const memberships = membershipsData[id];
   // console.log(memberships);
