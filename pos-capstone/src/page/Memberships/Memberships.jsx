@@ -8,13 +8,25 @@ import { membershipsHeader } from "../../data/HeaderTableData"
 import { membershipsData } from "../../data/DummyData"
 import { useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMembers } from "../../config/redux/actions/memberActions"
 
 const Memberships = () => {
+  const dispatch = useDispatch();
+  const members = useSelector(state => state.members.members.data);
+
+  useEffect(() => {
+    dispatch(fetchMembers(1));
+  }, [dispatch]);
+
+
+  const [filterValue, setFilterValue] = useState("");
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
-  const [members, setMembers] = useState(membershipsData)
+  // const [members, setMembers] = useState(membershipsData)
 
-  let filterData = JSON.parse(localStorage.getItem('member'));
+
+  // let filterData = JSON.parse(localStorage.getItem('member'));
 
   const state = useLocation();
 
@@ -25,9 +37,11 @@ const Memberships = () => {
   }, [showSnackbar]);
 
   // show data
-  useEffect(() => {
-    setMembers(filterData);
-  }, [filterData]);
+  // useEffect(() => {
+  //   // setMembers(filterData);
+  // }, [filterData]);
+
+
 
   return (
     <div className="memberships-page row mx-auto px-4">
@@ -46,7 +60,7 @@ const Memberships = () => {
         </div>
         <div className="collapse" id="filter">
           <FilterForm
-            data={membershipsData}
+            data={members}
             onShow={onShow}
             options={["Gold", "Silver", "Bronze"]}
             filterFor="member"

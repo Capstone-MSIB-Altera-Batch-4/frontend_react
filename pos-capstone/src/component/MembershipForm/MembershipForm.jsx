@@ -9,42 +9,65 @@ import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButto
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../Modal/InputCategoryModal/InputCategoryModal";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateMember } from "../../config/redux/actions/memberActions";
 
-const MembershipForm = ({ showModalFor }) => {
+
+const MembershipForm = ({ filterData, showModalFor }) => {
+  const dispatch = useDispatch();
+
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
 
   const navigate = useNavigate();
 
+  //format date
+  const dateString = filterData[0].birth_day;
+  const date = new Date(dateString);
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day}`;
+  console.log(formattedDate);
+
   const formik = useFormik({
     initialValues: {
-      id: "",
-      name: "",
-      category: "",
-      email: "",
-      phone_number: "",
-      birthday: "",
-      level: ""
+      id: filterData[0].id,
+      name: filterData[0].name,
+      email: filterData[0].email,
+      phone_number: filterData[0].phone,
+      birth_day: formattedDate,
+      level: filterData[0].level
     },
     validationSchema: Yup.object().shape({
-      id: Yup.string().required("The id field must be filled in"),
+      id: Yup.number().required("The id field must be filled in"),
       name: Yup.string().required("The name field must be filled in"),
-      category: Yup.string().required("The category field must be filled in"),
-      email: Yup.number().required("The email field must be filled in"),
+      email: Yup.string().required("The email field must be filled in"),
       phone_number: Yup.number().required("The phone number field must be filled in"),
-      birthday: Yup.string().required("The birthday day field must be filled in"),
-      level: Yup.string().required("The birthday field must be filled in"),
+      birth_day: Yup.string().required("The birthday day field must be filled in"),
+      level: Yup.string().required("The level field must be filled in"),
     }),
-    onSubmit: (values, actions) => {
-      actions.resetForm();
+    onSubmit: (values) => {
       console.log(values);
-      alert("data", JSON.stringify(values))
+      dispatch(updateMember(values.id, values));
+
+      navigate("/memberships", {
+        state: {
+          showSnackbar: true,
+          action: `${showModalFor}`,
+          variant: "success"
+        },
+      })
+
       // navigate('')
     },
   });
   return (
     <>
-      <form onSubmit={() => setShowConfirmModal(true)}>
+      <form>
         <div className="col w-100 text-start">
           <div className="mb-3">
             <TextField
@@ -136,24 +159,24 @@ const MembershipForm = ({ showModalFor }) => {
           </div>
           <div className="mb-3">
             <TextField
-              htmlFor="birthday"
-              label="Birthday day"
-              placeholder="Input birthday day"
-              id="birthday"
-              type="text"
-              name="birthday"
-              value={formik.values.birthday}
+              htmlFor="birth_day"
+              label="Birthday"
+              placeholder="Input birthday"
+              id="birth_day"
+              type="date"
+              name="birth_day"
+              value={formik.values.birth_day}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.birthday && formik.touched.birthday
+                formik.errors.birth_day && formik.touched.birth_day
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("birthday", "", false)}
+              onClearInput={() => formik.setFieldValue("birth_day", "", false)}
             />
-            {formik.errors.birthday && formik.touched.birthday && (
-              <InputErrorMessage label={formik.errors.birthday} />
+            {formik.errors.birth_day && formik.touched.birth_day && (
+              <InputErrorMessage label={formik.errors.birth_day} />
             )}
           </div>
           <div className="mb-3">
@@ -162,7 +185,7 @@ const MembershipForm = ({ showModalFor }) => {
               label="Current level"
               placeholder="Input level"
               id="level"
-              type="number"
+              type="text"
               name="level"
               value={formik.values.level}
               onChange={formik.handleChange}
@@ -195,7 +218,6 @@ const MembershipForm = ({ showModalFor }) => {
             label="Save"
           />
         </div>
-
         {/* MODAL */}
         <div>
           <ConfirmModal
@@ -203,17 +225,9 @@ const MembershipForm = ({ showModalFor }) => {
             handleClose={() => setShowConfirmModal(false)}
             confirmFor={showModalFor}
             role={"Membership"}
-            action={() => {
-              {formik.handleSubmit}
-              //kalo udh pake data asli, nnti navigate sekalian atur di submit
-              navigate("/memberships", {
-                state: {
-                showSnackbar: true,
-                action: `${showModalFor}`,
-                variant: "success"
-              },
-            })
-            }}
+            action={formik.handleSubmit}
+          //kalo udh pake data asli, nnti navigate sekalian atur di submit
+
           />
         </div>
         <div>
@@ -223,6 +237,7 @@ const MembershipForm = ({ showModalFor }) => {
           />
         </div>
       </form>
+
     </>
   );
 };
