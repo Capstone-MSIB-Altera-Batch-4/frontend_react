@@ -22,13 +22,24 @@ const MembershipForm = ({ filterData, showModalFor }) => {
 
   const navigate = useNavigate();
 
+  //format date
+  const dateString = filterData[0].birth_day;
+  const date = new Date(dateString);
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day}`;
+  console.log(formattedDate);
+
   const formik = useFormik({
     initialValues: {
       id: filterData[0].id,
       name: filterData[0].name,
       email: filterData[0].email,
       phone_number: filterData[0].phone,
-      birthday: "",
+      birth_day: formattedDate,
       level: filterData[0].level
     },
     validationSchema: Yup.object().shape({
@@ -36,8 +47,8 @@ const MembershipForm = ({ filterData, showModalFor }) => {
       name: Yup.string().required("The name field must be filled in"),
       email: Yup.string().required("The email field must be filled in"),
       phone_number: Yup.number().required("The phone number field must be filled in"),
-      birthday: Yup.string().required("The birthday day field must be filled in"),
-      level: Yup.string().required("The birthday field must be filled in"),
+      birth_day: Yup.string().required("The birthday day field must be filled in"),
+      level: Yup.string().required("The level field must be filled in"),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -148,24 +159,24 @@ const MembershipForm = ({ filterData, showModalFor }) => {
           </div>
           <div className="mb-3">
             <TextField
-              htmlFor="birthday"
-              label="Birthday day"
-              placeholder="Input birthday day"
-              id="birthday"
+              htmlFor="birth_day"
+              label="Birthday"
+              placeholder="Input birthday"
+              id="birth_day"
               type="date"
-              name="birthday"
-              value={formik.values.birthday}
+              name="birth_day"
+              value={formik.values.birth_day}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.birthday && formik.touched.birthday
+                formik.errors.birth_day && formik.touched.birth_day
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("birthday", "", false)}
+              onClearInput={() => formik.setFieldValue("birth_day", "", false)}
             />
-            {formik.errors.birthday && formik.touched.birthday && (
-              <InputErrorMessage label={formik.errors.birthday} />
+            {formik.errors.birth_day && formik.touched.birth_day && (
+              <InputErrorMessage label={formik.errors.birth_day} />
             )}
           </div>
           <div className="mb-3">
