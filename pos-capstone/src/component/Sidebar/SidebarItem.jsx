@@ -63,7 +63,7 @@ export const help = {
 }
 
 export const logout = {
-    path: "/",
+    path: "/login",
     name: "Logout",
     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path d="M5 2C4.44775 2 4 2.44769 4 3V21C4 21.5523 4.44775 22 5 22H17C17.5522 22 18 21.5523 18 21V19C18 18.4477 17.5522 18 17 18C16.4478 18 16 18.4477 16 19V20H6V4H16V5C16 5.55231 16.4478 6 17 6C17.5522 6 18 5.55231 18 5V3C18 2.44769 17.5522 2 17 2H5Z" />
