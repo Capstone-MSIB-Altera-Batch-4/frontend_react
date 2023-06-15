@@ -1,59 +1,40 @@
 import TabelDetails from "../../component/Table/TableShowDetails";
 import InputDate from "../../element/InputDate/InputDate";
-import { DummyDetails } from "../../data/DummyData";
 import "./Orders.style.css"
 import PageTitle from "../../element/PageTitle/PageTitle";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { readOrders } from "../../config/redux/actions/ordersAction";
+import { filterorder } from "./OrdersFilter";
 
 const Orders = () => {
-  const data = DummyDetails();
-
-  const [inputdate, setinputdate] = useState({
+  const dispatch = useDispatch()
+  const data = useSelector(state => state.orders.items.data)
+  console.log(data)
+  const [inputfilter, setInputfilter] = useState({
+    inputid: "",
     datefrom: "",
     dateto: "",
   })
 
-  const [inputid, setinputid] = useState('')
 
-  const [Datas, setDatas] = useState(data)
-  const [filterdata, setFilterdata] = useState(data)
+  const [Datas, setDatas] = useState()
+  const [filterdata, setFilterdata] = useState()
 
+  useEffect(() => {
+    setDatas(data)
+    setFilterdata(data)
+  }, [data])
 
-
-  const filterid = (array) => {
-    return array.filter((datas) =>
-      datas.order_id.includes(`${inputid}`)
-    )
-  }
-  const filterdatefrom = (array) => {
-    return array.filter(datas =>
-      datas.date >= (`${inputdate.datefrom}`)
-    )
-  }
-  const filterdateto = (array) => {
-    return array.filter(datas =>
-      datas.date <= (`${inputdate.dateto}`)
-    )
-  }
+  useEffect(() => {
+    dispatch(readOrders())
+  }, [])
 
   useEffect(() => {
     let result = filterdata
-
-    if (inputid.length != 0) {
-      result = filterid(result)
-    }
-
-    if (inputdate.datefrom.length != 0) {
-      result = filterdatefrom(result)
-    }
-
-    if (inputdate.dateto.length != 0) {
-      result = filterdateto(result)
-    }
+    result = filterorder(result, inputfilter)
     setDatas(result)
-
-  }, [inputid, inputdate])
+  }, [inputfilter])
 
   return (
     <div className="orderspage overflow-hidden pb-4 px-3">
@@ -67,10 +48,10 @@ const Orders = () => {
           <label className="form-label">Orders No:</label>
           <div className="col-lg-8">
             <input
-              type="number"
+              type="text"
               className="form-control"
               placeholder="Type Order ID"
-              onChange={(e) => setinputid(e.target.value)}
+              onChange={(e) => setInputfilter({ ...inputfilter, inputid: e.target.value })}
             />
           </div>
         </div>
@@ -80,14 +61,14 @@ const Orders = () => {
               <InputDate
                 label="from"
                 className="form-control"
-                onChange={(e) => setinputdate({ ...inputdate, datefrom: e.target.value })}
+                onChange={(e) => setInputfilter({ ...inputfilter, datefrom: e.target.value })}
               />
             </div>
             <div className="dateto col-lg-6">
               <InputDate
                 label="to"
                 className="form-control"
-                onChange={(e) => setinputdate({ ...inputdate, dateto: e.target.value })}
+                onChange={(e) => setInputfilter({ ...inputfilter, dateto: e.target.value })}
               />
             </div>
           </div>
@@ -95,7 +76,7 @@ const Orders = () => {
       </div>
       <div className="table-responsive default-orders overflow-hidden">
         <TabelDetails
-          data={Datas}
+          data={Datas?Datas:[]}
         />
 
       </div>

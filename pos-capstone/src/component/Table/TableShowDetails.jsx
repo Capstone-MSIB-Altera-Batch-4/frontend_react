@@ -1,9 +1,6 @@
 import React, { useMemo } from "react";
 import TableAction from "./TableAction";
 import { Link } from "react-router-dom";
-import { DummyDetails } from "../../data/DummyData";
-import { useState } from "react";
-import { useEffect } from "react";
 
 const TabelDetails = ({ data }) => {
 
@@ -12,23 +9,15 @@ const TabelDetails = ({ data }) => {
   const columns = useMemo(
     () => [
       { Header: "No", accessor: "no" },
-      { Header: "Type", accessor: "type" },
+      { Header: "Type", accessor: "order_option" },
       { Header: "Order ID", accessor: "order_id" },
-      { Header: "Date", accessor: "date" },
+      { Header: "Date", accessor: "created_at" },
       { Header: "Status", accessor: "status" },
       { Header: "Payment", accessor: "payment" },
-      { Header: "Order Total", accessor: "order_total" },
+      { Header: "Order Total", accessor: "grand_total" },
     ],
     []
   );
-
-
-
-
-
-
-
-
 
 
   return (

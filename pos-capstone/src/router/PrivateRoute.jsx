@@ -15,7 +15,7 @@ const PrivateRoute = () => {
                 <div className="container-fluid ">
                     <div className=" row min-vh-100">
                         <Sidebar />
-                        <div className="content col-lg-10 p-0 pt-4">
+                        <div className="content col-lg-10 p-0">
                             <Outlet />
                         </div>
                     </div>
