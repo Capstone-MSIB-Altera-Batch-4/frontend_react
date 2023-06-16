@@ -5,30 +5,28 @@ import PageTitle from "../../element/PageTitle/PageTitle";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { readOrders } from "../../config/redux/actions/ordersAction";
-import { filterorder } from "./OrdersFilter";
+import { filterorder, formatedDate } from "./OrdersFilter";
 
 const Orders = () => {
   const dispatch = useDispatch()
   const data = useSelector(state => state.orders.items.data)
-  console.log(data)
   const [inputfilter, setInputfilter] = useState({
     inputid: "",
     datefrom: "",
     dateto: "",
   })
 
-
   const [Datas, setDatas] = useState()
   const [filterdata, setFilterdata] = useState()
 
   useEffect(() => {
-    setDatas(data)
-    setFilterdata(data)
-  }, [data])
-
-  useEffect(() => {
     dispatch(readOrders())
   }, [])
+
+  useEffect(() => {
+    setDatas(formatedDate(data))
+    setFilterdata(formatedDate(data))
+  }, [data])
 
   useEffect(() => {
     let result = filterdata
