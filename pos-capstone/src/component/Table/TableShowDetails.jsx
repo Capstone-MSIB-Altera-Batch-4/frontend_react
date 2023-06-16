@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import TableAction from "./TableAction";
 import { Link } from "react-router-dom";
+import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
 
 const TabelDetails = ({ data }) => {
 
@@ -28,14 +29,12 @@ const TabelDetails = ({ data }) => {
         data={data}
         pageSize={10}
         buttonComponent={(data) => (
-          <button
-            className="btn detail btn-outline-danger py-1"
-          ><Link
-            to={`/orders/detailorder/${data.order_id}`}
-            className="text-decoration-none text-danger">
-              Detail
-            </Link>
-          </button>)}
+          <SecondaryButton
+            className="btn-secondary backtoorder text-danger px-3"
+            onClick={() => navigate(`/orders/detailorder/${data.order_id}`)}
+            label={'Detail'}
+          />
+          )}
       />
     </div>
   );
