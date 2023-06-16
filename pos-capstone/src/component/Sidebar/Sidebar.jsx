@@ -76,7 +76,7 @@ const Sidebar = () => {
                 
             </div>
 
-            <div className="modal-sidebar modal fade" id="sidebar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-sidebar modal fade p-0" id="sidebar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-sidebar modal-dialog">
                     <div className="modal-sidebar modal-content vh-100">
                         <div className="modal-header">
