@@ -24,8 +24,8 @@ const Orders = () => {
   }, [])
 
   useEffect(() => {
-    setDatas(formatedDate(data))
-    setFilterdata(formatedDate(data))
+    setDatas(formatedDate(data?data:[]))
+    setFilterdata(formatedDate(data?data:[]))
   }, [data])
 
   useEffect(() => {
