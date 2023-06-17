@@ -10,11 +10,11 @@ export const productHeader = [
 ]
 
 export const employeeHeader = [
-      { Header: "No", accessor: "no_employee" },
+      { Header: "No", accessor: "no" },
       { Header: "No Id", accessor: "id" },
       { Header: "Name", accessor: "name" },
-      { Header: "Position", accessor: "position" },
-      { Header: "Joined", accessor: "joined" }
+      { Header: "Position", accessor: "role" },
+      { Header: "Joined", accessor: "created_at" }
 ]
 
 export const membershipsHeader = [

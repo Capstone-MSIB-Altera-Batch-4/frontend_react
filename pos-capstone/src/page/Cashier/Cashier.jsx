@@ -11,13 +11,23 @@ import { employeeData } from "../../data/DummyData";
 import { Link, useLocation } from "react-router-dom";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import PageTitle from "../../element/PageTitle/PageTitle";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCashiers } from "../../config/redux/actions/cashierActions";
 
 const Cashier = () => {
+  const dispatch = useDispatch();
+  const cashiers = useSelector(state => state.cashiers.cashiers.data);
+  // const [employee, setEmployee] = useState(employeeData)
+
+  // let filterData = JSON.parse(localStorage.getItem('cashier'));
+
+  useEffect(() => {
+    dispatch(fetchCashiers(1));
+  }, [dispatch]);
+  
+
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
-  const [employee, setEmployee] = useState(employeeData)
-
-  let filterData = JSON.parse(localStorage.getItem('cashier'));
 
   const state = useLocation();
 
@@ -27,9 +37,9 @@ const Cashier = () => {
     }
   }, [showSnackbar]);
 
-  useEffect(() => {
-    setEmployee(filterData);
-  }, [filterData]);
+  // useEffect(() => {
+  //   setEmployee(filterData);
+  // }, [filterData]);
 
   return (
     <div className="product-page row mx-auto px-4">
@@ -98,7 +108,7 @@ const Cashier = () => {
         <div className="my-4">
           <TableEdit
             columns={employeeHeader}
-            data={employee}
+            data={cashiers}
             editPageLink={"editemployee"}
             deleteConfirmFor="Employee"
           />

@@ -7,6 +7,7 @@ import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
 import { useDispatch } from "react-redux";
 import { deleteMember } from "../../config/redux/actions/memberActions";
+import { deleteCashier } from "../../config/redux/actions/cashierActions";
 
 const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
 

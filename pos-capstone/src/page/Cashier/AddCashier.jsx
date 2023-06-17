@@ -32,7 +32,7 @@ const AddCashier = () => {
         <h3>Employee Information</h3>
       </div>
       <div>
-        <CashierForm showModalFor={"add"} />
+        <CashierForm showModalFor={"add"}/>
       </div>
     </div>
   );

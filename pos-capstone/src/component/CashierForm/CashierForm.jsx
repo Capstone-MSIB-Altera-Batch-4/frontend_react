@@ -9,38 +9,64 @@ import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButto
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../Modal/InputCategoryModal/InputCategoryModal";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createCashier, updateCashier } from "../../config/redux/actions/cashierActions";
 
-const CashierForm = ({ showModalFor }) => {
+const CashierForm = ( {filterData, showModalFor} ) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
+  console.log(showModalFor)
+  
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  let initialValues = {
+    id: "",
+    username: "",
+    role: ""
+  };
+
+  if (showModalFor === "edit") {
+    console.log(showModalFor)
+    initialValues = {
+      id: filterData[0].id_code,
+      username: filterData[0].name,
+      role: filterData[0].role
+    };
+  }
+
   const formik = useFormik({
-    initialValues: {
-      id: "",
-      name_employee: "",
-      position: "",
-      joined: "",
-    },
+    initialValues: initialValues,
     validationSchema: Yup.object().shape({
       id: Yup.string().required("The id field must be filled in"),
-      name_employee: Yup.string().required(
-        "The employee name field must be filled in"
-      ),
-      position: Yup.number().required("The position field must be filled in"),
-      joined: Yup.string().required("The category field must be filled in"),
+      username: Yup.string().required("The employee name field must be filled in"),
+      role: Yup.string().required("The role field must be filled in"),
     }),
-    onSubmit: (values, actions) => {
-      actions.resetForm();
+    onSubmit: (values) => {
       console.log(values);
+     
 
-      // navigate('')
+      if (showModalFor === "add") {
+        dispatch(createCashier(values));
+      }
+
+      if (showModalFor === "edit") {
+        dispatch(updateCashier(filterData[0].id, values))
+      }
+
+      navigate("/cashier", {
+        state: {
+          showSnackbar: true,
+          action: `${showModalFor}`,
+          variant: "success",
+        },
+      });
     },
   });
   return (
     <>
-      <form onSubmit={() => setShowConfirmModal(true)}>
+      <form>
         <div className="col w-100 text-start px-5">
           <div className="mb-3">
             <TextField
@@ -66,68 +92,46 @@ const CashierForm = ({ showModalFor }) => {
           </div>
           <div className="mb-3">
             <TextField
-              htmlFor="name"
+              htmlFor="username"
               label="Employee Name"
               placeholder="Input employee name"
-              id="name"
+              id="username"
               type="text"
-              name="name"
-              value={formik.values.name}
+              name="username"
+              value={formik.values.username}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.name && formik.touched.name
+                formik.errors.username && formik.touched.username
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("name", "", false)}
+              onClearInput={() => formik.setFieldValue("username", "", false)}
             />
-            {formik.errors.name && formik.touched.name && (
-              <InputErrorMessage label={formik.errors.name} />
+            {formik.errors.username && formik.touched.username && (
+              <InputErrorMessage label={formik.errors.username} />
             )}
           </div>
           <div className="mb-3">
             <TextField
-              htmlFor="position"
-              label="Position"
-              placeholder="Input position"
-              id="position"
+              htmlFor="role"
+              label="Role"
+              placeholder="Input role"
+              id="role"
               type="text"
-              name="position"
-              value={formik.values.position}
+              name="role"
+              value={formik.values.role}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.position && formik.touched.position
+                formik.errors.role && formik.touched.role
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("position", "", false)}
+              onClearInput={() => formik.setFieldValue("role", "", false)}
             />
-            {formik.errors.position && formik.touched.position && (
-              <InputErrorMessage label={formik.errors.position} />
-            )}
-          </div>
-          <div className="mb-3">
-            <TextField
-              htmlFor="joined"
-              label="Joined"
-              placeholder="Input joined"
-              id="joined"
-              type="text"
-              name="joined"
-              value={formik.values.joined}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.joined && formik.touched.joined
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("joined", "", false)}
-            />
-            {formik.errors.joined && formik.touched.joined && (
-              <InputErrorMessage label={formik.errors.joined} />
+            {formik.errors.role && formik.touched.role && (
+              <InputErrorMessage label={formik.errors.role} />
             )}
           </div>
         </div>
@@ -155,19 +159,7 @@ const CashierForm = ({ showModalFor }) => {
             handleClose={() => setShowConfirmModal(false)}
             confirmFor={showModalFor}
             role={"Cashier"}
-            action={() => {
-              {
-                formik.handleSubmit;
-              }
-              //kalo udh pake data asli, nnti navigate sekalian atur di submit
-              navigate("/cashier", {
-                state: {
-                  showSnackbar: true,
-                  action: `${showModalFor}`,
-                  variant: "success",
-                },
-              });
-            }}
+            action={formik.handleSubmit}
           />
         </div>
         <div>
