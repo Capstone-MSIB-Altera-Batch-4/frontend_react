@@ -2,11 +2,11 @@ import api from '../api/api';
 import axios from 'axios';
 
 
-export const readOrders = () => {
+export const readOrders = (Limit, Pagination) => {
     return (dispatch) => {
         dispatch({ type: 'FETCH_ORDERS_REQUEST' });
 
-        api.get('/orders')
+        api.get(`/orders?limit=${Limit}&total_pages=${Pagination}`)
             .then(response => {
                 dispatch({
                     type: 'FETCH_ORDERS_SUCCESS',

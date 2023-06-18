@@ -6,18 +6,20 @@ var thismonth = `${thisdate.getFullYear()}-${(month<10)?'0'+month:(month)}`
 var prevmonth = `${thisdate.getFullYear()}-0${thisdate.getMonth()}`
 
 export const totalSales = (data) => {
-    const salesthismonth = data.filter((datas) => {
-        return datas.created_at.includes(thismonth)
-    });
+    if (data.length != 0) {
+        const salesthismonth = data.filter((datas) => {
+            return datas.created_at.includes(thismonth)
+        });
 
-    const sales = salesthismonth.map((item) => {
-        return item.grand_total
-    });
+        const sales = salesthismonth.map((item) => {
+            return item.grand_total
+        });
 
-    const totalsales = (sales != 0) ? sales.reduce((acc, curr) => {
-        return acc + curr
-    }) : 0
-    return `Rp${totalsales.toLocaleString("id-ID")}`
+        const totalsales = (sales != 0) ? sales.reduce((acc, curr) => {
+            return acc + curr
+        }) : 0
+        return `Rp${totalsales.toLocaleString("id-ID")}`
+    }
 }
 
 export const prevtotalSales = (data) => {

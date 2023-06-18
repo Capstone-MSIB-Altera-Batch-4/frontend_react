@@ -9,6 +9,7 @@ import { filterorder, formatedDate } from "./OrdersFilter";
 
 const Orders = () => {
   const dispatch = useDispatch()
+  const loading = useSelector(state => state.orders.loading)
   const data = useSelector(state => state.orders.items.data)
   const [inputfilter, setInputfilter] = useState({
     inputid: "",
@@ -24,8 +25,9 @@ const Orders = () => {
   }, [])
 
   useEffect(() => {
-    setDatas(formatedDate(data?data:[]))
-    setFilterdata(formatedDate(data?data:[]))
+    if(data)
+    {setDatas(formatedDate(data))
+    setFilterdata(formatedDate(data))}
   }, [data])
 
   useEffect(() => {

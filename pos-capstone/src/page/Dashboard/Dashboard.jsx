@@ -14,10 +14,11 @@ const Dashboard = () => {
 
   const dispatch = useDispatch()
   const order = useSelector(state => state.orders.items.data)
+  const totalsales = useSelector(state => state.orders.items.paginations)
   const members = useSelector(state => state.members.members.data);
 
   useEffect(() => {
-    dispatch(readOrders())
+    dispatch(readOrders(9999,1))
   }, [])
 
   return (

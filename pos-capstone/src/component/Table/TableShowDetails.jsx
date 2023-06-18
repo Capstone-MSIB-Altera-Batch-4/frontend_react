@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import TableAction from "./TableAction";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
 
 const TabelDetails = ({ data }) => {
@@ -19,8 +19,8 @@ const TabelDetails = ({ data }) => {
     ],
     []
   );
-
-
+  const navigate = useNavigate()
+  
   return (
     <div>
       <TableAction
@@ -31,7 +31,7 @@ const TabelDetails = ({ data }) => {
         buttonComponent={(data) => (
           <SecondaryButton
             className="btn-secondary backtoorder text-danger px-3"
-            onClick={() => navigate(`/orders/detailorder/${data.order_id}`)}
+            onClick={() => navigate(`/orders/detailorder/${data.id}`)}
             label={'Detail'}
           />
           )}

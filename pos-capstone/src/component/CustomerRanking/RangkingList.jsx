@@ -16,7 +16,7 @@ const CustomerRanking = () => {
   let sortedData = members?.sort((cust1, cust2) => (cust2.point - cust1.point));
 
   useEffect(()=>{
-    dispatch(fetchMembers(1))
+    dispatch(fetchMembers(1,9999))
   },[])
   
   return (

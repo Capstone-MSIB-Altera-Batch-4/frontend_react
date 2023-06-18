@@ -5,7 +5,7 @@ const RankingLabel = ({variant}) => {
   //untuk custom warna background dan warna text label
   const getColor = () => {
     switch (variant) {
-      case "Gold":
+      case "gold":
         return "gold-style";
       case "Silver":
         return "silver-style";
