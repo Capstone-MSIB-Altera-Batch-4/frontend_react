@@ -12,10 +12,11 @@ const TableAction = ({
 }) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pageSize);
-  const pageCount = Math.ceil(data.length / rowsPerPage);
+  const pageCount = Math.ceil(data?.length / rowsPerPage);
   const startIndex = pageIndex * rowsPerPage;
   const endIndex = (pageIndex + 1) * rowsPerPage;
-  const currentPage = data.slice(startIndex, endIndex);
+  const startNumber = pageIndex * rowsPerPage + 1;
+  // const currentPage = data.slice(startIndex, endIndex);
 
   const handleRowsPerPageChange = (event) => {
     const newRowsPerPage = parseInt(event.target.value);
@@ -48,7 +49,7 @@ const TableAction = ({
             </tr>
           </thead>
           <tbody>
-            {currentPage.map((row, rowIndex) => (
+            {data?.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
                 onMouseEnter={() => handleRowHover(rowIndex)}
@@ -59,7 +60,7 @@ const TableAction = ({
                     : { backgroundColor: "inherit" }
                 }
               >
-                {columns.map((column, columnIndex) => (
+                {columns.map((column, columnIndex) => (           
                   <td
                     key={columnIndex}
                     style={
@@ -68,7 +69,7 @@ const TableAction = ({
                         : { backgroundColor: "inherit" }
                     }
                   >
-                    {row[column.accessor]}
+                     {column.accessor === "no" ? startNumber + rowIndex : row[column.accessor]}
                   </td>
                 ))}
                 <td

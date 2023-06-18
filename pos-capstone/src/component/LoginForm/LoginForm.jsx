@@ -2,15 +2,18 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom"
 import TextField from '../../element/Textfield/Textfield';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ShowPassword from '../../element/ShowPassword/ShowPassword';
 import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
-import Button from '../../element/Button/Button'
 import PrimaryButton from '../../element/Button/PrimaryButton/PrimaryButton';
+import api from '../../config/redux/api/api';
+// import Loader from '../../element/Loader/Loader';
 
 const LoginForm = () => {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
 
     const formik = useFormik({
@@ -24,16 +27,28 @@ const LoginForm = () => {
             password: Yup.string()
                 .required('The password field must be filled in'),
         }),
-        onSubmit: (values, actions) => {
+        onSubmit: async (values, actions) => {
             actions.resetForm();
-            console.log(values)
-            // navigate('')
+            setLoading(true);
+            setError(null);
+
+            api.post('/login', values)
+                .then(response => {
+                    const token = response.data.data.token;
+                    sessionStorage.setItem("token", token);
+                    navigate('/dashboard')
+                })
+                .catch(error => {
+                    setError(error.response.data.meta.message);
+                });
+
+            setLoading(false);
 
         },
     })
 
     return (
-        <form>
+        <form onSubmit={formik.handleSubmit}>
             <div className="mb-3">
                 <TextField
                     htmlFor="username"
@@ -85,11 +100,17 @@ const LoginForm = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 label={showPassword ? 'Hide Password' : 'Show Password'}
             />
+            {error && (
+                <div className="text-white mt-3 w-100 text-center py-2 px-3 rounded-lg bg-danger">
+                    {error}
+                </div>
+            )}
             <div className='mt-5'>
                 <PrimaryButton
                     className="btn text-white w-100 position-relative"
                     label="Login"
                     type="submit"
+                    disabled={loading}
                 />
             </div>
 

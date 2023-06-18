@@ -10,13 +10,24 @@ import { productHeader } from "../../data/HeaderTableData"
 import { productsData } from "../../data/DummyData"
 import { Link, useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../config/redux/actions/productActions"
 
 const Products = () => {
+    const dispatch = useDispatch();
+    const products = useSelector(state => state.products.products.data);
+
+    console.log("Products", products)
+
+    useEffect(() => {
+      dispatch(getProducts())
+    }, [dispatch]);
+
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [onShow, setOnShow] = useState(false)
-    const [products, setProducts] = useState(productsData)
+    // const [products, setProducts] = useState(productsData)
 
-    let filterData = JSON.parse(localStorage.getItem('product'));
+    // let filterData = JSON.parse(localStorage.getItem('product'));
     // console.log("Products", filterData);
 
 
@@ -30,9 +41,9 @@ const Products = () => {
     }, [showSnackbar]);
 
     // show data 
-    useEffect(() => {
-      setProducts(filterData)
-    }, [filterData])
+    // useEffect(() => {
+    //   setProducts(filterData)
+    // }, [filterData])
 
     return (
       <div className="product-page row mx-auto px-4">
@@ -79,8 +90,8 @@ const Products = () => {
               editPageLink={"editproduct"}
               deleteConfirmFor={"Product"}
             />
-            {products ? (
-              "" ): (<td>Product item not found</td>)}
+            {/* {products ? (
+              "" ): (<td>Product item not found</td>)} */}
           </div>
         </div>
 

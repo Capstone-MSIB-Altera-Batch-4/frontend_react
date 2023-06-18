@@ -7,6 +7,8 @@ import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage
 import Button from '../../element/Button/Button';
 import { Plus } from 'react-bootstrap-icons';
 import './InputCategoryForm.css'
+import { useDispatch } from 'react-redux';
+import { createCategory } from '../../config/redux/actions/productActions';
 
 const validationSchema = Yup.object().shape({
   people: Yup.array().of(
@@ -18,13 +20,17 @@ const validationSchema = Yup.object().shape({
 });
 
 const InputCategoryForm = ({handleClose}) => {
+  const dispatch = useDispatch();
   const [categoryList, setCategoryList] = useState([""])
   
   return (
     <div>
       <Formik
-        initialValues={{ category: ['baju', 'celana'] }}
-        onSubmit={(values) => console.log(JSON.stringify(values))}
+        initialValues={{ category: [''] }}
+        onSubmit={(values) => {
+          dispatch(createCategory(values.category));
+          console.log(JSON.stringify(values))
+        }}
         validationSchema={validationSchema}
       >
         {({ values, handleSubmit, handleChange, errors }) => (

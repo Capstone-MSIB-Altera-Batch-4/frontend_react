@@ -1,23 +1,36 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ProductForm from "../../component/ProductForm/ProductForm";
 import PageTitle from "../../element/PageTitle/PageTitle";
 import { useParams } from "react-router-dom";
 import { productsData } from "../../data/DummyData";
+import { useSelector } from "react-redux";
+import api from "../../config/redux/api/api";
 
 
 const EditProduct = () => {
   const { id } = useParams();
+  const [product, setProduct] = useState([])
 
-    const products = productsData[id];
-    console.log(products);
+  // const productData = useSelector(state => state.products.products.data);
+  // const product = productData.find(item => item.id === id);
 
-//     const productData = props.value
+  console.log("ID", id)
 
-//   if (searchInput.length > 0) {
-//     productData.filter((data) => {
-//         return data.name.match(searchInput);
-//     })
-//   }  `  
+  const getProductById = () => {
+    api.get(`/product/${id}`)
+    .then(response => {
+      setProduct(response.data.data)
+    })
+    // .catch(error => {
+    //   setError(error.response.data.meta.message);
+    // });
+  }
+
+  useEffect(() => {
+    getProductById()
+  }, [])
+
+  console.log("Product seleectend", product)
 
   return (
     <div className="col">
@@ -26,7 +39,7 @@ const EditProduct = () => {
           <PageTitle title="Edit Product" />
         </div>
         <div>
-          <ProductForm showModalFor={"edit"} />
+          <ProductForm showModalFor={"edit"} productId={id} dataEdit={product}/>
         </div>
       </div>
     </div>
