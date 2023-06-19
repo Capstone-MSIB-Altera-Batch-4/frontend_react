@@ -78,3 +78,12 @@
     padding-left: 1rem;
     font-weight: 700;
 }
+
+@media print {
+    header,
+    .orders-title,
+    .btn-order,
+    .menu {
+        display: none;
+    }
+}
