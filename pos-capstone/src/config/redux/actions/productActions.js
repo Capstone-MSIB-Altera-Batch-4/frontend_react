@@ -5,12 +5,11 @@ export const createProduct = (product) => {
   return (dispatch) => {
     dispatch({ type: 'CREATE_PRODUCTS_REQUEST' });
 
-    api.post('/product', {
-      headers: {
-        'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'
-      },
-      product
-    })
+    api.post('/product',
+      // headers: {
+      //   'Content-Type': 'multipart/form-data'
+      // },
+      product)
       .then(response => {
         dispatch({
           type: 'CREATE_PRODUCTS_SUCCESS',

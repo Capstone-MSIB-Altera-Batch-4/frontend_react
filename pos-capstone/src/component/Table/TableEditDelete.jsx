@@ -1,20 +1,33 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import TableAction from "./TableAction";
 import { Link, useLocation } from "react-router-dom";
 import { Pencil, Trash } from "react-bootstrap-icons";
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
+import { useDispatch } from "react-redux";
 
 const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
+
+  const dispatch = useDispatch();
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [id, setId] = useState("")
 
-  const ActionSuccess = () => {
-    setShowConfirmModal(false);
-    setShowSnackbar(true);
-  }
+
+  // const ActionSuccess = (id) => {
+  //   console.log(id)
+  //   if (deleteConfirmFor == "Member") {
+  //     dispatch(deleteMember(id));
+  //   } else if(deleteConfirmFor == "Employee") {
+  //     dispatch(deleteCashier(id));
+  //   }
+
+
+  //   setShowConfirmModal(false);
+  //   setShowSnackbar(true);
+  // }
 
   if (showSnackbar) {
     setTimeout(() => {
@@ -23,6 +36,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   }
 
   const confirmDelete = (id) => {
+    console.log(id)
     setId(id)
     setShowConfirmModal(true)
   };
@@ -51,7 +65,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
           </div>
         )}
       />
-      
+
       {/* NAVBAR & SNACKBAR */}
       <div className="delete-confirm-modal">
         <ConfirmModal
@@ -60,7 +74,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
           confirmFor={"delete"}
           role={deleteConfirmFor}
           id={id}
-          action={() => ActionSuccess()}
+          action={() => ActionSuccess(id)}
         />
       </div>
       {showSnackbar ? (

@@ -15,7 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createProduct, updateProduct } from "../../config/redux/actions/productActions";
 
-const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
+const ProductFrom = ({ showModalFor, dataEdit }) => {
   const [product, setProduct] = useState([]);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
@@ -24,7 +24,17 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isEditMode = !!productId;
+  // const isEditMode = !!productId;
+
+  // useEffect(() => {
+    
+  //   if (dataEdit) {
+  //     setTimeout(() => {
+  //       setProduct(dataEdit)
+  //       console.log("Data kesimpennn")
+  //     }, 1000);
+  //   }
+  // }, [dataEdit])
 
   let initialValues = {
     id: "",
@@ -36,30 +46,55 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
     unit: "",
   };
 
-  console.log("editmode?", isEditMode);
+  // console.log("editmode?", isEditMode);
   console.log("DATA", dataEdit);
-  console.log("Category", initialValues)
+  // console.log("Category", initialValues)
 
-  if (isEditMode) {
-    if (dataEdit) {
+  console.log("mode", showModalFor)
+
+  // useEffect(() => {
+    if (showModalFor === 'edit') {
       initialValues = {
         id: dataEdit.products_id,
         name: dataEdit.name,
         category: dataEdit.category,
         image: dataEdit.image_url,
         stock: dataEdit.quantity,
-        price: dataEdit.price,
+        price:  dataEdit.price,
         unit: dataEdit.unit,
       };
     }
-  }
+  // },[!showModalFor])
+  
+
+  console.log("Category", initialValues)
+
+  // if (isEditMode) {
+  //   // if (dataEdit) {
+  //     initialValues = {
+  //       id: dataEdit.products_id,
+  //       name: dataEdit.name,
+  //       category: dataEdit.category,
+  //       image: dataEdit.image_url,
+  //       stock: dataEdit.quantity,
+  //       price: dataEdit.price,
+  //       unit: dataEdit.unit,
+  //     };
+  //   // }
+  // }
 
   // useEffect(() => {
-  //   setProduct(dataEdit)
+    
+  //   if (dataEdit) {
+  //     setTimeout(() => {
+  //       setProduct(dataEdit)
+  //       console.log("Data kesimpennn")
+  //     }, 1000);
+  //   }
   // }, [dataEdit])
 
   // if (isEditMode) {
-  //   if (product) {
+  //   // if (product) {
   //     initialValues = {
   //       id: product.products_id,
   //       name: product.name,
@@ -69,7 +104,7 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
   //       price: product.price,
   //       unit: product.unit
   //     }
-  //   }
+  //   // }
   // }
 
   //untuk ngatur biar modal muncul sama simpen data inputan
@@ -79,15 +114,15 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
   };
 
   //function untuk submit data
-  const handleSubmit = () => {
-    if (isEditMode) {
-      console.log("ini update", JSON.stringify(data));
-      // dispatch(updateProduct(productId, data));
-    }else{
-      console.log("ini create", data);
-      console.log(JSON.stringify(data));
-      dispatch(createProduct((data)));
-    }
+  // const handleSubmit = () => {
+  //   if (isEditMode) {
+  //     console.log("ini update", JSON.stringify(data));
+  //     dispatch(updateProduct(productId, data));
+  //   }else{
+  //     console.log("ini create", data);
+  //     console.log(JSON.stringify(data));
+  //     dispatch(createProduct((data)));
+  //   }
 
     console.log("Cek error", createProduct.status)
     // if (dispatch.type) {
@@ -100,7 +135,7 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
     //   variant: "success"
     // }})
     // alert("data", JSON.stringify(data.category))
-  };
+  // };
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -113,17 +148,30 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
       price: Yup.number().required("The price field must be filled in"),
       unit: Yup.string().required("The unit field must be filled in"),
     }),
-    // onSubmit: (values, actions) => {
-    //   // actions.resetForm();
-    //   console.log(values);
-    //   alert("data", JSON.stringify(values))
-    // navigate("/products", {
-    //       state: {
-    //       showSnackbar: true,
-    //       action: `${showModalFor}`,
-    //       variant: "success"
-    //     },
-    // },
+  //   onSubmit: (values, actions) => {
+  //     // actions.resetForm();
+  //     console.log(values);
+  //     alert("data", JSON.stringify(values))
+  //   navigate("/products", {
+  //         state: {
+  //         showSnackbar: true,
+  //         action: `${showModalFor}`,
+  //         variant: "success"
+  //       },
+  //   }),
+  // }
+      onSubmit: (values, actions) => {
+        alert("data", JSON.stringify(values))
+        console.log("DATA", values);
+        // dispatch(createProduct(values));
+        navigate("/products", {
+          state: {
+            showSnackbar: !!true,
+            action: `${showModalFor}`,
+            variant: "success"
+          },
+        })
+      }
   });
 
   return (
@@ -261,7 +309,7 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
         </Link>
         <PrimaryButton
           type="button"
-          onClick={() => ModalAction(formik.values)}
+          onClick={() => setShowConfirmModal(true)}
           className="px-4"
           label="Save"
         />
@@ -274,7 +322,7 @@ const ProductFrom = ({ showModalFor, productId, dataEdit }) => {
           handleClose={() => setShowConfirmModal(false)}
           confirmFor={showModalFor}
           role={"Product"}
-          action={handleSubmit}
+          action={formik.handleSubmit}
         />
       </div>
       <div>

@@ -8,16 +8,16 @@ const InputCategory = ({selectedOption}) => {
     const [selected, setSelected] = useState(selectedOption)
     console.log("Selected",selectedOption)
     
-    // const dispatch = useDispatch();
-    // const options = useSelector(state => state.products.category);
+    const dispatch = useDispatch();
+    const options = useSelector(state => state.products.category);
 
-    // console.log("Products", options)
+    console.log("Products", options)
 
-    // useEffect(() => {
-    //   dispatch(getCategory())
-    // }, [dispatch]);
+    useEffect(() => {
+      dispatch(getCategory())
+    }, [dispatch]);
 
-    const options = ["Sushi", "Ramen", "Dimsum"]
+    // const options = ["Sushi", "Ramen", "Dimsum"]
     
     return (
         <>

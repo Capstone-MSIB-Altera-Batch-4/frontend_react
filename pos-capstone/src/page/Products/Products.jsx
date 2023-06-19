@@ -15,7 +15,9 @@ import { getProducts } from "../../config/redux/actions/productActions"
 
 const Products = () => {
     const dispatch = useDispatch();
-    const products = useSelector(state => state.products.products.data);
+    const productsData = useSelector(state => state.products.products.data);
+    const filteredProducts = useSelector(state => state.filterData.products);
+    const [products, setProducts] = useState(productsData);
 
     console.log("Products", products)
 
@@ -24,8 +26,7 @@ const Products = () => {
     }, [dispatch]);
 
     const [showSnackbar, setShowSnackbar] = useState(false);
-    const [onShow, setOnShow] = useState(false)
-    // const [products, setProducts] = useState(productsData)
+    const [onShow, setOnShow] = useState(false);
 
     // let filterData = JSON.parse(localStorage.getItem('product'));
     // console.log("Products", filterData);
@@ -38,12 +39,24 @@ const Products = () => {
       if (state.state !== null && state.state.showSnackbar === true) {
         setShowSnackbar(true);
       }
+      // setShowSnackbar(false)
     }, [showSnackbar]);
+
+    
+  // if (showSnackbar) {
+  //   setTimeout(() => {
+  //     setShowSnackbar(false);
+  //   }, 1000);
+  // }
 
     // show data 
     // useEffect(() => {
-    //   setProducts(filterData)
-    // }, [filterData])
+    //   setProducts(filteredProducts)
+    // }, [dispatch])
+
+    // useEffect(() => {
+    //   setProducts(filteredProducts)
+    // }, [dispatch])
 
     return (
       <div className="product-page row mx-auto px-4">
@@ -86,7 +99,8 @@ const Products = () => {
           <div className="mt-4">
             <TableEdit
               columns={productHeader}
-              data={products}
+              // data={products}
+              data={productsData}
               editPageLink={"editproduct"}
               deleteConfirmFor={"Product"}
             />
