@@ -6,9 +6,10 @@ import ordersReducer from './ordersReducer';
 
 
 const rootReducer = combineReducers({
-    items: itemReducer,
-    members: memberReducer,
-    orders: ordersReducer,
+  items: itemReducer,
+  members: memberReducer,
+  cashiers: cashierReducer,
+  orders: ordersReducer
 });
 
 export default rootReducer;

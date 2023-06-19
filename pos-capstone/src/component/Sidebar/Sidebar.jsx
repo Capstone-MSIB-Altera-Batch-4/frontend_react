@@ -7,6 +7,11 @@ import logoSidebar from "../../assets/icon/logo-sidebar.png"
 
 const Sidebar = () => {
 
+    const handleLogout = () => {
+        console.log("masuk")
+        sessionStorage.removeItem("token");
+    }
+
     return (
         <>
             <div className="sidebar bar col auto col-lg-2 min-vh-100">
@@ -40,8 +45,8 @@ const Sidebar = () => {
                             <div className="barname">{help.name}</div>
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink to={logout.path} className="nav-link" activeclassName="active" >
+                    <li> 
+                        <NavLink to={logout.path} className="nav-link" onClick={handleLogout} activeclassName="active" >
                             <div className="icon">{logout.icon}</div>
                             <div className="barname">{logout.name}</div>
                         </NavLink>
@@ -112,7 +117,7 @@ const Sidebar = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={logout.path} className="nav-link" activeclassName="active" >
+                                    <NavLink to={logout.path} className="nav-link" onClick={handleLogout} activeclassName="active" >
                                         <div className="icon">{logout.icon}</div>
                                         <div className="barname">{logout.name}</div>
                                     </NavLink>

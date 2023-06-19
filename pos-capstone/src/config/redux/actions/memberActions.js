@@ -23,28 +23,28 @@ export const createMember = (member, page) => {
 
 // Read
 export const fetchMembers = (page, limit) => {
-    return (dispatch) => {
-        dispatch({ type: 'FETCH_MEMBERS_REQUEST' });
 
-        api.get(`/membership?page=${page}&limit=${limit}`)
-            // {
-            //   headers: {
-            //     'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2NzMwOTE5fQ.H7x-j5nVR4UF8enecUAntsa_--3D1G9wcO0GV7l9IhQ"
-            //   }
-            // })
-            .then(response => {
-                dispatch({
-                    type: 'FETCH_MEMBERS_SUCCESS',
-                    payload: response.data
-                });
-            })
-            .catch(error => {
-                dispatch({
-                    type: 'FETCH_MEMBERS_FAILURE',
-                    payload: error.message
-                });
-            });
-    };
+  if(page === undefined) {
+    page = 1
+  }
+
+  return (dispatch) => {
+    dispatch({ type: 'FETCH_MEMBERS_REQUEST' });
+
+    api.get(`/membership?page=${page}&limit=${limit}`)
+      .then(response => {
+        dispatch({
+          type: 'FETCH_MEMBERS_SUCCESS',
+          payload: response.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: 'FETCH_MEMBERS_FAILURE',
+          payload: error.message
+        });
+      });
+  };
 };
 
 // Update

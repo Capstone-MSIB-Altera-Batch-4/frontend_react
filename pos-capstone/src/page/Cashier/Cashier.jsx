@@ -4,22 +4,70 @@ import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButto
 import { Plus } from "react-bootstrap-icons";
 import personIcon from "../../assets/icon/personfill.svg";
 import filterIcon from "../../assets/icon/Filter.svg";
-import FilterForm from "../../component/FilterForm/FilterForm";
 import TableEdit from "../../component/Table/TableEditDelete";
 import { employeeHeader } from "../../data/HeaderTableData";
-import { employeeData } from "../../data/DummyData";
 import { Link, useLocation } from "react-router-dom";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import PageTitle from "../../element/PageTitle/PageTitle";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCashiers } from "../../config/redux/actions/cashierActions";
+import SearchBar from "../../element/SearchBar/SearchBar";
+import Dropdown from "../../element/Dropdown/Dropdown";
+import TablePagination from "../../element/TablePagination/TablePagination";
 
 const Cashier = () => {
+  const dispatch = useDispatch();
+  const cashiers = useSelector((state) => state.cashiers.cashiers.data);
+  //ambil response pagination
+  const pagination = useSelector(state => state.members.members.pagination);
+  
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredCashiers, setFilteredCashiers] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+  const options = ["Head Waiters", "Waiters", "Cashier"];
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
-  const [employee, setEmployee] = useState(employeeData)
-
-  let filterData = JSON.parse(localStorage.getItem('cashier'));
-
+  const [totalPage, setTotalPage] = useState(5)
+  const [curPage, setCurPage] = useState(1)
+  const [totalItems, setTotalItems] = useState(50)
+  const [limit, setLimit] = useState(10)
   const state = useLocation();
+
+  useEffect(() => {
+    dispatch(fetchCashiers(curPage, limit));
+  }, [dispatch, curPage, limit]);
+
+  useEffect(() => {
+    handleFilter();
+  }, [selectedOption, cashiers, searchInput]);
+
+   // set value pagination
+   useEffect(() => {
+    if (pagination) {
+      setTotalPage(pagination.total_pages);
+      setCurPage(pagination.page);
+      setTotalItems(pagination.total_items);
+      setLimit(pagination.limit);
+    }
+  }, [pagination]);
+
+  //pagination function
+  const handlePrevPage = () => {
+    if (curPage > 1) {
+      setCurPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (curPage < totalPage) {
+      setCurPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handleRowsPerPageChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setLimit(newLimit);
+  };
 
   useEffect(() => {
     if (state.state !== null && state.state.showSnackbar === true) {
@@ -27,42 +75,38 @@ const Cashier = () => {
     }
   }, [showSnackbar]);
 
-  useEffect(() => {
-    setEmployee(filterData);
-  }, [filterData]);
+  const handleFilter = () => {
+    let filtered = cashiers;
+
+    if (selectedOption !== "") {
+      filtered = filtered.filter(
+        (cashier) => cashier.role.toLowerCase() === selectedOption.toLowerCase()
+      );
+    }
+
+    if (searchInput !== "") {
+      filtered = filtered.filter(
+        (cashier) =>
+          cashier.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+          cashier.id.toString().includes(searchInput)
+      );
+    }
+
+    setFilteredCashiers(filtered);
+  };
+
+  const handleOptionChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+  };
 
   return (
-    <div className="product-page row mx-auto px-4">
+    <div className="cashier-page row mx-auto px-4">
       <div className="col">
         <div className="d-flex gap-5 my-5">
-          <img src={personIcon} style={{ width: "2em", marginTop:"-0.5em" }} />
+          <img src={personIcon} style={{ width: "2em", marginTop: "-0.5em" }} />
           <PageTitle title="Employee" />
         </div>
-        {/* <div className="d-flex justify-content-end my-5">
-          <div className="row">
-            <div className="col-md-8">
-              <input
-                className="form-control bg-light h-100"
-                style={{ fontSize: "14px" }}
-                type="search"
-                placeholder="Enter employee ID"
-                aria-label="Search"
-              // onChange={handleSearch}
-              />
-            </div>
-            <div className="col-md-4">
-              <PrimaryButton
-                type="button"
-                className="d-flex search-button"
-                label={
-                  <>
-                    <span className="align-items-center fw-medium">Search</span>
-                  </>
-                }
-              />
-            </div>
-          </div>
-        </div> */}
         <div className="d-flex justify-content-between mx-auto">
           <Link to={"/cashier/addemployee"}>
             <PrimaryButton
@@ -86,36 +130,85 @@ const Cashier = () => {
             onClick={() => setOnShow(!onShow)}
           />
         </div>
-        <div className="collapse" id="filter">
-          <FilterForm
-            data={employeeData}
-            onShow={onShow}
-            options={["Head Waiters", "Waiters", "Admin"]}
-            filterFor="cashier"
-            dropdownLabel="Category"
-          />
+        <div className={`collapse ${onShow ? "show" : ""}`} id="filter">
+          <div className="row justify-content-between">
+            <div className="col-md-4 mt-2">
+              <SearchBar
+                onShow={onShow}
+                value={searchInput}
+                handleChange={(e) => setSearchInput(e.target.value)}
+                onClearInput={() => setSearchInput("")}
+              />
+            </div>
+            <div className="col-md-4">
+              <Dropdown
+                htmlFor="dropdown"
+                label="Position"
+                id="dropdown"
+                name="dropdown"
+                value={selectedOption}
+                onChange={handleOptionChange}
+                className="dropdown mt-2"
+                placeholder={
+                  selectedOption !== ""
+                    ? `${selectedOption}`
+                    : "Select position"
+                }
+                options={options.map((option) => (
+                  <li key={option}>
+                    <button
+                      className={`dropdown-item${
+                        option === selectedOption ? " active" : ""
+                      }`}
+                      type="button"
+                      onClick={() => setSelectedOption(option)}
+                    >
+                      {option}
+                    </button>
+                  </li>
+                ))}
+              />
+            </div>
+          </div>
         </div>
         <div className="my-4">
-          <TableEdit
-            columns={employeeHeader}
-            data={employee}
-            editPageLink={"editemployee"}
-            deleteConfirmFor="Employee"
-          />
+          {filteredCashiers && filteredCashiers.length > 0 ? (
+            <TableEdit
+              columns={employeeHeader}
+              data={filteredCashiers} // Menggunakan filteredCashiers sebagai data yang ditampilkan
+              editPageLink={"editemployee"}
+              deleteConfirmFor="Employee"
+            />
+          ) : (
+            <p
+              className="text-center py-2 mx-auto"
+              style={{ background: "rgb(231, 231, 231)" }}
+            >
+              Data not found
+            </p>
+          )}
         </div>
+        <TablePagination
+          currentPage={curPage}
+          pageCount={totalPage}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          prevDisable={curPage === 1}
+          nextDisable={curPage === totalPage}
+          handleRowsPerPageChange={handleRowsPerPageChange}
+          rowsPerPage={limit}
+        />
       </div>
 
       {/* MODAL & SNACKBAR */}
-      <div></div>
-      {showSnackbar && state.state !== null ? (
-        <Snackbar
-          setSnackbar={showSnackbar}
-          action={state.state.action}
-          variant={state.state.variant}
-        />
-      ) : (
-        ""
-      )}
+      {showSnackbar &&
+        state.state !== null && ( // Menggunakan logical AND operator untuk menampilkan Snackbar
+          <Snackbar
+            setSnackbar={setShowSnackbar} // Menggunakan setShowSnackbar untuk menutup Snackbar
+            action={state.state.action}
+            variant={state.state.variant}
+          />
+        )}
     </div>
   );
 };

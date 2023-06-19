@@ -43,7 +43,6 @@ const MembershipForm = ({ filterData, showModalFor }) => {
       level: filterData[0].level
     },
     validationSchema: Yup.object().shape({
-      id: Yup.number().required("The id field must be filled in"),
       name: Yup.string().required("The name field must be filled in"),
       email: Yup.string().required("The email field must be filled in"),
       phone_number: Yup.number().required("The phone number field must be filled in"),
@@ -61,8 +60,6 @@ const MembershipForm = ({ filterData, showModalFor }) => {
           variant: "success"
         },
       })
-
-      // navigate('')
     },
   });
   return (
@@ -82,8 +79,8 @@ const MembershipForm = ({ filterData, showModalFor }) => {
               onBlur={formik.handleBlur}
               className={
                 formik.errors.id && formik.touched.id
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
+                  ? "form-control mt-1 disabled is-invalid bg-danger bg-opacity-10"
+                  : "form-control mt-1 disabled"
               }
               onClearInput={() => formik.setFieldValue("id customer", "", false)}
             />
@@ -226,8 +223,6 @@ const MembershipForm = ({ filterData, showModalFor }) => {
             confirmFor={showModalFor}
             role={"Membership"}
             action={formik.handleSubmit}
-          //kalo udh pake data asli, nnti navigate sekalian atur di submit
-
           />
         </div>
         <div>

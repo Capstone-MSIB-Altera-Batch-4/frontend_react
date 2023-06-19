@@ -8,7 +8,7 @@ const ConfirmModal = ({ show, handleClose, role, id, confirmFor, action }) => {
   const getTextConfirm = () => {
     switch (confirmFor) {
       case "add":
-        return "New product will be added";
+        return `New ${role} will be added`;
       case "edit":
         return `${role} data will change`;
       case "delete":
