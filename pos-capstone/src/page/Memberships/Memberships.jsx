@@ -94,11 +94,15 @@ const Memberships = () => {
                 value={selectedOption}
                 onChange={handleOptionChange}
                 className="dropdown mt-2"
-                placeholder="Select member"
+                placeholder={
+                  selectedOption !== "" ? `${selectedOption}` : "Select member"
+                }
                 options={options.map((option) => (
                   <li key={option}>
                     <button
-                      className="dropdown-item"
+                      className={`dropdown-item${
+                        option === selectedOption ? " active" : ""
+                      }`}
                       type="button"
                       onClick={() => setSelectedOption(option)}
                     >
