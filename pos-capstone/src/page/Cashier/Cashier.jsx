@@ -19,7 +19,9 @@ const Cashier = () => {
   const dispatch = useDispatch();
   const cashiers = useSelector((state) => state.cashiers.cashiers.data);
   //ambil response pagination
-  const pagination = useSelector(state => state.members.members.pagination);
+  const pagination = useSelector(state => state.cashiers.cashiers.pagination);
+
+  console.log(pagination)
   
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);

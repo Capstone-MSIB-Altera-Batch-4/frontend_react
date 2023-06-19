@@ -17,6 +17,7 @@ const TextField = (props) => {
                     onChange={props.onChange}
                     onBlur={props.onBlur}
                     placeholder={props.placeholder}
+                    readOnly={props.readOnly}
                 />
                 <button
                     onClick={props.onClearInput}

@@ -33,6 +33,8 @@ const MembershipForm = ({ filterData, showModalFor }) => {
   const formattedDate = `${year}-${month}-${day}`;
   console.log(formattedDate);
 
+  console.log(filterData[0].level)
+
   const formik = useFormik({
     initialValues: {
       id: filterData[0].id,
@@ -82,7 +84,8 @@ const MembershipForm = ({ filterData, showModalFor }) => {
                   ? "form-control mt-1 disabled is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1 disabled"
               }
-              onClearInput={() => formik.setFieldValue("id customer", "", false)}
+              readOnly
+              onClearInput
             />
             {formik.errors.id && formik.touched.id && (
               <InputErrorMessage label={formik.errors.id} />
@@ -176,7 +179,7 @@ const MembershipForm = ({ filterData, showModalFor }) => {
               <InputErrorMessage label={formik.errors.birth_day} />
             )}
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <TextField
               htmlFor="level"
               label="Current level"
@@ -194,6 +197,31 @@ const MembershipForm = ({ filterData, showModalFor }) => {
               }
               onClearInput={() => formik.setFieldValue("level", "", false)}
             />
+            {formik.errors.level && formik.touched.level && (
+              <InputErrorMessage label={formik.errors.level} />
+            )}
+          </div> */}
+          <div className="mb-3">
+            <label htmlFor="level" className="form-label">
+              Level
+            </label>
+            <select
+              id="level"
+              name="level"
+              className={
+                formik.errors.level && formik.touched.level
+                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
+                  : "form-control mt-1"
+              }
+              value={formik.values.level}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              <option value="">Select level</option>
+              <option value="Bronze">Bronze</option>
+              <option value="silver">Silver</option>
+              <option value="gold">Gold</option>
+            </select>
             {formik.errors.level && formik.touched.level && (
               <InputErrorMessage label={formik.errors.level} />
             )}
