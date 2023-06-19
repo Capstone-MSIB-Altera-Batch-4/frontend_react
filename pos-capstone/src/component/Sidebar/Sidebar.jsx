@@ -76,9 +76,9 @@ const Sidebar = () => {
                 
             </div>
 
-            <div className="modal fade" id="sidebar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content vh-100">
+            <div className="modal-sidebar modal fade p-0" id="sidebar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-sidebar modal-dialog">
+                    <div className="modal-sidebar modal-content vh-100">
                         <div className="modal-header">
                             <img
                                 className="logo-sidebar"
@@ -87,7 +87,7 @@ const Sidebar = () => {
                             />
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-sidebar modal-body">
                             <ul className="navitem w-100 ps-0">
                                 <li>
                                     <NavLink to={dashboard.path} className="nav-link mt-3" activeclassName="active" >

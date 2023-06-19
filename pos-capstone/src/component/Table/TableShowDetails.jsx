@@ -1,9 +1,7 @@
 import React, { useMemo } from "react";
 import TableAction from "./TableAction";
-import { Link } from "react-router-dom";
-import { DummyDetails } from "../../data/DummyData";
-import { useState } from "react";
-import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
 
 const TabelDetails = ({ data }) => {
 
@@ -12,25 +10,17 @@ const TabelDetails = ({ data }) => {
   const columns = useMemo(
     () => [
       { Header: "No", accessor: "no" },
-      { Header: "Type", accessor: "type" },
+      { Header: "Type", accessor: "order_option" },
       { Header: "Order ID", accessor: "order_id" },
-      { Header: "Date", accessor: "date" },
+      { Header: "Date", accessor: "created_at" },
       { Header: "Status", accessor: "status" },
       { Header: "Payment", accessor: "payment" },
-      { Header: "Order Total", accessor: "order_total" },
+      { Header: "Order Total", accessor: "grand_total" },
     ],
     []
   );
-
-
-
-
-
-
-
-
-
-
+  const navigate = useNavigate()
+  
   return (
     <div>
       <TableAction
@@ -39,14 +29,12 @@ const TabelDetails = ({ data }) => {
         data={data}
         pageSize={10}
         buttonComponent={(data) => (
-          <button
-            className="btn detail btn-outline-danger py-1"
-          ><Link
-            to={`/orders/detailorder/${data.order_id}`}
-            className="text-decoration-none text-danger">
-              Detail
-            </Link>
-          </button>)}
+          <SecondaryButton
+            className="btn-secondary backtoorder text-danger px-3"
+            onClick={() => navigate(`/orders/detailorder/${data.id}`)}
+            label={'Detail'}
+          />
+          )}
       />
     </div>
   );
