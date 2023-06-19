@@ -19,11 +19,10 @@ const Memberships = () => {
   const members = useSelector((state) => state.members.members.data);
   const [searchInput, setSearchInput] = useState("");
   const [filteredMembers, setFilteredMembers] = useState([]);
-  const [showSnackbar, setShowSnackbar] = useState(false);
-  const [onShow, setOnShow] = useState(false);
+ 
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Gold", "Silver", "Bronze"];
-  const state = useLocation();
+
 
   //ambil response pagination
   const pagination = useSelector(state => state.members.members.pagination);
@@ -43,7 +42,6 @@ const Memberships = () => {
   //get data
   useEffect(() => {
     dispatch(fetchMembers(curPage, limit));
-
   }, [dispatch, curPage, limit]);
 
 

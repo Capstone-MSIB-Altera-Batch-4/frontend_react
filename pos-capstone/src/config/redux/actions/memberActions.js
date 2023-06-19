@@ -31,7 +31,7 @@ export const fetchMembers = (page, limit) => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_MEMBERS_REQUEST' });
 
-    api.get(`/product?page=${page}&limit=${limit}`)
+    api.get(`/membership?page=${page}&limit=${limit}`)
       .then(response => {
         dispatch({
           type: 'FETCH_MEMBERS_SUCCESS',

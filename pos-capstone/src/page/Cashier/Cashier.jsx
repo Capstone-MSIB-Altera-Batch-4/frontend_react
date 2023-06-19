@@ -13,25 +13,61 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCashiers } from "../../config/redux/actions/cashierActions";
 import SearchBar from "../../element/SearchBar/SearchBar";
 import Dropdown from "../../element/Dropdown/Dropdown";
+import TablePagination from "../../element/TablePagination/TablePagination";
 
 const Cashier = () => {
   const dispatch = useDispatch();
   const cashiers = useSelector((state) => state.cashiers.cashiers.data);
+  //ambil response pagination
+  const pagination = useSelector(state => state.members.members.pagination);
+  
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Head Waiters", "Waiters", "Cashier"];
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
+  const [totalPage, setTotalPage] = useState(5)
+  const [curPage, setCurPage] = useState(1)
+  const [totalItems, setTotalItems] = useState(50)
+  const [limit, setLimit] = useState(10)
   const state = useLocation();
 
   useEffect(() => {
-    dispatch(fetchCashiers(1));
-  }, [dispatch]);
+    dispatch(fetchCashiers(curPage, limit));
+  }, [dispatch, curPage, limit]);
 
   useEffect(() => {
     handleFilter();
   }, [selectedOption, cashiers, searchInput]);
+
+   // set value pagination
+   useEffect(() => {
+    if (pagination) {
+      setTotalPage(pagination.total_pages);
+      setCurPage(pagination.page);
+      setTotalItems(pagination.total_items);
+      setLimit(pagination.limit);
+    }
+  }, [pagination]);
+
+  //pagination function
+  const handlePrevPage = () => {
+    if (curPage > 1) {
+      setCurPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (curPage < totalPage) {
+      setCurPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handleRowsPerPageChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setLimit(newLimit);
+  };
 
   useEffect(() => {
     if (state.state !== null && state.state.showSnackbar === true) {
@@ -152,6 +188,16 @@ const Cashier = () => {
             </p>
           )}
         </div>
+        <TablePagination
+          currentPage={curPage}
+          pageCount={totalPage}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          prevDisable={curPage === 1}
+          nextDisable={curPage === totalPage}
+          handleRowsPerPageChange={handleRowsPerPageChange}
+          rowsPerPage={limit}
+        />
       </div>
 
       {/* MODAL & SNACKBAR */}

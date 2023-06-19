@@ -22,11 +22,16 @@ export const createCashier = (cashier) => {
 };
 
 // Read
-export const fetchCashiers = (page) => {
+export const fetchCashiers = (page, limit) => {
+
+  if(page === undefined) {
+    page = 1
+  }
+
   return (dispatch) => {
     dispatch({ type: 'FETCH_CASHIERS_REQUEST' });
 
-    api.get(`/cashier?page=${page}`)
+    api.get(`/cashier?page=${page}&limit=${limit}`)
       .then(response => {
         dispatch({
           type: 'FETCH_CASHIERS_SUCCESS',
