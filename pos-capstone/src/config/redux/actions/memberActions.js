@@ -22,16 +22,16 @@ export const createMember = (member, page) => {
 };
 
 // Read
-export const fetchMembers = (page) => {
+export const fetchMembers = (page, limit) => {
+
+  if(page === undefined) {
+    page = 1
+  }
+
   return (dispatch) => {
     dispatch({ type: 'FETCH_MEMBERS_REQUEST' });
 
-    api.get(`/membership?page=${page}`)
-    // {
-    //   headers: {
-    //     'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjg2NzMwOTE5fQ.H7x-j5nVR4UF8enecUAntsa_--3D1G9wcO0GV7l9IhQ"
-    //   }
-    // })
+    api.get(`/product?page=${page}&limit=${limit}`)
       .then(response => {
         dispatch({
           type: 'FETCH_MEMBERS_SUCCESS',

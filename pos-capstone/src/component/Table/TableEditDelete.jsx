@@ -49,7 +49,6 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
         headerColor={{ backgroundColor: "#FDDFDF" }}
         columns={columns}
         data={data}
-        pageSize={10}
         buttonComponent={(data) => (
           <div>
             <Link

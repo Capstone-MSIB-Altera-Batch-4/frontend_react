@@ -5,28 +5,68 @@ import filterIcon from '../../assets/icon/Filter.svg'
 import FilterForm from "../../component/FilterForm/FilterForm"
 import TableEdit from "../../component/Table/TableEditDelete"
 import { membershipsHeader } from "../../data/HeaderTableData"
-import { membershipsData } from "../../data/DummyData"
 import { useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMembers } from "../../config/redux/actions/memberActions"
+import TablePagination from "../../element/TablePagination/TablePagination"
 
 const Memberships = () => {
   const dispatch = useDispatch();
   const members = useSelector(state => state.members.members.data);
 
-  useEffect(() => {
-    dispatch(fetchMembers(1));
-  }, [dispatch]);
+  //ambil response pagination
+  const pagination = useSelector(state => state.members.members.pagination);
 
+  console.log(members)
+  console.log(pagination)
 
-  const [filterValue, setFilterValue] = useState("");
+  //pagination state
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
-  // const [members, setMembers] = useState(membershipsData)
+  const [totalPage, setTotalPage] = useState(5)
+  const [curPage, setCurPage] = useState(1)
+  const [totalItems, setTotalItems] = useState(50)
+  const [limit, setLimit] = useState(10)
 
 
-  // let filterData = JSON.parse(localStorage.getItem('member'));
+  //get data
+  useEffect(() => {
+    dispatch(fetchMembers(curPage, limit));
+
+  }, [dispatch, curPage, limit]);
+
+
+  // set value pagination
+  useEffect(() => {
+    if (pagination) {
+      setTotalPage(pagination.total_pages);
+      setCurPage(pagination.page);
+      setTotalItems(pagination.total_items);
+      setLimit(pagination.limit);
+    }
+  }, [pagination]);
+
+
+  //pagination function
+  const handlePrevPage = () => {
+    if (curPage > 1) {
+      setCurPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (curPage < totalPage) {
+      setCurPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handleRowsPerPageChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setLimit(newLimit);
+  };
+
+  //snackbar
 
   const state = useLocation();
 
@@ -35,13 +75,6 @@ const Memberships = () => {
       setShowSnackbar(true);
     }
   }, [showSnackbar]);
-
-  // show data
-  // useEffect(() => {
-  //   // setMembers(filterData);
-  // }, [filterData]);
-
-
 
   return (
     <div className="memberships-page row mx-auto px-4">
@@ -75,6 +108,16 @@ const Memberships = () => {
             deleteConfirmFor="Member"
           />
         </div>
+        <TablePagination
+          currentPage={curPage}
+          pageCount={totalPage}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          prevDisable={curPage === 1}
+          nextDisable={curPage === totalPage}
+          handleRowsPerPageChange={handleRowsPerPageChange}
+          rowsPerPage={limit}
+        />
       </div>
 
       {/* MODAL & SNACKBAR */}
