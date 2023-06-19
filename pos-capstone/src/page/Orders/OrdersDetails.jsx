@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeft, Printer } from "react-bootstrap-icons";
-import { DummyDetails } from "../../data/DummyData";
 import "./Orders.style.css"
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
@@ -15,11 +14,7 @@ const OrdersDetails = () => {
     const dispatch = useDispatch()
     const data = useSelector(state => state.orders.itemsbyid.data)
     const { id } = useParams()
-
-    const [DataDetails, setDataDetails] = useState()
     const navigate = useNavigate()
-
-    console.log(data)
 
     useEffect(() => {
         dispatch(readOrdersbyid(id))
@@ -27,13 +22,13 @@ const OrdersDetails = () => {
 
     return (
         <>
-            <div className="col mx-3">
+            <div className="mt-5 mx-3">
                 <div className="orders-title mt-2 mb-5">
                     <PageTitle
                         title="Orders & Invoice"
                     />
                 </div>
-                <div className="row justify-content-between">
+                <div className="row btn-order justify-content-between">
                     <div className="col-lg-3">
 
                         <SecondaryButton
@@ -119,7 +114,7 @@ const OrdersDetails = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data?.items.map((item, idx) =>
+                                {data?.items?.map((item, idx) =>
                                     <tr className="tableitem" key={idx}>
                                         <td scope="col">{item.name}</td>
                                         <td scope="col">{item.quantity}</td>

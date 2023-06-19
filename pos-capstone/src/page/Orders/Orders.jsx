@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { readOrders } from "../../config/redux/actions/ordersAction";
 import { filterorder, formatedDate } from "./OrdersFilter";
+import TablePagination from "../../element/TablePagination/TablePagination";
 
 const Orders = () => {
   const dispatch = useDispatch()
-  const loading = useSelector(state => state.orders.loading)
   const data = useSelector(state => state.orders.items.data)
   const [inputfilter, setInputfilter] = useState({
     inputid: "",
@@ -17,17 +17,59 @@ const Orders = () => {
     dateto: "",
   })
 
+  const pagination = useSelector(state => state.orders.items.pagination);
+  const [totalPage, setTotalPage] = useState(5)
+  const [curPage, setCurPage] = useState(1)
+  const [totalItems, setTotalItems] = useState(50)
+  const [limit, setLimit] = useState(10)
+  
+  useEffect(() => {
+    dispatch(readOrders(10, 1));
+  }, []);
+
+  useEffect(() => {
+    dispatch(readOrders(limit, curPage));
+  }, [dispatch, curPage, limit]);
+
+
+  // set value pagination
+  useEffect(() => {
+    if (pagination) {
+      setTotalPage(pagination.total_pages);
+      setCurPage(pagination.page);
+      setTotalItems(pagination.total_items);
+      setLimit(pagination.limit);
+    }
+  }, [pagination]);
+
+
+  //pagination function
+  const handlePrevPage = () => {
+    if (curPage > 1) {
+      setCurPage((prevPage) => prevPage - 1);
+    }
+    
+  };
+
+  const handleNextPage = () => {
+    if (curPage < totalPage) {
+      setCurPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handleRowsPerPageChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setLimit(newLimit);
+  };
+
   const [Datas, setDatas] = useState()
   const [filterdata, setFilterdata] = useState()
 
   useEffect(() => {
-    dispatch(readOrders())
-  }, [])
-
-  useEffect(() => {
-    if(data)
-    {setDatas(formatedDate(data))
-    setFilterdata(formatedDate(data))}
+    if (data) {
+      setDatas(formatedDate(data))
+      setFilterdata(formatedDate(data))
+    }
   }, [data])
 
   useEffect(() => {
@@ -76,9 +118,18 @@ const Orders = () => {
       </div>
       <div className="table-responsive default-orders overflow-hidden">
         <TabelDetails
-          data={Datas?Datas:[]}
+          data={Datas ? Datas : []}
         />
-
+        <TablePagination
+          currentPage={curPage}
+          pageCount={totalPage}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          prevDisable={curPage === 1}
+          nextDisable={curPage === totalPage}
+          handleRowsPerPageChange={handleRowsPerPageChange}
+          rowsPerPage={limit}
+        />
       </div>
     </div>
   );

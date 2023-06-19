@@ -7,18 +7,20 @@ import DashboardCard from '../../component/Cards/DashboardCard/DashboardCard';
 import { CreditCard, People, Person } from 'react-bootstrap-icons';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { readOrders } from "../../config/redux/actions/ordersAction";
+import { readallOrders } from "../../config/redux/actions/ordersAction";
 import { totalSales, Visitors, newMember, prevMember, prevVisitors, prevtotalSales } from './ValueCard';
 
 const Dashboard = () => {
 
   const dispatch = useDispatch()
-  const order = useSelector(state => state.orders.items.data)
-  const totalsales = useSelector(state => state.orders.items.paginations)
+  const babi = useSelector(state => state.orders)
+  console.log(babi)
+  const order = useSelector(state => state.orders.itemsall.data)
+  console.log(order)
   const members = useSelector(state => state.members.members.data);
 
   useEffect(() => {
-    dispatch(readOrders(9999,1))
+    dispatch(readallOrders())
   }, [])
 
   return (
