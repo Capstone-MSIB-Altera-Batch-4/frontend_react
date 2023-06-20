@@ -13,13 +13,15 @@ import { fetchMembers } from "../../config/redux/actions/memberActions";
 import SearchBar from "../../element/SearchBar/SearchBar";
 import Dropdown from "../../element/Dropdown/Dropdown";
 import TablePagination from "../../element/TablePagination/TablePagination"
+import Loader from "../../element/Loader/Loader"
 
 const Memberships = () => {
   const dispatch = useDispatch();
   const members = useSelector((state) => state.members.members.data);
+  const loading = useSelector(state => state.members.loading)
   const [searchInput, setSearchInput] = useState("");
   const [filteredMembers, setFilteredMembers] = useState([]);
- 
+
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Gold", "Silver", "Bronze"];
 
@@ -112,95 +114,103 @@ const Memberships = () => {
   };
 
   return (
-    <div className="memberships-page row mx-auto px-4">
-      <div className="col">
-        <div className="my-5">
-          <PageTitle title="Membership" />
-        </div>
-        <div className="d-flex justify-content-end">
-          <SecondaryButton
-            type="button"
-            databstoggle="collapse"
-            databstarget="#filter"
-            label={<img src={filterIcon} alt="Filter Icon" />}
-            onClick={() => setOnShow(!onShow)}
-          />
-        </div>
-        <div className={`collapse ${onShow ? "show" : ""}`} id="filter">
-          <div className="row justify-content-between">
-            <div className="col-md-4 mt-2">
-              <SearchBar
-                onShow={onShow}
-                value={searchInput}
-                handleChange={(e) => setSearchInput(e.target.value)}
-                onClearInput={() => setSearchInput("")}
+    <>
+      {loading ?
+        <Loader
+          secondaryColor="#B1464A"
+          color="#FFF0DE"
+        />
+        :
+        <div className="memberships-page row mx-auto px-4">
+          <div className="col">
+            <div className="my-5">
+              <PageTitle title="Membership" />
+            </div>
+            <div className="d-flex justify-content-end">
+              <SecondaryButton
+                type="button"
+                databstoggle="collapse"
+                databstarget="#filter"
+                label={<img src={filterIcon} alt="Filter Icon" />}
+                onClick={() => setOnShow(!onShow)}
               />
             </div>
-            <div className="col-md-4">
-              <Dropdown
-                htmlFor="dropdown"
-                label="Level"
-                id="dropdown"
-                name="dropdown"
-                value={selectedOption}
-                onChange={handleOptionChange}
-                className="dropdown mt-2"
-                placeholder={
-                  selectedOption !== "" ? `${selectedOption}` : "Select member"
-                }
-                options={options.map((option) => (
-                  <li key={option}>
-                    <button
-                      className={`dropdown-item${
-                        option === selectedOption ? " active" : ""
-                      }`}
-                      type="button"
-                      onClick={() => setSelectedOption(option)}
-                    >
-                      {option}
-                    </button>
-                  </li>
-                ))}
-              />
+            <div className={`collapse ${onShow ? "show" : ""}`} id="filter">
+              <div className="row justify-content-between">
+                <div className="col-md-4 mt-2">
+                  <SearchBar
+                    onShow={onShow}
+                    value={searchInput}
+                    handleChange={(e) => setSearchInput(e.target.value)}
+                    onClearInput={() => setSearchInput("")}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <Dropdown
+                    htmlFor="dropdown"
+                    label="Level"
+                    id="dropdown"
+                    name="dropdown"
+                    value={selectedOption}
+                    onChange={handleOptionChange}
+                    className="dropdown mt-2"
+                    placeholder={
+                      selectedOption !== "" ? `${selectedOption}` : "Select member"
+                    }
+                    options={options.map((option) => (
+                      <li key={option}>
+                        <button
+                          className={`dropdown-item${option === selectedOption ? " active" : ""
+                            }`}
+                          type="button"
+                          onClick={() => setSelectedOption(option)}
+                        >
+                          {option}
+                        </button>
+                      </li>
+                    ))}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="mt-4">
-          {filteredMembers && filteredMembers.length > 0 ? (
-            <TableEdit
-              columns={membershipsHeader}
-              data={filteredMembers}
-              editPageLink="editmembership"
-              deleteConfirmFor="Member"
+            <div className="mt-4">
+              {filteredMembers && filteredMembers.length > 0 ? (
+                <TableEdit
+                  columns={membershipsHeader}
+                  data={filteredMembers}
+                  editPageLink="editmembership"
+                  deleteConfirmFor="Member"
+                />
+              ) : (
+                <p
+                  className="text-center py-2 mx-auto"
+                  style={{ background: "rgb(231, 231, 231)" }}
+                >
+                  Data not found
+                </p>
+              )}
+            </div>
+            <TablePagination
+              currentPage={curPage}
+              pageCount={totalPage}
+              handlePrevPage={handlePrevPage}
+              handleNextPage={handleNextPage}
+              prevDisable={curPage === 1}
+              nextDisable={curPage === totalPage}
+              handleRowsPerPageChange={handleRowsPerPageChange}
+              rowsPerPage={limit}
             />
-          ) : (
-            <p
-              className="text-center py-2 mx-auto"
-              style={{ background: "rgb(231, 231, 231)" }}
-            >
-              Data not found
-            </p>
+          </div>
+          {showSnackbar && state.state !== null && (
+            <Snackbar
+              setSnackbar={showSnackbar}
+              action={state.state.action}
+              variant={state.state.variant}
+            />
           )}
         </div>
-        <TablePagination
-          currentPage={curPage}
-          pageCount={totalPage}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-          prevDisable={curPage === 1}
-          nextDisable={curPage === totalPage}
-          handleRowsPerPageChange={handleRowsPerPageChange}
-          rowsPerPage={limit}
-        />
-      </div>
-      {showSnackbar && state.state !== null && (
-        <Snackbar
-          setSnackbar={showSnackbar}
-          action={state.state.action}
-          variant={state.state.variant}
-        />
-      )}
-    </div>
+      }
+    </>
   );
 };
 

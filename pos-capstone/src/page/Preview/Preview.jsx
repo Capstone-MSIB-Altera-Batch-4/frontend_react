@@ -12,15 +12,13 @@ const snackBarType = {
 
 const Preview = () => {
   return (
-    <>
+    <div className='mt-5 pt-5'>
       <Loader
-        height={500}
-        width={80}
         secondaryColor="#B1464A"
         color="#FFF0DE"
       />
 
-    </>
+    </div>
   )
 
   // const [show, setShow] = useState(false);

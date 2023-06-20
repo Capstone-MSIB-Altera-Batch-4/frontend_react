@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { readOrders } from "../../config/redux/actions/ordersAction";
 import { filterorder, formatedDate } from "./OrdersFilter";
 import TablePagination from "../../element/TablePagination/TablePagination";
+import Loader from "../../element/Loader/Loader";
 
 const Orders = () => {
   const dispatch = useDispatch()
   const data = useSelector(state => state.orders.items.data)
+  const loading = useSelector(state => state.orders.loading)
   const [inputfilter, setInputfilter] = useState({
     inputid: "",
     datefrom: "",
@@ -79,7 +81,13 @@ const Orders = () => {
   }, [inputfilter])
 
   return (
-    <div className="orderspage overflow-hidden pb-4 px-3">
+    <>
+    {loading ?
+      <Loader
+        secondaryColor="#B1464A"
+        color="#FFF0DE"
+      />
+      : <div className="orderspage overflow-hidden pb-4 px-3">
       <div className="orders-title mt-5 mb-5">
         <PageTitle
           title="Orders & Invoice"
@@ -132,6 +140,9 @@ const Orders = () => {
         />
       </div>
     </div>
+    }
+    </>
+    
   );
 };
 
