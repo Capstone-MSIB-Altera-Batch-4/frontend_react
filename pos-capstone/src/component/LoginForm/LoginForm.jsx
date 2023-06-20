@@ -8,6 +8,7 @@ import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage
 import PrimaryButton from '../../element/Button/PrimaryButton/PrimaryButton';
 import api from '../../config/redux/api/api';
 import Loader from '../../element/Loader/Loader';
+import { ExclamationCircle } from 'react-bootstrap-icons';
 
 const LoginForm = () => {
     const navigate = useNavigate()
@@ -101,9 +102,10 @@ const LoginForm = () => {
                 label={showPassword ? 'Hide Password' : 'Show Password'}
             />
             {error && (
-                <div className="text-white mt-3 w-100 text-center py-2 px-3 rounded-lg bg-danger">
-                    {error}
-                </div>
+              <div className="mt-4 text-danger">
+                <ExclamationCircle />
+                <span className="ms-2"> {error}</span>
+              </div>
             )}
             <div className='mt-5'>
                 <PrimaryButton
