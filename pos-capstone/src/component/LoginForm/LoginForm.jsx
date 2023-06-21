@@ -10,11 +10,10 @@ import api from '../../config/redux/api/api';
 import Loader from '../../element/Loader/Loader';
 import { ExclamationCircle } from 'react-bootstrap-icons';
 
-const LoginForm = () => {
+const LoginForm = ({setLoading, setError, error}) => {
     const navigate = useNavigate()
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    
     const [showPassword, setShowPassword] = useState(false);
 
     const formik = useFormik({
@@ -31,19 +30,21 @@ const LoginForm = () => {
         onSubmit: async (values, actions) => {
             actions.resetForm();
             setLoading(true);
-            setError(null);
 
             api.post('/login', values)
                 .then(response => {
                     const token = response.data.data.token;
                     sessionStorage.setItem("token", token);
                     navigate('/dashboard')
+                    setLoading(false);
                 })
                 .catch(error => {
+                    console.log(error.response.data.meta.message)
                     setError(error.response.data.meta.message);
+                    setLoading(false);
                 });
-
-            setLoading(false);
+            
+                console.log(error)
 
         },
     })
@@ -112,7 +113,6 @@ const LoginForm = () => {
                     className="btn text-white w-100 position-relative"
                     label="Login"
                     type="submit"
-                    disabled={loading}
                 />
             </div>
 
