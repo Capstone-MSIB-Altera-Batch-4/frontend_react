@@ -78,7 +78,7 @@ const Cashier = () => {
     if (state.state !== null && state.state.showSnackbar === true) {
       setShowSnackbar(true);
     }
-  }, [showSnackbar]);
+  }, [showSnackbar, state.state]);
 
   const handleFilter = () => {
     let filtered = cashiers;
@@ -213,7 +213,7 @@ const Cashier = () => {
         {showSnackbar &&
           state.state !== null && ( // Menggunakan logical AND operator untuk menampilkan Snackbar
             <Snackbar
-              setSnackbar={setShowSnackbar} // Menggunakan setShowSnackbar untuk menutup Snackbar
+              setSnackbar={showSnackbar} // Menggunakan setShowSnackbar untuk menutup Snackbar
               action={state.state.action}
               variant={state.state.variant}
             />

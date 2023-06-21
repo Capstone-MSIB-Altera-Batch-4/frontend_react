@@ -4,8 +4,8 @@ import "./Orders.style.css"
 import PageTitle from "../../element/PageTitle/PageTitle";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { readOrders } from "../../config/redux/actions/ordersAction";
-import { filterorder, formatedDate } from "./OrdersFilter";
+import { readOrders, searchOrders } from "../../config/redux/actions/ordersAction";
+import { formatedDate } from "./OrdersFilter";
 import TablePagination from "../../element/TablePagination/TablePagination";
 import Loader from "../../element/Loader/Loader";
 
@@ -28,6 +28,13 @@ const Orders = () => {
   useEffect(() => {
     dispatch(readOrders(10, 1));
   }, []);
+
+  // search baru pake api
+  useEffect(()=>{
+    dispatch(
+      searchOrders(inputfilter.datefrom,inputfilter.dateto,inputfilter.inputid)
+      );
+  },[inputfilter])
 
   useEffect(() => {
     dispatch(readOrders(limit, curPage));
@@ -65,6 +72,7 @@ const Orders = () => {
   };
 
   const [Datas, setDatas] = useState()
+  console.log(data)
   const [filterdata, setFilterdata] = useState()
 
   useEffect(() => {
@@ -74,11 +82,6 @@ const Orders = () => {
     }
   }, [data])
 
-  useEffect(() => {
-    let result = filterdata
-    result = filterorder(result, inputfilter)
-    setDatas(result)
-  }, [inputfilter])
 
   return (
     <>
@@ -101,6 +104,7 @@ const Orders = () => {
               type="text"
               className="form-control"
               placeholder="Type Order ID"
+              value={inputfilter.inputid}
               onChange={(e) => setInputfilter({ ...inputfilter, inputid: e.target.value })}
             />
           </div>
@@ -111,6 +115,7 @@ const Orders = () => {
               <InputDate
                 label="from"
                 className="form-control"
+                value={inputfilter.datefrom}
                 onChange={(e) => setInputfilter({ ...inputfilter, datefrom: e.target.value })}
               />
             </div>
@@ -118,6 +123,7 @@ const Orders = () => {
               <InputDate
                 label="to"
                 className="form-control"
+                value={inputfilter.dateto}
                 onChange={(e) => setInputfilter({ ...inputfilter, dateto: e.target.value })}
               />
             </div>

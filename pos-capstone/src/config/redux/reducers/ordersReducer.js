@@ -11,12 +11,20 @@ const ordersReducer = (state = initialState, action) => {
         case 'FETCH_ORDERS_REQUEST':
         case 'FETCH_ORDERSBYID_REQUEST':
         case 'FETCH_ORDERSALL_REQUEST':
+
             return {
                 ...state,
                 loading: true,
                 error: null
             };
         case 'FETCH_ORDERS_SUCCESS':
+            return {
+                ...state,
+                items: action.payload,
+                loading: false,
+                error: null
+            };
+        case 'FETCH_ORDERSSEARCH_SUCCESS':
             return {
                 ...state,
                 items: action.payload,
