@@ -241,8 +241,7 @@ const CashierForm = ({ filterData, showModalFor }) => {
             >
               <option value="">Select Role</option>
               <option value="cashier">Cashiers</option>
-              <option value="waiters">Waiters</option>
-              <option value="headwaiters">Head Waiters</option>
+              <option value="kepala cashier">Head Cashiers</option>
             </select>
             {formik.errors.role && formik.touched.role && (
               <InputErrorMessage label={formik.errors.role} />

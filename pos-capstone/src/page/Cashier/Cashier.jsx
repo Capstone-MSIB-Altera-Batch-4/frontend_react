@@ -29,7 +29,7 @@ const Cashier = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
-  const options = ["Head Waiters", "Waiters", "Cashier"];
+  const options = ["Kepala Cashier", "Cashier"];
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
   const [totalPage, setTotalPage] = useState(5)
