@@ -116,7 +116,7 @@ const Sidebar = () => {
                                         <div className="barname">{help.name}</div>
                                     </NavLink>
                                 </li>
-                                <li>
+                                <li data-bs-dismiss="modal" aria-label="Close" >
                                     <NavLink to={logout.path} className="nav-link" onClick={handleLogout} activeclassName="active" >
                                         <div className="icon">{logout.icon}</div>
                                         <div className="barname">{logout.name}</div>

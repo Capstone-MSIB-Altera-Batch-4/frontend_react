@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const EditCashier = () => {
   const { id } = useParams();
-
+  const loading = useSelector( state => state.cashiers.loading)
   const cashiers = useSelector(state => state.cashiers.cashiers.data);
   console.log(cashiers)
 
@@ -18,6 +18,12 @@ const EditCashier = () => {
   // console.log(products);
 
   return (
+    <>
+    {loading ?
+      <Loader
+        secondaryColor="#B1464A"
+        color="#FFF0DE"
+      />:
     <div className="col overflow-hidden">
       <div className="my-5 justify-content-start">
         <div className="d-flex gap-5 m-5">
@@ -46,9 +52,10 @@ const EditCashier = () => {
         <h3>Employee Information</h3>
       </div>
       <div>
-        <CashierForm filterData={filteredCashier} showModalFor={"edit"} />
+        <CashierForm filterData={filteredCashier} showModalFor="edit" />
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

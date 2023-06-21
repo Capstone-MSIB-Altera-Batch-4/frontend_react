@@ -19,12 +19,12 @@ const Memberships = () => {
   const dispatch = useDispatch();
   const members = useSelector((state) => state.members.members.data);
   const loading = useSelector(state => state.members.loading)
+  console.log(loading)
   const [searchInput, setSearchInput] = useState("");
   const [filteredMembers, setFilteredMembers] = useState([]);
 
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Gold", "Silver", "Bronze"];
-
 
   //ambil response pagination
   const pagination = useSelector(state => state.members.members.pagination);
@@ -88,6 +88,8 @@ const Memberships = () => {
       setShowSnackbar(true);
     }
   }, [showSnackbar, state.state]);
+
+  console.log(showSnackbar)
 
   const handleFilter = () => {
     let filtered = members;

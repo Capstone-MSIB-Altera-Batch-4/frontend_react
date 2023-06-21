@@ -24,27 +24,27 @@ export const createMember = (member, page) => {
 // Read
 export const fetchMembers = (page, limit) => {
 
-  if(page === undefined) {
-    page = 1
-  }
+    if (page === undefined) {
+        page = 1
+    }
 
-  return (dispatch) => {
-    dispatch({ type: 'FETCH_MEMBERS_REQUEST' });
+    return (dispatch) => {
+        dispatch({ type: 'FETCH_MEMBERS_REQUEST' });
 
-    api.get(`/membership?page=${page}&limit=${limit}`)
-      .then(response => {
-        dispatch({
-          type: 'FETCH_MEMBERS_SUCCESS',
-          payload: response.data
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: 'FETCH_MEMBERS_FAILURE',
-          payload: error.message
-        });
-      });
-  };
+        api.get(`/membership?page=${page}&limit=${limit}`)
+            .then(response => {
+                dispatch({
+                    type: 'FETCH_MEMBERS_SUCCESS',
+                    payload: response.data
+                });
+            })
+            .catch(error => {
+                dispatch({
+                    type: 'FETCH_MEMBERS_FAILURE',
+                    payload: error.message
+                });
+            });
+    };
 };
 
 // Update

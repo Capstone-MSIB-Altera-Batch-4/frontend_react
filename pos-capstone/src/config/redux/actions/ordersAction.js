@@ -59,3 +59,24 @@ export const readOrdersbyid = (id) => {
             });
     };
 };
+
+export const searchOrders = (from, to, id) => {
+
+    return (dispatch) => {
+        dispatch({ type: 'FETCH_ORDERSSEARCH_REQUEST' });
+
+        api.get(`/orders?start_date=${from}&end_date=${to}&order_id=${id}`)
+            .then(response => {
+                dispatch({
+                    type: 'FETCH_ORDERSSEARCH_SUCCESS',
+                    payload: response.data
+                });
+            })
+            .catch(error => {
+                dispatch({
+                    type: 'FETCH_ORDERSSEARCH_FAILURE',
+                    payload: error.message
+                });
+            });
+    };
+}

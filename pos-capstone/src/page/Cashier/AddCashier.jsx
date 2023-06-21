@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import CashierForm from "../../component/CashierForm/CashierForm";
 import { PencilFill } from "react-bootstrap-icons";
 
 const AddCashier = () => {
   return (
+    <>
+
+    
     <div className="col overflow-hidden">
       <div className="my-5 justify-content-start">
         <div className="d-flex gap-5 m-5">
@@ -35,6 +38,7 @@ const AddCashier = () => {
         <CashierForm showModalFor={"add"}/>
       </div>
     </div>
+    </>
   );
 };
 

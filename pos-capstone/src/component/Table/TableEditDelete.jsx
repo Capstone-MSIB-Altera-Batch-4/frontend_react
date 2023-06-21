@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import TableAction from "./TableAction";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Pencil, Trash } from "react-bootstrap-icons";
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
