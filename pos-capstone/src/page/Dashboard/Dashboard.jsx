@@ -10,17 +10,19 @@ import { useDispatch, useSelector } from "react-redux"
 import { readallOrders } from "../../config/redux/actions/ordersAction";
 import { totalSales, Visitors, newMember, prevMember, prevVisitors, prevtotalSales } from './ValueCard';
 import Loader from '../../element/Loader/Loader';
+import { readTopProduct } from '../../config/redux/actions/topproductAction';
 
 const Dashboard = () => {
 
   const dispatch = useDispatch()
   const order = useSelector(state => state.orders.itemsall.data)
   const members = useSelector(state => state.members.members.data);
-
+  const topProduct = useSelector(state => state.topProduct.items);
   const loading = useSelector(state => state.orders.loading)
 
   useEffect(() => {
     dispatch(readallOrders())
+    dispatch(readTopProduct())
   }, [])
 
   return (
@@ -80,7 +82,7 @@ const Dashboard = () => {
             <div className='row table-section'>
               <div className='col'>
                 <h5 style={{ fontFamily: "rubik", marginTop: "3%", marginBottom: "2%" }}>Top Selling Product</h5>
-                <Table data={DummyData} />
+                <Table data={topProduct? topProduct:[]} />
               </div>
             </div>
           </div>
