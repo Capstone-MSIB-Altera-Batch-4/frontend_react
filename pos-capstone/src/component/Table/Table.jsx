@@ -2,7 +2,8 @@ import React from "react";
 import "./Table.css";
 
 const Table = ({ data, headerColor, headerFontColor }) => {
-  const columns = Object.keys(data[0]);
+
+  const columns = data.length!=0?Object.keys(data[0]):[];
 
   const theadStyle = {
     backgroundColor: headerColor,
