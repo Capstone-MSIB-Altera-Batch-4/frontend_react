@@ -90,7 +90,7 @@ const Orders = () => {
         secondaryColor="#B1464A"
         color="#FFF0DE"
       />
-      : <div className="orderspage overflow-hidden pb-4 px-3">
+      : <div className="orderspage overflow-hidden pb-4 px-4 mx-3">
       <div className="orders-title mt-5 mb-5">
         <PageTitle
           title="Orders & Invoice"
@@ -109,7 +109,7 @@ const Orders = () => {
             />
           </div>
         </div>
-        <div className="filterbydate col-lg-4 me-3">
+        <div className="filterbydate col-lg-4">
           <div className="row ">
             <div className="datefrom col-lg-6">
               <InputDate
