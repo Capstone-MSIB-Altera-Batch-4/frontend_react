@@ -6,8 +6,8 @@ import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
 import { useDispatch } from "react-redux";
-import { deleteMember } from "../../config/redux/actions/memberActions";
-import { deleteCashier } from "../../config/redux/actions/cashierActions";
+import { deleteMember, fetchMembers } from "../../config/redux/actions/memberActions";
+import { deleteCashier, fetchCashiers } from "../../config/redux/actions/cashierActions";
 
 const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
 
@@ -19,23 +19,29 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
 
 
   const ActionSuccess = (id) => {
-    console.log(id)
     if (deleteConfirmFor == "Member") {
       dispatch(deleteMember(id));
-    } else if(deleteConfirmFor == "Employee") {
+      setTimeout(() => {
+        dispatch(fetchMembers(1, 10));
+      }, 500);
+
+    } else if (deleteConfirmFor == "Employee") {
       dispatch(deleteCashier(id));
+      setTimeout(() => {
+        dispatch(fetchCashiers(1, 10));
+      }, 500);
     }
-
-
     setShowConfirmModal(false);
-    setShowSnackbar(true);
+    console.log(showSnackbar)
+    setShowSnackbar(true)
+    console.log(showSnackbar)
   }
 
-  if (showSnackbar) {
-    setTimeout(() => {
-      setShowSnackbar(false);
-    }, 1000);
-  }
+  // if (showSnackbar) {
+  //   setTimeout(() => {
+  //     setShowSnackbar(false);
+  //   }, 1000);
+  // }
 
   const confirmDelete = (id) => {
     console.log(id)

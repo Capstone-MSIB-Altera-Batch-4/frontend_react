@@ -21,30 +21,26 @@ const Cashier = () => {
   const cashiers = useSelector((state) => state.cashiers.cashiers.data);
   const loading = useSelector(state => state.cashiers.loading)
   console.log(loading)
-  //ambil response pagination
-  const pagination = useSelector(state => state.cashiers.cashiers.pagination);
-
-  console.log(pagination)
 
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Kepala Cashier", "Cashier"];
+
+  //ambil response pagination
+  const pagination = useSelector(state => state.cashiers.cashiers.pagination);
+  console.log(pagination)
+
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
   const [totalPage, setTotalPage] = useState(5)
   const [curPage, setCurPage] = useState(1)
   const [totalItems, setTotalItems] = useState(50)
   const [limit, setLimit] = useState(10)
-  const state = useLocation();
 
   useEffect(() => {
     dispatch(fetchCashiers(curPage, limit));
   }, [dispatch, curPage, limit]);
-
-  useEffect(() => {
-    handleFilter();
-  }, [selectedOption, cashiers, searchInput]);
 
   // set value pagination
   useEffect(() => {
@@ -74,6 +70,12 @@ const Cashier = () => {
     setLimit(newLimit);
   };
 
+  const state = useLocation();
+  
+  useEffect(() => {
+    handleFilter();
+  }, [selectedOption, cashiers, searchInput]);
+
   useEffect(() => {
     if (state.state !== null && state.state.showSnackbar === true) {
       setShowSnackbar(true);
@@ -101,8 +103,7 @@ const Cashier = () => {
   };
 
   const handleOptionChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedOption(selectedValue);
+    setSelectedOption(event.target.value);
   };
 
   return (

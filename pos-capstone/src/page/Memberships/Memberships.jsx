@@ -22,18 +22,14 @@ const Memberships = () => {
   console.log(loading)
   const [searchInput, setSearchInput] = useState("");
   const [filteredMembers, setFilteredMembers] = useState([]);
-
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Gold", "Silver", "Bronze"];
 
   //ambil response pagination
   const pagination = useSelector(state => state.members.members.pagination);
 
-  console.log(members)
-  console.log(pagination)
-
   //pagination state
-  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState();
   const [onShow, setOnShow] = useState(false);
   const [totalPage, setTotalPage] = useState(5)
   const [curPage, setCurPage] = useState(1)
@@ -89,7 +85,7 @@ const Memberships = () => {
     }
   }, [showSnackbar, state.state]);
 
-  console.log(showSnackbar)
+  // console.log(showSnackbar)
 
   const handleFilter = () => {
     let filtered = members;

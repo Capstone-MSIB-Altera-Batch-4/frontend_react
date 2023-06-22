@@ -23,11 +23,9 @@ export const createCashier = (cashier) => {
 
 // Read
 export const fetchCashiers = (page, limit) => {
-
     if (page === undefined) {
         page = 1
     }
-
     return (dispatch) => {
         dispatch({ type: 'FETCH_CASHIERS_REQUEST' });
 
