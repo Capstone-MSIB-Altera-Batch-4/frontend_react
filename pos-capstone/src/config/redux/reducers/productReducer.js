@@ -1,9 +1,13 @@
 const initialState = {
     products: [],
     category: [],
+    selectedCategory: {},
+    image: {},
     loading: false,
     error: null
   };
+
+  console.log("Category", initialState.category)
   
   const productReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -25,6 +29,12 @@ const initialState = {
           loading: false,
           error: null,
         };
+      case "CREATE_PRODUCTS_FAILURE":
+        console.log("ini PESANNYA", action)
+        return {
+          ...state,
+          error: "ERROR"
+        }
       case "FETCH_PRODUCTS_SUCCESS":
         return {
           ...state,
@@ -62,13 +72,29 @@ const initialState = {
           loading: false,
           error: null,
         };
-      case "FETCH_PRODUCTS_SUCCESS":
+      case "FETCH_CATEGORY_SUCCESS":
         return {
           ...state,
           category: action.payload,
           loading: false,
           error: null,
         };
+      case "SET_SELECTED_CATEGORY":
+        console.log("INI CATEGORY", action)
+        return {
+          ...state,
+          selectedCategory: action.payload,
+          loading: false,
+          error: null,
+        }
+      case "SET_SELECTED_IMAGE":
+        console.log("INI Gambar", action)
+        return {
+          ...state,
+          image: action.payload,
+          loading: false,
+          error: null,
+        }
       default:
         return state;
     }

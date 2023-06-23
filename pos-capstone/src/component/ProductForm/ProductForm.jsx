@@ -12,8 +12,8 @@ import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButto
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../Modal/InputCategoryModal/InputCategoryModal";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { createProduct, updateProduct } from "../../config/redux/actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
+import { createProduct, updateProduct, selectedCategory } from "../../config/redux/actions/productActions";
 
 const ProductFrom = ({ showModalFor, dataEdit }) => {
   const [product, setProduct] = useState([]);
@@ -24,36 +24,28 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const isEditMode = !!productId;
+  const selected = useSelector(state => state.products.selectedCategory);
+  const cekStatus = useSelector(state => state.products.error)
+  const productImage = useSelector(state => state.products.image)
 
-  // useEffect(() => {
-    
-  //   if (dataEdit) {
-  //     setTimeout(() => {
-  //       setProduct(dataEdit)
-  //       console.log("Data kesimpennn")
-  //     }, 1000);
-  //   }
-  // }, [dataEdit])
+  console.log('CEK STATUS', cekStatus)
+  console.log('imaged', productImage.name)
 
-  let initialValues = {
-    id: "",
-    name: "",
-    category: "Sushi",
-    image: "https://source.unsplash.com/featured?sushi",
-    stock: "",
-    price: "",
-    unit: "",
-  };
+  useEffect(() => {
+    dispatch(selectedCategory())
+    console.log("data category diget")
+  }, [dispatch]);
 
-  // console.log("editmode?", isEditMode);
-  console.log("DATA", dataEdit);
-  // console.log("Category", initialValues)
+  console.log("Categorinya", selected)
 
-  console.log("mode", showModalFor)
+  console.log(product)
+
+  let initialValues = {}
 
   // useEffect(() => {
     if (showModalFor === 'edit') {
+      console.log(showModalFor)
+      console.log("ini apa", dataEdit.name)
       initialValues = {
         id: dataEdit.products_id,
         name: dataEdit.name,
@@ -62,80 +54,79 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         stock: dataEdit.quantity,
         price:  dataEdit.price,
         unit: dataEdit.unit,
-      };
+      }
+    }else {
+      initialValues = {
+        id: "",
+        name: "",
+        category: "",
+        image: "",
+        stock: "",
+        price: "",
+        unit: "",
+      }
     }
-  // },[!showModalFor])
+  // },[dataEdit])
   
 
   console.log("Category", initialValues)
+  console.log("data di formik", data)
 
-  // if (isEditMode) {
-  //   // if (dataEdit) {
-  //     initialValues = {
-  //       id: dataEdit.products_id,
-  //       name: dataEdit.name,
-  //       category: dataEdit.category,
-  //       image: dataEdit.image_url,
-  //       stock: dataEdit.quantity,
-  //       price: dataEdit.price,
-  //       unit: dataEdit.unit,
-  //     };
-  //   // }
-  // }
-
-  // useEffect(() => {
-    
-  //   if (dataEdit) {
-  //     setTimeout(() => {
-  //       setProduct(dataEdit)
-  //       console.log("Data kesimpennn")
-  //     }, 1000);
-  //   }
-  // }, [dataEdit])
-
-  // if (isEditMode) {
-  //   // if (product) {
-  //     initialValues = {
-  //       id: product.products_id,
-  //       name: product.name,
-  //       category: product.category,
-  //       image: product.image_url,
-  //       stock: product.quantity,
-  //       price: product.price,
-  //       unit: product.unit
-  //     }
-  //   // }
-  // }
 
   //untuk ngatur biar modal muncul sama simpen data inputan
   const ModalAction = (values) => {
+    console.log("datanta", values)
     setData(values);
     setShowConfirmModal(true);
   };
 
-  //function untuk submit data
-  // const handleSubmit = () => {
-  //   if (isEditMode) {
-  //     console.log("ini update", JSON.stringify(data));
-  //     dispatch(updateProduct(productId, data));
-  //   }else{
-  //     console.log("ini create", data);
-  //     console.log(JSON.stringify(data));
-  //     dispatch(createProduct((data)));
-  //   }
+  const handleSubmit = () => {
+    let formData = new FormData()
 
-    console.log("Cek error", createProduct.status)
-    // if (dispatch.type) {
-      
-    // }
-    // navigate("/products", {
-    //   state: {
-    //   showSnackbar: true,
-    //   action: `${showModalFor}`,
-    //   variant: "success"
-    // }})
-    // alert("data", JSON.stringify(data.category))
-  // };
+    let complete = false
+
+        // for (let value in data) {
+        //   formData.append(value, data[value])
+        // }
+        formData.append("products_id", data.id)
+        formData.append("products_name", data.name)
+        formData.append("products_category", selected[0].id)
+        formData.append("-", productImage.path)
+        formData.append("products_quantity", data.stock)
+        formData.append("products_price", data.price)
+        formData.append("products_unit", data.unit)
+        formData.append("products_description", "makanan ringan dan sushi")
+
+        for (let property of formData.entries()) {
+          console.log(property[0], property[1]);
+        }
+
+        //submit data
+        if (showModalFor === "edit") {
+          dispatch(updateProduct(formData));
+        }else {
+          dispatch(createProduct(formData));
+          return complete = true
+        }
+
+        //atur navigasi dan set error
+        if (cekStatus === "ERROR") {
+          setShowConfirmModal(false);
+          return Submit;
+        } else if (complete ) {
+          navigate("/products", {
+            state: {
+              showSnackbar: !!true,
+              action: `${showModalFor}`,
+              variant: "success",
+            },
+          });
+        }
+  }
+
+  console.log(data)
+
+  // console.log("Cek error", createProduct.status)
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -148,36 +139,36 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
       price: Yup.number().required("The price field must be filled in"),
       unit: Yup.string().required("The unit field must be filled in"),
     }),
-  //   onSubmit: (values, actions) => {
-  //     // actions.resetForm();
-  //     console.log(values);
-  //     alert("data", JSON.stringify(values))
-  //   navigate("/products", {
-  //         state: {
-  //         showSnackbar: true,
-  //         action: `${showModalFor}`,
-  //         variant: "success"
-  //       },
-  //   }),
-  // }
       onSubmit: (values, actions) => {
         alert("data", JSON.stringify(values))
-        console.log("DATA", values);
+        console.log("DATA INI", values);
+
+        let formData = new FormData()
+
+        for (let value in values) {
+          formData.append(value, values[value])
+        }
+
+        for (let property of formData.entries()) {
+          console.log(property[0], property[1]);
+        }
+
+        // dispatch(createProduct(formData));
         // dispatch(createProduct(values));
-        navigate("/products", {
-          state: {
-            showSnackbar: !!true,
-            action: `${showModalFor}`,
-            variant: "success"
-          },
-        })
+        // navigate("/products", {
+        //   state: {
+        //     showSnackbar: !!true,
+        //     action: `${showModalFor}`,
+        //     variant: "success"
+        //   },
+        // })
       }
   });
 
   return (
     <>
       {/* <form id="create-edit-form"> */}
-      <div className="col w-100 text-start" id="product-form">
+      <div className="col w-100 text-start" id="product-form" >
         <div className="mb-3">
           <TextField
             htmlFor="id"
@@ -227,7 +218,18 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         </div>
         <div className="mb-3 row input-category-field">
           <div className="col-md-11 select-category">
-            <InputCategory selectedOption={formik.values.category} />
+            <InputCategory name="category" 
+              selectedOption={formik.values.category} 
+              // value={selected != undefined ? formik.values.category = selected[0].name : formik.values.category}
+              className={
+                formik.errors.category && formik.touched.category
+                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
+                  : "form-control mt-1"
+              }
+            />
+            {formik.errors.category && formik.touched.category && (
+            <InputErrorMessage label={formik.errors.category} />
+          )}
           </div>
           <div
             className="col-md-1 input-category-icon p-2"
@@ -309,20 +311,20 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         </Link>
         <PrimaryButton
           type="button"
-          onClick={() => setShowConfirmModal(true)}
+          onClick={() => ModalAction(formik.values)}
           className="px-4"
           label="Save"
         />
       </div>
 
       {/* MODAL */}
-      <div form="product-form">
+      <div>
         <ConfirmModal
           show={showConfirmModal}
           handleClose={() => setShowConfirmModal(false)}
           confirmFor={showModalFor}
           role={"Product"}
-          action={formik.handleSubmit}
+          action={!cekStatus ? handleSubmit : formik.handleSubmit}
         />
       </div>
       <div>

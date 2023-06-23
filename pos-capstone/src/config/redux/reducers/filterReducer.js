@@ -2,10 +2,11 @@ const initialState = {
     products: [],
     cashier: [],
     member: [],
-    filterData: []
+    filterData: [],
+    selectedItems: []
   };
 
-//   console.log("Data semua", initialState.filterData)
+  console.log("Data semua", initialState.selectedItems)
   
   const filterReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -20,29 +21,41 @@ const initialState = {
         };
 
       case 'SELECT_BY_CATEGORY':
-        const selectedItems = action.payload.map((items) => {
-          console.log(action)
+        // const selectedItems = action.payload.map((items) => {
+        //   console.log(items)
+          const data = action.payload
           const selected = action.selected
           const variant = action.filterFor
-          console.log("data-category", items)
+          let selectedItems = []
+          console.log("select", selected)
+          console.log("variant", variant)
+        //   console.log("data-category", items)
           if (selected) {
             switch (variant) {
               case "product":
-                return items.filter((data) => {
-                  return data.category === selected;
+                console.log("ini product", data)
+                console.log(selectedItems)
+                selectedItems = data.filter((data) => {
+                   return data.category === selected;
                 });
+                // return selectedItems;
               case "cashier":
-                return items.filter((data) => {
+                console.log("ini product")
+                selectedItems = data.filter((data) => {
                   return data.role === selected;
                 });
+                // return selectedItems;
               case "member":
-                return items.filter((data) => {
+                selectedItems = data.filter((data) => {
                   return data.level === selected;
                 });
             }
+            // return selectedItems;
           }
-        });
+        // console.log("Dataselet", state.selectedItems)
+        // });
         console.log("filtered by category:", selectedItems)
+        console.log("data akhir", state.filterData)
         return {
           ...state,
           filterData: selectedItems
@@ -77,6 +90,7 @@ const initialState = {
     }
   };
    
+  console.log("Dataselet", initialState.selectedItems)
   export default filterReducer;
 
  

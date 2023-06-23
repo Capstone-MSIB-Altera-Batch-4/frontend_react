@@ -3,18 +3,26 @@ import ProductForm from "../../component/ProductForm/ProductForm";
 import PageTitle from "../../element/PageTitle/PageTitle";
 import { useParams } from "react-router-dom";
 import { productsData } from "../../data/DummyData";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import api from "../../config/redux/api/api";
+import { getProducts } from "../../config/redux/actions/productActions"
 
 
 const EditProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([])
 
+  const dispatch = useDispatch();
   // const productData = useSelector(state => state.products.products.data);
-  // const product = productData.find(item => item.id === id);
 
-  console.log("ID", id)
+  // useEffect(() => {
+  //   dispatch(getProducts())
+  // }, [dispatch]);
+
+
+  // const product = productData?.filter(item => item.id === parseInt(id));
+
+  // console.log("product ID", product)
 
   const getProductById = () => {
     api.get(`/product/${id}`)
@@ -39,7 +47,7 @@ const EditProduct = () => {
           <PageTitle title="Edit Product" />
         </div>
         <div>
-          <ProductForm showModalFor={"edit"} productId={id} dataEdit={product}/>
+          <ProductForm showModalFor={"edit"} dataEdit={product}/>
         </div>
       </div>
     </div>

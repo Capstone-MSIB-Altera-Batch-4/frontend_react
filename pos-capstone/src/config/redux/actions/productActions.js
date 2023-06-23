@@ -5,11 +5,12 @@ export const createProduct = (product) => {
   return (dispatch) => {
     dispatch({ type: 'CREATE_PRODUCTS_REQUEST' });
 
-    api.post('/product',
-      // headers: {
-      //   'Content-Type': 'multipart/form-data'
-      // },
-      product)
+    api.post('/product',  product, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data'
+      },
+    })
       .then(response => {
         dispatch({
           type: 'CREATE_PRODUCTS_SUCCESS',
@@ -114,7 +115,7 @@ export const createCategory = (category) => {
   return (dispatch) => {
     dispatch({ type: 'CREATE_CATEGORY_REQUEST' });
 
-    api.post('/category/create', category)
+    api.post('/category', category)
       .then(response => {
         dispatch({
           type: 'CREATE_CATEGORY_SUCCESS',
@@ -127,5 +128,25 @@ export const createCategory = (category) => {
           payload: error.message
         });
       });
+  };
+};
+
+//send selected category to form
+export const selectedCategory = (category) => {
+  return (dispatch) => {
+    dispatch({ 
+      type: 'SET_SELECTED_CATEGORY',
+      payload: category
+    });
+  };
+};
+
+//send image value
+export const selectedImage = (image) => {
+  return (dispatch) => {
+    dispatch({ 
+      type: 'SET_SELECTED_IMAGE',
+      payload: image
+    });
   };
 };

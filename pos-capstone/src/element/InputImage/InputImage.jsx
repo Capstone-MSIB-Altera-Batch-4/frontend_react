@@ -5,17 +5,25 @@ import { useDropzone } from "react-dropzone";
 import "./InputImage.style.css"
 import { useState } from "react";
 import iconDrop from "../../assets/icon/dropimg-icon.svg"
+import { useDispatch } from "react-redux";
+import { selectedImage } from "../../config/redux/actions/productActions";
 
 const InputImage = (props) => {
     const [files, setFiles] = useState()
+    const dispatch = useDispatch();
+
     const onDrop = useCallback(acceptedFiles => {
-        console.log(acceptedFiles)
+        console.log("ini picture", acceptedFiles[0])
         setFiles(acceptedFiles.map(file => Object.assign(file, {
             preview: URL.createObjectURL(file)
         })));
-        console.log(files)
+        console.log("ini fotonya", files)
+
+        dispatch(selectedImage(acceptedFiles[0]))
     }, [])
     const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop, noClick: true })
+
+
     return (
         <div id="inputimage">
             <label htmlFor={props.htmlFor} className="form-label">

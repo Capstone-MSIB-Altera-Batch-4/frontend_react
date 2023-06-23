@@ -19,7 +19,7 @@ const Products = () => {
     const filteredProducts = useSelector(state => state.filterData.products);
     const [products, setProducts] = useState(productsData);
 
-    console.log("Products", products)
+    console.log("Products", productsData)
 
     useEffect(() => {
       dispatch(getProducts())
@@ -92,7 +92,7 @@ const Products = () => {
               data={productsData}
               onShow={onShow}
               filterFor="product"
-              options={["Sushi", "Ramen", "React"]}
+              options={["Sushi", "Ramen", "React", "Makanan 1"]}
               dropdownLabel="Category"
             />
           </div>
