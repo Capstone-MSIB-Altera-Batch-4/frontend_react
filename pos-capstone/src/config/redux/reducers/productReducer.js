@@ -68,7 +68,7 @@ const initialState = {
       case "CREATE_CATEGORY_SUCCESS":
         return {
           ...state,
-          category: [...state.category, action.payload],
+          category: [...state.category[0].name, action.payload],
           loading: false,
           error: null,
         };

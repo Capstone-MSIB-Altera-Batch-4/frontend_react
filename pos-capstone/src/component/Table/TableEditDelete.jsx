@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import TableAction from "./TableAction";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Pencil, Trash } from "react-bootstrap-icons";
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
 import { useDispatch } from "react-redux";
+import { deleteItem, getProducts } from "../../config/redux/actions/productActions";
+// import { deleteMember, fetchMembers } from "../../config/redux/actions/memberActions";
+// import { deleteCashier, fetchCashiers } from "../../config/redux/actions/cashierActions";
 
 const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
 
@@ -15,25 +18,46 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [id, setId] = useState("")
 
-
-  // const ActionSuccess = (id) => {
-  //   console.log(id)
-  //   if (deleteConfirmFor == "Member") {
-  //     dispatch(deleteMember(id));
-  //   } else if(deleteConfirmFor == "Employee") {
-  //     dispatch(deleteCashier(id));
-  //   }
+  // console.log(data[1].id)
 
 
-  //   setShowConfirmModal(false);
-  //   setShowSnackbar(true);
+  const ActionSuccess = (id) => {
+    // if (deleteConfirmFor == "Member") {
+    //   dispatch(deleteMember(id));
+    //   setTimeout(() => {
+    //     dispatch(fetchMembers(1, 10));
+    //   }, 500);
+
+    // } else if (deleteConfirmFor == "Employee") {
+    //   dispatch(deleteCashier(id));
+    //   setTimeout(() => {
+    //     dispatch(fetchCashiers(1, 10));
+    //   }, 500);
+    // }
+    if (deleteConfirmFor == "Product") {
+      dispatch(deleteItem(id));
+      setTimeout(() => {
+        dispatch(getProducts());
+      }, 500);
+    } 
+  
+    setShowConfirmModal(false);
+    console.log(showSnackbar)
+    setShowSnackbar(true)
+    console.log(showSnackbar)
+  }
+
+  // if (showSnackbar) {
+  //   setTimeout(() => {
+  //     setShowSnackbar(false);
+  //   }, 1000);
   // }
 
-  if (showSnackbar) {
-    setTimeout(() => {
-      setShowSnackbar(false);
-    }, 1000);
-  }
+  const product = data?.filter(product => {
+    return product.id === id
+  })
+
+  console.log("productnya", product)
 
   const confirmDelete = (id) => {
     console.log(id)
@@ -47,7 +71,6 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
         headerColor={{ backgroundColor: "#FDDFDF" }}
         columns={columns}
         data={data}
-        pageSize={10}
         buttonComponent={(data) => (
           <div>
             <Link
@@ -57,11 +80,12 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
               <Pencil />
             </Link>
             <Link
-              onClick={() => confirmDelete(data.id)}
-              style={{ color: "red" }}
-            >
-              <Trash />
-            </Link>
+                onClick={() => confirmDelete(data.id)}
+                style={{ color: "red" }}
+              >
+                <Trash />
+              </Link>
+
           </div>
         )}
       />
@@ -73,7 +97,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
           handleClose={() => setShowConfirmModal(false)}
           confirmFor={"delete"}
           role={deleteConfirmFor}
-          id={id}
+          id={deleteConfirmFor == "Product" && product ? product[0]?.products_id : id}
           action={() => ActionSuccess(id)}
         />
       </div>

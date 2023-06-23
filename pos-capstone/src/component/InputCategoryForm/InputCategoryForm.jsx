@@ -26,10 +26,15 @@ const InputCategoryForm = ({handleClose}) => {
   return (
     <div>
       <Formik
-        initialValues={{ category: ['']  }}
+        initialValues={{ category: [{name: ''}] }}
         onSubmit={(values) => {
-          dispatch(createCategory(values.category));
-          console.log(JSON.parse(values))
+          const categories = values.category
+          for (let category in categories) {
+            dispatch(createCategory(categories[category]));
+            console.log("CATEGORY", categories[category])
+          }
+          // dispatch(createCategory(values.category));
+          // console.log("CATEGORY", values.category.name)
           console.log(values)
         }}
         validationSchema={validationSchema}

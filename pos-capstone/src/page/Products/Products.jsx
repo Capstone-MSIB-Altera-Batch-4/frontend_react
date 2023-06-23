@@ -12,12 +12,16 @@ import { Link, useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../config/redux/actions/productActions"
+import TablePagination from "../../element/TablePagination/TablePagination"
 
 const Products = () => {
     const dispatch = useDispatch();
     const productsData = useSelector(state => state.products.products.data);
     const filteredProducts = useSelector(state => state.filterData.products);
     const [products, setProducts] = useState(productsData);
+
+    const pagination = useSelector(state => state.products.products.pagination);
+    console.log("pagination", pagination)
 
     console.log("Products", productsData)
 
@@ -27,10 +31,41 @@ const Products = () => {
 
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [onShow, setOnShow] = useState(false);
+    const [totalPage, setTotalPage] = useState(5)
+    const [curPage, setCurPage] = useState(1)
+    const [totalItems, setTotalItems] = useState(50)
+    const [limit, setLimit] = useState(10)
 
     // let filterData = JSON.parse(localStorage.getItem('product'));
     // console.log("Products", filterData);
 
+    // set value pagination
+    useEffect(() => {
+      if (pagination) {
+        setTotalPage(pagination.total_pages);
+        setCurPage(pagination.page);
+        setTotalItems(pagination.total_items);
+        setLimit(pagination.limit);
+      }
+    }, [pagination]);   
+    
+    //pagination function
+    const handlePrevPage = () => {
+      if (curPage > 1) {
+        setCurPage((prevPage) => prevPage - 1);
+      }
+    };
+
+    const handleNextPage = () => {
+      if (curPage < totalPage) {
+        setCurPage((prevPage) => prevPage + 1);
+      }
+    };
+
+    const handleRowsPerPageChange = (event) => {
+      const newLimit = parseInt(event.target.value);
+      setLimit(newLimit);
+    };
 
     const state = useLocation();
 
@@ -107,6 +142,16 @@ const Products = () => {
             {/* {products ? (
               "" ): (<td>Product item not found</td>)} */}
           </div>
+          <TablePagination
+            currentPage={curPage}
+            pageCount={totalPage}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+            prevDisable={curPage === 1}
+            nextDisable={curPage === totalPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+            rowsPerPage={limit}
+          />
         </div>
 
         {/* MODAL & SNACKBAR */}

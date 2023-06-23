@@ -52,7 +52,12 @@ export const updateProduct = (productId, updatedProduct) => {
   return (dispatch) => {
     dispatch({ type: 'UPDATE_PRODUCTS_REQUEST' });
 
-    api.put(`/product/${productId}`, updatedProduct)
+    api.put(`/product/${productId}`, updatedProduct, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data'
+      },
+    })
       .then(response => {
         dispatch({
           type: 'UPDATE_PRODUCTS_SUCCESS',
@@ -73,7 +78,11 @@ export const deleteItem = (productId) => {
   return (dispatch) => {
     dispatch({ type: 'DELETE_PRODUCTS_REQUEST' });
 
-    api.delete(`/product/${productId}`)
+    api.delete(`/product/${productId}`, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
       .then(() => {
         dispatch({
           type: 'DELETE_PRODUCTS_SUCCESS',

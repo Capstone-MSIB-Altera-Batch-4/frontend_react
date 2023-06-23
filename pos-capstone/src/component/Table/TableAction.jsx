@@ -6,24 +6,9 @@ import './Table.css'
 const TableAction = ({
   columns,
   data,
-  pageSize,
   headerColor,
   buttonComponent,
 }) => {
-  const [pageIndex, setPageIndex] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(pageSize);
-  const pageCount = Math.ceil(data?.length / rowsPerPage);
-  const startIndex = pageIndex * rowsPerPage;
-  const endIndex = (pageIndex + 1) * rowsPerPage;
-  const startNumber = pageIndex * rowsPerPage + 1;
-  // const currentPage = data.slice(startIndex, endIndex);
-
-  const handleRowsPerPageChange = (event) => {
-    const newRowsPerPage = parseInt(event.target.value);
-    setRowsPerPage(newRowsPerPage);
-    setPageIndex(0);
-  };
-
   const [hoveredRow, setHoveredRow] = useState(null);
 
   const handleRowHover = (index) => {
@@ -60,7 +45,8 @@ const TableAction = ({
                     : { backgroundColor: "inherit" }
                 }
               >
-                {columns.map((column, columnIndex) => (           
+                {columns.map((column, columnIndex) => (
+                  
                   <td
                     key={columnIndex}
                     style={
@@ -69,7 +55,7 @@ const TableAction = ({
                         : { backgroundColor: "inherit" }
                     }
                   >
-                     {column.accessor === "no" ? startNumber + rowIndex : row[column.accessor]}
+                     {column.accessor === "no" ? 1 + rowIndex : row[column.accessor]}
                   </td>
                 ))}
                 <td
@@ -96,7 +82,7 @@ const TableAction = ({
         ) : null}
       </div>
 
-      <div className="row px-0 mt-5 justify-content-between">
+      {/* <div className="row px-0 mt-5 justify-content-between">
         <div className="col-md-6 w-25">
           <div className="d-flex justify-content-start">
             <label htmlFor="rowsPerPageSelect">Show</label>
@@ -141,7 +127,7 @@ const TableAction = ({
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
