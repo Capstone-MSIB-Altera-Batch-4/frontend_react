@@ -20,7 +20,7 @@ const Cashier = () => {
   const dispatch = useDispatch();
   const cashiers = useSelector((state) => state.cashiers.cashiers.data);
   const loading = useSelector(state => state.cashiers.loading)
-  console.log(loading)
+  
 
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);
@@ -29,7 +29,7 @@ const Cashier = () => {
 
   //ambil response pagination
   const pagination = useSelector(state => state.cashiers.cashiers.pagination);
-  console.log(pagination)
+  
 
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);

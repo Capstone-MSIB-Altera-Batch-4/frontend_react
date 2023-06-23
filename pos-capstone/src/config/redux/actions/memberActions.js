@@ -46,6 +46,27 @@ export const fetchMembers = (page, limit) => {
             });
     };
 };
+export const fetchMembersall = () => {
+
+
+    return (dispatch) => {
+        dispatch({ type: 'FETCH_MEMBERSALL_REQUEST' });
+
+        api.get(`/membership?limit=9999&page=1`)
+            .then(response => {
+                dispatch({
+                    type: 'FETCH_MEMBERSALL_SUCCESS',
+                    payload: response.data
+                });
+            })
+            .catch(error => {
+                dispatch({
+                    type: 'FETCH_MEMBERSALL_FAILURE',
+                    payload: error.message
+                });
+            });
+    };
+};
 
 // Update
 export const updateMember = (memberId, updatedMember) => {
