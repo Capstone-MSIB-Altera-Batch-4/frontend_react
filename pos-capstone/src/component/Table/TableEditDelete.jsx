@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { deleteMember, fetchMembers } from "../../config/redux/actions/memberActions";
 import { deleteCashier, fetchCashiers } from "../../config/redux/actions/cashierActions";
 
-const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
+const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor, numbering }) => {
 
   const dispatch = useDispatch();
 
@@ -52,6 +52,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   return (
     <div className="mb-5">
       <TableAction
+        numbering={numbering}
         headerColor={{ backgroundColor: "#FDDFDF" }}
         columns={columns}
         data={data}
