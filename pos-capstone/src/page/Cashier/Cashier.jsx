@@ -25,7 +25,7 @@ const Cashier = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
-  const options = ["Kepala Cashier", "Cashier"];
+  const options = ["kepala cashier", "cashier"];
 
   //ambil response pagination
   const pagination = useSelector(state => state.cashiers.cashiers.pagination);
