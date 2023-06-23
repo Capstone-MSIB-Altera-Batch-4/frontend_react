@@ -10,18 +10,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { readallOrders } from "../../config/redux/actions/ordersAction";
 import { totalSales, Visitors, newMember, prevMember, prevVisitors, prevtotalSales } from './ValueCard';
 import Loader from '../../element/Loader/Loader';
+import { fetchMembersall } from '../../config/redux/actions/memberActions';
 import { readTopProduct } from '../../config/redux/actions/topproductAction';
 
 const Dashboard = () => {
 
   const dispatch = useDispatch()
   const order = useSelector(state => state.orders.itemsall.data)
-  const members = useSelector(state => state.members.members.data);
+  const members = useSelector(state => state.members.membersall.data);
   const topProduct = useSelector(state => state.topProduct.items);
   const loading = useSelector(state => state.orders.loading)
 
   useEffect(() => {
     dispatch(readallOrders())
+    dispatch(fetchMembersall())
     dispatch(readTopProduct())
   }, [])
 
