@@ -15,7 +15,12 @@ import { createCashier, updateCashier } from "../../config/redux/actions/cashier
 const CashierForm = ({ filterData, showModalFor }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
+  const handleOptionSelect = (selectedRole) => {
+    formik.setFieldValue('role', selectedRole);
+    setShowDropdown(false);
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -190,20 +195,17 @@ const CashierForm = ({ filterData, showModalFor }) => {
                 id="role"
                 style={{ fontFamily: 'inherit', fontWeight: 400, position: 'relative', width: '100%', backgroundColor: 'transparent', cursor: 'pointer', color: '#000000', margin: "-0.3em 0 0 0.3em" }}
                 onClick={() => {
-                  document.getElementById("roleOptions").classList.toggle("show");
+                  setShowDropdown(!showDropdown);
                 }}
               >
                 {formik.values.role ? formik.values.role : "Select Role"}
               </button>
-              <ul className={`dropdown-menu ${formik.values.role ? 'show' : ''}`} id="roleOptions" aria-labelledby="role" style={{ minWidth: '20rem', backgroundColor: 'rgba(231, 231, 231, 1)', position: 'absolute', top: '100%', left: 0, marginTop: '0.5rem' }}>
+              <ul className={`dropdown-menu ${showDropdown ? 'show' : ''}`} id="roleOptions" aria-labelledby="role" style={{ minWidth: '20rem', backgroundColor: 'rgba(231, 231, 231, 1)', position: 'absolute', top: '100%', left: 0, marginTop: '0.5rem' }}>
                 <li>
                   <button
                     className={`dropdown-item ${formik.values.role === 'cashier' ? 'active' : ''}`}
                     type="button"
-                    onClick={() => {
-                      formik.setFieldValue('role', 'cashier');
-                      document.getElementById("roleOptions").classList.remove("show");
-                    }}
+                    onClick={() => handleOptionSelect('cashier')}
                     style={{ backgroundColor: 'transparent', color: '#000000' }}
                     onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
                     onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
@@ -215,10 +217,7 @@ const CashierForm = ({ filterData, showModalFor }) => {
                   <button
                     className={`dropdown-item ${formik.values.role === 'kepala cashier' ? 'active' : ''}`}
                     type="button"
-                    onClick={() => {
-                      formik.setFieldValue('role', 'kepala cashier');
-                      document.getElementById("roleOptions").classList.remove("show");
-                    }}
+                    onClick={() => handleOptionSelect('kepala cashier')}
                     style={{ backgroundColor: 'transparent', color: '#000000' }}
                     onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
                     onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
