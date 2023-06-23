@@ -84,28 +84,6 @@ const CashierForm = ({ filterData, showModalFor }) => {
     <>
       <form>
         <div className="col w-100 text-start px-5">
-          {/* <div className="mb-3">
-            <TextField
-              htmlFor="id_code"
-              label="ID Number"
-              placeholder="Input id code"
-              name="id_code"
-              type="text"
-              id="id_code"
-              value={formik.values.id_code}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.id_code && formik.touched.id_code
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("id_Code", "", false)}
-            />
-            {formik.errors.id_code && formik.touched.id_code && (
-              <InputErrorMessage label={formik.errors.id_code} />
-            )}
-          </div> */}
           {showModalFor === "edit" && (
             <div className="mb-3">
               <TextField
@@ -201,48 +179,55 @@ const CashierForm = ({ filterData, showModalFor }) => {
               </div>
             </>
           )}
-          {/* <div className="mb-3">
-            <TextField
-              htmlFor="role"
-              label="Role"
-              placeholder="Input role"
-              id="role"
-              type="text"
-              name="role"
-              value={formik.values.role}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.role && formik.touched.role
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("role", "", false)}
-            />
-            {formik.errors.role && formik.touched.role && (
-              <InputErrorMessage label={formik.errors.role} />
-            )}
-          </div> */}
-          <div className="mb-3">
-            <label htmlFor="role" className="form-label">
+          <div className="mb-3" style={{ position: 'relative' }}>
+            <label htmlFor="role" className="form-label" style={{ fontFamily: 'Rubik', fontStyle: 'normal', fontWeight: 500, fontSize: '14px', color: '#000000' }}>
               Role
             </label>
-            <select
-              id="role"
-              name="role"
-              className={
-                formik.errors.role && formik.touched.role
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              value={formik.values.role}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            >
-              <option value="">Select Role</option>
-              <option value="cashier">Cashiers</option>
-              <option value="kepala cashier">Head Cashiers</option>
-            </select>
+            <div className="dropdown" style={{ color: '#989898', display: 'flex', borderRadius: '10px', border: '1px solid #ced4da', backgroundColor: '#FFFFFF', height: '2.7rem' }}>
+              <button
+                className="btn btn-dropdown text-start"
+                type="button"
+                id="role"
+                style={{ fontFamily: 'inherit', fontWeight: 400, position: 'relative', width: '100%', backgroundColor: 'transparent', cursor: 'pointer', color: '#000000', margin: "-0.3em 0 0 0.3em" }}
+                onClick={() => {
+                  document.getElementById("roleOptions").classList.toggle("show");
+                }}
+              >
+                {formik.values.role ? formik.values.role : "Select Role"}
+              </button>
+              <ul className={`dropdown-menu ${formik.values.role ? 'show' : ''}`} id="roleOptions" aria-labelledby="role" style={{ minWidth: '20rem', backgroundColor: 'rgba(231, 231, 231, 1)', position: 'absolute', top: '100%', left: 0, marginTop: '0.5rem' }}>
+                <li>
+                  <button
+                    className={`dropdown-item ${formik.values.role === 'cashier' ? 'active' : ''}`}
+                    type="button"
+                    onClick={() => {
+                      formik.setFieldValue('role', 'cashier');
+                      document.getElementById("roleOptions").classList.remove("show");
+                    }}
+                    style={{ backgroundColor: 'transparent', color: '#000000' }}
+                    onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
+                    onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
+                  >
+                    cashier
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={`dropdown-item ${formik.values.role === 'kepala cashier' ? 'active' : ''}`}
+                    type="button"
+                    onClick={() => {
+                      formik.setFieldValue('role', 'kepala cashier');
+                      document.getElementById("roleOptions").classList.remove("show");
+                    }}
+                    style={{ backgroundColor: 'transparent', color: '#000000' }}
+                    onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
+                    onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
+                  >
+                    kepala cashier
+                  </button>
+                </li>
+              </ul>
+            </div>
             {formik.errors.role && formik.touched.role && (
               <InputErrorMessage label={formik.errors.role} />
             )}
