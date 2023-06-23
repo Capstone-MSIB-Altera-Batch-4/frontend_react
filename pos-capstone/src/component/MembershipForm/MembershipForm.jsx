@@ -40,14 +40,14 @@ const MembershipForm = ({ filterData, showModalFor }) => {
       id: filterData[0].id,
       name: filterData[0].name,
       email: filterData[0].email,
-      phone_number: filterData[0].phone,
+      phone: filterData[0].phone,
       birth_day: formattedDate,
       level: filterData[0].level
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required("The name field must be filled in"),
       email: Yup.string().required("The email field must be filled in"),
-      phone_number: Yup.number().required("The phone number field must be filled in"),
+      phone: Yup.number().required("The phone number field must be filled in"),
       birth_day: Yup.string().required("The birthday day field must be filled in"),
       level: Yup.string().required("The level field must be filled in"),
     }),
@@ -137,24 +137,24 @@ const MembershipForm = ({ filterData, showModalFor }) => {
           </div>
           <div className="mb-3">
             <TextField
-              htmlFor="phone_number"
+              htmlFor="phone"
               label="Phone number"
               placeholder="Input phone number"
-              id="phone_number"
-              type="text"
-              name="phone_number"
-              value={formik.values.phone_number}
+              id="phone"
+              type="number"
+              name="phone"
+              value={formik.values.phone}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.phone_number && formik.touched.phone_number
+                formik.errors.phone && formik.touched.phone
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("phone_number", "", false)}
+              onClearInput={() => formik.setFieldValue("phone", "", false)}
             />
-            {formik.errors.phone_number && formik.touched.phone_number && (
-              <InputErrorMessage label={formik.errors.phone_number} />
+            {formik.errors.phone && formik.touched.phone && (
+              <InputErrorMessage label={formik.errors.phone} />
             )}
           </div>
           <div className="mb-3">

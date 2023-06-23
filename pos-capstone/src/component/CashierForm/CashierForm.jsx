@@ -210,7 +210,7 @@ const CashierForm = ({ filterData, showModalFor }) => {
                     onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
                     onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
                   >
-                    cashier
+                    Cashier
                   </button>
                 </li>
                 <li>
@@ -222,7 +222,7 @@ const CashierForm = ({ filterData, showModalFor }) => {
                     onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
                     onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
                   >
-                    kepala cashier
+                    Kepala Cashier
                   </button>
                 </li>
               </ul>
