@@ -10,15 +10,75 @@ import { productHeader } from "../../data/HeaderTableData"
 import { productsData } from "../../data/DummyData"
 import { Link, useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts, getCategory } from "../../config/redux/actions/productActions"
+import TablePagination from "../../element/TablePagination/TablePagination"
+import Loader from "../../element/Loader/Loader"
 
 const Products = () => {
-    const [showSnackbar, setShowSnackbar] = useState(false);
-    const [onShow, setOnShow] = useState(false)
-    const [products, setProducts] = useState(productsData)
+    const dispatch = useDispatch();
+    const productsData = useSelector(state => state.products.products.data);
+    const filteredProducts = useSelector(state => state.filterData.products);
+    const [products, setProducts] = useState(productsData);
+    const loading = useSelector(state => state.products.loading)
 
-    let filterData = JSON.parse(localStorage.getItem('product'));
+    //option filter pake ini
+    const options = useSelector(state => state.products.category.data);
+
+    // console.log("Options", options)
+
+    //get products
+    useEffect(() => {
+      dispatch(getProducts())
+    }, [dispatch]);
+
+    //get category 
+    useEffect(() => {
+      dispatch(getCategory())
+    }, [dispatch]);
+
+
+    const pagination = useSelector(state => state.products.products.pagination);
+    console.log("pagination", pagination)
+
+
+    const [showSnackbar, setShowSnackbar] = useState(false);
+    const [onShow, setOnShow] = useState(false);
+    const [totalPage, setTotalPage] = useState(5)
+    const [curPage, setCurPage] = useState(1)
+    const [totalItems, setTotalItems] = useState(50)
+    const [limit, setLimit] = useState(10)
+
+    // let filterData = JSON.parse(localStorage.getItem('product'));
     // console.log("Products", filterData);
 
+    // set value pagination
+    useEffect(() => {
+      if (pagination) {
+        setTotalPage(pagination.total_pages);
+        setCurPage(pagination.page);
+        setTotalItems(pagination.total_items);
+        setLimit(pagination.limit);
+      }
+    }, [pagination]);   
+    
+    //pagination function
+    const handlePrevPage = () => {
+      if (curPage > 1) {
+        setCurPage((prevPage) => prevPage - 1);
+      }
+    };
+
+    const handleNextPage = () => {
+      if (curPage < totalPage) {
+        setCurPage((prevPage) => prevPage + 1);
+      }
+    };
+
+    const handleRowsPerPageChange = (event) => {
+      const newLimit = parseInt(event.target.value);
+      setLimit(newLimit);
+    };
 
     const state = useLocation();
 
@@ -27,15 +87,33 @@ const Products = () => {
       if (state.state !== null && state.state.showSnackbar === true) {
         setShowSnackbar(true);
       }
+      // setShowSnackbar(false)
     }, [showSnackbar]);
 
+    
+  // if (showSnackbar) {
+  //   setTimeout(() => {
+  //     setShowSnackbar(false);
+  //   }, 1000);
+  // }
+
     // show data 
-    useEffect(() => {
-      setProducts(filterData)
-    }, [filterData])
+    // useEffect(() => {
+    //   setProducts(filteredProducts)
+    // }, [dispatch])
+
+    // useEffect(() => {
+    //   setProducts(filteredProducts)
+    // }, [dispatch])
 
     return (
-      <div className="product-page row mx-auto px-4">
+      <>
+      {loading ? 
+        <Loader 
+          secondaryColor="#B1464A"
+          color="#FFF0DE"
+        />
+        : <div className="product-page row mx-auto px-4">
         <div className="col">
           <div className="my-5">
             <PageTitle title="Product" />
@@ -68,20 +146,32 @@ const Products = () => {
               data={productsData}
               onShow={onShow}
               filterFor="product"
-              options={["Sushi", "Ramen", "React"]}
+              options={["Sushi", "Ramen", "React", "Makanan 1"]}
               dropdownLabel="Category"
             />
           </div>
           <div className="mt-4">
             <TableEdit
               columns={productHeader}
-              data={products}
+              // data={products}
+              loading={loading}
+              data={productsData}
               editPageLink={"editproduct"}
               deleteConfirmFor={"Product"}
             />
-            {products ? (
-              "" ): (<td>Product item not found</td>)}
+            {/* {products ? (
+              "" ): (<td>Product item not found</td>)} */}
           </div>
+          <TablePagination
+            currentPage={curPage}
+            pageCount={totalPage}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+            prevDisable={curPage === 1}
+            nextDisable={curPage === totalPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+            rowsPerPage={limit}
+          />
         </div>
 
         {/* MODAL & SNACKBAR */}
@@ -96,6 +186,7 @@ const Products = () => {
           ""
         )}
       </div>
+      }</>
     );
 }
 

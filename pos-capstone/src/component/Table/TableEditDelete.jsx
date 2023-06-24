@@ -6,6 +6,7 @@ import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
 import { useDispatch } from "react-redux";
+import { deleteItem, getProducts } from "../../config/redux/actions/productActions";
 import { deleteMember, fetchMembers } from "../../config/redux/actions/memberActions";
 import { deleteCashier, fetchCashiers } from "../../config/redux/actions/cashierActions";
 
@@ -30,11 +31,26 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor, numbering })
       setTimeout(() => {
         dispatch(fetchCashiers(1, 10));
       }, 500);
-    }
+    } else if (deleteConfirmFor == "Product") {
+      dispatch(deleteItem(id));
+      setTimeout(() => {
+        dispatch(getProducts());
+      }, 500);
+    } 
+
     setShowConfirmModal(false);
     console.log(showSnackbar)
-    setShowSnackbar(true)
-    console.log(showSnackbar)
+    console.log("loading", loading)
+    if (!loading) {
+      setTimeout(() => {
+        setShowSnackbar(true)
+        console.log("INI JALAN GA?")
+        console.log("after", showSnackbar)
+      }, 5000);
+    }
+    
+    // setShowSnackbar(true)
+    // console.log("after", showSnackbar)
   }
 
   // if (showSnackbar) {
@@ -42,6 +58,13 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor, numbering })
   //     setShowSnackbar(false);
   //   }, 1000);
   // }
+
+  const product = data?.filter(product => {
+    return product.id === id
+  })
+
+  console.log("productnya", product)
+
 
   const confirmDelete = (id) => {
     console.log(id)
@@ -65,11 +88,12 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor, numbering })
               <Pencil />
             </Link>
             <Link
-              onClick={() => confirmDelete(data.id)}
-              style={{ color: "red" }}
-            >
-              <Trash />
-            </Link>
+                onClick={() => confirmDelete(data.id)}
+                style={{ color: "red" }}
+              >
+                <Trash />
+              </Link>
+
           </div>
         )}
       />
@@ -81,11 +105,11 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor, numbering })
           handleClose={() => setShowConfirmModal(false)}
           confirmFor={"delete"}
           role={deleteConfirmFor}
-          id={id}
+          id={deleteConfirmFor == "Product" && product ? product[0]?.products_id : id}
           action={() => ActionSuccess(id)}
         />
       </div>
-      {showSnackbar ? (
+      {!showSnackbar ? (
         <Snackbar
           setSnackbar={showSnackbar}
           action={"delete"}

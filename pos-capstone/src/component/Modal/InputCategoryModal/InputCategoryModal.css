@@ -6,7 +6,7 @@
     right:5%;
     margin:0px;
     border-radius: 20px !important;
-    animation: fadeIn 1.5s, fadeOut 0.5s 2.5s;
+    background: white;
 }
 
 .modal.in .modal-dialog {
