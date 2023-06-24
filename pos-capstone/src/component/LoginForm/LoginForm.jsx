@@ -7,13 +7,13 @@ import ShowPassword from '../../element/ShowPassword/ShowPassword';
 import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
 import PrimaryButton from '../../element/Button/PrimaryButton/PrimaryButton';
 import api from '../../config/redux/api/api';
-// import Loader from '../../element/Loader/Loader';
+import Loader from '../../element/Loader/Loader';
+import { ExclamationCircle } from 'react-bootstrap-icons';
 
-const LoginForm = () => {
+const LoginForm = ({setLoading, setError, error}) => {
     const navigate = useNavigate()
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    
     const [showPassword, setShowPassword] = useState(false);
 
     const formik = useFormik({
@@ -30,19 +30,21 @@ const LoginForm = () => {
         onSubmit: async (values, actions) => {
             actions.resetForm();
             setLoading(true);
-            setError(null);
 
             api.post('/login', values)
                 .then(response => {
                     const token = response.data.data.token;
                     sessionStorage.setItem("token", token);
                     navigate('/dashboard')
+                    setLoading(false);
                 })
                 .catch(error => {
+                    console.log(error.response.data.meta.message)
                     setError(error.response.data.meta.message);
+                    setLoading(false);
                 });
-
-            setLoading(false);
+            
+                console.log(error)
 
         },
     })
@@ -101,16 +103,16 @@ const LoginForm = () => {
                 label={showPassword ? 'Hide Password' : 'Show Password'}
             />
             {error && (
-                <div className="text-white mt-3 w-100 text-center py-2 px-3 rounded-lg bg-danger">
-                    {error}
-                </div>
+              <div className="mt-4 text-danger">
+                <ExclamationCircle />
+                <span className="ms-2"> {error}</span>
+              </div>
             )}
             <div className='mt-5'>
                 <PrimaryButton
                     className="btn text-white w-100 position-relative"
                     label="Login"
                     type="submit"
-                    disabled={loading}
                 />
             </div>
 

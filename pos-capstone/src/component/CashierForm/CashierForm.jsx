@@ -9,125 +9,226 @@ import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButto
 import ConfirmModal from "../Modal/ConfirmModal/ConfirmModal";
 import InputCategoryModal from "../Modal/InputCategoryModal/InputCategoryModal";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createCashier, updateCashier } from "../../config/redux/actions/cashierActions";
 
-const CashierForm = ({ showModalFor }) => {
+const CashierForm = ({ filterData, showModalFor }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
+  const handleOptionSelect = (selectedRole) => {
+    formik.setFieldValue('role', selectedRole);
+    setShowDropdown(false);
+  };
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  let initialValues = {}
+
+  if (showModalFor === "edit") {
+    initialValues = {
+      id_code: filterData[0].id_code,
+      username: filterData[0].name,
+      role: filterData[0].role
+    };
+  } else {
+    initialValues = {
+      username: "",
+      password: "",
+      confirmPassword: "",
+      role: ""
+    };
+  }
+
+  let validationSchema = Yup.object().shape({
+    role: Yup.string()
+      .required('The role field must be filled in'),
+  });
+
+  if (showModalFor !== 'edit') {
+    validationSchema = validationSchema.shape({
+      username: Yup.string()
+        .required('The employee name field must be filled in'),
+      password: Yup.string()
+        .required('The password field must be filled in'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('The confirm password field must be filled in'),
+    });
+  }
+
   const formik = useFormik({
-    initialValues: {
-      id: "",
-      name_employee: "",
-      position: "",
-      joined: "",
-    },
-    validationSchema: Yup.object().shape({
-      id: Yup.string().required("The id field must be filled in"),
-      name_employee: Yup.string().required(
-        "The employee name field must be filled in"
-      ),
-      position: Yup.number().required("The position field must be filled in"),
-      joined: Yup.string().required("The category field must be filled in"),
-    }),
-    onSubmit: (values, actions) => {
-      actions.resetForm();
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
       console.log(values);
-      alert("data", JSON.stringify(values));
-      // navigate('')
+
+
+      if (showModalFor === "add") {
+        dispatch(createCashier(values));
+      }
+
+      if (showModalFor === "edit") {
+        dispatch(updateCashier(filterData[0].id, values))
+      }
+
+      navigate("/cashier", {
+        state: {
+          showSnackbar: true,
+          action: `${showModalFor}`,
+          variant: "success",
+        },
+      });
     },
   });
+
+  console.log(formik.errors)
   return (
     <>
-      <form onSubmit={() => setShowConfirmModal(true)}>
+      <form>
         <div className="col w-100 text-start px-5">
+          {showModalFor === "edit" && (
+            <div className="mb-3">
+              <TextField
+                htmlFor="id_code"
+                label="ID Number"
+                placeholder="Input ID Code"
+                name="id_code"
+                type="text"
+                id="id_code"
+                value={formik.values.id_code}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={
+                  formik.errors.id_code && formik.touched.id_code
+                    ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
+                    : "form-control mt-1 "
+                }
+                readOnly={true}
+              />
+              {formik.errors.id_code && formik.touched.id_code && (
+                <InputErrorMessage label={formik.errors.id_code} />
+              )}
+            </div>
+          )}
           <div className="mb-3">
             <TextField
-              htmlFor="id"
-              label="ID Number"
-              placeholder="Input id"
-              name="id"
-              type="text"
-              id="id"
-              value={formik.values.id}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.id && formik.touched.id
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("id", "", false)}
-            />
-            {formik.errors.id && formik.touched.id && (
-              <InputErrorMessage label={formik.errors.id} />
-            )}
-          </div>
-          <div className="mb-3">
-            <TextField
-              htmlFor="name"
+              htmlFor="username"
               label="Employee Name"
               placeholder="Input employee name"
-              id="name"
+              id="username"
               type="text"
-              name="name"
-              value={formik.values.name}
+              name="username"
+              value={formik.values.username}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className={
-                formik.errors.name && formik.touched.name
+                formik.errors.username && formik.touched.username
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                   : "form-control mt-1"
               }
-              onClearInput={() => formik.setFieldValue("name", "", false)}
+              readOnly={showModalFor === "edit"}
+              onClearInput={showModalFor === "edit" ? undefined : () => formik.setFieldValue("username", "", false)}
             />
-            {formik.errors.name && formik.touched.name && (
-              <InputErrorMessage label={formik.errors.name} />
+            {formik.errors.username && formik.touched.username && (
+              <InputErrorMessage label={formik.errors.username} />
             )}
           </div>
-          <div className="mb-3">
-            <TextField
-              htmlFor="position"
-              label="Position"
-              placeholder="Input position"
-              id="position"
-              type="text"
-              name="position"
-              value={formik.values.position}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.position && formik.touched.position
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("position", "", false)}
-            />
-            {formik.errors.position && formik.touched.position && (
-              <InputErrorMessage label={formik.errors.position} />
-            )}
-          </div>
-          <div className="mb-3">
-            <TextField
-              htmlFor="joined"
-              label="Joined"
-              placeholder="Input joined"
-              id="joined"
-              type="text"
-              name="joined"
-              value={formik.values.joined}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.joined && formik.touched.joined
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("joined", "", false)}
-            />
-            {formik.errors.joined && formik.touched.joined && (
-              <InputErrorMessage label={formik.errors.joined} />
+          {showModalFor !== "edit" && (
+            <>
+              <div className="mb-3">
+                <TextField
+                  htmlFor="password"
+                  label="Password"
+                  placeholder="Input password"
+                  name="password"
+                  type="text"
+                  id="password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={
+                    formik.errors.password && formik.touched.password
+                      ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
+                      : "form-control mt-1"
+                  }
+                  onClearInput={() => formik.setFieldValue("password", "", false)}
+                />
+                {formik.errors.password && formik.touched.password && (
+                  <InputErrorMessage label={formik.errors.password} />
+                )}
+              </div>
+              <div className="mb-3">
+                <TextField
+                  htmlFor="confirmPassword"
+                  label="Confirm Password"
+                  placeholder="Input confirm password"
+                  name="confirmPassword"
+                  type="text"
+                  id="confirmPassword"
+                  value={formik.values.confirmPassword}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={
+                    formik.errors.confirmPassword && formik.touched.confirmPassword
+                      ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
+                      : "form-control mt-1"
+                  }
+                  onClearInput={() => formik.setFieldValue("confirmPassword", "", false)}
+                />
+                {formik.errors.confirmPassword && formik.touched.confirmPassword && (
+                  <InputErrorMessage label={formik.errors.confirmPassword} />
+                )}
+              </div>
+            </>
+          )}
+          <div className="mb-3" style={{ position: 'relative' }}>
+            <label htmlFor="role" className="form-label" style={{ fontFamily: 'Rubik', fontStyle: 'normal', fontWeight: 500, fontSize: '14px', color: '#000000' }}>
+              Role
+            </label>
+            <div className="dropdown" style={{ color: '#989898', display: 'flex', borderRadius: '10px', border: '1px solid #ced4da', backgroundColor: '#FFFFFF', height: '2.7rem' }}>
+              <button
+                className="btn btn-dropdown text-start"
+                type="button"
+                id="role"
+                style={{ fontFamily: 'inherit', fontWeight: 400, position: 'relative', width: '100%', backgroundColor: 'transparent', cursor: 'pointer', color: '#000000', margin: "-0.3em 0 0 0.3em" }}
+                onClick={() => {
+                  setShowDropdown(!showDropdown);
+                }}
+              >
+                {formik.values.role ? formik.values.role : "Select Role"}
+              </button>
+              <ul className={`dropdown-menu ${showDropdown ? 'show' : ''}`} id="roleOptions" aria-labelledby="role" style={{ minWidth: '20rem', backgroundColor: 'rgba(231, 231, 231, 1)', position: 'absolute', top: '100%', left: 0, marginTop: '0.5rem' }}>
+                <li>
+                  <button
+                    className={`dropdown-item ${formik.values.role === 'cashier' ? 'active' : ''}`}
+                    type="button"
+                    onClick={() => handleOptionSelect('cashier')}
+                    style={{ backgroundColor: 'transparent', color: '#000000' }}
+                    onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
+                    onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
+                  >
+                    Cashier
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={`dropdown-item ${formik.values.role === 'kepala cashier' ? 'active' : ''}`}
+                    type="button"
+                    onClick={() => handleOptionSelect('kepala cashier')}
+                    style={{ backgroundColor: 'transparent', color: '#000000' }}
+                    onMouseEnter={(event) => event.target.style.backgroundColor = '#dbdbdb'}
+                    onMouseLeave={(event) => event.target.style.backgroundColor = 'transparent'}
+                  >
+                    Kepala Cashier
+                  </button>
+                </li>
+              </ul>
+            </div>
+            {formik.errors.role && formik.touched.role && (
+              <InputErrorMessage label={formik.errors.role} />
             )}
           </div>
         </div>
@@ -155,19 +256,7 @@ const CashierForm = ({ showModalFor }) => {
             handleClose={() => setShowConfirmModal(false)}
             confirmFor={showModalFor}
             role={"Cashier"}
-            action={() => {
-              {
-                formik.handleSubmit;
-              }
-              //kalo udh pake data asli, nnti navigate sekalian atur di submit
-              navigate("/cashier", {
-                state: {
-                  showSnackbar: true,
-                  action: `${showModalFor}`,
-                  variant: "success",
-                },
-              });
-            }}
+            action={formik.handleSubmit}
           />
         </div>
         <div>

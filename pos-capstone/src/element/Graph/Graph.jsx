@@ -2,23 +2,27 @@ import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { faker } from '@faker-js/faker';
 import "./Graph.style.css"
+import { datagraph } from './filterdataGraph';
 
-const data = [
-  { month: 'Jan', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Feb', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Mar', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Apr', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'May', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Jun', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Jul', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Augt', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Sep', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Oct', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Nov', value: faker.datatype.number({ min: 0, max: 100 }) },
-  { month: 'Dec', value: faker.datatype.number({ min: 0, max: 100 }) },
-];
 
-function Graph() {
+
+function Graph({ datas }) {
+
+  const data = [
+    { month: 'Jan', value:datagraph(datas, 1) },
+    { month: 'Feb', value:datagraph(datas, 2) },
+    { month: 'Mar', value:datagraph(datas, 3) },
+    { month: 'Apr', value:datagraph(datas, 4) },
+    { month: 'May', value:datagraph(datas, 5) },
+    { month: 'Jun', value:datagraph(datas, 6) },
+    { month: 'Jul', value:datagraph(datas, 7) },
+    { month: 'Aug', value:datagraph(datas, 8) },
+    { month: 'Sep', value:datagraph(datas, 9) },
+    { month: 'Oct', value:datagraph(datas, 10) },
+    { month: 'Nov', value:datagraph(datas, 11) },
+    { month: 'Dec', value:datagraph(datas, 12) },
+  ];
+
   return (
     <div className='graph'>
       <h1 className='ms-4 mb-5'>Sales Statistics</h1>
@@ -30,7 +34,7 @@ function Graph() {
               <stop offset="100%" stopColor="rgba(244, 97, 97, 0)" />
             </linearGradient>
           </defs>
-          <XAxis dataKey="month"  style={{ fontFamily: 'Rubik', fontSize: 12 }} />
+          <XAxis dataKey="month" style={{ fontFamily: 'Rubik', fontSize: 12 }} />
           <YAxis style={{ fontFamily: 'Rubik', fontSize: 12 }} />
           <Tooltip />
           <Area

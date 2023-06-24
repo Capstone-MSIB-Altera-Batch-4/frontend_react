@@ -1,62 +1,96 @@
 import TabelDetails from "../../component/Table/TableShowDetails";
 import InputDate from "../../element/InputDate/InputDate";
-import { DummyDetails } from "../../data/DummyData";
 import "./Orders.style.css"
 import PageTitle from "../../element/PageTitle/PageTitle";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { readOrders, searchOrders } from "../../config/redux/actions/ordersAction";
+import { formatedDate } from "./OrdersFilter";
+import TablePagination from "../../element/TablePagination/TablePagination";
+import Loader from "../../element/Loader/Loader";
 
 const Orders = () => {
-  const data = DummyDetails();
-
-  const [inputdate, setinputdate] = useState({
+  const dispatch = useDispatch()
+  const data = useSelector(state => state.orders.items.data)
+  const loading = useSelector(state => state.orders.loading)
+  const [inputfilter, setInputfilter] = useState({
+    inputid: "",
     datefrom: "",
     dateto: "",
   })
 
-  const [inputid, setinputid] = useState('')
+  const pagination = useSelector(state => state.orders.items.pagination);
+  const [totalPage, setTotalPage] = useState(5)
+  const [curPage, setCurPage] = useState(1)
+  const [totalItems, setTotalItems] = useState(50)
+  const [limit, setLimit] = useState(10)
+  
+  useEffect(() => {
+    dispatch(readOrders(10, 1));
+  }, []);
 
-  const [Datas, setDatas] = useState(data)
-  const [filterdata, setFilterdata] = useState(data)
-
-
-
-  const filterid = (array) => {
-    return array.filter((datas) =>
-      datas.order_id.includes(`${inputid}`)
-    )
-  }
-  const filterdatefrom = (array) => {
-    return array.filter(datas =>
-      datas.date >= (`${inputdate.datefrom}`)
-    )
-  }
-  const filterdateto = (array) => {
-    return array.filter(datas =>
-      datas.date <= (`${inputdate.dateto}`)
-    )
-  }
+  // search baru pake api
+  useEffect(()=>{
+    dispatch(
+      searchOrders(inputfilter.datefrom,inputfilter.dateto,inputfilter.inputid)
+      );
+  },[inputfilter])
 
   useEffect(() => {
-    let result = filterdata
+    dispatch(readOrders(limit, curPage));
+  }, [dispatch, curPage, limit]);
 
-    if (inputid.length != 0) {
-      result = filterid(result)
+
+  // set value pagination
+  useEffect(() => {
+    if (pagination) {
+      setTotalPage(pagination.total_pages);
+      setCurPage(pagination.page);
+      setTotalItems(pagination.total_items);
+      setLimit(pagination.limit);
     }
+  }, [pagination]);
 
-    if (inputdate.datefrom.length != 0) {
-      result = filterdatefrom(result)
+
+  //pagination function
+  const handlePrevPage = () => {
+    if (curPage > 1) {
+      setCurPage((prevPage) => prevPage - 1);
     }
+    
+  };
 
-    if (inputdate.dateto.length != 0) {
-      result = filterdateto(result)
+  const handleNextPage = () => {
+    if (curPage < totalPage) {
+      setCurPage((prevPage) => prevPage + 1);
     }
-    setDatas(result)
+  };
 
-  }, [inputid, inputdate])
+  const handleRowsPerPageChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setLimit(newLimit);
+  };
+
+  const [Datas, setDatas] = useState()
+  console.log(data)
+  const [filterdata, setFilterdata] = useState()
+
+  useEffect(() => {
+    if (data) {
+      setDatas(formatedDate(data))
+      setFilterdata(formatedDate(data))
+    }
+  }, [data])
+
 
   return (
-    <div className="orderspage overflow-hidden pb-4 px-3">
+    <>
+    {loading ?
+      <Loader
+        secondaryColor="#B1464A"
+        color="#FFF0DE"
+      />
+      : <div className="orderspage overflow-hidden pb-4 px-4 mx-3">
       <div className="orders-title mt-5 mb-5">
         <PageTitle
           title="Orders & Invoice"
@@ -67,27 +101,30 @@ const Orders = () => {
           <label className="form-label">Orders No:</label>
           <div className="col-lg-8">
             <input
-              type="number"
+              type="text"
               className="form-control"
               placeholder="Type Order ID"
-              onChange={(e) => setinputid(e.target.value)}
+              value={inputfilter.inputid}
+              onChange={(e) => setInputfilter({ ...inputfilter, inputid: e.target.value })}
             />
           </div>
         </div>
-        <div className="filterbydate col-lg-4 me-3">
+        <div className="filterbydate col-lg-4">
           <div className="row ">
             <div className="datefrom col-lg-6">
               <InputDate
                 label="from"
                 className="form-control"
-                onChange={(e) => setinputdate({ ...inputdate, datefrom: e.target.value })}
+                value={inputfilter.datefrom}
+                onChange={(e) => setInputfilter({ ...inputfilter, datefrom: e.target.value })}
               />
             </div>
             <div className="dateto col-lg-6">
               <InputDate
                 label="to"
                 className="form-control"
-                onChange={(e) => setinputdate({ ...inputdate, dateto: e.target.value })}
+                value={inputfilter.dateto}
+                onChange={(e) => setInputfilter({ ...inputfilter, dateto: e.target.value })}
               />
             </div>
           </div>
@@ -95,11 +132,23 @@ const Orders = () => {
       </div>
       <div className="table-responsive default-orders overflow-hidden">
         <TabelDetails
-          data={Datas}
+          data={Datas ? Datas : []}
         />
-
+        <TablePagination
+          currentPage={curPage}
+          pageCount={totalPage}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          prevDisable={curPage === 1}
+          nextDisable={curPage === totalPage}
+          handleRowsPerPageChange={handleRowsPerPageChange}
+          rowsPerPage={limit}
+        />
       </div>
     </div>
+    }
+    </>
+    
   );
 };
 

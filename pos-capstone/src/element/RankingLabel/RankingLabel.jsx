@@ -1,13 +1,13 @@
 import React from 'react'
 import './RankingLabel.css'
 
-const RankingLabel = ({variant}) => {
+const RankingLabel = ({ variant }) => {
   //untuk custom warna background dan warna text label
   const getColor = () => {
-    switch (variant) {
-      case "gold":
+    switch (variant.toLowerCase()) {
+      case ("gold"):
         return "gold-style";
-      case "silver":
+      case ("silver"):
         return "silver-style";
       case "bronze":
         return "bronze-style";
@@ -16,23 +16,9 @@ const RankingLabel = ({variant}) => {
     }
   }
 
-  //untuk mendapatkan label: gold, silver, atau bronze
-  const getTextLabel = () => {
-    switch (variant) {
-        case "gold":
-          return "Gold";
-        case "silver":
-          return "Silver";
-        case "bronze":
-          return "Bronze";
-        default:
-          return "Bronzee";
-      }
-  }
-  
   return (
     <p className={`label-style ${getColor()}`}>
-      {getTextLabel()}
+      {variant.charAt(0).toUpperCase()+variant.slice(1)}
     </p>
   )
 }

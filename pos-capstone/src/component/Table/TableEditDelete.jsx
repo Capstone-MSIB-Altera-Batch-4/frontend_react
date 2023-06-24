@@ -7,8 +7,9 @@ import Snackbar from "../../element/Snackbar/Snackbar";
 import "./Table.css";
 import { useDispatch } from "react-redux";
 import { deleteItem, getProducts } from "../../config/redux/actions/productActions";
-// import { deleteMember, fetchMembers } from "../../config/redux/actions/memberActions";
-// import { deleteCashier, fetchCashiers } from "../../config/redux/actions/cashierActions";
+import { deleteMember, fetchMembers } from "../../config/redux/actions/memberActions";
+import { deleteCashier, fetchCashiers } from "../../config/redux/actions/cashierActions";
+
 
 const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
 
@@ -18,29 +19,26 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [id, setId] = useState("")
 
-  // console.log(data[1].id)
-
 
   const ActionSuccess = (id) => {
-    // if (deleteConfirmFor == "Member") {
-    //   dispatch(deleteMember(id));
-    //   setTimeout(() => {
-    //     dispatch(fetchMembers(1, 10));
-    //   }, 500);
+    if (deleteConfirmFor == "Member") {
+      dispatch(deleteMember(id));
+      setTimeout(() => {
+        dispatch(fetchMembers(1, 10));
+      }, 500);
 
-    // } else if (deleteConfirmFor == "Employee") {
-    //   dispatch(deleteCashier(id));
-    //   setTimeout(() => {
-    //     dispatch(fetchCashiers(1, 10));
-    //   }, 500);
-    // }
-    if (deleteConfirmFor == "Product") {
+    } else if (deleteConfirmFor == "Employee") {
+      dispatch(deleteCashier(id));
+      setTimeout(() => {
+        dispatch(fetchCashiers(1, 10));
+      }, 500);
+    } else if (deleteConfirmFor == "Product") {
       dispatch(deleteItem(id));
       setTimeout(() => {
         dispatch(getProducts());
       }, 500);
     } 
-  
+
     setShowConfirmModal(false);
     console.log(showSnackbar)
     setShowSnackbar(true)
@@ -58,6 +56,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
   })
 
   console.log("productnya", product)
+
 
   const confirmDelete = (id) => {
     console.log(id)
