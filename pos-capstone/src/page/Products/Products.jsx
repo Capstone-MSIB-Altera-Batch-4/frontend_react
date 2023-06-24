@@ -20,14 +20,26 @@ const Products = () => {
     const filteredProducts = useSelector(state => state.filterData.products);
     const [products, setProducts] = useState(productsData);
 
-    const pagination = useSelector(state => state.products.products.pagination);
-    console.log("pagination", pagination)
+    //option filter pake ini
+    const options = useSelector(state => state.products.category.data);
 
-    console.log("Products", productsData)
+    // console.log("Options", options)
 
+    //get products
     useEffect(() => {
       dispatch(getProducts())
     }, [dispatch]);
+
+    //get category 
+    useEffect(() => {
+      dispatch(getCategory())
+    }, [dispatch]);
+
+
+    const pagination = useSelector(state => state.products.products.pagination);
+    console.log("pagination", pagination)
+
+
 
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [onShow, setOnShow] = useState(false);
