@@ -6,11 +6,13 @@ import { productsData } from "../../data/DummyData";
 import { useSelector, useDispatch } from "react-redux";
 import api from "../../config/redux/api/api";
 import { getProducts } from "../../config/redux/actions/productActions"
+import Loader from "../../element/Loader/Loader";
 
 
 const EditProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([])
+  const loading = useSelector(state => state.products.loading)
 
   const dispatch = useDispatch();
   // const productData = useSelector(state => state.products.products.data);
@@ -18,7 +20,6 @@ const EditProduct = () => {
   // useEffect(() => {
   //   dispatch(getProducts())
   // }, [dispatch]);
-
 
   // const product = productData?.filter(item => item.id === parseInt(id));
 
@@ -41,16 +42,23 @@ const EditProduct = () => {
   console.log("Product seleectend", product)
 
   return (
-    <div className="col">
-      <div className="row col-md-8 col-sm-7 container-fluid mx-auto">
-        <div className="my-4 pt-5 text-center">
-          <PageTitle title="Edit Product" />
+    <> {loading ? 
+      <Loader
+        secondaryColor="#B1464A"
+        color="#FFF0DE"
+      /> :
+        <div className="col">
+          <div className="row col-md-8 col-sm-7 container-fluid mx-auto">
+            <div className="my-4 pt-5 text-center">
+              <PageTitle title="Edit Product" />
+            </div>
+            <div>
+              <ProductForm showModalFor={"edit"} dataEdit={product}/>
+            </div>
+          </div>
         </div>
-        <div>
-          <ProductForm showModalFor={"edit"} dataEdit={product}/>
-        </div>
-      </div>
-    </div>
+      }
+    </>
   );
 };
 

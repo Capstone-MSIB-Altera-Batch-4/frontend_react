@@ -11,14 +11,16 @@ import { productsData } from "../../data/DummyData"
 import { Link, useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../config/redux/actions/productActions"
+import { getProducts, getCategory } from "../../config/redux/actions/productActions"
 import TablePagination from "../../element/TablePagination/TablePagination"
+import Loader from "../../element/Loader/Loader"
 
 const Products = () => {
     const dispatch = useDispatch();
     const productsData = useSelector(state => state.products.products.data);
     const filteredProducts = useSelector(state => state.filterData.products);
     const [products, setProducts] = useState(productsData);
+    const loading = useSelector(state => state.products.loading)
 
     //option filter pake ini
     const options = useSelector(state => state.products.category.data);
@@ -38,7 +40,6 @@ const Products = () => {
 
     const pagination = useSelector(state => state.products.products.pagination);
     console.log("pagination", pagination)
-
 
 
     const [showSnackbar, setShowSnackbar] = useState(false);
@@ -106,7 +107,13 @@ const Products = () => {
     // }, [dispatch])
 
     return (
-      <div className="product-page row mx-auto px-4">
+      <>
+      {loading ? 
+        <Loader 
+          secondaryColor="#B1464A"
+          color="#FFF0DE"
+        />
+        : <div className="product-page row mx-auto px-4">
         <div className="col">
           <div className="my-5">
             <PageTitle title="Product" />
@@ -178,6 +185,7 @@ const Products = () => {
           ""
         )}
       </div>
+      }</>
     );
 }
 
