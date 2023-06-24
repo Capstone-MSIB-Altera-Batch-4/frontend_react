@@ -6,7 +6,6 @@ import { getCategory, selectedCategory } from "../../config/redux/actions/produc
 
 const InputCategory = ({selectedOption}) => {
     const [selected, setSelected] = useState("")
-    console.log("Selected", selected)
     
     const dispatch = useDispatch();
     const options = useSelector(state => state.products.category.data);
@@ -17,9 +16,6 @@ const InputCategory = ({selectedOption}) => {
       dispatch(getCategory())
       console.log("data diget")
     }, [dispatch]);
-
-    console.log("Products", options)
-    console.log("adakah?", selectedOption)
 
     useEffect(() => {
         if (selectedOption) {

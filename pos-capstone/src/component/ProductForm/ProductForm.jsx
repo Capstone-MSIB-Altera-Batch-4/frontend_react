@@ -27,25 +27,25 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
   const selected = useSelector(state => state.products.selectedCategory);
   const cekStatus = useSelector(state => state.products.error)
   const productImage = useSelector(state => state.products.image)
+  //console.log(productImage)
 
-  console.log('CEK STATUS', cekStatus)
-  console.log('imaged', productImage.name)
+ 
 
   useEffect(() => {
     dispatch(selectedCategory())
-    console.log("data category diget")
+    //console.log("data category diget")
   }, [dispatch]);
 
-  console.log("Categorinya", selected)
+  //console.log("Categorinya", selected)
 
-  console.log(product)
+  //console.log(product)
 
   let initialValues = {}
 
   // useEffect(() => {
     if (showModalFor === 'edit') {
-      console.log(showModalFor)
-      console.log("ini apa", dataEdit.name)
+      //console.log(showModalFor)
+      //console.log("ini apa", dataEdit.name)
       initialValues = {
         id: dataEdit.products_id,
         name: dataEdit.name,
@@ -69,13 +69,13 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
   // },[dataEdit])
   
 
-  console.log("Category", initialValues)
-  console.log("data di formik", data)
+  //console.log("Category", initialValues)
+  //console.log("data di formik", data)
 
 
   //untuk ngatur biar modal muncul sama simpen data inputan
   const ModalAction = (values) => {
-    console.log("datanta", values)
+    //console.log("datanta", values)
     setData(values);
     setShowConfirmModal(true);
   };
@@ -92,15 +92,13 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         formData.append("products_name", data.name)
         formData.append("products_category", selected[0]?.id)
         // formData.append("-", productImage.path)
-        formData.append("products_image", productImage.path)
+        formData.append("products_image", productImage)
         formData.append("products_quantity", data.stock)
         formData.append("products_price", data.price)
         formData.append("products_unit", data.unit)
         formData.append("products_description", "makanan ringan dan sushi")
 
-        for (let property of formData.entries()) {
-          console.log(property[0], property[1]);
-        }
+       
 
         //submit data
         if (showModalFor === "edit") {
@@ -125,7 +123,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         }
   }
 
-  // console.log(data)
+  // //console.log(data)
 
 
   const formik = useFormik({
@@ -141,7 +139,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
     }),
       onSubmit: (values, actions) => {
         alert("data", JSON.stringify(values))
-        console.log("DATA INI", values);
+        //console.log("DATA INI", values);
 
         let formData = new FormData()
 
@@ -150,7 +148,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         }
 
         for (let property of formData.entries()) {
-          console.log(property[0], property[1]);
+          //console.log(property[0], property[1]);
         }
 
         // dispatch(createProduct(formData));

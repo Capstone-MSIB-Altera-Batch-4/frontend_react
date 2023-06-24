@@ -31,13 +31,15 @@ const InputCategoryForm = ({handleClose}) => {
   return (
     <div>
       <Formik
-        initialValues={{ category: [""] }}
+        initialValues={{ category: "" }}
         onSubmit={(values) => {
-          const categories = values.category
-          for (let category in categories) {
-            dispatch(createCategory(categories[category]));
-            console.log("CATEGORY", categories[category])
-          }
+          const categories = { name:values.category}
+          values.category.map((data,idx)=>{
+            dispatch(createCategory({name: data}));
+            dispatch(getCategory())
+            console.log(data)
+          })
+          
           // dispatch(createCategory(values.category));
           // console.log("CATEGORY", values.category.name)
           console.log(values)
