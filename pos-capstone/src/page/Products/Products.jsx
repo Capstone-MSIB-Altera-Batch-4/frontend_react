@@ -154,6 +154,7 @@ const Products = () => {
             <TableEdit
               columns={productHeader}
               // data={products}
+              loading={loading}
               data={productsData}
               editPageLink={"editproduct"}
               deleteConfirmFor={"Product"}

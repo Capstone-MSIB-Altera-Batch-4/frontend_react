@@ -11,7 +11,7 @@ import { deleteMember, fetchMembers } from "../../config/redux/actions/memberAct
 import { deleteCashier, fetchCashiers } from "../../config/redux/actions/cashierActions";
 
 
-const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
+const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor, loading }) => {
 
   const dispatch = useDispatch();
 
@@ -41,8 +41,17 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
 
     setShowConfirmModal(false);
     console.log(showSnackbar)
-    setShowSnackbar(true)
-    console.log(showSnackbar)
+    console.log("loading", loading)
+    if (!loading) {
+      setTimeout(() => {
+        setShowSnackbar(true)
+        console.log("INI JALAN GA?")
+        console.log("after", showSnackbar)
+      }, 5000);
+    }
+    
+    // setShowSnackbar(true)
+    // console.log("after", showSnackbar)
   }
 
   // if (showSnackbar) {
@@ -100,7 +109,7 @@ const TableEdit = ({ columns, data, editPageLink, deleteConfirmFor }) => {
           action={() => ActionSuccess(id)}
         />
       </div>
-      {showSnackbar ? (
+      {!showSnackbar ? (
         <Snackbar
           setSnackbar={showSnackbar}
           action={"delete"}

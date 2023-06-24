@@ -33,7 +33,7 @@ const initialState = {
         console.log("ini PESANNYA", action)
         return {
           ...state,
-          error: "ERROR"
+          error: "ERROR",
         }
       case "FETCH_PRODUCTS_SUCCESS":
         return {
