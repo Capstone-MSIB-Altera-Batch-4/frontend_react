@@ -90,8 +90,9 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         // }
         formData.append("products_id", data.id)
         formData.append("products_name", data.name)
-        formData.append("products_category", selected[0].id)
-        formData.append("-", productImage.path)
+        formData.append("products_category", selected[0]?.id)
+        // formData.append("-", productImage.preview)
+        formData.append("products_image", productImage.preview)
         formData.append("products_quantity", data.stock)
         formData.append("products_price", data.price)
         formData.append("products_unit", data.unit)
@@ -103,7 +104,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
 
         //submit data
         if (showModalFor === "edit") {
-          dispatch(updateProduct(formData));
+          dispatch(updateProduct(dataEdit.id, formData));
         }else {
           dispatch(createProduct(formData));
           return complete = true
@@ -124,9 +125,8 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
         }
   }
 
-  console.log(data)
+  // console.log(data)
 
-  // console.log("Cek error", createProduct.status)
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -220,7 +220,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
           <div className="col-md-11 select-category">
             <InputCategory name="category" 
               selectedOption={formik.values.category} 
-              // value={selected != undefined ? formik.values.category = selected[0].name : formik.values.category}
+              value={selected != undefined ? formik.values.category = selected[0]?.name : formik.values.category}
               className={
                 formik.errors.category && formik.touched.category
                   ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
@@ -298,7 +298,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
                 ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
                 : "form-control mt-1"
             }
-            onClearInput={() => formik.setFieldValue("unit", "", false)}
+            onClearInput={()  => formik.setFieldValue("unit", "", false)}
           />
           {formik.errors.unit && formik.touched.unit && (
             <InputErrorMessage label={formik.errors.unit} />

@@ -22,11 +22,16 @@ const validationSchema = Yup.object().shape({
 const InputCategoryForm = ({handleClose}) => {
   const dispatch = useDispatch();
   const [categoryList, setCategoryList] = useState([""])
+
+  // let catId = 8
+  // let initialValues = {
+  //   name: ""
+  // }
   
   return (
     <div>
       <Formik
-        initialValues={{ category: [{name: ''}] }}
+        initialValues={{ category: [""] }}
         onSubmit={(values) => {
           const categories = values.category
           for (let category in categories) {
