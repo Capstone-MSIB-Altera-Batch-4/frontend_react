@@ -20,7 +20,7 @@ const Cashier = () => {
   const dispatch = useDispatch();
   const cashiers = useSelector((state) => state.cashiers.cashiers.data);
   const loading = useSelector(state => state.cashiers.loading)
-  
+
 
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);
@@ -29,7 +29,7 @@ const Cashier = () => {
 
   //ambil response pagination
   const pagination = useSelector(state => state.cashiers.cashiers.pagination);
-  
+
 
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [onShow, setOnShow] = useState(false);
@@ -37,11 +37,24 @@ const Cashier = () => {
   const [curPage, setCurPage] = useState(1)
   const [totalItems, setTotalItems] = useState(50)
   const [limit, setLimit] = useState(10)
+  const [numbTable, setNumbTable] = useState(1)
 
   useEffect(() => {
     dispatch(fetchCashiers(curPage, limit));
     handleFilter();
-  }, [dispatch, curPage, limit]);  
+
+    if (curPage > 2) {
+      const numbtable =  1 + (limit * (curPage - 1)) 
+      setNumbTable(numbtable)
+    } else if (curPage == 1) {
+      setNumbTable(1)
+    }  else if (curPage == 2) {
+      setNumbTable(limit + 1)
+    }
+
+  }, [dispatch, curPage, limit]);
+
+
 
   // set value pagination
   useEffect(() => {
@@ -72,7 +85,7 @@ const Cashier = () => {
   };
 
   const state = useLocation();
-  
+
   useEffect(() => {
     handleFilter();
   }, [selectedOption, cashiers, searchInput]);
@@ -188,6 +201,7 @@ const Cashier = () => {
           <div className="my-4">
             {filteredCashiers && filteredCashiers.length > 0 ? (
               <TableEdit
+                numbering={numbTable}
                 columns={employeeHeader}
                 data={filteredCashiers} // Menggunakan filteredCashiers sebagai data yang ditampilkan
                 editPageLink={"editemployee"}

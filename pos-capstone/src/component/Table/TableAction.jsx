@@ -4,6 +4,7 @@ import './Table.css'
 
 
 const TableAction = ({
+  numbering,
   columns,
   data,
   headerColor,
@@ -55,7 +56,7 @@ const TableAction = ({
                         : { backgroundColor: "inherit" }
                     }
                   >
-                     {column.accessor === "no" ? 1 + rowIndex : row[column.accessor]}
+                     {column.accessor === "no" ? numbering + rowIndex : row[column.accessor]}
                   </td>
                 ))}
                 <td

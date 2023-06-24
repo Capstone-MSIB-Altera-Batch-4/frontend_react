@@ -11,6 +11,12 @@ const EditCashier = () => {
   const cashiers = useSelector(state => state.cashiers.cashiers.data);
   console.log(cashiers)
 
+  if (!cashiers || cashiers.length === 0) {
+    console.log("Data anggota tidak tersedia. Mengarahkan ke halaman cashier...");
+    window.location.href = "/cashier";
+    return null;
+  }
+
   const filteredCashier = cashiers.filter(cashier => cashier.id === parseInt(id));
   console.log(filteredCashier)
 
