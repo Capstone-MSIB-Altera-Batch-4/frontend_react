@@ -110,7 +110,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
           return complete = true
         }
 
-        //atur navigasi dan set error
+        //atur navigasi dan set error`
         if (cekStatus === "ERROR") {
           setShowConfirmModal(false);
           return Submit;

@@ -27,11 +27,11 @@ export const createProduct = (product) => {
 };
 
 // Read
-export const getProducts = () => {
+export const getProducts = (page, limit) => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_PRODUCTS_REQUEST' });
 
-    api.get('/product')
+    api.get(`/product?page=${page}&limit=${limit}`)
       .then(response => {
         dispatch({
           type: 'FETCH_PRODUCTS_SUCCESS',

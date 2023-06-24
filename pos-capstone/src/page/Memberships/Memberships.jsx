@@ -36,7 +36,6 @@ const Memberships = () => {
   const [numbTable, setNumbTable] = useState(1)
   
 
-
   //get data
   useEffect(() => {
     dispatch(fetchMembers(curPage, limit));
