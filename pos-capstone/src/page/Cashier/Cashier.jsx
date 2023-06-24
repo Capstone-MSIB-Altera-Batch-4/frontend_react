@@ -42,11 +42,13 @@ const Cashier = () => {
   useEffect(() => {
     dispatch(fetchCashiers(curPage, limit));
 
-    if (curPage > 1) {
-      const numbtable = limit * curPage
+    if (curPage > 2) {
+      const numbtable =  1 + (limit * (curPage - 1)) 
       setNumbTable(numbtable)
     } else if (curPage == 1) {
       setNumbTable(1)
+    }  else if (curPage == 2) {
+      setNumbTable(limit + 1)
     }
 
   }, [dispatch, curPage, limit]);

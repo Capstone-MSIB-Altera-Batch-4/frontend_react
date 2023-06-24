@@ -36,20 +36,25 @@ const Memberships = () => {
   const [totalItems, setTotalItems] = useState(50)
   const [limit, setLimit] = useState(10)
   const [numbTable, setNumbTable] = useState(1)
+  
 
 
   //get data
   useEffect(() => {
     dispatch(fetchMembers(curPage, limit));
     
-    if (curPage > 1) {
-      const numbtable = limit * curPage
+    if (curPage > 2) {
+      const numbtable =  1 + (limit * (curPage - 1)) 
       setNumbTable(numbtable)
     } else if (curPage == 1) {
       setNumbTable(1)
+    }  else if (curPage == 2) {
+      setNumbTable(limit + 1)
     }
 
   }, [dispatch, curPage, limit]);
+
+  
 
 
   // set value pagination
