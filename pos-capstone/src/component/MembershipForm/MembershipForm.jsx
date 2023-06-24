@@ -29,6 +29,7 @@ const MembershipForm = ({ filterData, showModalFor }) => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
+  const currentYear = new Date().getFullYear();
 
   const formattedDate = `${year}-${month}-${day}`;
   console.log(formattedDate);
@@ -48,7 +49,13 @@ const MembershipForm = ({ filterData, showModalFor }) => {
       name: Yup.string().required("The name field must be filled in"),
       email: Yup.string().required("The email field must be filled in"),
       phone: Yup.number().required("The phone number field must be filled in"),
-      birth_day: Yup.string().required("The birthday day field must be filled in"),
+      birth_day: Yup.string()
+      .required("The birthday day field must be filled in")
+      .test(
+        "valid-date",
+        "Invalid year",
+        (value) => parseInt(value?.split("-")[0]) <= currentYear
+      ),
       level: Yup.string().required("The level field must be filled in"),
     }),
     onSubmit: (values) => {
@@ -179,28 +186,6 @@ const MembershipForm = ({ filterData, showModalFor }) => {
               <InputErrorMessage label={formik.errors.birth_day} />
             )}
           </div>
-          {/* <div className="mb-3">
-            <TextField
-              htmlFor="level"
-              label="Current level"
-              placeholder="Input level"
-              id="level"
-              type="text"
-              name="level"
-              value={formik.values.level}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={
-                formik.errors.level && formik.touched.level
-                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                  : "form-control mt-1"
-              }
-              onClearInput={() => formik.setFieldValue("level", "", false)}
-            />
-            {formik.errors.level && formik.touched.level && (
-              <InputErrorMessage label={formik.errors.level} />
-            )}
-          </div> */}
           <div className="mb-3">
             <label htmlFor="level" className="form-label">
               Level
@@ -216,8 +201,8 @@ const MembershipForm = ({ filterData, showModalFor }) => {
               value={formik.values.level}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled
             >
-              <option value="">Select level</option>
               <option value="Bronze">Bronze</option>
               <option value="silver">Silver</option>
               <option value="gold">Gold</option>

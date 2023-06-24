@@ -2,10 +2,8 @@ import { useState, useEffect } from "react"
 import PageTitle from "../../element/PageTitle/PageTitle"
 import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton"
 import filterIcon from '../../assets/icon/Filter.svg'
-import FilterForm from "../../component/FilterForm/FilterForm"
 import TableEdit from "../../component/Table/TableEditDelete"
 import { membershipsHeader } from "../../data/HeaderTableData"
-import { membershipsData } from "../../data/DummyData"
 import { useLocation } from "react-router-dom"
 import Snackbar from "../../element/Snackbar/Snackbar"
 import { useDispatch, useSelector } from "react-redux";
@@ -22,8 +20,8 @@ const Memberships = () => {
   console.log(loading)
   const [searchInput, setSearchInput] = useState("");
   const [filteredMembers, setFilteredMembers] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
-  const options = ["Gold", "Silver", "Bronze"];
+  const [selectedOption, setSelectedOption] = useState("All");
+  const options = ["All", "Gold", "Silver", "Bronze"];
 
   //ambil response pagination
   const pagination = useSelector(state => state.members.members.pagination);
@@ -35,12 +33,26 @@ const Memberships = () => {
   const [curPage, setCurPage] = useState(1)
   const [totalItems, setTotalItems] = useState(50)
   const [limit, setLimit] = useState(10)
+  const [numbTable, setNumbTable] = useState(1)
+  
 
 
   //get data
   useEffect(() => {
     dispatch(fetchMembers(curPage, limit));
+    handleFilter();
+    
+    if (curPage > 2) {
+      const numbtable =  1 + (limit * (curPage - 1)) 
+      setNumbTable(numbtable)
+    } else if (curPage == 1) {
+      setNumbTable(1)
+    }  else if (curPage == 2) {
+      setNumbTable(limit + 1)
+    }
+
   }, [dispatch, curPage, limit]);
+  
 
 
   // set value pagination
@@ -88,24 +100,26 @@ const Memberships = () => {
   // console.log(showSnackbar)
 
   const handleFilter = () => {
-    let filtered = members;
-
-    if (selectedOption !== "") {
-      filtered = filtered.filter(
-        (member) => member.level.toLowerCase() === selectedOption.toLowerCase()
-      );
+    if (members) {
+      let filtered = members;
+  
+      if (selectedOption !== "All") {
+        filtered = filtered.filter(
+          (member) => member.level.toLowerCase() === selectedOption.toLowerCase()
+        );
+      }
+  
+      if (searchInput !== "") {
+        filtered = filtered.filter(
+          (member) =>
+            member.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+            member.id.toString().includes(searchInput)
+        );
+      }
+  
+      setFilteredMembers(filtered);
     }
-
-    if (searchInput !== "") {
-      filtered = filtered.filter(
-        (member) =>
-          member.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-          member.id.toString().includes(searchInput)
-      );
-    }
-
-    setFilteredMembers(filtered);
-  };
+  };  
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -141,6 +155,7 @@ const Memberships = () => {
                     value={searchInput}
                     handleChange={(e) => setSearchInput(e.target.value)}
                     onClearInput={() => setSearchInput("")}
+                    placeholder="Search by ID or Name"
                   />
                 </div>
                 <div className="col-md-4">
@@ -174,6 +189,7 @@ const Memberships = () => {
             <div className="mt-4">
               {filteredMembers && filteredMembers.length > 0 ? (
                 <TableEdit
+                  numbering={numbTable}
                   columns={membershipsHeader}
                   data={filteredMembers}
                   editPageLink="editmembership"

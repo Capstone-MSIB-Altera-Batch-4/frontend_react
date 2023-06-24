@@ -81,6 +81,7 @@ const FilterForm = ({onShow, data, filterFor, options, dropdownLabel}) => {
             value={searchInput}
             handleChange={(e) => setSearchInput(e.target.value)} 
             onClearInput={() => setSearchInput("")}
+            placeholder="Search by ID or Name"
             />
         </div>
         <div className="col-md-4">
