@@ -159,7 +159,7 @@ const Cashier = () => {
           </div>
           <div className={`collapse ${onShow ? "show" : ""}`} id="filter">
             <div className="row justify-content-between">
-              <div className="col-md-4 mt-2">
+              <div className="col-md-4 mt-3">
                 <SearchBar
                   onShow={onShow}
                   value={searchInput}
