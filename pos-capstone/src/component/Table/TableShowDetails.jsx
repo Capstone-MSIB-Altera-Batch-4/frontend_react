@@ -3,7 +3,7 @@ import TableAction from "./TableAction";
 import { Link, useNavigate } from "react-router-dom";
 import SecondaryButton from "../../element/Button/SecondaryButton/SecondaryButton";
 
-const TabelDetails = ({ data }) => {
+const TabelDetails = ({ data, numbering }) => {
 
 
 
@@ -20,10 +20,11 @@ const TabelDetails = ({ data }) => {
     []
   );
   const navigate = useNavigate()
-  
+
   return (
     <div>
       <TableAction
+        numbering={numbering}
         headerColor={{ backgroundColor: "#FDDFDF" }}
         columns={columns}
         data={data}
@@ -34,7 +35,7 @@ const TabelDetails = ({ data }) => {
             onClick={() => navigate(`/orders/detailorder/${data.id}`)}
             label={'Detail'}
           />
-          )}
+        )}
       />
     </div>
   );

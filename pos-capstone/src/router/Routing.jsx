@@ -15,6 +15,7 @@ import OrdersDetails from "../page/Orders/OrdersDetails"
 import Memberships from "../page/Memberships/Memberships"
 import EditMembership from "../page/Memberships/EditMembership"
 import Help from "../page/Help/Help"
+import NotFound from "../page/NotFound/NotFound"
 
 
 const Routing = () => {
@@ -38,6 +39,7 @@ const Routing = () => {
                     <Route path="/help" element={<Help />} />   
                 </Route>
                 <Route path="/preview" element={<Preview />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
     )
