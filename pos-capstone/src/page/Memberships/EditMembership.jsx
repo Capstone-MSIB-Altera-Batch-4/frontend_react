@@ -1,22 +1,28 @@
 import React, { useEffect } from "react";
 import PageTitle from "../../element/PageTitle/PageTitle";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { membershipsData } from "../../data/DummyData";
 import MembershipForm from "../../component/MembershipForm/MembershipForm";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMembers } from "../../config/redux/actions/memberActions";
+import Loader from "../../element/Loader/Loader";
 
 
 const EditMembership = () => {
   const { id } = useParams();
+  
   const loading = useSelector(state => state.members.loading)
   const members = useSelector(state => state.members.members.data);
 
+  if (!members || members.length === 0) {
+    console.log("Data anggota tidak tersedia. Mengarahkan ke halaman Membership...");
+    window.location.href = "/memberships";
+    return null;
+  }
+
   const filteredMember = members.filter(member => member.id === parseInt(id));
 
-  // const memberships = membershipsData[id];
-  // console.log(memberships);
-
+  
 
 
   return (
