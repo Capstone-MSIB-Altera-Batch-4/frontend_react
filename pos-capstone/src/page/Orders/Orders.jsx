@@ -80,6 +80,7 @@ const Orders = () => {
     setLimit(newLimit);
   };
 
+  
   const [Datas, setDatas] = useState()
   console.log(data)
   const [filterdata, setFilterdata] = useState()
@@ -88,6 +89,8 @@ const Orders = () => {
     if (data) {
       setDatas(formatedDate(data))
       setFilterdata(formatedDate(data))
+    } else  {
+      setDatas([])
     }
   }, [data])
 
