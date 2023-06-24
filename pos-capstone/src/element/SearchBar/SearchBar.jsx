@@ -15,7 +15,7 @@ const SearchBar = (props) => {
         <input
           className={`input-search-style bg-opacity-10 form-control ${props.className} ${props.onShow === false ? "px-3" : "px-5"}`}
           type="text"
-          placeholder={"Search"}
+          placeholder={props.placeholder}
           value={props.value}
           onChange={props.handleChange}
           onBlur={props.onBlur}

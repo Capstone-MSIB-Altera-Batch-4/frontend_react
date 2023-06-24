@@ -24,8 +24,8 @@ const Cashier = () => {
 
   const [searchInput, setSearchInput] = useState("");
   const [filteredCashiers, setFilteredCashiers] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
-  const options = ["Kepala Cashier", "Cashier"];
+  const [selectedOption, setSelectedOption] = useState("All");
+  const options = ["All", "Kepala Cashier", "Cashier"];
 
   //ambil response pagination
   const pagination = useSelector(state => state.cashiers.cashiers.pagination);
@@ -41,6 +41,7 @@ const Cashier = () => {
 
   useEffect(() => {
     dispatch(fetchCashiers(curPage, limit));
+    handleFilter();
 
     if (curPage > 2) {
       const numbtable =  1 + (limit * (curPage - 1)) 
@@ -96,24 +97,26 @@ const Cashier = () => {
   }, [showSnackbar, state.state]);
 
   const handleFilter = () => {
-    let filtered = cashiers;
-
-    if (selectedOption !== "") {
-      filtered = filtered.filter(
-        (cashier) => cashier.role.toLowerCase() === selectedOption.toLowerCase()
-      );
+    if (cashiers) {
+      let filtered = cashiers;
+  
+      if (selectedOption !== "All") {
+        filtered = filtered.filter(
+          (cashier) => cashier.role.toLowerCase() === selectedOption.toLowerCase()
+        );
+      }
+  
+      if (searchInput !== "") {
+        filtered = filtered.filter(
+          (cashier) =>
+            cashier.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+            cashier.id.toString().includes(searchInput)
+        );
+      }
+  
+      setFilteredCashiers(filtered);
     }
-
-    if (searchInput !== "") {
-      filtered = filtered.filter(
-        (cashier) =>
-          cashier.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-          cashier.id.toString().includes(searchInput)
-      );
-    }
-
-    setFilteredCashiers(filtered);
-  };
+  };  
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -162,6 +165,7 @@ const Cashier = () => {
                   value={searchInput}
                   handleChange={(e) => setSearchInput(e.target.value)}
                   onClearInput={() => setSearchInput("")}
+                  placeholder="Search by ID or Name"
                 />
               </div>
               <div className="col-md-4">
