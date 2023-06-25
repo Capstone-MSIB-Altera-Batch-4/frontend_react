@@ -1,101 +1,113 @@
-import React from 'react'
-import { FieldArray, Form, Formik } from 'formik';
-import * as Yup from 'yup';
-import TextField from '../../element/Textfield/Textfield';
+import React from "react";
 import { useState } from 'react';
-import InputErrorMessage from '../../element/InputErrorMessage/InputErrorMessage';
+import { useFormik } from "formik";
+import * as Yup from 'yup';
 import Button from '../../element/Button/Button';
 import { Plus } from 'react-bootstrap-icons';
 import './InputCategoryForm.css'
-import { useDispatch } from 'react-redux';
-import { createCategory } from '../../config/redux/actions/productActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { createCategory, deleteCategory, getCategory } from '../../config/redux/actions/productActions';
+import TextField from '../../element/Textfield/Textfield';
 
-const validationSchema = Yup.object().shape({
-  people: Yup.array().of(
-    Yup.object().shape({
-      category: Yup.string()
-        .required('This field must be filled in'),
-    })
-  )
-});
+const InputCategoryForm = () => {
+  const dispatch = useDispatch()
+  const categories = useSelector(state => state.products.category.data)
+  console.log(categories)
 
-const InputCategoryForm = ({handleClose}) => {
-  const dispatch = useDispatch();
-  const [categoryList, setCategoryList] = useState([""])
+  const [isAdd, setisAdd] = useState(false)
 
-  // let catId = 8
-  // let initialValues = {
-  //   name: ""
-  // }
-  
+  const handlesave = () => {
+    setisAdd(false)
+  }
+
+  const handledelete = (idx) => {
+    dispatch(deleteCategory(idx))
+    setTimeout(() => {
+      dispatch(getCategory());
+    }, 500)
+    
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      category: ""
+    },
+    validationSchema: Yup.object().shape({
+      category: Yup.string().required("The category field must be filled in"),
+    }),
+    onSubmit: (values) => {
+      console.log(values.category)
+      dispatch(createCategory({ name : values.category}))
+      setTimeout(() => {
+        dispatch(getCategory());
+      }, 500)
+      setisAdd(false)
+    }
+  })
+
+
   return (
-    <div>
-      <Formik
-        initialValues={{ category: [""] }}
-        onSubmit={(values) => {
-          const categories = values.category
-          for (let category in categories) {
-            dispatch(createCategory(categories[category]));
-            console.log("CATEGORY", categories[category])
-          }
-          // dispatch(createCategory(values.category));
-          // console.log("CATEGORY", values.category.name)
-          console.log(values)
-        }}
-        validationSchema={validationSchema}
-      >
-        {({ values, handleSubmit, handleChange, errors }) => (
-          <Form onSubmit={handleSubmit}>
-            <FieldArray name="category">
-              {({ remove, push }) => (
-                <div>
-                  {values.category && values.category.map((category, index) => {
-                    return (
-                      <div key={index}>
-                        <TextField
-                          placeholder="input category"
-                          type="text"
-                          id="category"
-                          name={`category.${index}`}
-                          value={category}
-                          onChange={handleChange}
-                          className={
-                            errors.category
-                              ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
-                              : "form-control mt-1"
-                          }
-                          onClearInput={
-                            () => remove(index)
-                          }
-                        />
-                      </div>
-                    );
-                  })}
-                  <button
-                    type="button"
-                    className="bg-white border border-0 d-flex mt-3 justify-content-start"
-                    onClick={() => push("")}
-                  >
-                    <div className="d-flex gap-2 text-secondary align-items-center">
-                      <Plus color="#6C6C6C" size={"20px"} />
-                      Add option
-                    </div>
-                  </button>
-                </div>
-              )}
-            </FieldArray>
-            <div className="mt-5 d-flex justify-content-end">
-              <Button
-                className="btn text-white button-save"
-                btnName="Save"
-                onClick={handleClose}
-              />
-            </div>
-          </Form>
+    <>
+      <div>
+
+        {categories?.map((data, idx) => 
+          <div key={idx}>
+            <TextField
+              type="text"
+              value={data.name}
+              readOnly={'readOnly'}
+              onChange={""}
+              className={
+                "form-control mt-1"
+              }
+              onClearInput={()=>handledelete(data.id)}
+            />
+          </div>
         )}
-      </Formik>
-    </div>
-  );
+        {isAdd  && (
+          <div >
+            <TextField
+              placeholder="input category"
+              type="text"
+              id="category"
+              name="category"
+              value={formik.values.category}
+              onChange={formik.handleChange}
+              className={
+                formik.errors.category
+                  ? "form-control mt-1 is-invalid bg-danger bg-opacity-10"
+                  : "form-control mt-1"
+              }
+              onClearInput={()=>setisAdd(false)}
+            />
+          </div>)}
+        <button
+          type="button"
+          className={
+            (categories.length >= 5)
+              ? `bg-white border border-0 d-flex mt-3 justify-content-start d-none`
+              : `bg-white border border-0 d-flex mt-3 justify-content-start`}
+          onClick={() => setisAdd(true)}
+        >
+          <div className={isAdd
+            ?"d-none gap-2 text-secondary align-items-center"
+            :"d-flex gap-2 text-secondary align-items-center"}>
+            <Plus color="#6C6C6C" size={"20px"} />
+            Add option
+          </div>
+
+        </button>
+        <div className="mt-5 d-flex justify-content-end">
+          <Button
+            className="btn text-white button-save"
+            btnName="Save"
+            onClick={formik.handleSubmit}
+          />
+        </div>
+      </div>
+    </>
+  )
+
 }
 
-export default InputCategoryForm;
+export default InputCategoryForm

@@ -14,6 +14,7 @@ const InputImage = (props) => {
 
     const onDrop = useCallback(acceptedFiles => {
         console.log("ini picture", acceptedFiles[0])
+        if(acceptedFiles[0]!=undefined)
         setFiles(acceptedFiles.map(file => Object.assign(file, {
             preview: URL.createObjectURL(file)
         })));
@@ -21,7 +22,8 @@ const InputImage = (props) => {
 
         dispatch(selectedImage(acceptedFiles[0]))
     }, [])
-    const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop, noClick: true })
+    const { getRootProps, getInputProps, isDragActive,isDragAccept,
+        isDragReject, open } = useDropzone({ onDrop, noClick: true, accept: {'image/jpg': ['.jpg'],'image/jpeg': ['.jpeg']} })
 
 
     return (
@@ -34,12 +36,12 @@ const InputImage = (props) => {
                 (<div className="filepreview">
                     <img
                         className="previewimg"
-                        src={files[0].preview}
+                        src={files[0]?.preview}
                         width={200} height={200}
                     />
                     <div className="row me-0">
                         <div className="col-10">
-                            <p className="filename">{files[0].name}
+                            <p className="filename">{files[0]?.name}
 
                             </p>
                         </div>
@@ -66,14 +68,24 @@ const InputImage = (props) => {
                                 >
                                 </img>
                             </div>
-                            {isDragActive ? (
+                            {isDragAccept && (
                                 <div className="droptext text-center">
                                     <p className="fs-5 pt-3">
                                         <strong>Drop to upload</strong>
                                     </p>
                                     <p className="fw-bold fs-6">Max. File Size: 30MB</p>
                                 </div>
-                            ) : (
+                            )} 
+                            {isDragReject && (
+                                <div className="droptext text-center">
+                                    <p className="fs-5 pt-3">
+                                        <strong>Only Accept Jpeg & Jpg format</strong>
+                                    </p>
+                                    <p className="fw-bold fs-6">Max. File Size: 30MB</p>
+                                </div>
+                            )} 
+                            
+                            {!isDragActive && (
                                 <div className="droptext text-center">
                                     <p className="fs-5 pt-3">
                                         <strong>Click to upload</strong> or drag and drop
