@@ -27,6 +27,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
   const selected = useSelector(state => state.products.selectedCategory);
   const cekStatus = useSelector(state => state.products.error)
   const productImage = useSelector(state => state.products.image)
+  //console.log(productImage)
 
  
 
@@ -35,11 +36,16 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
     //console.log("data category diget")
   }, [dispatch]);
 
+  //console.log("Categorinya", selected)
+
+  //console.log(product)
 
   let initialValues = {}
 
   // useEffect(() => {
     if (showModalFor === 'edit') {
+      //console.log(showModalFor)
+      //console.log("ini apa", dataEdit.name)
       initialValues = {
         id: dataEdit.products_id,
         name: dataEdit.name,
@@ -139,7 +145,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
       unit: Yup.string().required("The unit field must be filled in"),
     }),
       onSubmit: (values, actions) => {
-        alert("data", JSON.stringify(values))
+         alert("data", JSON.stringify(values))
         //console.log("DATA INI", values);
 
         let formData = new FormData()
@@ -191,7 +197,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
           )}
         </div>
         <div className="mb-3">
-          <InputImage label="Image" className="img-area"/>
+          <InputImage label="Image" className="img-area" />
         </div>
         <div className="mb-3">
           <TextField

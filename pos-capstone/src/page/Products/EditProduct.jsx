@@ -14,6 +14,8 @@ const EditProduct = () => {
   const product = useSelector(state => state.products.products.data)
   const loading = useSelector(state => state.products.loading)
 
+  console.log(product)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const EditProduct = () => {
               <PageTitle title="Edit Product" />
             </div>
             <div>
-              <ProductForm showModalFor={"edit"} dataEdit={product?product:[]}/>
+              <ProductForm showModalFor={"edit"} dataEdit={product}/>
             </div>
           </div>
         </div>
