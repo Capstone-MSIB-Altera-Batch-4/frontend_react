@@ -5,42 +5,20 @@ import { useParams } from "react-router-dom";
 import { productsData } from "../../data/DummyData";
 import { useSelector, useDispatch } from "react-redux";
 import api from "../../config/redux/api/api";
-import { getProducts } from "../../config/redux/actions/productActions"
+import { getProducts, getProductsbyid } from "../../config/redux/actions/productActions"
 import Loader from "../../element/Loader/Loader";
 
 
 const EditProduct = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState([])
+  const product = useSelector(state => state.products.products.data)
   const loading = useSelector(state => state.products.loading)
 
   const dispatch = useDispatch();
-  // const productData = useSelector(state => state.products.products.data);
-
-  // useEffect(() => {
-  //   dispatch(getProducts())
-  // }, [dispatch]);
-
-  // const product = productData?.filter(item => item.id === parseInt(id));
-
-  // console.log("product ID", product)
-
-  const getProductById = () => {
-    api.get(`/product/${id}`)
-    .then(response => {
-      setProduct(response.data.data)
-    })
-    // .catch(error => {
-    //   setError(error.response.data.meta.message);
-    // });
-  }
 
   useEffect(() => {
-    getProductById()
+    dispatch(getProductsbyid(id))
   }, [])
-
-  console.log("Product seleectend", product)
-
   return (
     <> {loading ? 
       <Loader
@@ -53,7 +31,7 @@ const EditProduct = () => {
               <PageTitle title="Edit Product" />
             </div>
             <div>
-              <ProductForm showModalFor={"edit"} dataEdit={product}/>
+              <ProductForm showModalFor={"edit"} dataEdit={product?product:[]}/>
             </div>
           </div>
         </div>

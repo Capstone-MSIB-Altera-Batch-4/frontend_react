@@ -5,10 +5,13 @@ import { useDropzone } from "react-dropzone";
 import "./InputImage.style.css"
 import { useState } from "react";
 import iconDrop from "../../assets/icon/dropimg-icon.svg"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectedImage } from "../../config/redux/actions/productActions";
 
 const InputImage = (props) => {
+
+    const product = useSelector(state=> state.products.products.data)
+    const editimg = product?.image_url
     const [files, setFiles] = useState()
     const dispatch = useDispatch();
 
@@ -31,8 +34,31 @@ const InputImage = (props) => {
             <label htmlFor={props.htmlFor} className="form-label">
                 {props.label}
             </label>
+            {editimg?
+                (<div className="filepreview">
+                <img
+                    className="previewimg"
+                    src={`128.199.206.32/api/${editimg}`}
+                    width={200} height={200}
+                />
+                <div className="row me-0">
+                    <div className="col-10">
+                        <p className="filename">{editimg}
 
-            {files ?
+                        </p>
+                    </div>
+                    <div className="col-2 ps-0 pe-0">
+                            <Button
+                                className="btn text-white w-100"
+                                btnName="Change File"
+                                onClick={open}
+                            />
+                    </div>
+                </div>
+
+            </div>
+            ):
+            (files ?
                 (<div className="filepreview">
                     <img
                         className="previewimg"
@@ -101,7 +127,8 @@ const InputImage = (props) => {
                         />
                     </div>
                 </div>
-                )}
+                ))}
+                            
         </div>
 
     )
