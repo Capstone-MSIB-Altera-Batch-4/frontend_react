@@ -7,20 +7,15 @@ export const DummyData = [
 ];
 
 export const FAQcards = [
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
-    { "title": "What is the meaning Point Of Sale?", "desc": "A point of sale (POS) is a place where a customer executes the payment for goods or services and where sales taxes may become payable." },
+    { "title": "Bagaimana cara menambahkan produk baru?", "desc": "Untuk menambahkan produk baru Anda dapat masuk ke menu “Products” dan klik tombol “add product” maka Anda bisa menambahkan data product. Setelah sudah selesai maka anda klik tombol save dan secara otomatis produk berhasil ditambahkan." },
+    { "title": "Apa langkah untuk bisa melakukan print invoices?", "desc": "Anda dapat membuka buka menu “Orders & Invoice”, di menu ini akan menampilkan table orders maka anda bisa arahkan kursor anda ke table orders tersebut dan akan muncul tombol “Detail” yang akan menampilkan data detail orders dan dapat print invoices." },
+    { "title": "Bagaimana cara melakukan edit data karyawan?", "desc": "Anda dapat buka menu “Memberships”, pada menu ini akan menampilkan table memberships, ketika anda akan mengelola data karyawan, anda bisa melakukan edit data tetapi data karyawan yang bisa diubah hanya email, phone number, dan current role." },
+    { "title": "Bagaimana saya mendapatkan bantuan jika ada masalah?", "desc": "Anda dapat buka menu “Help”. Pada menu “Help” terdapat Search Input yang bertujuan untuk membantu menemukan jawaban dengan cepat dan pada fitur ini menyediakan kolom deskripsi yang memungkinkan Anda dapat mengajukan pertanyaan yang lebih spesifik." },
+    { "title": "Melalui apa saya dapat menyampaikan pertanyaan terkait penggunaan aplikasi?", "desc": "Anda dapat menyampaikan pertanyaan terkait aplikasi Point Of Sale melalui menu “Help” yang sudah disediakan, pada menu ini terdapat fitur yang menyediakan kolom deskripsi yang memungkinkan Anda dapat mengajukan pertanyaan yang lebih spesifik." },
+    { "title": "Bagaimana cara menambahkan produk baru?", "desc": "Untuk menambahkan produk baru Anda dapat masuk ke menu “Products” dan klik tombol “add product” maka Anda bisa menambahkan data product. Setelah sudah selesai maka anda klik tombol save dan secara otomatis produk berhasil ditambahkan." },
+    { "title": "Apa langkah untuk bisa melakukan print invoices?", "desc": "Anda dapat membuka buka menu “Orders & Invoice”, di menu ini akan menampilkan table orders maka anda bisa arahkan kursor anda ke table orders tersebut dan akan muncul tombol “Detail” yang akan menampilkan data detail orders dan dapat print invoices." },
+    { "title": "Bagaimana cara melakukan edit data karyawan?", "desc": "Anda dapat buka menu “Memberships”, pada menu ini akan menampilkan table memberships, ketika anda akan mengelola data karyawan, anda bisa melakukan edit data tetapi data karyawan yang bisa diubah hanya email, phone number, dan current role." },
+    { "title": "Bagaimana saya mendapatkan bantuan jika ada masalah?", "desc": "Anda dapat buka menu “Help”. Pada menu “Help” terdapat Search Input yang bertujuan untuk membantu menemukan jawaban dengan cepat dan pada fitur ini menyediakan kolom deskripsi yang memungkinkan Anda dapat mengajukan pertanyaan yang lebih spesifik." },
 ];
 
 export const DummyEditDelete = () => {

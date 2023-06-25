@@ -19,7 +19,9 @@ const EditProduct = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductsbyid(id))
+    setTimeout(() => {
+      dispatch(getProductsbyid(id));
+    }, 200);
   }, [])
   return (
     <> {loading ? 
