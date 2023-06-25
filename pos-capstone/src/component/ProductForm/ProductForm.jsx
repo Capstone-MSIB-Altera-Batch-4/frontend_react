@@ -333,7 +333,7 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
             handleClose={() => setShowConfirmModal(false)}
             confirmFor={showModalFor}
             role={"Product"}
-            action={!cekStatus ? handleSubmit : formik.handleSubmit}
+            action={formik.handleSubmit}
           />
         </div>
         <div>
