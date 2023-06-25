@@ -105,7 +105,14 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
           dispatch(updateProduct(dataEdit.id, formData));
         }else {
           dispatch(createProduct(formData));
-          return complete = true
+          navigate("/products", {
+            state: {
+              showSnackbar: !!true,
+              action: `${showModalFor}`,
+              variant: "success",
+            },
+          })
+              return complete = true
         }
 
         //atur navigasi dan set error`
