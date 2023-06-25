@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ProductForm from "../../component/ProductForm/ProductForm";
 import PageTitle from "../../element/PageTitle/PageTitle";
 import { useParams } from "react-router-dom";
@@ -18,28 +18,35 @@ const EditProduct = () => {
 
   const dispatch = useDispatch();
 
+  if (!product || product.length === 0) {
+    console.log("Data product tidak tersedia. Mengarahkan ke halaman Membership...");
+    window.location.href = "/products";
+    return null;
+  }
+
   useEffect(() => {
     setTimeout(() => {
       dispatch(getProductsbyid(id));
-    }, 200);
+    }, 1000);
+
   }, [])
   return (
-    <> {loading ? 
+    <> {loading ?
       <Loader
         secondaryColor="#B1464A"
         color="#FFF0DE"
       /> :
-        <div className="col">
-          <div className="row col-md-8 col-sm-7 container-fluid mx-auto">
-            <div className="my-4 pt-5 text-center">
-              <PageTitle title="Edit Product" />
-            </div>
-            <div>
-              <ProductForm showModalFor={"edit"} dataEdit={product}/>
-            </div>
+      <div className="col">
+        <div className="row col-md-8 col-sm-7 container-fluid mx-auto">
+          <div className="my-4 pt-5 text-center">
+            <PageTitle title="Edit Product" />
+          </div>
+          <div>
+            <ProductForm showModalFor={"edit"} dataEdit={product} />
           </div>
         </div>
-      }
+      </div>
+    }
     </>
   );
 };

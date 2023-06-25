@@ -22,6 +22,8 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
   const [data, setData] = useState([]);
   // const [loading, setLoading] = useState(true);
 
+  console.log(dataEdit)
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -48,8 +50,8 @@ const ProductFrom = ({ showModalFor, dataEdit }) => {
   let initialValues = {}
 
   // useEffect(() => {
-  if (showModalFor === 'edit') {
-    //console.log(showModalFor)
+  if (showModalFor === "edit") {
+    console.log(showModalFor)
     //console.log("ini apa", dataEdit.name)
     initialValues = {
       id: dataEdit.products_id,

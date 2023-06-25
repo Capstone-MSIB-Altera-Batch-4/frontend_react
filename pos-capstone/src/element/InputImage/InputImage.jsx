@@ -38,7 +38,7 @@ const InputImage = (props) => {
                 (<div className="filepreview">
                 <img
                     className="previewimg"
-                    src={`128.199.206.32/api/${editimg}`}
+                    src={`https://getback-go.online/api/v1/${editimg}`}
                     width={200} height={200}
                 />
                 <div className="row me-0">
