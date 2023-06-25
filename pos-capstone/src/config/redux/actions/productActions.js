@@ -46,6 +46,25 @@ export const getProducts = (page, limit) => {
             });
     };
 };
+export const getProductsbyid = (idx) => {
+    return (dispatch) => {
+        dispatch({ type: 'FETCH_PRODUCTSBYID_REQUEST' });
+
+        api.get(`/product/${idx}`)
+            .then(response => {
+                dispatch({
+                    type: 'FETCH_PRODUCTSBYID_SUCCESS',
+                    payload: response.data
+                });
+            })
+            .catch(error => {
+                dispatch({
+                    type: 'FETCH_PRODUCTSBYID_FAILURE',
+                    payload: error.message
+                });
+            });
+    };
+};
 
 // Update
 export const updateProduct = (productId, updatedProduct) => {

@@ -13,6 +13,7 @@ const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case "CREATE_PRODUCTS_REQUEST":
         case "FETCH_PRODUCTS_REQUEST":
+        case "FETCH_PRODUCTSBYID_REQUEST":
         case "UPDATE_PRODUCTS_REQUEST":
         case "DELETE_PRODUCTS_REQUEST":
         case "DELETE_CATEGORY_REQUEST":
@@ -37,6 +38,13 @@ const productReducer = (state = initialState, action) => {
                 error: "ERROR",
             }
         case "FETCH_PRODUCTS_SUCCESS":
+            return {
+                ...state,
+                products: action.payload,
+                loading: false,
+                error: null,
+            };
+        case "FETCH_PRODUCTSBYID_SUCCESS":
             return {
                 ...state,
                 products: action.payload,
